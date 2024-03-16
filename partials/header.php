@@ -10,18 +10,18 @@
                             <form action="#">
                                 <select class="select-active">
                                     <option>All Categories</option>
-                                    <option>Women's</option>
-                                    <option>Men's</option>
-                                    <option>Cellphones</option>
-                                    <option>Computer</option>
-                                    <option>Electronics</option>
-                                    <option> Accessories</option>
-                                    <option>Home & Garden</option>
-                                    <option>Luggage</option>
-                                    <option>Shoes</option>
-                                    <option>Mother & Kids</option>
+                                    <option>Mystery</option>
+                                    <option>Thriller</option>
+                                    <option>Science Fiction</option>
+                                    <option>Fantasy</option>
+                                    <option>Romance</option>
+                                    <option>Historical Fiction</option>
+                                    <option>Horror</option>
+                                    <option>Adventure</option>
+                                    <option>Biography</option>
+                                    <option>Academic</option>
                                 </select>
-                                <input type="text" placeholder="Search for items...">
+                                <input type="text" placeholder="Search for books...">
                             </form>
                         </div>
                         <div class="header-action-right">
@@ -85,7 +85,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between position-relative  main-nav">
                     <div class="logo logo-width-1 d-block d-lg-none">
-                        <a href="index.php"><img src="assets/imgs/theme/logo.svg" alt="logo"></a>
+                        <a href="index.php"><img src="assets/imgs/theme/Book-Bridge.svg" alt="logo"></a>
                     </div>
                     <div class="header-nav d-none d-lg-flex">
                         <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
@@ -184,6 +184,18 @@
                                     </li>
                                     <li>
                                         <a href="page-contact.php">Contact</a>
+                                    </li>
+                                    <li><a href="#">Others</a>
+                                            <ul class="sub-menu">
+                                            <li><a href="page-about.php">About Us</a></li>
+                                            <li><a href="page-contact.php">Contact</a></li>
+                                            <li><a href="page-account.php">My Account</a></li>
+                                            <li><a href="page-login-register.php">login/register</a></li>
+                                            <li><a href="page-purchase-guide.php">Purchase Guide</a></li>
+                                            <li><a href="page-privacy-policy.php">Privacy Policy</a></li>
+                                            <li><a href="page-terms.php">Terms of Service</a></li>
+                                            <li><a href="page-404.php">404 Page</a></li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </nav>
