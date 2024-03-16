@@ -5305,6 +5305,7 @@ h6.post-title {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-content: center;
 }
 
 .header-wrap .header-nav {
@@ -5324,7 +5325,6 @@ h6.post-title {
 .header-wrap.header-space-between {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
 }
 
 .header-wrap .header-right {

@@ -30,7 +30,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="widget-about font-md mb-md-5 mb-lg-0">
                             <div class="logo logo-width-1 wow fadeIn animated">
-                                <a href="index.php"><img src="assets/imgs/theme/logo.svg" alt="logo"></a>
+                                <a href="index.php"><img src="assets/imgs/theme/Book-Bridge.svg" alt="logo"></a>
                             </div>
                             <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
                             <p class="wow fadeIn animated">
@@ -84,10 +84,10 @@
                                     <a href="#" class="hover-up"><img src="assets/imgs/theme/google-play.jpg" alt=""></a>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
+                            <!-- <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
                                 <p class="mb-20 wow fadeIn animated">Secured Payment Gateways</p>
                                 <img class="wow fadeIn animated" src="assets/imgs/theme/payment-method.png" alt="">
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -99,11 +99,11 @@
                     <div class="footer-bottom"></div>
                 </div>
                 <div class="col-lg-6">
-                    <p class="float-md-left font-sm text-muted mb-0">&copy; 2022, <strong class="text-brand">Evara</strong> - HTML Ecommerce Template </p>
+                    <!-- <p class="float-md-left font-sm text-muted mb-0">&copy; 2022, <strong class="text-brand">Evara</strong> - HTML Ecommerce Template </p> -->
                 </div>
                 <div class="col-lg-6">
                     <p class="text-lg-end text-start font-sm text-muted mb-0">
-                        Designed by <a href="http://alithemes.com" target="_blank">Alithemes.com</a>. All rights reserved
+                        Designed by <a href="http://github.com/team-csquanta" target="_blank">Team CSQuanta</a>. All rights reserved
                     </p>
                 </div>
             </div>
