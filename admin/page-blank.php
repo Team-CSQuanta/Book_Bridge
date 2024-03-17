@@ -21,7 +21,7 @@
     <div class="screen-overlay"></div>
     <aside class="navbar-aside" id="offcanvas_aside">
         <div class="aside-top">
-            <a href="index.html" class="brand-wrap">
+            <a href="index.php" class="brand-wrap">
                 <img src="assets/imgs/theme/logo.svg" class="logo" alt="Evara Dashboard">
             </a>
             <div>
@@ -31,62 +31,62 @@
         <nav>
             <ul class="menu-aside">
                 <li class="menu-item active">
-                    <a class="menu-link" href="index.html"> <i class="icon material-icons md-home"></i>
+                    <a class="menu-link" href="index.php"> <i class="icon material-icons md-home"></i>
                         <span class="text">Dashboard</span>
                     </a>
                 </li>
                 <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
+                    <a class="menu-link" href="page-products-list.php"> <i class="icon material-icons md-shopping_bag"></i>
                         <span class="text">Products</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-products-list.html">Product List</a>
-                        <a href="page-products-grid.html">Product grid</a>
-                        <a href="page-products-grid-2.html">Product grid 2</a>
-                        <a href="page-categories.html">Categories</a>
+                        <a href="page-products-list.php">Product List</a>
+                        <a href="page-products-grid.php">Product grid</a>
+                        <a href="page-products-grid-2.php">Product grid 2</a>
+                        <a href="page-categories.php">Categories</a>
                     </div>
                 </li>
                 <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>
+                    <a class="menu-link" href="page-orders-1.php"> <i class="icon material-icons md-shopping_cart"></i>
                         <span class="text">Orders</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-orders-1.html">Order list 1</a>
-                        <a href="page-orders-2.html">Order list 2</a>
-                        <a href="page-orders-detail.html">Order detail</a>
-                        <a href="page-orders-tracking.html">Order tracking</a>
-<a href="page-invoice.html">Invoice</a>
+                        <a href="page-orders-1.php">Order list 1</a>
+                        <a href="page-orders-2.php">Order list 2</a>
+                        <a href="page-orders-detail.php">Order detail</a>
+                        <a href="page-orders-tracking.php">Order tracking</a>
+<a href="page-invoice.php">Invoice</a>
                     </div>
                 </li>
                 <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-sellers-cards.html"> <i class="icon material-icons md-store"></i>
+                    <a class="menu-link" href="page-sellers-cards.php"> <i class="icon material-icons md-store"></i>
                         <span class="text">Sellers</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-sellers-cards.html">Sellers cards</a>
-                        <a href="page-sellers-list.html">Sellers list</a>
-                        <a href="page-seller-detail.html">Seller profile</a>
+                        <a href="page-sellers-cards.php">Sellers cards</a>
+                        <a href="page-sellers-list.php">Sellers list</a>
+                        <a href="page-seller-detail.php">Seller profile</a>
                     </div>
                 </li>
                 <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-form-product-1.html"> <i class="icon material-icons md-add_box"></i>
+                    <a class="menu-link" href="page-form-product-1.php"> <i class="icon material-icons md-add_box"></i>
                         <span class="text">Add product</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-form-product-1.html">Add product 1</a>
-                        <a href="page-form-product-2.html">Add product 2</a>
-                        <a href="page-form-product-3.html">Add product 3</a>
-                        <a href="page-form-product-4.html">Add product 4</a>
+                        <a href="page-form-product-1.php">Add product 1</a>
+                        <a href="page-form-product-2.php">Add product 2</a>
+                        <a href="page-form-product-3.php">Add product 3</a>
+                        <a href="page-form-product-4.php">Add product 4</a>
                     </div>
                 </li>
                 <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-transactions-1.html"> <i class="icon material-icons md-monetization_on"></i>
+                    <a class="menu-link" href="page-transactions-1.php"> <i class="icon material-icons md-monetization_on"></i>
                         <span class="text">Transactions</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-transactions-1.html">Transaction 1</a>
-                        <a href="page-transactions-2.html">Transaction 2</a>
-                        <a href="page-transactions-details.html">Transaction Details</a>
+                        <a href="page-transactions-1.php">Transaction 1</a>
+                        <a href="page-transactions-2.php">Transaction 2</a>
+                        <a href="page-transactions-details.php">Transaction Details</a>
                     </div>
                 </li>
                 <li class="menu-item has-submenu">
@@ -94,18 +94,18 @@
                         <span class="text">Account</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-account-login.html">User login</a>
-                        <a href="page-account-register.html">User registration</a>
-                        <a href="page-error-404.html">Error 404</a>
+                        <a href="page-account-login.php">User login</a>
+                        <a href="page-account-register.php">User registration</a>
+                        <a href="page-error-404.php">Error 404</a>
                     </div>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="page-reviews.html"> <i class="icon material-icons md-comment"></i>
+                    <a class="menu-link" href="page-reviews.php"> <i class="icon material-icons md-comment"></i>
                         <span class="text">Reviews</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="page-brands.html"> <i class="icon material-icons md-stars"></i>
+                    <a class="menu-link" href="page-brands.php"> <i class="icon material-icons md-stars"></i>
                         <span class="text">Brands</span> </a>
                 </li>
                 <li class="menu-item">
@@ -121,12 +121,12 @@
                         <span class="text">Settings</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-settings-1.html">Setting sample 1</a>
-                        <a href="page-settings-2.html">Setting sample 2</a>
+                        <a href="page-settings-1.php">Setting sample 1</a>
+                        <a href="page-settings-2.php">Setting sample 2</a>
                     </div>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
+                    <a class="menu-link" href="page-blank.php"> <i class="icon material-icons md-local_offer"></i>
                         <span class="text"> Starter page </span>
                     </a>
                 </li>
@@ -191,17 +191,28 @@
             </div>
         </header>
         <section class="content-main">
-            <div class="row mt-60">
-                <div class="col-sm-12">
-                    <div class="w-50 mx-auto text-center">
-                        <img src="assets/imgs/theme/404.png" width="350" alt="Page Not Found">
-                        <h3 class="mt-40 mb-15">Oops! Page not found</h3>
-                        <p>It's looking like you may have taken a wrong turn. Don't worry... it happens to the best of us. Here's a little tip that might help you get back on track.</p>
-                        <a href="index.html" class="btn btn-primary mt-4"><i class="material-icons md-keyboard_return"></i> Back to main</a>
-                    </div>
+            <div class="content-header">
+                <h2 class="content-title">Blank page </h2>
+                <div>
+                    <a href="#" class="btn btn-primary">Create new</a>
                 </div>
             </div>
-        </section> <!-- content-main end// -->
+            <div class="card mb-4">
+                <header class="card-header">
+                    <h4>Card header</h4>
+                </header>
+                <div class="card-body">
+                    <h5 class="card-title">Card content</h5>
+                    <div class="mt-4">
+                        <div class="text-muted font-size-14">
+                            <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam enim ad minima veniam quis</p>
+                            <p class="mb-4">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt</p>
+                            <p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Sed ut perspiciatis unde omnis iste natus error sit</p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- card end// -->
+        </section>
         <footer class="main-footer font-xs">
             <div class="row pb-30 pt-15">
                 <div class="col-sm-6">
