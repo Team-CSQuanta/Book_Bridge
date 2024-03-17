@@ -21,7 +21,7 @@
     <div class="screen-overlay"></div>
     <aside class="navbar-aside" id="offcanvas_aside">
         <div class="aside-top">
-            <a href="index.html" class="brand-wrap">
+            <a href="index.php" class="brand-wrap">
                 <img src="assets/imgs/theme/logo.svg" class="logo" alt="Evara Dashboard">
             </a>
             <div>
@@ -31,62 +31,62 @@
         <nav>
             <ul class="menu-aside">
                 <li class="menu-item">
-                    <a class="menu-link" href="index.html"> <i class="icon material-icons md-home"></i>
+                    <a class="menu-link" href="index.php"> <i class="icon material-icons md-home"></i>
                         <span class="text">Dashboard</span>
                     </a>
                 </li>
                 <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-products-list.html"> <i class="icon material-icons md-shopping_bag"></i>
+                    <a class="menu-link" href="page-products-list.php"> <i class="icon material-icons md-shopping_bag"></i>
                         <span class="text">Products</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-products-list.html">Product List</a>
-                        <a href="page-products-grid.html">Product grid</a>
-                        <a href="page-products-grid-2.html">Product grid 2</a>
-                        <a href="page-categories.html">Categories</a>
+                        <a href="page-products-list.php">Product List</a>
+                        <a href="page-products-grid.php">Product grid</a>
+                        <a href="page-products-grid-2.php">Product grid 2</a>
+                        <a href="page-categories.php">Categories</a>
                     </div>
                 </li>
                 <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-orders-1.html"> <i class="icon material-icons md-shopping_cart"></i>
+                    <a class="menu-link" href="page-orders-1.php"> <i class="icon material-icons md-shopping_cart"></i>
                         <span class="text">Orders</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-orders-1.html">Order list 1</a>
-                        <a href="page-orders-2.html">Order list 2</a>
-                        <a href="page-orders-detail.html">Order detail</a>
-                        <a href="page-orders-tracking.html">Order tracking</a>
-<a href="page-invoice.html">Invoice</a>
+                        <a href="page-orders-1.php">Order list 1</a>
+                        <a href="page-orders-2.php">Order list 2</a>
+                        <a href="page-orders-detail.php">Order detail</a>
+                        <a href="page-orders-tracking.php">Order tracking</a>
+<a href="page-invoice.php">Invoice</a>
                     </div>
                 </li>
                 <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-sellers-cards.html"> <i class="icon material-icons md-store"></i>
+                    <a class="menu-link" href="page-sellers-cards.php"> <i class="icon material-icons md-store"></i>
                         <span class="text">Sellers</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-sellers-cards.html">Sellers cards</a>
-                        <a href="page-sellers-list.html">Sellers list</a>
-                        <a href="page-seller-detail.html">Seller profile</a>
+                        <a href="page-sellers-cards.php">Sellers cards</a>
+                        <a href="page-sellers-list.php">Sellers list</a>
+                        <a href="page-seller-detail.php">Seller profile</a>
                     </div>
                 </li>
                 <li class="menu-item has-submenu active">
-                    <a class="menu-link" href="page-form-product-1.html"> <i class="icon material-icons md-add_box"></i>
+                    <a class="menu-link" href="page-form-product-1.php"> <i class="icon material-icons md-add_box"></i>
                         <span class="text">Add product</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-form-product-1.html">Add product 1</a>
-                        <a href="page-form-product-2.html" class="active">Add product 2</a>
-                        <a href="page-form-product-3.html">Add product 3</a>
-                        <a href="page-form-product-4.html">Add product 4</a>
+                        <a href="page-form-product-1.php" class="active">Add product 1</a>
+                        <a href="page-form-product-2.php">Add product 2</a>
+                        <a href="page-form-product-3.php">Add product 3</a>
+                        <a href="page-form-product-4.php">Add product 4</a>
                     </div>
                 </li>
                 <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-transactions-1.html"> <i class="icon material-icons md-monetization_on"></i>
+                    <a class="menu-link" href="page-transactions-1.php"> <i class="icon material-icons md-monetization_on"></i>
                         <span class="text">Transactions</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-transactions-1.html">Transaction 1</a>
-                        <a href="page-transactions-2.html">Transaction 2</a>
-                        <a href="page-transactions-details.html">Transaction Details</a>
+                        <a href="page-transactions-1.php">Transaction 1</a>
+                        <a href="page-transactions-2.php">Transaction 2</a>
+                        <a href="page-transactions-details.php">Transaction Details</a>
                     </div>
                 </li>
                 <li class="menu-item has-submenu">
@@ -94,18 +94,18 @@
                         <span class="text">Account</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-account-login.html">User login</a>
-                        <a href="page-account-register.html">User registration</a>
-                        <a href="page-error-404.html">Error 404</a>
+                        <a href="page-account-login.php">User login</a>
+                        <a href="page-account-register.php">User registration</a>
+                        <a href="page-error-404.php">Error 404</a>
                     </div>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="page-reviews.html"> <i class="icon material-icons md-comment"></i>
+                    <a class="menu-link" href="page-reviews.php"> <i class="icon material-icons md-comment"></i>
                         <span class="text">Reviews</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="page-brands.html"> <i class="icon material-icons md-stars"></i>
+                    <a class="menu-link" href="page-brands.php"> <i class="icon material-icons md-stars"></i>
                         <span class="text">Brands</span> </a>
                 </li>
                 <li class="menu-item">
@@ -121,12 +121,12 @@
                         <span class="text">Settings</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-settings-1.html">Setting sample 1</a>
-                        <a href="page-settings-2.html">Setting sample 2</a>
+                        <a href="page-settings-1.php">Setting sample 1</a>
+                        <a href="page-settings-2.php">Setting sample 2</a>
                     </div>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
+                    <a class="menu-link" href="page-blank.php"> <i class="icon material-icons md-local_offer"></i>
                         <span class="text"> Starter page </span>
                     </a>
                 </li>
@@ -192,7 +192,7 @@
         </header>
         <section class="content-main">
             <div class="row">
-                <div class="col-6">
+                <div class="col-9">
                     <div class="content-header">
                         <h2 class="content-title">Add New Product</h2>
                         <div>
@@ -201,108 +201,134 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-lg-6">
                     <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Basic</h4>
+                        </div>
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <h6>1. General info</h6>
+                            <form>
+                                <div class="mb-4">
+                                    <label for="product_name" class="form-label">Product title</label>
+                                    <input type="text" placeholder="Type here" class="form-control" id="product_name">
                                 </div>
-                                <div class="col-md-9">
-                                    <div class="mb-4">
-                                        <label class="form-label">Product title</label>
-                                        <input type="text" placeholder="Type here" class="form-control">
+                                <div class="mb-4">
+                                    <label class="form-label">Full description</label>
+                                    <textarea placeholder="Type here" class="form-control" rows="4"></textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="mb-4">
+                                            <label class="form-label">Regular price</label>
+                                            <div class="row gx-2">
+                                                <input placeholder="$" type="text" class="form-control">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="mb-4">
-                                        <label class="form-label">Description</label>
-                                        <textarea placeholder="Type here" class="form-control" rows="4"></textarea>
+                                    <div class="col-lg-4">
+                                        <div class="mb-4">
+                                            <label class="form-label">Promotional price</label>
+                                            <input placeholder="$" type="text" class="form-control">
+                                        </div>
                                     </div>
-                                    <div class="mb-4">
-                                        <label class="form-label">Brand name</label>
+                                    <div class="col-lg-4">
+                                        <label class="form-label">Currency</label>
                                         <select class="form-select">
-                                            <option> Adidas </option>
-                                            <option> Nike </option>
-                                            <option> Puma </option>
+                                            <option> USD </option>
+                                            <option> EUR </option>
+                                            <option> RUBL </option>
                                         </select>
                                     </div>
-                                </div> <!-- col.// -->
-                            </div> <!-- row.// -->
-                            <hr class="mb-4 mt-0">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <h6>2. Pricing</h6>
                                 </div>
-                                <div class="col-md-9">
-                                    <div class="mb-4">
-                                        <label class="form-label">Cost in USD</label>
-                                        <input type="text" placeholder="$00.0" class="form-control">
-                                    </div>
-                                </div> <!-- col.// -->
-                            </div> <!-- row.// -->
-                            <hr class="mb-4 mt-0">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <h6>3. Category</h6>
+                                <div class="mb-4">
+                                    <label class="form-label">Tax rate</label>
+                                    <input type="text" placeholder="%" class="form-control" id="product_name">
                                 </div>
-                                <div class="col-md-9">
-                                    <div class="mb-4">
-                                        <label class="mb-2 form-check form-check-inline" style="width: 45%;">
-                                            <input class="form-check-input" checked="" name="mycategory" type="radio">
-                                            <span class="form-check-label"> Clothes </span>
-                                        </label>
-                                        <label class="mb-2 form-check form-check-inline" style="width: 45%;">
-                                            <input class="form-check-input" name="mycategory" type="radio">
-                                            <span class="form-check-label"> Electronics </span>
-                                        </label>
-                                        <label class="mb-2 form-check form-check-inline" style="width: 45%;">
-                                            <input class="form-check-input" name="mycategory" type="radio">
-                                            <span class="form-check-label"> Sports </span>
-                                        </label>
-                                        <label class="mb-2 form-check form-check-inline" style="width: 45%;">
-                                            <input class="form-check-input" name="mycategory" type="radio">
-                                            <span class="form-check-label"> Automobiles </span>
-                                        </label>
-                                        <label class="mb-2 form-check form-check-inline" style="width: 45%;">
-                                            <input class="form-check-input" name="mycategory" type="radio">
-                                            <span class="form-check-label"> Home interior </span>
-                                        </label>
-                                        <label class="mb-2 form-check form-check-inline" style="width: 45%;">
-                                            <input class="form-check-input" name="mycategory" type="radio">
-                                            <span class="form-check-label"> Smartphones </span>
-                                        </label>
-                                        <label class="mb-2 form-check form-check-inline" style="width: 45%;">
-                                            <input class="form-check-input" name="mycategory" type="radio">
-                                            <span class="form-check-label"> Books </span>
-                                        </label>
-                                        <label class="mb-2 form-check form-check-inline" style="width: 45%;">
-                                            <input class="form-check-input" name="mycategory" type="radio">
-                                            <span class="form-check-label"> Kids item </span>
-                                        </label>
-                                        <label class="mb-2 form-check form-check-inline" style="width: 45%;">
-                                            <input class="form-check-input" name="mycategory" type="radio">
-                                            <span class="form-check-label"> Others </span>
-                                        </label>
-                                    </div>
-                                </div> <!-- col.// -->
-                            </div> <!-- row.// -->
-                            <hr class="mb-4 mt-0">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <h6>4. Media</h6>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="mb-4">
-                                        <label class="form-label">Images</label>
-                                        <input class="form-control" type="file">
-                                    </div>
-                                </div> <!-- col.// -->
-                            </div> <!-- .row end// -->
+                                <label class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <span class="form-check-label"> Make a template </span>
+                                </label>
+                            </form>
                         </div>
-                    </div>
+                    </div> <!-- card end// -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Shipping</h4>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-4">
+                                            <label for="product_name" class="form-label">Width</label>
+                                            <input type="text" placeholder="inch" class="form-control" id="product_name">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-4">
+                                            <label for="product_name" class="form-label">Height</label>
+                                            <input type="text" placeholder="inch" class="form-control" id="product_name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="product_name" class="form-label">Weight</label>
+                                    <input type="text" placeholder="gam" class="form-control" id="product_name">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="product_name" class="form-label">Shipping fees</label>
+                                    <input type="text" placeholder="$" class="form-control" id="product_name">
+                                </div>
+                            </form>
+                        </div>
+                    </div> <!-- card end// -->
                 </div>
-            </div>
+                <div class="col-lg-3">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Media</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-upload">
+                                <img src="assets/imgs/theme/upload.svg" alt="">
+                                <input class="form-control" type="file">
+                            </div>
+                        </div>
+                    </div> <!-- card end// -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Organization</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row gx-2">
+                                <div class="col-sm-6 mb-3">
+                                    <label class="form-label">Category</label>
+                                    <select class="form-select">
+                                        <option> Automobiles </option>
+                                        <option> Home items </option>
+                                        <option> Electronics </option>
+                                        <option> Smartphones </option>
+                                        <option> Sport items </option>
+                                        <option> Baby and Tous </option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6 mb-3">
+                                    <label class="form-label">Sub-category</label>
+                                    <select class="form-select">
+                                        <option> Nissan </option>
+                                        <option> Honda </option>
+                                        <option> Mercedes </option>
+                                        <option> Chevrolet </option>
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="product_name" class="form-label">Tags</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div> <!-- row.// -->
+                        </div>
+                    </div> <!-- card end// -->
+                </div>
             </div>
         </section> <!-- content-main end// -->
         <footer class="main-footer font-xs">
