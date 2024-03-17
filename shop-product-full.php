@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Evara - eCommerce HTML Template</title>
+    <title>BookBridge Online</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -574,7 +574,7 @@
                                             <div class="product-cart-wrap small hover-up">
                                                 <div class="product-img-action-wrap">
                                                     <div class="product-img product-img-zoom">
-                                                        <a href="shop-product-right.php" tabindex="0">
+                                                        <a href="shop-product-full.php" tabindex="0">
                                                             <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
                                                             <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="">
                                                         </a>
@@ -590,7 +590,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content-wrap">
-                                                    <h2><a href="shop-product-right.php" tabindex="0">Ulstra Bass Headphone</a></h2>
+                                                    <h2><a href="shop-product-full.php" tabindex="0">Ulstra Bass Headphone</a></h2>
                                                     <div class="rating-result" title="90%">
                                                         <span>
                                                         </span>
@@ -606,7 +606,7 @@
                                             <div class="product-cart-wrap small hover-up">
                                                 <div class="product-img-action-wrap">
                                                     <div class="product-img product-img-zoom">
-                                                        <a href="shop-product-right.php" tabindex="0">
+                                                        <a href="shop-product-full.php" tabindex="0">
                                                             <img class="default-img" src="assets/imgs/shop/product-3-1.jpg" alt="">
                                                             <img class="hover-img" src="assets/imgs/shop/product-4-2.jpg" alt="">
                                                         </a>
@@ -622,7 +622,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content-wrap">
-                                                    <h2><a href="shop-product-right.php" tabindex="0">Smart Bluetooth Speaker</a></h2>
+                                                    <h2><a href="shop-product-full.php" tabindex="0">Smart Bluetooth Speaker</a></h2>
                                                     <div class="rating-result" title="90%">
                                                         <span>
                                                         </span>
@@ -638,7 +638,7 @@
                                             <div class="product-cart-wrap small hover-up">
                                                 <div class="product-img-action-wrap">
                                                     <div class="product-img product-img-zoom">
-                                                        <a href="shop-product-right.php" tabindex="0">
+                                                        <a href="shop-product-full.php" tabindex="0">
                                                             <img class="default-img" src="assets/imgs/shop/product-4-1.jpg" alt="">
                                                             <img class="hover-img" src="assets/imgs/shop/product-4-2.jpg" alt="">
                                                         </a>
@@ -654,7 +654,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content-wrap">
-                                                    <h2><a href="shop-product-right.php" tabindex="0">HomeSpeak 12UEA Goole</a></h2>
+                                                    <h2><a href="shop-product-full.php" tabindex="0">HomeSpeak 12UEA Goole</a></h2>
                                                     <div class="rating-result" title="90%">
                                                         <span>
                                                         </span>
@@ -670,7 +670,7 @@
                                             <div class="product-cart-wrap small hover-up mb-0">
                                                 <div class="product-img-action-wrap">
                                                     <div class="product-img product-img-zoom">
-                                                        <a href="shop-product-right.php" tabindex="0">
+                                                        <a href="shop-product-full.php" tabindex="0">
                                                             <img class="default-img" src="assets/imgs/shop/product-5-1.jpg" alt="">
                                                             <img class="hover-img" src="assets/imgs/shop/product-3-2.jpg" alt="">
                                                         </a>
@@ -686,7 +686,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content-wrap">
-                                                    <h2><a href="shop-product-right.php" tabindex="0">Dadua Camera 4K 2022EF</a></h2>
+                                                    <h2><a href="shop-product-full.php" tabindex="0">Dadua Camera 4K 2022EF</a></h2>
                                                     <div class="rating-result" title="90%">
                                                         <span>
                                                         </span>
