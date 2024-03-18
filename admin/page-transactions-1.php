@@ -327,29 +327,7 @@
                         </div> <!-- col end// -->
                         <aside class="col-lg-3">
                             <div class="box bg-light" style="min-height:80%">
-                                <h6 class="mt-15">Transaction Details</h6>
-                                <hr>
-                                <h6 class="mb-0">Suplier:</h6>
-                                <p>TemplateMount</p><br>
-                                <h6 class="mb-0">Date:</h6>
-                                <p>December 19th, 2022</p><br>
-                                <h6 class="mb-0">Billing address</h6>
-                                <p>1901 Thornridge Cir. Shiloh, Hawaii 81063</p><br>
-                                <h6 class="mb-0">VAT ID:</h6>
-                                <p>54741654160</p><br>
-                                <h6 class="mb-0">Email:</h6>
-                                <p>support@example.com</p><br>
-                                <h6 class="mb-0">Item purchased:</h6><br>
-                                <p>
-                                    <a href="#"> Adidas Air Jordan <i class="icons material-icons md-launch"></i> </a>
-                                    <br>
-                                    <a href="#"> Great product <i class="icons material-icons md-launch"></i> </a>
-                                </p>
-                                <br>
-                                <p>Payment: PayPal</p>
-                                <p class="h4">$457.14</p>
-                                <hr>
-                                <a class="btn btn-light" href="#"> Download receipe </a>
+                                <p class="text-center text-muted my-5">Please select transaction <br> to see details</p>
                             </div>
                         </aside> <!-- col end// -->
                     </div> <!-- row end// -->
@@ -367,6 +345,7 @@
                     </ul>
                 </nav>
             </div>
+        </section>
 
     </main>
     <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>

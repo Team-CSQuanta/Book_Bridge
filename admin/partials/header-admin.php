@@ -6,10 +6,10 @@
                         <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button>
                     </div>
                     <datalist id="search_terms">
-                        <option value="Products">
+                        <!-- <option value="Products">
                         <option value="New orders">
                         <option value="Apple iphone">
-                        <option value="Ahmed Hassan">
+                        <option value="Ahmed Hassan"> -->
                     </datalist>
                 </form>
             </div>

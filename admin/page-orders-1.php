@@ -56,7 +56,6 @@
                         <a href="page-orders-2.php">Order list 2</a>
                         <a href="page-orders-detail.php">Order detail</a>
                         <a href="page-orders-tracking.php">Order tracking</a>
-                        <a href="page-invoice.php">Invoice</a>
                     </div>
                 </li>
                 <li class="menu-item ">
@@ -115,26 +114,26 @@
         </nav>
     </aside>
     <main class="main-wrap">
-        <?php 
+    <?php 
         include 'partials/header-admin.php'
         ?>
         <section class="content-main">
             <div class="content-header">
                 <div>
-                    <h2 class="content-title card-title">Reviews</h2>
+                    <h2 class="content-title card-title">Order List </h2>
                     <p>Lorem ipsum dolor sit amet.</p>
                 </div>
                 <div>
-                    <input type="text" placeholder="Search by name" class="form-control bg-white">
+                    <input type="text" placeholder="Search order ID" class="form-control bg-white">
                 </div>
             </div>
             <div class="card mb-4">
                 <header class="card-header">
                     <div class="row gx-3">
                         <div class="col-lg-4 col-md-6 me-auto">
-                            <input type="text" placeholder="Search..." class="form-control" />
+                            <input type="text" placeholder="Search..." class="form-control">
                         </div>
-                        <div class="col-lg-2 col-md-3 col-6">
+                        <div class="col-lg-2 col-6 col-md-3">
                             <select class="form-select">
                                 <option>Status</option>
                                 <option>Active</option>
@@ -142,7 +141,7 @@
                                 <option>Show all</option>
                             </select>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-6">
+                        <div class="col-lg-2 col-6 col-md-3">
                             <select class="form-select">
                                 <option>Show 20</option>
                                 <option>Show 30</option>
@@ -150,47 +149,29 @@
                             </select>
                         </div>
                     </div>
-                </header>
-                <!-- card-header end// -->
+                </header> <!-- card-header end// -->
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" />
-                                        </div>
-                                    </th>
                                     <th>#ID</th>
-                                    <th>Product</th>
-                                    <th>Name</th>
-                                    <th>Rating</th>
-                                    <th>Date</th>
-                                    <th class="text-end">Action</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col" class="text-end"> Action </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" />
-                                        </div>
-                                    </td>
-                                    <td>23</td>
-                                    <td><b>A-Line Mini Dress in Blue</b></td>
-                                    <td>Devon Lane</td>
-                                    <td>
-                                        <ul class="rating-stars">
-                                            <li style="width: 60%;" class="stars-active">
-                                                <img src="assets/imgs/icons/stars-active.svg" alt="stars" />
-                                            </li>
-                                            <li>
-                                                <img src="assets/imgs/icons/starts-disable.svg" alt="stars" />
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td>10.03.2022</td>
+                                    <td>0901</td>
+                                    <td><b>Marvin McKinney</b></td>
+                                    <td>marvin@example.com</td>
+                                    <td>$9.00</td>
+                                    <td><span class="badge rounded-pill alert-warning">Pending</span></td>
+                                    <td>03.12.2022</td>
                                     <td class="text-end">
                                         <a href="#" class="btn btn-md rounded font-sm">Detail</a>
                                         <div class="dropdown">
@@ -204,152 +185,11 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" />
-                                        </div>
-                                    </td>
-                                    <td>24</td>
-                                    <td><b>Fashion Woman Bag</b></td>
-                                    <td>Guy Hawkins</td>
-                                    <td>
-                                        <ul class="rating-stars">
-                                            <li style="width: 80%;" class="stars-active">
-                                                <img src="assets/imgs/icons/stars-active.svg" alt="stars" />
-                                            </li>
-                                            <li>
-                                                <img src="assets/imgs/icons/starts-disable.svg" alt="stars" />
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td>04.12.2019</td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-md rounded font-sm">Detail</a>
-                                        <div class="dropdown">
-                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">View detail</a>
-                                                <a class="dropdown-item" href="#">Edit info</a>
-                                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                                            </div>
-                                        </div> <!-- dropdown //end -->
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" />
-                                        </div>
-                                    </td>
-                                    <td>25</td>
-                                    <td><b>Air Jordan 1 Top 3 Sneaker (DS)</b></td>
-                                    <td>Savannah Nguyen</td>
-                                    <td>
-                                        <ul class="rating-stars">
-                                            <li style="width: 90%;" class="stars-active">
-                                                <img src="assets/imgs/icons/stars-active.svg" alt="stars" />
-                                            </li>
-                                            <li>
-                                                <img src="assets/imgs/icons/starts-disable.svg" alt="stars" />
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td>25.05.2022</td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-md rounded font-sm">Detail</a>
-                                        <div class="dropdown">
-                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">View detail</a>
-                                                <a class="dropdown-item" href="#">Edit info</a>
-                                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                                            </div>
-                                        </div> <!-- dropdown //end -->
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" />
-                                        </div>
-                                    </td>
-                                    <td>26</td>
-                                    <td><b>Samsung Galaxy S20 (SM-G980F/DS) Dual SIM</b></td>
-                                    <td>Kristin Watson</td>
-                                    <td>
-                                        <ul class="rating-stars">
-                                            <li style="width: 90%;" class="stars-active">
-                                                <img src="assets/imgs/icons/stars-active.svg" alt="stars" />
-                                            </li>
-                                            <li>
-                                                <img src="assets/imgs/icons/starts-disable.svg" alt="stars" />
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td>01.06.2022</td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-md rounded font-sm">Detail</a>
-                                        <div class="dropdown">
-                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">View detail</a>
-                                                <a class="dropdown-item" href="#">Edit info</a>
-                                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                                            </div>
-                                        </div> <!-- dropdown //end -->
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" />
-                                        </div>
-                                    </td>
-                                    <td>27</td>
-                                    <td><b>Macbook Pro 16 inch (2022 ) For Sale</b></td>
-                                    <td>Jane Cooper</td>
-                                    <td>
-                                        <ul class="rating-stars">
-                                            <li style="width: 100%;" class="stars-active">
-                                                <img src="assets/imgs/icons/stars-active.svg" alt="stars" />
-                                            </li>
-                                            <li>
-                                                <img src="assets/imgs/icons/starts-disable.svg" alt="stars" />
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td>13.03.2022</td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-md rounded font-sm">Detail</a>
-                                        <div class="dropdown">
-                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">View detail</a>
-                                                <a class="dropdown-item" href="#">Edit info</a>
-                                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                                            </div>
-                                        </div> <!-- dropdown //end -->
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" />
-                                        </div>
-                                    </td>
-                                    <td>28</td>
-                                    <td><b>Gaming Chair, local pickup only</b></td>
-                                    <td>Courtney Henry</td>
-                                    <td>
-                                        <ul class="rating-stars">
-                                            <li style="width: 100%;" class="stars-active">
-                                                <img src="assets/imgs/icons/stars-active.svg" alt="stars" />
-                                            </li>
-                                            <li>
-                                                <img src="assets/imgs/icons/starts-disable.svg" alt="stars" />
-                                            </li>
-                                        </ul>
-                                    </td>
+                                    <td>2323</td>
+                                    <td><b>Leslie Alexander</b></td>
+                                    <td>leslie@example.com</td>
+                                    <td>$46.61</td>
+                                    <td><span class="badge rounded-pill alert-warning">Pending</span></td>
                                     <td>21.02.2022</td>
                                     <td class="text-end">
                                         <a href="#" class="btn btn-md rounded font-sm">Detail</a>
@@ -364,24 +204,144 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" />
-                                        </div>
+                                    <td>1233</td>
+                                    <td><b>Esther Howard</b></td>
+                                    <td>esther@example.com</td>
+                                    <td>$12.00</td>
+                                    <td><span class="badge rounded-pill alert-danger">Canceled</span></td>
+                                    <td>03.07.2022</td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-md rounded font-sm">Detail</a>
+                                        <div class="dropdown">
+                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">View detail</a>
+                                                <a class="dropdown-item" href="#">Edit info</a>
+                                                <a class="dropdown-item text-danger" href="#">Delete</a>
+                                            </div>
+                                        </div> <!-- dropdown //end -->
                                     </td>
-                                    <td>29</td>
-                                    <td><b>Coach Tabby 26 for sale</b></td>
-                                    <td>Ralph Edwards</td>
-                                    <td>
-                                        <ul class="rating-stars">
-                                            <li style="width: 90%;" class="stars-active">
-                                                <img src="assets/imgs/icons/stars-active.svg" alt="stars" />
-                                            </li>
-                                            <li>
-                                                <img src="assets/imgs/icons/starts-disable.svg" alt="stars" />
-                                            </li>
-                                        </ul>
+                                </tr>
+                                <tr>
+                                    <td>1233</td>
+                                    <td><b>Esther Howard</b></td>
+                                    <td>esther@example.com</td>
+                                    <td>$12.00</td>
+                                    <td><span class="badge rounded-pill alert-danger">Canceled</span></td>
+                                    <td>03.07.2022</td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-md rounded font-sm">Detail</a>
+                                        <div class="dropdown">
+                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">View detail</a>
+                                                <a class="dropdown-item" href="#">Edit info</a>
+                                                <a class="dropdown-item text-danger" href="#">Delete</a>
+                                            </div>
+                                        </div> <!-- dropdown //end -->
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>2323</td>
+                                    <td><b>Jenny Wilson</b></td>
+                                    <td>jenny@example.com</td>
+                                    <td>$589.99</td>
+                                    <td><span class="badge rounded-pill alert-success">Received</span></td>
+                                    <td>22.05.2022</td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-md rounded font-sm">Detail</a>
+                                        <div class="dropdown">
+                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">View detail</a>
+                                                <a class="dropdown-item" href="#">Edit info</a>
+                                                <a class="dropdown-item text-danger" href="#">Delete</a>
+                                            </div>
+                                        </div> <!-- dropdown //end -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2112</td>
+                                    <td><b>Marvin McKinney</b></td>
+                                    <td>marvin@example.com</td>
+                                    <td>$16.58</td>
+                                    <td><span class="badge rounded-pill alert-success">Received</span></td>
+                                    <td>23.04.2022</td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-md rounded font-sm">Detail</a>
+                                        <div class="dropdown">
+                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">View detail</a>
+                                                <a class="dropdown-item" href="#">Edit info</a>
+                                                <a class="dropdown-item text-danger" href="#">Delete</a>
+                                            </div>
+                                        </div> <!-- dropdown //end -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>7897</td>
+                                    <td><b>Albert Flores</b></td>
+                                    <td>albert@example.com</td>
+                                    <td>$10.00</td>
+                                    <td><span class="badge rounded-pill alert-success">Received</span></td>
+                                    <td>13.03.2022</td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-md rounded font-sm">Detail</a>
+                                        <div class="dropdown">
+                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">View detail</a>
+                                                <a class="dropdown-item" href="#">Edit info</a>
+                                                <a class="dropdown-item text-danger" href="#">Delete</a>
+                                            </div>
+                                        </div> <!-- dropdown //end -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2323</td>
+                                    <td><b>Wade Warren</b></td>
+                                    <td>wade@example.com</td>
+                                    <td>$105.55</td>
+                                    <td><span class="badge rounded-pill alert-success">Received</span></td>
+                                    <td>23.09.2019</td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-md rounded font-sm">Detail</a>
+                                        <div class="dropdown">
+                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">View detail</a>
+                                                <a class="dropdown-item" href="#">Edit info</a>
+                                                <a class="dropdown-item text-danger" href="#">Delete</a>
+                                            </div>
+                                        </div> <!-- dropdown //end -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2324</td>
+                                    <td><b>Jane Cooper</b></td>
+                                    <td>jane@example.com</td>
+                                    <td>$710.68</td>
+                                    <td><span class="badge rounded-pill alert-success">Received</span></td>
+                                    <td>28.04.2022</td>
+                                    <td class="text-end">
+                                        <a href="#" class="btn btn-md rounded font-sm">Detail</a>
+                                        <div class="dropdown">
+                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">View detail</a>
+                                                <a class="dropdown-item" href="#">Edit info</a>
+                                                <a class="dropdown-item text-danger" href="#">Delete</a>
+                                            </div>
+                                        </div> <!-- dropdown //end -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2325</td>
+                                    <td><b>Savannah Nguyen</b></td>
+                                    <td>savannah@example.com</td>
+                                    <td>$710.68</td>
+                                    <td><span class="badge rounded-pill alert-success">Received</span></td>
                                     <td>23.03.2022</td>
                                     <td class="text-end">
                                         <a href="#" class="btn btn-md rounded font-sm">Detail</a>
@@ -396,25 +356,12 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" />
-                                        </div>
-                                    </td>
-                                    <td>30</td>
-                                    <td><b>Oneplus 7 Pro GM1910 256GB</b></td>
-                                    <td>Courtney Henry</td>
-                                    <td>
-                                        <ul class="rating-stars">
-                                            <li style="width: 70%;" class="stars-active">
-                                                <img src="assets/imgs/icons/stars-active.svg" alt="stars" />
-                                            </li>
-                                            <li>
-                                                <img src="assets/imgs/icons/starts-disable.svg" alt="stars" />
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td>20.02.2022</td>
+                                    <td>2326</td>
+                                    <td><b>Guy Hawkins</b></td>
+                                    <td>guy@example.com</td>
+                                    <td>$767.50</td>
+                                    <td><span class="badge rounded-pill alert-success">Received</span></td>
+                                    <td>28.04.2022</td>
                                     <td class="text-end">
                                         <a href="#" class="btn btn-md rounded font-sm">Detail</a>
                                         <div class="dropdown">
@@ -428,25 +375,12 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" />
-                                        </div>
-                                    </td>
-                                    <td>31</td>
-                                    <td><b>DJI Mavic Pro 2</b></td>
-                                    <td>Theresa Webb</td>
-                                    <td>
-                                        <ul class="rating-stars">
-                                            <li style="width: 20%;" class="stars-active">
-                                                <img src="assets/imgs/icons/stars-active.svg" alt="stars" />
-                                            </li>
-                                            <li>
-                                                <img src="assets/imgs/icons/starts-disable.svg" alt="stars" />
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td>10.03.2022</td>
+                                    <td>2327</td>
+                                    <td><b>Darrell Steward</b></td>
+                                    <td>darrel@example.com</td>
+                                    <td>$406.27</td>
+                                    <td><span class="badge rounded-pill alert-success">Received</span></td>
+                                    <td>14.07.2022</td>
                                     <td class="text-end">
                                         <a href="#" class="btn btn-md rounded font-sm">Detail</a>
                                         <div class="dropdown">
@@ -460,25 +394,12 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" />
-                                        </div>
-                                    </td>
-                                    <td>32</td>
-                                    <td><b>Heimer Miller Sofa (Mint Condition)</b></td>
-                                    <td>Darrell Steward</td>
-                                    <td>
-                                        <ul class="rating-stars">
-                                            <li style="width: 80%;" class="stars-active">
-                                                <img src="assets/imgs/icons/stars-active.svg" alt="stars" />
-                                            </li>
-                                            <li>
-                                                <img src="assets/imgs/icons/starts-disable.svg" alt="stars" />
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td>10.04.2022</td>
+                                    <td>2328</td>
+                                    <td><b>Jane Cooper</b></td>
+                                    <td>jane@example.com</td>
+                                    <td>$601.13</td>
+                                    <td><span class="badge rounded-pill alert-success">Received</span></td>
+                                    <td>18.03.2022</td>
                                     <td class="text-end">
                                         <a href="#" class="btn btn-md rounded font-sm">Detail</a>
                                         <div class="dropdown">
@@ -492,89 +413,12 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" />
-                                        </div>
-                                    </td>
-                                    <td>33</td>
-                                    <td><b>Dell XPS 13 9380, 13.3" 4K UHD (3840X2160) </b></td>
-                                    <td>Leslie Alexander</td>
-                                    <td>
-                                        <ul class="rating-stars">
-                                            <li style="width: 50%;" class="stars-active">
-                                                <img src="assets/imgs/icons/stars-active.svg" alt="stars" />
-                                            </li>
-                                            <li>
-                                                <img src="assets/imgs/icons/starts-disable.svg" alt="stars" />
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td>25.05.2022</td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-md rounded font-sm">Detail</a>
-                                        <div class="dropdown">
-                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">View detail</a>
-                                                <a class="dropdown-item" href="#">Edit info</a>
-                                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                                            </div>
-                                        </div> <!-- dropdown //end -->
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" />
-                                        </div>
-                                    </td>
-                                    <td>34</td>
-                                    <td><b>Fashion Woman Bag</b></td>
-                                    <td>Esther Howard</td>
-                                    <td>
-                                        <ul class="rating-stars">
-                                            <li style="width: 100%;" class="stars-active">
-                                                <img src="assets/imgs/icons/stars-active.svg" alt="stars" />
-                                            </li>
-                                            <li>
-                                                <img src="assets/imgs/icons/starts-disable.svg" alt="stars" />
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td>07.04.2022</td>
-                                    <td class="text-end">
-                                        <a href="#" class="btn btn-md rounded font-sm">Detail</a>
-                                        <div class="dropdown">
-                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">View detail</a>
-                                                <a class="dropdown-item" href="#">Edit info</a>
-                                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                                            </div>
-                                        </div> <!-- dropdown //end -->
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" />
-                                        </div>
-                                    </td>
-                                    <td>35</td>
-                                    <td><b>iPad Pro 2017 Model</b></td>
-                                    <td>Savannah Nguyen</td>
-                                    <td>
-                                        <ul class="rating-stars">
-                                            <li style="width: 100%;" class="stars-active">
-                                                <img src="assets/imgs/icons/stars-active.svg" alt="stars" />
-                                            </li>
-                                            <li>
-                                                <img src="assets/imgs/icons/starts-disable.svg" alt="stars" />
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td>10.10.2019</td>
+                                    <td>2329</td>
+                                    <td><b>Darlene Robertson</b></td>
+                                    <td>deriene@example.com</td>
+                                    <td>$948.55</td>
+                                    <td><span class="badge rounded-pill alert-success">Received</span></td>
+                                    <td>03.07.2022</td>
                                     <td class="text-end">
                                         <a href="#" class="btn btn-md rounded font-sm">Detail</a>
                                         <div class="dropdown">
@@ -589,11 +433,10 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div> <!-- table-responsive//end -->
-                </div>
-                <!-- card-body end// -->
-            </div>
-            <div class="pagination-area mt-30 mb-50">
+                    </div> <!-- table-responsive //end -->
+                </div> <!-- card-body end// -->
+            </div> <!-- card end// -->
+            <div class="pagination-area mt-15 mb-50">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-start">
                         <li class="page-item active"><a class="page-link" href="#">01</a></li>
@@ -606,7 +449,6 @@
                 </nav>
             </div>
         </section> <!-- content-main end// -->
-
     </main>
     <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
     <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
