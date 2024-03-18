@@ -30,22 +30,22 @@
             <div class="content-header">
                 <div>
                     <h2 class="content-title card-title">Dashboard </h2>
-                    <p>Whole data about your business here</p>
+                    <p>Welcome admin</p>
                 </div>
-                <div>
+                <!-- <div>
                     <a href="#" class="btn btn-primary"><i class="text-muted material-icons md-post_add"></i>Create report</a>
-                </div>
+                </div> -->
             </div>
             <div class="row">
                 <div class="col-lg-3">
                     <div class="card card-body mb-4">
                         <article class="icontext">
-                            <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-monetization_on"></i></span>
+                            <span class="icon icon-sm rounded-circle bg-primary-light"><i class="text-primary material-icons md-local_library"></i></span>
                             <div class="text">
-                                <h6 class="mb-1 card-title">Revenue</h6>
-                                <span>$13,456.5</span>
+                                <h6 class="mb-1 card-title">Total Offers</h6>
+                                <span>20002324</span>
                                 <span class="text-sm">
-                                    Shipping fees are not included
+                                    books available for exchange 
                                 </span>
                             </div>
                         </article>
@@ -54,11 +54,11 @@
                 <div class="col-lg-3">
                     <div class="card card-body mb-4">
                         <article class="icontext">
-                            <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-local_shipping"></i></span>
+                            <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-star"></i></span>
                             <div class="text">
-                                <h6 class="mb-1 card-title">Orders</h6> <span>53.668</span>
+                                <h6 class="mb-1 card-title">Total Whishes</h6> <span>32324</span>
                                 <span class="text-sm">
-                                    Excluding orders in transit
+                                    number of books users desire to have
                                 </span>
                             </div>
                         </article>
@@ -67,11 +67,11 @@
                 <div class="col-lg-3">
                     <div class="card card-body mb-4">
                         <article class="icontext">
-                            <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-qr_code"></i></span>
+                            <span class="icon icon-sm rounded-circle bg-warning-light"><i class="text-warning material-icons md-check_circle"></i></span>
                             <div class="text">
-                                <h6 class="mb-1 card-title">Products</h6> <span>9.856</span>
+                                <h6 class="mb-1 card-title">Completed Exchange</h6> <span>1203</span>
                                 <span class="text-sm">
-                                    In 19 Categories
+                                    have been successfully completed
                                 </span>
                             </div>
                         </article>
@@ -80,11 +80,11 @@
                 <div class="col-lg-3">
                     <div class="card card-body mb-4">
                         <article class="icontext">
-                            <span class="icon icon-sm rounded-circle bg-info-light"><i class="text-info material-icons md-shopping_basket"></i></span>
+                            <span class="icon icon-sm rounded-circle bg-info-light"><i class="text-info material-icons md-report"></i></span>
                             <div class="text">
-                                <h6 class="mb-1 card-title">Monthly Earning</h6> <span>$6,982</span>
+                                <h6 class="mb-1 card-title">Reports</h6> <span>17</span>
                                 <span class="text-sm">
-                                    Based in your local time.
+                                    users reported 
                                 </span>
                             </div>
                         </article>
@@ -92,7 +92,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xl-8 col-lg-12">
+                <!-- <div class="col-xl-8 col-lg-12">
                     <div class="card mb-4">
                         <article class="card-body">
                             <h5 class="card-title">Sale statistics</h5>
@@ -230,8 +230,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-4 col-lg-12">
+                </div> -->
+                <!-- <div class="col-xl-4 col-lg-12">
                     <div class="card mb-4">
                         <article class="card-body">
                             <h5 class="card-title">Revenue Base on Area</h5>
@@ -263,11 +263,11 @@
                             </div>
                         </article>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="card mb-4">
                 <header class="card-header">
-                    <h4 class="card-title">Latest orders</h4>
+                    <h4 class="card-title">Latest exchange history</h4>
                     <div class="row align-items-center">
                         <div class="col-md-3 col-12 me-auto mb-md-0 mb-3">
                             <div class="custom_select">
@@ -314,8 +314,8 @@
                                                 <label class="form-check-label" for="transactionCheck01"></label>
                                             </div>
                                         </th>
-                                        <th class="align-middle" scope="col">Order ID</th>
-                                        <th class="align-middle" scope="col">Billing Name</th>
+                                        <th class="align-middle" scope="col">request_id</th>
+                                        <th class="align-middle" scope="col">exchange_id</th>
                                         <th class="align-middle" scope="col">Date</th>
                                         <th class="align-middle" scope="col">Total</th>
                                         <th class="align-middle" scope="col">Payment Status</th>
@@ -493,9 +493,6 @@
                 </nav>
             </div>
         </section> <!-- content-main end// -->
-        <?php 
-        include 'partials/footer-admin.php'
-        ?>
     </main>
     <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
     <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
