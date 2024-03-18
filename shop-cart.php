@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Evara - eCommerce HTML Template</title>
+    <title>BookBridge Online</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,7 +52,7 @@
                                     <tr>
                                         <td class="image product-thumbnail"><img src="assets/imgs/shop/product-1-2.jpg" alt="#"></td>
                                         <td class="product-des product-name">
-                                            <h5 class="product-name"><a href="shop-product-right.php">J.Crew Mercantile Women's Short-Sleeve</a></h5>
+                                            <h5 class="product-name"><a href="shop-product-full.php">J.Crew Mercantile Women's Short-Sleeve</a></h5>
                                             <p class="font-xs">Maboriosam in a tonto nesciung eget<br> distingy magndapibus.
                                             </p>
                                         </td>
@@ -72,7 +72,7 @@
                                     <tr>
                                         <td class="image"><img src="assets/imgs/shop/product-11-2.jpg" alt="#"></td>
                                         <td class="product-des">
-                                            <h5 class="product-name"><a href="shop-product-right.php">Amazon Essentials Women's Tank</a></h5>
+                                            <h5 class="product-name"><a href="shop-product-full.php">Amazon Essentials Women's Tank</a></h5>
                                             <p class="font-xs">Sit at ipsum amet clita no est,<br> sed amet sadipscing et gubergren</p>
                                         </td>
                                         <td class="price" data-title="Price"><span>$75.00 </span></td>
@@ -91,7 +91,7 @@
                                     <tr>
                                         <td class="image"><img src="assets/imgs/shop/product-6-1.jpg" alt="#"></td>
                                         <td class="product-des">
-                                            <h5 class="product-name"><a href="shop-product-right.php">Amazon Brand - Daily Ritual Women's Jersey </a></h5>
+                                            <h5 class="product-name"><a href="shop-product-full.php">Amazon Brand - Daily Ritual Women's Jersey </a></h5>
                                             <p class="font-xs">Erat amet et et amet diam et et.<br> Justo amet at dolore
                                             </p>
                                         </td>
