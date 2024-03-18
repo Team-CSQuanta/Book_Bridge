@@ -286,7 +286,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-1-1.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
                                             </a>

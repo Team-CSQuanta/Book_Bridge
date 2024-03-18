@@ -40,9 +40,7 @@
                         <span class="text">Products</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-products-list.php">Product List</a>
-                        <a href="page-products-grid.php">Product grid</a>
-                        <a href="page-products-grid-2.php">Product grid 2</a>
+                        <a href="page-products-grid.php">Available Books</a>
                         <a href="page-categories.php" class="active">Categories</a>
                     </div>
                 </li>
@@ -55,7 +53,7 @@
                         <a href="page-orders-2.php">Order list 2</a>
                         <a href="page-orders-detail.php">Order detail</a>
                         <a href="page-orders-tracking.php">Order tracking</a>
-<a href="page-invoice.php">Invoice</a>
+                        <a href="page-invoice.php">Invoice</a>
                     </div>
                 </li>
                 <li class="menu-item has-submenu">
