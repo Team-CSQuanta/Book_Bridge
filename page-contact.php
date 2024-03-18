@@ -61,7 +61,7 @@
                         205 North Michigan Avenue, Suite 810<br>
                         Chicago, 60601, USA<br>
                         <abbr title="Phone">Phone:</abbr> (123) 456-7890<br>
-                        <abbr title="Email">Email: </abbr>contact@Evara.com<br>
+                        <abbr title="Email">Email: </abbr>contact@.com<br>
                         <a class="btn btn-outline btn-sm btn-brand-outline font-weight-bold text-brand bg-white text-hover-white mt-20 border-radius-5 btn-shadow-brand hover-up"><i class="fi-rs-marker mr-10"></i>View map</a>
                     </div>
                     <div class="col-md-4 mb-4 mb-md-0">
@@ -69,7 +69,7 @@
                         205 North Michigan Avenue, Suite 810<br>
                         Chicago, 60601, USA<br>
                         <abbr title="Phone">Phone:</abbr> (123) 456-7890<br>
-                        <abbr title="Email">Email: </abbr>contact@Evara.com<br>
+                        <abbr title="Email">Email: </abbr>contact@bookbridge.com<br>
                         <a class="btn btn-outline btn-sm btn-brand-outline font-weight-bold text-brand bg-white text-hover-white mt-20 border-radius-5 btn-shadow-brand hover-up"><i class="fi-rs-marker mr-10"></i>View map</a>
                     </div>
                     <div class="col-md-4">
@@ -77,7 +77,7 @@
                         205 North Michigan Avenue, Suite 810<br>
                         Chicago, 60601, USA<br>
                         <abbr title="Phone">Phone:</abbr> (123) 456-7890<br>
-                        <abbr title="Email">Email: </abbr>contact@Evara.com<br>
+                        <abbr title="Email">Email: </abbr>contact@bookbridge.com<br>
                         <a class="btn btn-outline btn-sm btn-brand-outline font-weight-bold text-brand bg-white text-hover-white mt-20 border-radius-5 btn-shadow-brand hover-up"> <i class="fi-rs-marker mr-10"></i> View map</a>
                     </div>
                 </div>
