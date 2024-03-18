@@ -1,3 +1,5 @@
+<?php
+require 'config/database.php' ?>
 <aside class="navbar-aside" id="offcanvas_aside">
         <div class="aside-top">
             <a href="index.php" class="brand-wrap">
