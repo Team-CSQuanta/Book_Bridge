@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Evara - eCommerce HTML Template</title>
+    <title>BookBridge Online</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -216,7 +216,7 @@
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
                                         <div class="product-img-inner">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="">
                                             </a>
@@ -236,7 +236,7 @@
                                     <div class="product-category">
                                         <a href="shop-grid-right.php">Music</a>
                                     </div>
-                                    <h2><a href="shop-product-right.php">Colorful Pattern Shirts</a></h2>
+                                    <h2><a href="shop-product-full.php">Colorful Pattern Shirts</a></h2>
                                     <div class="product-price">
                                         <span>$238.85 </span>
                                         <span class="old-price">$245.8</span>
@@ -257,7 +257,7 @@
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
                                         <div class="product-img-inner">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-3-1.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-3-2.jpg" alt="">
                                             </a>
@@ -277,7 +277,7 @@
                                     <div class="product-category">
                                         <a href="shop-grid-right.php">Music</a>
                                     </div>
-                                    <h2><a href="shop-product-right.php">Cartoon Astronaut T-Shirts</a></h2>
+                                    <h2><a href="shop-product-full.php">Cartoon Astronaut T-Shirts</a></h2>
                                     <div class="product-price">
                                         <span>$138.85 </span>
                                         <span class="old-price">$255.8</span>
@@ -298,7 +298,7 @@
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
                                         <div class="product-img-inner">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-7-1.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-7-2.jpg" alt="">
                                             </a>
@@ -318,7 +318,7 @@
                                     <div class="product-category">
                                         <a href="shop-grid-right.php">Watch</a>
                                     </div>
-                                    <h2><a href="shop-product-right.php">Plain Striola Shirts</a></h2>
+                                    <h2><a href="shop-product-full.php">Plain Striola Shirts</a></h2>
                                     <div class="product-price">
                                         <span>$338.85 </span>
                                         <span class="old-price">$445.8</span>
@@ -339,7 +339,7 @@
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
                                         <div class="product-img-inner">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
                                             </a>
@@ -359,7 +359,7 @@
                                     <div class="product-category">
                                         <a href="shop-grid-right.php">Music</a>
                                     </div>
-                                    <h2><a href="shop-product-right.php">Landscape Painting Shirt</a></h2>
+                                    <h2><a href="shop-product-full.php">Landscape Painting Shirt</a></h2>
                                     <div class="product-price">
                                         <span>$123.85 </span>
                                         <span class="old-price">$235.8</span>
@@ -380,7 +380,7 @@
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
                                         <div class="product-img-inner">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-5-2.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-5-2.jpg" alt="">
                                             </a>
@@ -400,7 +400,7 @@
                                     <div class="product-category">
                                         <a href="shop-grid-right.php">Camera</a>
                                     </div>
-                                    <h2><a href="shop-product-right.php">Element Pattern Print Shirts</a></h2>
+                                    <h2><a href="shop-product-full.php">Element Pattern Print Shirts</a></h2>
                                     <div class="product-price">
                                         <span>$238.85 </span>
                                         <span class="old-price">$245.8</span>
@@ -421,7 +421,7 @@
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
                                         <div class="product-img-inner">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-8-2.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-8-1.jpg" alt="">
                                             </a>
@@ -441,7 +441,7 @@
                                     <div class="product-category">
                                         <a href="shop-grid-right.php">Phone</a>
                                     </div>
-                                    <h2><a href="shop-product-right.php">Vintage Henley Shirt</a></h2>
+                                    <h2><a href="shop-product-full.php">Vintage Henley Shirt</a></h2>
                                     <div class="product-price">
                                         <span>$123.85 </span>
                                         <span class="old-price">$235.8</span>

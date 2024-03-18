@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Evara - eCommerce HTML Template</title>
+    <title>BookBridge Online</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -216,7 +216,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="">
                                             </a>
@@ -235,7 +235,7 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.php">Music</a>
                                         </div>
-                                        <h2><a href="shop-product-right.php">Colorful Pattern Shirts</a></h2>
+                                        <h2><a href="shop-product-full.php">Colorful Pattern Shirts</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>90%</span>
@@ -255,7 +255,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-3-1.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-3-2.jpg" alt="">
                                             </a>
@@ -274,7 +274,7 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.php">Music</a>
                                         </div>
-                                        <h2><a href="shop-product-right.php">Cartoon Astronaut T-Shirts</a></h2>
+                                        <h2><a href="shop-product-full.php">Cartoon Astronaut T-Shirts</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>50%</span>
@@ -294,7 +294,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-7-1.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-7-2.jpg" alt="">
                                             </a>
@@ -313,7 +313,7 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.php">Watch</a>
                                         </div>
-                                        <h2><a href="shop-product-right.php">Plain Striola Shirts</a></h2>
+                                        <h2><a href="shop-product-full.php">Plain Striola Shirts</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>95%</span>
@@ -333,7 +333,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
                                             </a>
@@ -352,7 +352,7 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.php">Music</a>
                                         </div>
-                                        <h2><a href="shop-product-right.php">Landscape Painting Shirt</a></h2>
+                                        <h2><a href="shop-product-full.php">Landscape Painting Shirt</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>70%</span>
@@ -372,7 +372,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-4-1.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-3-2.jpg" alt="">
                                             </a>
@@ -391,7 +391,7 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.php">Speaker</a>
                                         </div>
-                                        <h2><a href="shop-product-right.php">Letter Print T-Shirt</a></h2>
+                                        <h2><a href="shop-product-full.php">Letter Print T-Shirt</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>70%</span>
@@ -411,7 +411,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-5-2.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-5-2.jpg" alt="">
                                             </a>
@@ -430,7 +430,7 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.php">Camera</a>
                                         </div>
-                                        <h2><a href="shop-product-right.php">Element Pattern Print Shirts</a></h2>
+                                        <h2><a href="shop-product-full.php">Element Pattern Print Shirts</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>70%</span>
@@ -450,7 +450,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-8-2.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-8-1.jpg" alt="">
                                             </a>
@@ -469,7 +469,7 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.php">Phone</a>
                                         </div>
-                                        <h2><a href="shop-product-right.php">Vintage Henley Shirt</a></h2>
+                                        <h2><a href="shop-product-full.php">Vintage Henley Shirt</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>98%</span>
@@ -488,7 +488,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-11-1.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-11-2.jpg" alt="">
                                             </a>
@@ -504,7 +504,7 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.php">Accessories </a>
                                         </div>
-                                        <h2><a href="shop-product-right.php">Cotton Leaf Printed</a></h2>
+                                        <h2><a href="shop-product-full.php">Cotton Leaf Printed</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>70%</span>
@@ -524,7 +524,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-13-1.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-13-2.jpg" alt="">
                                             </a>
@@ -540,7 +540,7 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.php">Accessories </a>
                                         </div>
-                                        <h2><a href="shop-product-right.php">Cotton Leaf Printed</a></h2>
+                                        <h2><a href="shop-product-full.php">Cotton Leaf Printed</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>70%</span>
@@ -560,7 +560,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-3-1.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-3-2.jpg" alt="">
                                             </a>
@@ -579,7 +579,7 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.php">Music</a>
                                         </div>
-                                        <h2><a href="shop-product-right.php">Colorful Pattern Shirts</a></h2>
+                                        <h2><a href="shop-product-full.php">Colorful Pattern Shirts</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>90%</span>
@@ -599,7 +599,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="">
                                             </a>
@@ -618,7 +618,7 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.php">Music</a>
                                         </div>
-                                        <h2><a href="shop-product-right.php">Cartoon Astronaut T-Shirts</a></h2>
+                                        <h2><a href="shop-product-full.php">Cartoon Astronaut T-Shirts</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>50%</span>
@@ -638,7 +638,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.php">
+                                            <a href="shop-product-full.php">
                                                 <img class="default-img" src="assets/imgs/shop/product-7-2.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-7-1.jpg" alt="">
                                             </a>
@@ -657,7 +657,7 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.php">Watch</a>
                                         </div>
-                                        <h2><a href="shop-product-right.php">Plain Striola Shirts</a></h2>
+                                        <h2><a href="shop-product-full.php">Plain Striola Shirts</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>95%</span>
