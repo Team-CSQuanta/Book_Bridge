@@ -34,7 +34,7 @@
                             </div>
                             <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
                             <p class="wow fadeIn animated">
-                                <strong>Address: </strong>562 Wellington Road, Street 32, San Francisco
+                                <strong>Address: </strong>United International University,United City, Madani Ave, Dhaka 1212
                             </p>
                             <p class="wow fadeIn animated">
                                 <strong>Phone: </strong>+01 2222 365 /(+91) 01 2345 6789
@@ -56,7 +56,7 @@
                         <h5 class="widget-title wow fadeIn animated">About</h5>
                         <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
                             <li><a href="#">About Us</a></li>
-                            <li><a href="#">Delivery Information</a></li>
+                            <li><a href="#">Exchange Information</a></li>
                             <li><a href="#">Privacy Policy</a></li>
                             <li><a href="#">Terms &amp; Conditions</a></li>
                             <li><a href="#">Contact Us</a></li>
