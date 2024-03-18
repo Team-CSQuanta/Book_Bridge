@@ -183,8 +183,8 @@
                                     <div class="container">
                                         <div class="slider-1-height-3 slider-animated-1">
                                             <div class="hero-slider-content-2">
-                                                <h4 class="animated">Tech Promotions</h4>
-                                                <h2 class="animated fw-900">Tech Trending</h2>
+                                                <h4 class="animated">Lorem ipsum</h4>
+                                                <h2 class="animated fw-900">Concortica</h2>
                                                 <h1 class="animated fw-900 text-brand">Great Collection</h1>
                                                 <p class="animated">Save more with coupons & up to 20% off</p>
                                                 <a class="animated btn btn-brush btn-brush-3" href="shop-product-full.php"> Shop Now </a>
@@ -226,7 +226,7 @@
                     <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                         <div class="banner-features wow fadeIn animated hover-up animated">
                             <img src="assets/imgs/theme/icons/feature-1.png" alt="">
-                            <h4 class="bg-1">Free Shipping</h4>
+                            <h4 class="bg-1">Ontime Shipping</h4>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
@@ -244,13 +244,13 @@
                     <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                         <div class="banner-features wow fadeIn animated hover-up animated">
                             <img src="assets/imgs/theme/icons/feature-4.png" alt="">
-                            <h4 class="bg-4">Promotions</h4>
+                            <h4 class="bg-4">Boost in Career</h4>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                         <div class="banner-features wow fadeIn animated hover-up animated">
                             <img src="assets/imgs/theme/icons/feature-5.png" alt="">
-                            <h4 class="bg-5">Happy Sell</h4>
+                            <h4 class="bg-5">Happy Exchange</h4>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
@@ -1224,49 +1224,49 @@
                             <figure class=" img-hover-scale overflow-hidden">
                                 <a href="shop-grid-right.php"><img src="assets/imgs/shop/category-thumb-1.jpg" alt=""></a>
                             </figure>
-                            <h5><a href="shop-grid-right.php">T-Shirt</a></h5>
+                            <h5><a href="shop-grid-right.php">Mystery</a></h5>
                         </div>
                         <div class="card-1">
                             <figure class=" img-hover-scale overflow-hidden">
                                 <a href="shop-grid-right.php"> <img src="assets/imgs/shop/category-thumb-2.jpg" alt=""></a>
                             </figure>
-                            <h5><a href="shop-grid-right.php">Bags</a></h5>
+                            <h5><a href="shop-grid-right.php">Thriller</a></h5>
                         </div>
                         <div class="card-1">
                             <figure class=" img-hover-scale overflow-hidden">
                                 <a href="shop-grid-right.php"><img src="assets/imgs/shop/category-thumb-3.jpg" alt=""></a>
                             </figure>
-                            <h5><a href="shop-grid-right.php">Sandan</a></h5>
+                            <h5><a href="shop-grid-right.php">Science Fiction</a></h5>
                         </div>
                         <div class="card-1">
                             <figure class=" img-hover-scale overflow-hidden">
                                 <a href="shop-grid-right.php"><img src="assets/imgs/shop/category-thumb-4.jpg" alt=""></a>
                             </figure>
-                            <h5><a href="shop-grid-right.php">Scarf Cap</a></h5>
+                            <h5><a href="shop-grid-right.php">Fantasy</a></h5>
                         </div>
                         <div class="card-1">
                             <figure class=" img-hover-scale overflow-hidden">
                                 <a href="shop-grid-right.php"><img src="assets/imgs/shop/category-thumb-5.jpg" alt=""></a>
                             </figure>
-                            <h5><a href="shop-grid-right.php">Shoes</a></h5>
+                            <h5><a href="shop-grid-right.php">Romance</a></h5>
                         </div>
                         <div class="card-1">
                             <figure class=" img-hover-scale overflow-hidden">
                                 <a href="shop-grid-right.php"><img src="assets/imgs/shop/category-thumb-6.jpg" alt=""></a>
                             </figure>
-                            <h5><a href="shop-grid-right.php">Pillowcase</a></h5>
+                            <h5><a href="shop-grid-right.php">Horror</a></h5>
                         </div>
                         <div class="card-1">
                             <figure class=" img-hover-scale overflow-hidden">
                                 <a href="shop-grid-right.php"><img src="assets/imgs/shop/category-thumb-7.jpg" alt=""></a>
                             </figure>
-                            <h5><a href="shop-grid-right.php">Jumpsuits</a></h5>
+                            <h5><a href="shop-grid-right.php">Adventure</a></h5>
                         </div>
                         <div class="card-1">
                             <figure class=" img-hover-scale overflow-hidden">
                                 <a href="shop-grid-right.php"><img src="assets/imgs/shop/category-thumb-8.jpg" alt=""></a>
                             </figure>
-                            <h5><a href="shop-grid-right.php">Hats</a></h5>
+                            <h5><a href="shop-grid-right.php">Biography</a></h5>
                         </div>
                     </div>
                 </div>

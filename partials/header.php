@@ -20,6 +20,7 @@
                                     <option>Adventure</option>
                                     <option>Biography</option>
                                     <option>Academic</option>
+                                    <option>Religion</option>
                                 </select>
                                 <input type="text" placeholder="Search for books...">
                             </form>
