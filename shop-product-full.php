@@ -702,7 +702,7 @@
                                 </div>
                             </div>
                             <div class="banner-img banner-big wow fadeIn f-none animated mt-50">
-                                <img class="border-radius-10" src="assets/imgs/banner/banner-4.png" alt="">
+                                <img class="border-radius-10" src="assets/imgs/banner/banner-4.jpg" alt="">
                                 <div class="banner-text">
                                     <h4 class="mb-15 mt-40">Repair Services</h4>
                                     <h2 class="fw-600 mb-20">We're an Apple <br>Authorised Service Provider</h2>
