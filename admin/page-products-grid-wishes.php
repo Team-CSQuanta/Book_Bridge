@@ -27,7 +27,7 @@
         </div>
         <nav>
             <ul class="menu-aside">
-                <li class="menu-item ">
+                <li class="menu-item">
                     <a class="menu-link" href="index.php"> <i class="icon material-icons md-home"></i>
                         <span class="text">Dashboard</span>
                     </a>
@@ -121,7 +121,7 @@
         <section class="content-main">
             <div class="content-header">
                 <div>
-                    <h2 class="content-title card-title">Exchange offers</h2>
+                    <h2 class="content-title card-title">All wishes</h2>
                     <p>Lorem ipsum dolor sit amet.</p>
                 </div>
                 <div>
@@ -321,7 +321,7 @@
                 </nav>
             </div>
         </section> <!-- content-main end// -->
-
+ 
     </main>
     <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
     <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>

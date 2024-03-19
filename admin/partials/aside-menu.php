@@ -1,31 +1,36 @@
+<?php
+require 'config/database.php' ?>
 <aside class="navbar-aside" id="offcanvas_aside">
         <div class="aside-top">
             <a href="index.php" class="brand-wrap">
                 <img src="assets/imgs/theme/Book-Bridge.svg" class="logo" alt="Evara Dashboard">
             </a>
-            <div>
-                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
-            </div>
         </div>
         <nav>
             <ul class="menu-aside">
-                <li class="menu-item active">
+                <li class="menu-item ">
                     <a class="menu-link" href="index.php"> <i class="icon material-icons md-home"></i>
                         <span class="text">Dashboard</span>
                     </a>
                 </li>
-                <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-products-list.php"> <i class="icon material-icons md-shopping_bag"></i>
-                        <span class="text">Products</span>
+                <li class="menu-item">
+                    <a class="menu-link" href="page-products-grid.php"> <i class="icon material-icons md-local_offer"></i>
+                        <span class="text">Exchange offers</span>
                     </a>
-                    <div class="submenu">
-                        <a href="page-products-grid.php">Product grid</a>
-                        <a href="page-categories.php">Categories</a>
-                    </div>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="page-products-grid-wishes.php"> <i class="icon material-icons md-star"></i>
+                        <span class="text">Wishes</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="page-categories.php"> <i class="icon material-icons md-category"></i>
+                        <span class="text">Categories</span>
+                    </a>
                 </li>
                 <li class="menu-item has-submenu">
                     <a class="menu-link" href="page-orders-1.php"> <i class="icon material-icons md-shopping_cart"></i>
-                        <span class="text">Orders</span>
+                        <span class="text">On going exchange</span>
                     </a>
                     <div class="submenu">
                         <a href="page-orders-1.php">Order list 1</a>
@@ -35,15 +40,10 @@
                         <a href="page-invoice.php">Invoice</a>
                     </div>
                 </li>
-                <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-sellers-cards.php"> <i class="icon material-icons md-store"></i>
-                        <span class="text">Sellers</span>
+                <li class="menu-item ">
+                    <a class="menu-link" href="page-sellers-list.php"> <i class="icon material-icons md-people"></i>
+                        <span class="text">Users</span>
                     </a>
-                    <div class="submenu">
-                        <a href="page-sellers-cards.php">Sellers cards</a>
-                        <a href="page-sellers-list.php">Sellers list</a>
-                        <a href="page-seller-detail.php">Seller profile</a>
-                    </div>
                 </li>
                 <li class="menu-item has-submenu">
                     <a class="menu-link" href="page-form-product-1.php"> <i class="icon material-icons md-add_box"></i>
@@ -66,7 +66,7 @@
                         <a href="page-transactions-details.php">Transaction Details</a>
                     </div>
                 </li>
-                <li class="menu-item has-submenu">
+                <!-- <li class="menu-item has-submenu">
                     <a class="menu-link" href="#"> <i class="icon material-icons md-person"></i>
                         <span class="text">Account</span>
                     </a>
@@ -75,36 +75,19 @@
                         <a href="page-account-register.php">User registration</a>
                         <a href="page-error-404.php">Error 404</a>
                     </div>
-                </li>
+                </li> -->
                 <li class="menu-item">
                     <a class="menu-link" href="page-reviews.php"> <i class="icon material-icons md-comment"></i>
                         <span class="text">Reviews</span>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a class="menu-link" href="page-brands.php"> <i class="icon material-icons md-stars"></i>
-                        <span class="text">Brands</span> </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
-                        <span class="text">Statistics</span>
-                    </a>
-                </li>
+
             </ul>
             <hr>
             <ul class="menu-aside">
-                <li class="menu-item has-submenu">
-                    <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
-                        <span class="text">Settings</span>
-                    </a>
-                    <div class="submenu">
-                        <a href="page-settings-1.php">Setting sample 1</a>
-                        <a href="page-settings-2.php">Setting sample 2</a>
-                    </div>
-                </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="page-blank.php"> <i class="icon material-icons md-local_offer"></i>
-                        <span class="text"> Starter page </span>
+                    <a class="menu-link" href="page-settings-1.php"> <i class="icon material-icons md-settings"></i>
+                        <span class="text">Settings</span>
                     </a>
                 </li>
             </ul>

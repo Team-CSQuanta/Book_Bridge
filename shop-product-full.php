@@ -76,10 +76,10 @@
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="detail-info">
-                                <h3 class="title-detail mt-30">Colorful Pattern Shirts HD450</h3>
+                                <h3 class="title-detail mt-30">Muted Color Poster Template</h3>
                                 <div class="product-detail-rating">
                                     <div class="pro-details-brand">
-                                        <span> Brands: <a href="shop-grid-right.php">Bootstrap</a></span>
+                                        <span> Publisher: <a href="shop-grid-right.php">Springer</a></span>
                                     </div>
                                     <div class="product-rate-cover text-end">
                                         <div class="product-rate d-inline-block">
@@ -702,7 +702,7 @@
                                 </div>
                             </div>
                             <div class="banner-img banner-big wow fadeIn f-none animated mt-50">
-                                <img class="border-radius-10" src="assets/imgs/banner/banner-4.png" alt="">
+                                <img class="border-radius-10" src="assets/imgs/banner/banner-4.jpg" alt="">
                                 <div class="banner-text">
                                     <h4 class="mb-15 mt-40">Repair Services</h4>
                                     <h2 class="fw-600 mb-20">We're an Apple <br>Authorised Service Provider</h2>
