@@ -15,6 +15,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/main.css?v=3.4">
+        <!-- Material icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
 </head>
 
 <body>
@@ -217,8 +219,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="">
+                                                <img class="default-img" src="assets/imgs/dummyImg/book-1.png" alt="">
+                                                <img class="hover-img" src="assets/imgs/dummyImg/book-1.png" alt="">
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -228,22 +230,23 @@
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
+                                           
+                                        <span class="new">Fifth Edition</span>
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop-grid-right.php">Music</a>
+                                            <a href="shop-grid-right.php">Fiction</a>
                                         </div>
-                                        <h2><a href="shop-product-full.php">Colorful Pattern Shirts</a></h2>
+                                        <h2><a href="shop-product-full.php">The Lord of the Kings</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>90%</span>
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
+                                            <span>Coin-1000 </span>
+                                            <span class="old-price">1500</span> 
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
@@ -256,8 +259,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-3-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-3-2.jpg" alt="">
+                                                <img class="default-img" src="assets/imgs/dummyImg/book-2.png" alt="">
+                                                <img class="hover-img" src="assets/imgs/dummyImg/book-2.png" alt="">
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -267,22 +270,22 @@
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="new">New</span>
+                                        <span class="hot">Damaged</span> 
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop-grid-right.php">Music</a>
+                                            <a href="shop-grid-right.php">Fantasy</a>
                                         </div>
-                                        <h2><a href="shop-product-full.php">Cartoon Astronaut T-Shirts</a></h2>
+                                        <h2><a href="shop-product-full.php">Simple and Minimalist</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>50%</span>
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>$138.85 </span>
-                                            <span class="old-price">$255.8</span>
+                                            <span>Coin- 850 </span>
+                                            <span class="old-price">1000</span>
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
@@ -295,8 +298,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-7-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-7-2.jpg" alt="">
+                                                <img class="default-img" src="assets/imgs/dummyImg/book-3.png" alt="">
+                                                <img class="hover-img" src="assets/imgs/dummyImg/book-3.png" alt="">
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -306,22 +309,21 @@
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="best">Best Sell</span>
-                                        </div>
+                                        <span class="new">Gift Quality</span>                                        </div>
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop-grid-right.php">Watch</a>
+                                            <a href="shop-grid-right.php">Design</a>
                                         </div>
-                                        <h2><a href="shop-product-full.php">Plain Striola Shirts</a></h2>
+                                        <h2><a href="shop-product-full.php">Muted Color Poster</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>95%</span>
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>$338.85 </span>
-                                            <span class="old-price">$445.8</span>
+                                            <span>Coin- 500 </span>
+                                            <span class="old-price">600</span>
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
@@ -334,8 +336,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
+                                                <img class="default-img" src="assets/imgs/dummyImg/book-4.png" alt="">
+                                                <img class="hover-img" src="assets/imgs/dummyImg/book-4.png" alt="">
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -345,22 +347,21 @@
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="sale">Sale</span>
-                                        </div>
+                                        <span class="new">Library Binding</span>                                        </div>
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop-grid-right.php">Music</a>
+                                            <a href="shop-grid-right.php">Fantasy</a>
                                         </div>
-                                        <h2><a href="shop-product-full.php">Landscape Painting Shirt</a></h2>
+                                        <h2><a href="shop-product-full.php">Pouring Dreams</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>70%</span>
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>$123.85 </span>
-                                            <span class="old-price">$235.8</span>
+                                            <span>Coin- 500 </span>
+                                            <span class="old-price">600</span>
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
@@ -373,8 +374,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-4-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-3-2.jpg" alt="">
+                                                <img class="default-img" src="assets/imgs/dummyImg/book-5.png" alt="">
+                                                <img class="hover-img" src="assets/imgs/dumyyImg/book-5.png" alt="">
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -384,22 +385,21 @@
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">-30%</span>
-                                        </div>
+                                        <span class="new">like-new</span>                                        </div>
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop-grid-right.php">Speaker</a>
+                                            <a href="shop-grid-right.php">Lifestyles</a>
                                         </div>
-                                        <h2><a href="shop-product-full.php">Letter Print T-Shirt</a></h2>
+                                        <h2><a href="shop-product-full.php">Customize Your Autumn Clothes</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>70%</span>
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>$28.85 </span>
-                                            <span class="old-price">$45.8</span>
+                                            <span>Coin- 850 </span>
+                                            <span class="old-price">900</span>
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
@@ -412,8 +412,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-5-2.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-5-2.jpg" alt="">
+                                                <img class="default-img" src="assets/imgs/dummyImg/book-6.png" alt="">
+                                                <img class="hover-img" src="assets/imgs/dummyImg/book-6.png" alt="">
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -423,22 +423,21 @@
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">-22%</span>
-                                        </div>
+                                    <span class="hot">Restored</span>                                        </div>
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop-grid-right.php">Camera</a>
+                                            <a href="shop-grid-right.php">Design</a>
                                         </div>
-                                        <h2><a href="shop-product-full.php">Element Pattern Print Shirts</a></h2>
-                                        <div class="rating-result" title="90%">
+                                        <h2><a href="shop-product-full.php">Designed for Work</a></h2>
+                                        <div class="rating-result" title="70%">
                                             <span>
                                                 <span>70%</span>
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
+                                            <span>Coin- 1500 </span>
+                                            <span class="old-price">2000</span>
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
@@ -451,8 +450,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-8-2.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-8-1.jpg" alt="">
+                                                <img class="default-img" src="assets/imgs/dummyImg/book-7.png" alt="">
+                                                <img class="hover-img" src="assets/imgs/shop/dummyImg/book-7.png" alt="">
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -461,36 +460,36 @@
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="new">New</span>
-                                        </div>
+                                     <div class="product-badges product-badges-position product-badges-mrg">
+                                        <span class="new">Collectible</span>                                        </div>
                                     </div>
+                                    
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop-grid-right.php">Phone</a>
+                                            <a href="shop-grid-right.php">Nature</a>
                                         </div>
-                                        <h2><a href="shop-product-full.php">Vintage Henley Shirt</a></h2>
+                                        <h2><a href="shop-product-full.php">Plant Tree For the Future</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>98%</span>
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>$1275.85 </span>
+                                            <span>Coin- 1500 </span>
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+</div>
                             <div class="col-lg-4 col-md-4 col-12 col-sm-6">
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-11-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-11-2.jpg" alt="">
+                                                <img class="default-img" src="assets/imgs/dummyImg/book-8.png" alt="">
+                                                <img class="hover-img" src="assets/imgs/dumyImg/book-8.png" alt="">
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -504,15 +503,15 @@
                                         <div class="product-category">
                                             <a href="shop-grid-right.php">Accessories </a>
                                         </div>
-                                        <h2><a href="shop-product-full.php">Cotton Leaf Printed</a></h2>
+                                        <h2><a href="shop-product-full.php">Modern Abstract</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>70%</span>
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
+                                            <span>Coin- 1500</span>
+                                            <span class="old-price">1750</span>
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
@@ -525,8 +524,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-13-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-13-2.jpg" alt="">
+                                                <img class="default-img" src="assets/imgs/dummyImg/book-9.png" alt="">
+                                                <img class="hover-img" src="assets/imgs/dummyImg/book-9.png" alt="">
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -538,17 +537,17 @@
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop-grid-right.php">Accessories </a>
+                                            <a href="shop-grid-right.php">Nature </a>
                                         </div>
-                                        <h2><a href="shop-product-full.php">Cotton Leaf Printed</a></h2>
+                                        <h2><a href="shop-product-full.php">Bird Park</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>70%</span>
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
+                                            <span>Coin- 500 </span>
+                                            <span class="old-price">600</span>
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
@@ -561,8 +560,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-3-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-3-2.jpg" alt="">
+                                                <img class="default-img" src="assets/imgs/dummyImg/home-book-1.png" alt="">
+                                                <img class="hover-img" src="assets/imgs/dummyImg/home-book-1.png" alt="">
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -572,22 +571,22 @@
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
+                                            <span class="hot">Good</span>
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop-grid-right.php">Music</a>
+                                            <a href="shop-grid-right.php">Thriller</a>
                                         </div>
-                                        <h2><a href="shop-product-full.php">Colorful Pattern Shirts</a></h2>
+                                        <h2><a href="shop-product-full.php">Diana and Jack</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>90%</span>
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
+                                            <span>Coin- 700 </span>
+                                            <span class="old-price">1000</span>
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
@@ -600,8 +599,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="">
+                                                <img class="default-img" src="assets/imgs/dummyImg/home-book-2.png" alt="">
+                                                <img class="hover-img" src="assets/imgs/dummyImg/home-book-2.png" alt="">
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -616,17 +615,17 @@
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop-grid-right.php">Music</a>
+                                            <a href="shop-grid-right.php">Children</a>
                                         </div>
-                                        <h2><a href="shop-product-full.php">Cartoon Astronaut T-Shirts</a></h2>
+                                        <h2><a href="shop-product-full.php">Christmas has come</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>50%</span>
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>$138.85 </span>
-                                            <span class="old-price">$255.8</span>
+                                            <span>Coin- 500 </span>
+                                            
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
@@ -639,8 +638,8 @@
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
                                             <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-7-2.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-7-1.jpg" alt="">
+                                                <img class="default-img" src="assets/imgs/dummyImg/home-book-3.png" alt="">
+                                                <img class="hover-img" src="assets/imgs/dummyImg/home-book-3.png" alt="">
                                             </a>
                                         </div>
                                         <div class="product-action-1">
@@ -650,22 +649,22 @@
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="best">Best Sell</span>
+                                            <span class="best">Rare</span>
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="shop-grid-right.php">Watch</a>
+                                            <a href="shop-grid-right.php"></a>
                                         </div>
-                                        <h2><a href="shop-product-full.php">Plain Striola Shirts</a></h2>
+                                        <h2><a href="shop-product-full.php">Tere and Tony</a></h2>
                                         <div class="rating-result" title="90%">
                                             <span>
                                                 <span>95%</span>
                                             </span>
                                         </div>
                                         <div class="product-price">
-                                            <span>$338.85 </span>
-                                            <span class="old-price">$445.8</span>
+                                            <span>Coin- 750 </span>
+                                            <span class="old-price">800</span>
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
@@ -696,19 +695,22 @@
                         <div class="widget-category mb-30">
                             <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
                             <ul class="categories">
-                                <li><a href="shop-grid-right.php">Shoes & Bags</a></li>
-                                <li><a href="shop-grid-right.php">Blouses & Shirts</a></li>
-                                <li><a href="shop-grid-right.php">Dresses</a></li>
-                                <li><a href="shop-grid-right.php">Swimwear</a></li>
-                                <li><a href="shop-grid-right.php">Beauty</a></li>
-                                <li><a href="shop-grid-right.php">Jewelry & Watch</a></li>
-                                <li><a href="shop-grid-right.php">Accessories</a></li>
+                                <li><a href="shop-grid-right.php">Mystery</a></li>
+                                <li><a href="shop-grid-right.php">Thriller</a></li>
+                                <li><a href="shop-grid-right.php">Science Fiction</a></li>
+                                <li><a href="shop-grid-right.php">Fanstasy</a></li>
+                                <li><a href="shop-grid-right.php">Romance</a></li>
+                                <li><a href="shop-grid-right.php">Historical Fiction</a></li>
+                                <li><a href="shop-grid-right.php">Horror</a></li>
+                                <li><a href="shop-grid-right.php">Adventure</a></li>
+                                <li><a href="shop-grid-right.php">Biography</a></li>
+                                <li><a href="shop-grid-right.php">Academic</a></li>
                             </ul>
                         </div>
                         <!-- Fillter By Price -->
                         <div class="sidebar-widget price_range range mb-30">
                             <div class="widget-header position-relative mb-20 pb-10">
-                                <h5 class="widget-title mb-10">Fill by price</h5>
+                                <h5 class="widget-title mb-10">Filter by Your Coin</h5>
                                 <div class="bt-1 border-color-1"></div>
                             </div>
                             <div class="price-filter">
@@ -716,23 +718,44 @@
                                     <div id="slider-range"></div>
                                     <div class="price_slider_amount">
                                         <div class="label-input">
-                                            <span>Range:</span><input type="text" id="amount" name="price" placeholder="Add Your Price" />
+                                            <span>Range:</span><input type="text" id="amount" name="price" placeholder="Add Your Coins..." />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="list-group">
                                 <div class="list-group-item mb-10 mt-10">
-                                    <label class="fw-900">Color</label>
+                                    <label class="fw-900">Genre</label>
                                     <div class="custome-checkbox">
                                         <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="">
-                                        <label class="form-check-label" for="exampleCheckbox1"><span>Red (56)</span></label>
+                                        <label class="form-check-label" for="exampleCheckbox1"><span>Mystery(56)</span></label>
                                         <br>
                                         <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox2" value="">
-                                        <label class="form-check-label" for="exampleCheckbox2"><span>Green (78)</span></label>
+                                        <label class="form-check-label" for="exampleCheckbox2"><span>Thriller(78)</span></label>
                                         <br>
                                         <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox3" value="">
-                                        <label class="form-check-label" for="exampleCheckbox3"><span>Blue (54)</span></label>
+                                        <label class="form-check-label" for="exampleCheckbox3"><span>Science Fictions(54)</span></label>
+                                        <br>   
+                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox4" value="">
+                                        <label class="form-check-label" for="exampleCheckbox4"><span>Fantasy(17)</span></label>
+                                        <br>
+                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox5" value="">
+                                        <label class="form-check-label" for="exampleCheckbox5"><span>Romannce(59)</span></label>
+                                        <br>
+                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox6" value="">
+                                        <label class="form-check-label" for="exampleCheckbox6"><span>Historucal Fictions(76))</span></label>
+                                        <br>
+                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox7" value="">
+                                        <label class="form-check-label" for="exampleCheckbox7"><span>Horror(16)</span></label>
+                                        <br>
+                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox8" value="">
+                                        <label class="form-check-label" for="exampleCheckbox8"><span>Adventure(19)</span></label>
+                                        <br>
+                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox9" value="">
+                                        <label class="form-check-label" for="exampleCheckbox9"><span>Biography(08)</span></label>
+                                        <br>
+                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox10" value="">
+                                        <label class="form-check-label" for="exampleCheckbox10"><span>Academic(65)</span></label>
                                     </div>
                                     <label class="fw-900 mt-15">Item Condition</label>
                                     <div class="custome-checkbox">
@@ -752,16 +775,16 @@
                         <!-- Product sidebar Widget -->
                         <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
                             <div class="widget-header position-relative mb-20 pb-10">
-                                <h5 class="widget-title mb-10">New products</h5>
+                                <h5 class="widget-title mb-10">New ARRIVALS</h5>
                                 <div class="bt-1 border-color-1"></div>
                             </div>
                             <div class="single-post clearfix">
                                 <div class="image">
-                                    <img src="assets/imgs/shop/thumbnail-3.jpg" alt="#">
+                                    <img src="assets/imgs/dummyImg/home-book-3.png" alt="#">
                                 </div>
                                 <div class="content pt-10">
-                                    <h5><a href="shop-product-detail.php">Chen Cardigan</a></h5>
-                                    <p class="price mb-0 mt-5">$99.50</p>
+                                    <h5><a href="shop-product-detail.php">Tere and Tony</a></h5>
+                                    <p class="price mb-0 mt-5">Coin- 750</p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:90%"></div>
                                     </div>
@@ -769,11 +792,11 @@
                             </div>
                             <div class="single-post clearfix">
                                 <div class="image">
-                                    <img src="assets/imgs/shop/thumbnail-4.jpg" alt="#">
+                                    <img src="assets/imgs/dummyImg/discount-book-1.png" alt="#">
                                 </div>
                                 <div class="content pt-10">
-                                    <h6><a href="shop-product-detail.php">Chen Sweater</a></h6>
-                                    <p class="price mb-0 mt-5">$89.50</p>
+                                    <h6><a href="shop-product-detail.php">Ideal For Interior</a></h6>
+                                    <p class="price mb-0 mt-5">Coin- 400</p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:80%"></div>
                                     </div>
@@ -781,11 +804,11 @@
                             </div>
                             <div class="single-post clearfix">
                                 <div class="image">
-                                    <img src="assets/imgs/shop/thumbnail-5.jpg" alt="#">
+                                    <img src="assets/imgs/dummyImg/discount-book-2.png" alt="#">
                                 </div>
                                 <div class="content pt-10">
-                                    <h6><a href="shop-product-detail.php">Colorful Jacket</a></h6>
-                                    <p class="price mb-0 mt-5">$25</p>
+                                    <h6><a href="shop-product-detail.php">Classic Blue</a></h6>
+                                    <p class="price mb-0 mt-5">Coin- 200</p>
                                     <div class="product-rate">
                                         <div class="product-rating" style="width:60%"></div>
                                     </div>

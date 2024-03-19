@@ -34,14 +34,14 @@
                                 </div>
                                 <div class="header-action-icon-2">
                                     <a class="mini-cart-icon" href="shop-cart.php">
-                                        <img alt="Evara" src="assets/imgs/theme/icons/icon-cart.svg">
+                                        <img alt="BookBridge" src="assets/imgs/theme/icons/icon-cart.svg">
                                         <span class="pro-count blue">2</span>
                                     </a>
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                         <ul>
                                             <li>
                                                 <div class="shopping-cart-img">
-                                                    <a href="shop-product-right.php"><img alt="Evara" src="assets/imgs/shop/thumbnail-3.jpg"></a>
+                                                    <a href="shop-product-right.php"><img alt="BookBridge" src="assets/imgs/shop/thumbnail-3.jpg"></a>
                                                 </div>
                                                 <div class="shopping-cart-title">
                                                     <h4><a href="shop-product-right.php">Daisy Casual Bag</a></h4>
@@ -53,7 +53,7 @@
                                             </li>
                                             <li>
                                                 <div class="shopping-cart-img">
-                                                    <a href="shop-product-right.php"><img alt="Evara" src="assets/imgs/shop/thumbnail-2.jpg"></a>
+                                                    <a href="shop-product-right.php"><img alt="BookBridge" src="assets/imgs/shop/thumbnail-2.jpg"></a>
                                                 </div>
                                                 <div class="shopping-cart-title">
                                                     <h4><a href="shop-product-right.php">Corduroy Shirts</a></h4>
@@ -206,20 +206,20 @@
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
                                 <a href="shop-wishlist.php">
-                                    <img alt="Evara" src="assets/imgs/theme/icons/icon-heart.svg">
+                                    <img alt="BookBridge" src="assets/imgs/theme/icons/icon-heart.svg">
                                     <span class="pro-count white">4</span>
                                 </a>
                             </div>
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="shop-cart.php">
-                                    <img alt="Evara" src="assets/imgs/theme/icons/icon-cart.svg">
+                                    <img alt="BookBridge" src="assets/imgs/theme/icons/icon-cart.svg">
                                     <span class="pro-count white">2</span>
                                 </a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                     <ul>
                                         <li>
                                             <div class="shopping-cart-img">
-                                                <a href="shop-product-right.php"><img alt="Evara" src="assets/imgs/shop/thumbnail-3.jpg"></a>
+                                                <a href="shop-product-right.php"><img alt="BookBridge" src="assets/imgs/shop/thumbnail-3.jpg"></a>
                                             </div>
                                             <div class="shopping-cart-title">
                                                 <h4><a href="shop-product-right.php">Plain Striola Shirts</a></h4>
