@@ -32,7 +32,7 @@ unset($_SESSION['signin-data'])
                     <h4 class="card-title mb-4">Sign in</h4>
                     <form action="admin/logic/login-logic.php" method= "post">
                         <div class="mb-3">
-                            <input class="form-control" name="phone_email" value="<?=$phone_email?> "placeholder="Phone number or email" type="text">
+                            <input class="form-control" name="phone_email" value=""placeholder="Phone number or email" type="text">
                         </div> 
                         <div class="mb-3">
                             <input class="form-control" name="password" value="<?=$password?>" placeholder="Password" type="password">
@@ -45,7 +45,7 @@ unset($_SESSION['signin-data'])
                             </label>
                         </div>
                         <div class="mb-4">
-                            <button type="submit" name="login" class="btn btn-primary w-100"> Login </button>
+                            <button type="submit" name="submit" class="btn btn-primary w-100"> Login </button>
                         </div> 
                     </form>
                 </div>
