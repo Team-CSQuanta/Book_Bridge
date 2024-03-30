@@ -1,8 +1,8 @@
 <?php 
-include './admin/config/constants.php';
-$phone_email = $_SESSION['signin-data']['phone_email'] ?? null;
-$password = $_SESSION['signin-data']['password'] ?? null;
-unset($_SESSION['signin-data'])
+session_start();
+if(isset($_SESSION['user-logged-email'])){
+    header("Location: http://localhost/Book_Bridge/admin/");
+}
 ?>
 
 <!DOCTYPE HTML>
@@ -30,12 +30,12 @@ unset($_SESSION['signin-data'])
             <div class="card mx-auto card-login">
                 <div class="card-body">
                     <h4 class="card-title mb-4">Sign in</h4>
-                    <form action="admin/logic/login-logic.php" method= "post">
+                    <form action="./admin/logic/admin-login-logic.php" method= "post">
                         <div class="mb-3">
-                            <input class="form-control" name="phone_email" value=""placeholder="Phone number or email" type="text">
+                            <input class="form-control" name="phone_email" value=""placeholder="Phone number or email" type="text" required>
                         </div> 
                         <div class="mb-3">
-                            <input class="form-control" name="password" value="<?=$password?>" placeholder="Password" type="password">
+                            <input class="form-control" name="password" value="<?=$password?>" placeholder="Password" type="password" required>
                         </div> 
                         <div class="mb-3">
                             <a href="#" class="float-end font-sm text-muted">Forgot password?</a>
@@ -48,7 +48,14 @@ unset($_SESSION['signin-data'])
                             <button type="submit" name="submit" class="btn btn-primary w-100"> Login </button>
                         </div> 
                     </form>
+                    <!-- Error info -->
+                    <?php if(isset($_SESSION['signin'])) :?>
+                        <div class="d-grid gap-3 mb-4" style="  font-size: 14px;font-weight: 500;padding: 10px 40px;color: #ffffff;border: none;background-color: #FF0000;border-radius: 4px;">
+                            <p style="text-align: center"> <?= $_SESSION['signin']; unset($_SESSION['signin'])?></p>
+                        </div>
+                    <?php endif ?>
                 </div>
+                
             </div>
         </section>
 
