@@ -28,12 +28,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE `admin` (
-  `email` varchar(100) NOT NULL,
-  `phone_number` varchar(11) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `role` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- CREATE TABLE `admin` (
+--   `email` varchar(100) NOT NULL,
+--   `phone_number` varchar(11) NOT NULL,
+--   `password` varchar(100) NOT NULL,
+--   `role` int(11) DEFAULT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -42,9 +42,9 @@ CREATE TABLE `admin` (
 --
 -- Indexes for table `admin`
 --
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`email`,`phone_number`);
-COMMIT;
+-- ALTER TABLE `admin`
+--   ADD PRIMARY KEY (`email`,`phone_number`);
+-- COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -55,7 +55,7 @@ COMMIT;
 -- Table structure for table `User`
 --
 
-CREATE TABLE User (
+CREATE TABLE Users (
     UserID INT AUTO_INCREMENT PRIMARY KEY,
     Username VARCHAR(50) COLLATE latin1_general_ci UNIQUE NOT NULL,
     Email VARCHAR(100) COLLATE latin1_general_ci UNIQUE NOT NULL,
