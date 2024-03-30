@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head>
@@ -15,6 +16,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/main.css?v=3.4">
+    <?php include_once 'login_register_handler.php'; ?>
 </head>
 
 <body>
@@ -43,7 +45,7 @@
                                         <div class="heading_s1">
                                             <h3 class="mb-30">Login</h3>
                                         </div>
-                                        <form method="post">
+                                        <form method="post" >
                                             <div class="form-group">
                                                 <input type="text" required="" name="email" placeholder="Your Email">
                                             </div>
@@ -76,7 +78,7 @@
                                         <p class="mb-50 font-sm">
                                             Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our privacy policy
                                         </p>
-                                        <form method="post">
+                                        <form method="post" action="login_register_handler.php">
                                             <div class="form-group">
                                                 <input type="text" required="" name="username" placeholder="Username">
                                             </div>
@@ -84,11 +86,36 @@
                                                 <input type="text" required="" name="email" placeholder="Email">
                                             </div>
                                             <div class="form-group">
+                                                <input type="text" required="" name="firstName" placeholder="First Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" required="" name="lastName" placeholder="Last Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" required="" name="phoneNumber" placeholder="Phone Number">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" required="" name="universityAffiliation" placeholder="University Affiliation">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" required="" name="universityCity" placeholder="University City">
+                                               
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" required="" name="bio" placeholder="Bio">
+                                        
+                                            </div>
+                                            
+                                            <div class="form-group">
                                                 <input required="" type="password" name="password" placeholder="Password">
                                             </div>
                                             <div class="form-group">
                                                 <input required="" type="password" name="password" placeholder="Confirm password">
                                             </div>
+                                            <!-- <div class="form-group">
+                                           
+                                           <input type="file" class="form-control-file" id="profileImage" name="profileImage">
+                                              </div>  -->
                                             <div class="login_footer form-group">
                                                 <div class="chek-form">
                                                     <div class="custome-checkbox">
@@ -98,15 +125,15 @@
                                                 </div>
                                                 <a href="page-privacy-policy.php"><i class="fi-rs-book-alt mr-5 text-muted"></i>Lean more</a>
                                             </div>
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-fill-out btn-block hover-up" name="login">Submit &amp; Register</button>
+                                            <div class="form-group text-center">
+                                                <button type="submit" class="btn btn-fill-out btn-block hover-up" name="register">Submit &amp; Register</button>
                                             </div>
                                         </form>
                                         <div class="divider-text-center mt-15 mb-15">
                                             <span> or</span>
                                         </div>
                                         <ul class="btn-login list_none text-center mb-15">
-                                            <li><a href="#" class="btn btn-facebook hover-up mb-lg-0 mb-sm-4">Login With Facebook</a></li>
+                                            <!-- <li><a href="#" class="btn btn-facebook hover-up mb-lg-0 mb-sm-4">Login With Facebook</a></li> -->
                                             <li><a href="#" class="btn btn-google hover-up">Login With Google</a></li>
                                         </ul>
                                         <div class="text-muted text-center">Already have an account? <a href="#">Sign in now</a></div>
