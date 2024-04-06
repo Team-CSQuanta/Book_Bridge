@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 18, 2024 at 07:22 AM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 06, 2024 at 05:56 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -17,23 +17,97 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+--
 -- Database: `bookbridge`
 --
 
-
-----------------------------------------------------------
-
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `admin`
 --
 
--- CREATE TABLE `admin` (
---   `email` varchar(100) NOT NULL,
---   `phone_number` varchar(11) NOT NULL,
---   `password` varchar(100) NOT NULL,
---   `role` int(11) DEFAULT NULL
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `admin` (
+  `email` varchar(100) NOT NULL,
+  `phone_number` varchar(11) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `role` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exchangerequest`
+--
+
+CREATE TABLE `exchangerequest` (
+  `RequestID` int(11) NOT NULL,
+  `SenderUserID` int(11) DEFAULT NULL,
+  `ReceiverUserID` int(11) DEFAULT NULL,
+  `RequestDate` date DEFAULT NULL,
+  `Status` enum('Pending','Accepted','Declined','Completed') DEFAULT NULL,
+  `Message` text DEFAULT NULL,
+  `BookISBN` varchar(20) DEFAULT NULL,
+  `ExchangeRequestDate` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exchange_post`
+--
+
+CREATE TABLE `exchange_post` (
+  `Title` varchar(255) NOT NULL,
+  `Author` varchar(255) DEFAULT NULL,
+  `Genre` varchar(100) DEFAULT NULL,
+  `ISBN` varchar(20) NOT NULL,
+  `PublishedYear` int(11) DEFAULT NULL,
+  `Description` text DEFAULT NULL,
+  `Language` varchar(50) DEFAULT NULL,
+  `Conditions` enum('Like New','Good','Acceptable','Antique') DEFAULT NULL,
+  `OwnerUserID` int(11) DEFAULT NULL,
+  `AvailabilityStatus` enum('Available','Unavailable') DEFAULT NULL,
+  `BookImage` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `review`
+--
+
+CREATE TABLE `review` (
+  `ReviewID` int(11) NOT NULL,
+  `ReviewedUserID` int(11) DEFAULT NULL,
+  `ReviewerUserID` int(11) DEFAULT NULL,
+  `ExchangeRequestID` int(11) DEFAULT NULL,
+  `Ratings` int(11) DEFAULT NULL,
+  `ReviewText` text DEFAULT NULL,
+  `Time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `UserID` int(11) NOT NULL,
+  `Username` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `Email` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `Password` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `FirstName` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `LastName` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `PhoneNumber` varchar(20) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
+  `UniversityAffiliation` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
+  `UniversityCity` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
+  `RegistrationDate` date DEFAULT NULL,
+  `ProfilePicture` varchar(255) DEFAULT NULL,
+  `Ratings` int(11) DEFAULT NULL,
+  `Bio` text CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -42,89 +116,99 @@ SET time_zone = "+00:00";
 --
 -- Indexes for table `admin`
 --
--- ALTER TABLE `admin`
---   ADD PRIMARY KEY (`email`,`phone_number`);
--- COMMIT;
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`email`,`phone_number`);
+
+--
+-- Indexes for table `exchangerequest`
+--
+ALTER TABLE `exchangerequest`
+  ADD PRIMARY KEY (`RequestID`),
+  ADD KEY `SenderUserID` (`SenderUserID`),
+  ADD KEY `ReceiverUserID` (`ReceiverUserID`),
+  ADD KEY `BookISBN` (`BookISBN`);
+
+--
+-- Indexes for table `exchange_post`
+--
+ALTER TABLE `exchange_post`
+  ADD PRIMARY KEY (`ISBN`),
+  ADD KEY `OwnerUserID` (`OwnerUserID`);
+
+--
+-- Indexes for table `review`
+--
+ALTER TABLE `review`
+  ADD PRIMARY KEY (`ReviewID`),
+  ADD KEY `ReviewedUserID` (`ReviewedUserID`),
+  ADD KEY `ReviewerUserID` (`ReviewerUserID`),
+  ADD KEY `ExchangeRequestID` (`ExchangeRequestID`),
+  ADD KEY `idx_ratings` (`Ratings`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`UserID`),
+  ADD UNIQUE KEY `Username` (`Username`),
+  ADD UNIQUE KEY `Email` (`Email`),
+  ADD KEY `FK_Ratings` (`Ratings`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `exchangerequest`
+--
+ALTER TABLE `exchangerequest`
+  MODIFY `RequestID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `review`
+--
+ALTER TABLE `review`
+  MODIFY `ReviewID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `exchangerequest`
+--
+ALTER TABLE `exchangerequest`
+  ADD CONSTRAINT `exchangerequest_ibfk_1` FOREIGN KEY (`SenderUserID`) REFERENCES `users` (`UserID`),
+  ADD CONSTRAINT `exchangerequest_ibfk_2` FOREIGN KEY (`ReceiverUserID`) REFERENCES `users` (`UserID`),
+  ADD CONSTRAINT `exchangerequest_ibfk_3` FOREIGN KEY (`BookISBN`) REFERENCES `exchange_post` (`ISBN`);
+
+--
+-- Constraints for table `exchange_post`
+--
+ALTER TABLE `exchange_post`
+  ADD CONSTRAINT `exchange_post_ibfk_1` FOREIGN KEY (`OwnerUserID`) REFERENCES `users` (`UserID`);
+
+--
+-- Constraints for table `review`
+--
+ALTER TABLE `review`
+  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`ReviewedUserID`) REFERENCES `users` (`UserID`),
+  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`ReviewerUserID`) REFERENCES `users` (`UserID`),
+  ADD CONSTRAINT `review_ibfk_3` FOREIGN KEY (`ExchangeRequestID`) REFERENCES `exchangerequest` (`RequestID`);
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `FK_Ratings` FOREIGN KEY (`Ratings`) REFERENCES `review` (`Ratings`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
---
--- Table structure for table `User`
---
-
-CREATE TABLE Users (
-    UserID INT AUTO_INCREMENT PRIMARY KEY,
-    Username VARCHAR(50) COLLATE latin1_general_ci UNIQUE NOT NULL,
-    Email VARCHAR(100) COLLATE latin1_general_ci UNIQUE NOT NULL,
-    Password VARCHAR(255) COLLATE latin1_general_ci NOT NULL,
-    FirstName VARCHAR(50) COLLATE latin1_general_ci NOT NULL,
-    LastName VARCHAR(50) COLLATE latin1_general_ci NOT NULL,
-    PhoneNumber VARCHAR(20) COLLATE latin1_general_ci,
-    UniversityAffiliation VARCHAR(100) COLLATE latin1_general_ci,
-    UniversityCity VARCHAR(100) COLLATE latin1_general_ci,
-    RegistrationDate DATE,
-    ProfilePicture  VARCHAR(255),
-    Ratings INT,
-    Bio TEXT COLLATE latin1_general_ci,
-    FOREIGN KEY (Ratings) REFERENCES Review(Ratings)
-);
-
---
--- Table structure for table `Exchange_Post`
---
-
-CREATE TABLE Exchange_Post (
-    Title VARCHAR(255) NOT NULL,
-    Author VARCHAR(255),
-    Genre VARCHAR(100),
-    ISBN VARCHAR(20) PRIMARY KEY,
-    PublishedYear INT,
-    Description TEXT,
-    Language VARCHAR(50),
-    Condition ENUM('Like New', 'Good', 'Acceptable', 'Antique'),
-    OwnerUserID INT,
-    AvailabilityStatus ENUM('Available', 'Unavailable'),
-    BookImage VARCHAR(255),
-    FOREIGN KEY (OwnerUserID) REFERENCES User(UserID)
-);
-
---
--- Table structure for table `Review`
---
-
-CREATE TABLE Review (
-    ReviewID INT AUTO_INCREMENT PRIMARY KEY,
-    ReviewedUserID INT,
-    ReviewerUserID INT,
-    ExchangeRequestID INT,
-    Ratings INT,
-    ReviewText TEXT,
-    Time TIMESTAMP,
-    FOREIGN KEY (ReviewedUserID) REFERENCES User(UserID),
-    FOREIGN KEY (ReviewerUserID) REFERENCES User(UserID),
-    FOREIGN KEY (ExchangeRequestID) REFERENCES ExchangeRequest(ExchangeRequestID)
-);
-
---
--- Table structure for table `ExchangeRequest`
---
-
-CREATE TABLE ExchangeRequest (
-    RequestID INT AUTO_INCREMENT PRIMARY KEY,
-    SenderUserID INT,
-    ReceiverUserID INT,
-    RequestDate DATE,
-    Status ENUM('Pending', 'Accepted', 'Declined', 'Completed'),
-    Message TEXT,
-    BookISBN VARCHAR(20),
-    ExchangeRequestDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (SenderUserID) REFERENCES User(UserID),
-    FOREIGN KEY (ReceiverUserID) REFERENCES User(UserID)
-     FOREIGN KEY (BookISBN) REFERENCES Exchange_Post(ISBN)
-);
-
-
-
