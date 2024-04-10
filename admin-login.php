@@ -30,7 +30,7 @@ if(isset($_SESSION['user-logged-email'])){
             <div class="card mx-auto card-login">
                 <div class="card-body">
                     <h4 class="card-title mb-4">Sign in</h4>
-                    <form action="./admin/logic/admin-login-logic.php" method= "post">
+                    <form action="./admin/handler/admin-login-handler.php" method= "post">
                         <div class="mb-3">
                             <input class="form-control" name="phone_email" value=""placeholder="Phone number or email" type="text" required>
                         </div> 
