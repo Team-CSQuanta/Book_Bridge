@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 06, 2024 at 05:56 AM
+-- Host: localhost
+-- Generation Time: Apr 10, 2024 at 09:55 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bookbridge`
+-- Database: `book_bridge`
 --
 
 -- --------------------------------------------------------
@@ -31,8 +31,19 @@ CREATE TABLE `admin` (
   `email` varchar(100) NOT NULL,
   `phone_number` varchar(11) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `role` int(11) DEFAULT NULL
+  `role` varchar(25) NOT NULL,
+  `f_name` varchar(255) NOT NULL,
+  `l_name` varchar(255) NOT NULL,
+  `profile_img` varchar(255) NOT NULL,
+  `address` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`email`, `phone_number`, `password`, `role`, `f_name`, `l_name`, `profile_img`, `address`) VALUES
+('foyeznaeem@contact.me', '01965750798', 'admin', 'admin', 'Foyez Ahammed ', 'Naeem', '66163d97f05e84.88284642.png', 'Mouchak');
 
 -- --------------------------------------------------------
 
