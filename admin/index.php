@@ -1,11 +1,12 @@
 <?php
 require './aside-menu.php';
+
 ?>
 <section class="content-main">
     <div class="content-header">
         <div>
             <h2 class="content-title card-title">Dashboard </h2>
-            <p>Welcome admin</p>
+            <p>Welcome <?=$_SESSION['user-first-name']?></p>
         </div>
     </div>
     <div class="row">
