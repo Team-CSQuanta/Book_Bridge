@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 10, 2024 at 09:55 AM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 14, 2024 at 01:44 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,6 +48,18 @@ INSERT INTO `admin` (`email`, `phone_number`, `password`, `role`, `f_name`, `l_n
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `book_images`
+--
+
+CREATE TABLE `book_images` (
+  `ImageID` int(11) NOT NULL,
+  `ISBN` varchar(20) NOT NULL,
+  `ImagePath` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `exchangerequest`
 --
 
@@ -78,8 +90,7 @@ CREATE TABLE `exchange_post` (
   `Language` varchar(50) DEFAULT NULL,
   `Conditions` enum('Like New','Good','Acceptable','Antique') DEFAULT NULL,
   `OwnerUserID` int(11) DEFAULT NULL,
-  `AvailabilityStatus` enum('Available','Unavailable') DEFAULT NULL,
-  `BookImage` varchar(255) DEFAULT NULL
+  `AvailabilityStatus` enum('Available','Unavailable') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -131,6 +142,13 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`email`,`phone_number`);
 
 --
+-- Indexes for table `book_images`
+--
+ALTER TABLE `book_images`
+  ADD PRIMARY KEY (`ImageID`),
+  ADD KEY `ISBN` (`ISBN`);
+
+--
 -- Indexes for table `exchangerequest`
 --
 ALTER TABLE `exchangerequest`
@@ -170,6 +188,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `book_images`
+--
+ALTER TABLE `book_images`
+  MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `exchangerequest`
 --
 ALTER TABLE `exchangerequest`
@@ -190,6 +214,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `book_images`
+--
+ALTER TABLE `book_images`
+  ADD CONSTRAINT `book_images_ibfk_1` FOREIGN KEY (`ISBN`) REFERENCES `exchange_post` (`ISBN`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `exchangerequest`
