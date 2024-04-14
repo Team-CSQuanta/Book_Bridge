@@ -7,7 +7,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "bookbridge";
+$dbname = "book_bridge";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 

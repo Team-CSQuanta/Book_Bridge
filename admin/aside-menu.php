@@ -5,21 +5,11 @@ session_start();
 
 require './config/database.php';
 
-if (isset($_SESSION['user-logged-email'])) {
-    $logged_user_email = filter_var($_SESSION['user-logged-email'], FILTER_SANITIZE_EMAIL);
-    $query = "SELECT *
-              FROM admin
-              WHERE '$logged_user_email' = email";
-    $result = $connection->query($query);
-    $result_row = $result->fetch_assoc();
-    $_SESSION['profile_img'] = $result_row['profile_img_path'];
-
-} 
-else {
+if (!isset($_SESSION['user-logged-email'])) {
     header("Location: http://localhost/Book_Bridge/admin-login.php");
     exit();
-}
 
+} 
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -34,7 +24,7 @@ else {
     <meta property="og:type" content="">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg"> -->
     <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -117,7 +107,7 @@ else {
             <hr>
             <ul class="menu-aside">
                 <li class="menu-item">
-                    <a class="menu-link" href="page-settings-1.php"> <i class="icon material-icons md-settings"></i>
+                    <a class="menu-link" href="settings.php"> <i class="icon material-icons md-settings"></i>
                         <span class="text">Settings</span>
                     </a>
                 </li>
@@ -148,13 +138,12 @@ else {
                     <li class="dropdown nav-item">
                         <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="<?= './assets/imgs/people/' . $_SESSION['profile_img'] ?>" alt="User"></a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
-                            <a class="dropdown-item" href="#"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
-                            <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account Settings</a>
+                            <a class="dropdown-item" href="./settings.php"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
                             <a class="dropdown-item" href="#"><i class="material-icons md-account_balance_wallet"></i>Wallet</a>
                             <a class="dropdown-item" href="#"><i class="material-icons md-receipt"></i>Billing</a>
                             <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help center</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="http://localhost/Book_Bridge/admin/logic/admin-logout.php"><i class="material-icons md-exit_to_app"></i>Logout</a>
+                            <a class="dropdown-item text-danger" href="http://localhost/Book_Bridge/admin/handler/admin-logout.php"><i class="material-icons md-exit_to_app"></i>Logout</a>
                         </div>
                     </li>
                 </ul>
