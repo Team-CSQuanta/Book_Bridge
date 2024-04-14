@@ -6,11 +6,17 @@ $limit = 5;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($page - 1) * $limit;
 
+
+$search = isset($_GET['search-categories']) ? $_GET['search-categories'] : '';
 // Fetch data with pagination
 $category_fetch = "SELECT * 
-                   FROM category
-                   ORDER BY categoryName
-                   LIMIT $start, $limit";
+                   FROM category";
+
+if (!empty($search)) {
+    $category_fetch .= " WHERE categoryName LIKE '%$search%'";
+}
+
+$category_fetch .= " ORDER BY categoryName LIMIT $start, $limit";
 
 $category_fetch_result = $connection->query($category_fetch);
 if (!$category_fetch_result) {
@@ -19,6 +25,9 @@ if (!$category_fetch_result) {
 
 // Get total number of records for pagination
 $total_records_query = "SELECT COUNT(*) AS total FROM category";
+if (!empty($search)) {
+    $total_records_query .= " WHERE categoryName LIKE '%$search%'";
+}
 $total_records_result = $connection->query($total_records_query);
 $total_records_row = $total_records_result->fetch_assoc();
 $total_records = $total_records_row['total'];
@@ -30,9 +39,15 @@ $total_pages = ceil($total_records / $limit);
             <h2 class="content-title card-title">Categories </h2>
             <p>Add, edit or delete a category</p>
         </div>
-        <div>
-            <input type="text" placeholder="Search Categories" class="form-control bg-white">
+        <div style="display: flex; align-items: center; justify-content: center; row-gap: 5px;">
+            <form>
+                <input type="text" placeholder="Search Categories" class="form-control bg-white" name="search-categories" value="<?=isset($search)? $search: '' ?>">
+            </form>
+            <?php if ($search != '') : ?>
+                <a href="?reset-search" class="btn btn-primary btn-sm rounded">Reset</a>
+            <?php endif; ?>
         </div>
+
     </div>
     <div class="card">
         <div class="card-body">
@@ -92,26 +107,15 @@ $total_pages = ceil($total_records / $limit);
     <div class="pagination-area mt-30 mb-50">
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-start">
-                <?php if ($total_pages > 5) : ?>
-                    <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
-                        <li class="page-item <?php if ($i == $page) echo 'active'; ?>">
-                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
-                        </li>
-                    <?php endfor; ?>
+                <li class="page-item"><a class="page-link" href="?page=<?= ($page - 1 > 0) ? $page - 1 : $page ?>"><i class="material-icons md-chevron_left"></i></a></li>
+                <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+                    <li class="page-item <?php if ($i == $page) echo 'active'; ?>">
+                        <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                    </li>
+                <?php endfor; ?>
+                <li class="page-item"><a class="page-link" href="?page=<?= ($page + 1 <= $total_pages) ? $page + 1 : $page ?>"><i class="material-icons md-chevron_right"></i></a></li>
 
-                <?php else : ?>
-                    <li class="page-item <?php if (1 == $page) echo 'active'; ?>">
-                            <a class="page-link" href="?page=1">1</a>
-                    </li>
-                    <li class="page-item <?php if (2 == $page) echo 'active'; ?>">
-                            <a class="page-link" href="?page=2">2</a>
-                    </li>
-                    <li class="page-item <?php if (3 == $page) echo 'active'; ?>">
-                            <a class="page-link" href="?page=3">3</a>
-                    </li>
-                    <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                    <li class="page-item"><a class="page-link" href="?page=<?= ($page + 1 <= $total_pages)? $page + 1: $page?>"><i class="material-icons md-chevron_right"></i></a></li>
-                <?php endif; ?>
+
             </ul>
         </nav>
     </div>
