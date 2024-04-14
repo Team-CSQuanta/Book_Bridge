@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 10, 2024 at 09:55 AM
+-- Generation Time: Apr 14, 2024 at 01:52 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,51 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`email`, `phone_number`, `password`, `role`, `f_name`, `l_name`, `profile_img`, `address`) VALUES
-('foyeznaeem@contact.me', '01965750798', 'admin', 'admin', 'Foyez Ahammed ', 'Naeem', '66163d97f05e84.88284642.png', 'Mouchak');
+('foyez4m@gmail.com', '01965750798', 'admin', 'admin', 'Foyez Ahammed ', 'Naeem', '661647f5ab3064.76243598.png', 'Mouchak');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `categoryID` varchar(20) NOT NULL,
+  `categoryName` varchar(50) DEFAULT NULL,
+  `numAvailableBooks` int(11) DEFAULT 0,
+  `numDesiredBooks` int(11) DEFAULT 0,
+  `categoryDescription` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`categoryID`, `categoryName`, `numAvailableBooks`, `numDesiredBooks`, `categoryDescription`) VALUES
+('CAT-ACA-010', 'Academic', 0, 0, 'Academic books are publications that are written by scholars or experts in a particular field and are intended for an academic audience. These books typically cover specialized topics in depth, providing comprehensive analyses, theories, and findings related to the subject matter. They are often used as supplementary or primary sources in academic research, teaching, and learning. Academic books can be found across various disciplines, including but not limited to, the sciences, social sciences, humanities, and professional fields.'),
+('CAT-BIO-005', 'Biography', 0, 0, 'The biography book genre offers readers a glimpse into the lives of fascinating individuals, spanning historical figures, cultural icons, political leaders, artists, scientists, athletes, and everyday people with remarkable stories. Biographies delve into the personal and professional journeys of their subjects, offering insights into their upbringing, experiences, challenges, achievements, and legacies.\r\n\r\nWhat sets biographies apart is their commitment to presenting a factual and comprehensive account of a person\'s life, often based on thorough research and interviews with people who knew the subject. Biographers strive to capture the essence of their subjects, providing readers with a deeper understanding of their motivations, struggles, triumphs, and impact on the world around them.'),
+('CAT-COO-011', 'Cookbook', 0, 0, 'A cookbook or cookery book is a kitchen reference containing recipes. Cookbooks may be general, or may specialize in a particular cuisine or category of food. Recipes in cookbooks are organized in various ways: by course, by main ingredient, by cooking technique, alphabetically, by region or country, and so on.'),
+('CAT-FAN-002', 'Fantasy', 0, 0, 'The fantasy book genre whisks readers away to magical realms filled with extraordinary creatures, mystical powers, and epic adventures. It\'s a genre characterized by imaginative storytelling that often incorporates elements such as magic, mythical creatures, and supernatural phenomena. '),
+('CAT-GRA-012', 'Graphic novel', 0, 0, 'A graphic novel is a long-form work of sequential art. The term graphic novel is often applied broadly, including fiction, non-fiction, and anthologized work, though this practice is highly contested by comics scholars and industry professionals.'),
+('CAT-HIS-001', 'History', 0, 0, 'The history book genre provides readers with a window into the past, offering insights into the events, people, and cultures that have shaped the world we live in today. '),
+('CAT-HOR-006', 'Horror', 0, 0, NULL),
+('CAT-MEM-007', 'Memoir', 0, 0, 'A memoir is any nonfiction narrative writing based on the author\'s personal memories. The assertions made in the work are thus understood to be factual. '),
+('CAT-MYS-009', 'Mystery', 0, 0, 'Mystery is a fiction genre where the nature of an event, usually a murder or other crime, remains mysterious until the end of the story. Often within a closed circle of suspects, each suspect is usually provided with a credible motive and a reasonable opportunity for committing the crime.'),
+('CAT-ROM-003', 'Romance', 0, 0, NULL),
+('CAT-SCI-008', 'Science Fiction', 0, 0, 'Science fiction is a genre of speculative fiction, which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration, time travel, parallel universes, and extraterrestrial life. It is related to fantasy, horror, and superhero fiction and contains many subgenres.'),
+('CAT-THR-004', 'Thriller', 0, 0, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `book_images`
+--
+
+CREATE TABLE `book_images` (
+  `ImageID` int(11) NOT NULL,
+  `ISBN` varchar(20) NOT NULL,
+  `ImagePath` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -78,8 +122,7 @@ CREATE TABLE `exchange_post` (
   `Language` varchar(50) DEFAULT NULL,
   `Conditions` enum('Like New','Good','Acceptable','Antique') DEFAULT NULL,
   `OwnerUserID` int(11) DEFAULT NULL,
-  `AvailabilityStatus` enum('Available','Unavailable') DEFAULT NULL,
-  `BookImage` varchar(255) DEFAULT NULL
+  `AvailabilityStatus` enum('Available','Unavailable') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -131,6 +174,22 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`email`,`phone_number`);
 
 --
+
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`categoryID`),
+  ADD UNIQUE KEY `categoryID` (`categoryID`),
+  ADD UNIQUE KEY `unique_category_name` (`categoryName`);
+
+-- Indexes for table `book_images`
+--
+ALTER TABLE `book_images`
+  ADD PRIMARY KEY (`ImageID`),
+  ADD KEY `ISBN` (`ISBN`);
+
+
+--
 -- Indexes for table `exchangerequest`
 --
 ALTER TABLE `exchangerequest`
@@ -170,6 +229,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `book_images`
+--
+ALTER TABLE `book_images`
+  MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `exchangerequest`
 --
 ALTER TABLE `exchangerequest`
@@ -190,6 +255,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `book_images`
+--
+ALTER TABLE `book_images`
+  ADD CONSTRAINT `book_images_ibfk_1` FOREIGN KEY (`ISBN`) REFERENCES `exchange_post` (`ISBN`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `exchangerequest`
