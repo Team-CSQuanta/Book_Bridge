@@ -41,7 +41,7 @@ $total_pages = ceil($total_records / $limit);
         </div>
         <div style="display: flex; align-items: center; justify-content: center; row-gap: 5px;">
             <form>
-                <input type="text" placeholder="Search Categories" class="form-control bg-white" name="search-categories" value="<?=isset($search)? $search: '' ?>">
+                <input type="text" placeholder="Search Categories" class="form-control bg-white" name="search-categories" value="<?= isset($search) ? $search : '' ?>">
             </form>
             <?php if ($search != '') : ?>
                 <a href="?reset-search" class="btn btn-primary btn-sm rounded">Reset</a>
