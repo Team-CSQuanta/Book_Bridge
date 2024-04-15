@@ -53,14 +53,7 @@
                                                <label for="inputEmail" class="form-label">Contact Email <span style="color: red;">*</span></label>
                                                <input type="text" class="form-control" id="inputEmail" placeholder="Enter Your profile email..." required>
                                            </div>
-                                           <div class="col-md-6">
-                                               <label for="inputAddress1" class="form-label"> Address line 1 <span style="color: red;">*</span></label>
-                                               <textarea class="form-control form-control-lg" id="inputAddress1" placeholder="" style="height: 100px; font-size: 18px; vertical-align: top;" required></textarea>
-                                           </div>
-                                           <div class="col-md-6">
-                                               <label for="inputAddress2" class="form-label">Address Line 2 <span style="color: red;">*</span></label>
-                                               <textarea class="form-control form-control-lg" id="inputAddress2" placeholder="" style="height: 100px; font-size: 18px; vertical-align: top;" ></textarea>
-                                           </div>
+                                           
                                            <div class="col-md-6">
                                                <label for="inputCountry" class="form-label">Country <span style="color: red;">*</span></label>
                                                <select class="form-select form-select-lg" id="inputCountry" required>
