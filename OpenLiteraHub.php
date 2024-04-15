@@ -26,10 +26,25 @@
     ?>
     <main class="main">
 
+    <div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.php" rel="nofollow">Home</a>
+                    <span></span> Others
+                    <span></span> Apply for Litera Hub
+                </div>
+            </div>
+        </div>
                             <section class="pt-50 pb-50">
             
                                    <div class="ec-vendor-upload-detail">
-                                       <form class="row g-3" style="padding-left: 50px; padding-right: 50px;">
+                                   <div class="heading_s1" style="padding-left: 50px; padding-right: 50px;">
+                                            <h3 class="mb-30">Apply for Litera Hub</h3>
+                                        </div>
+                                        <p class="mb-50 font-sm" style="padding-left: 100px; padding-right: 100px;">
+                                               <span style="color: red;">*</span>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our privacy policy.
+                                        </p>
+                                       <form class="row g-3" style="padding-left: 200px; padding-right: 200px;">
                                            <div class="col-md-6">
                                                <label for="inputName" class="form-label">Name and Surname <span style="color: red;">*</span></label>
                                                <input type="text" class="form-control" id="inputName" placeholder="Your Full Name..." required>
@@ -88,7 +103,7 @@
                                           
                                        
 
-                                           <div class="col-md-12">
+                                           <div class="col-md-12 text-center">
                                                <button type="submit" class="btn btn-primary">Submit</button>
                                            </div>
                                        </form>
