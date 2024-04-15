@@ -21,13 +21,13 @@
    <link rel="stylesheet" href="assets2/css/vendor/ecicons.min.css" />
 
    <!-- css All Plugins Files -->
-   <link rel="stylesheet" href="assets2/css/plugins/animate.css" />
+   <!-- <link rel="stylesheet" href="assets2/css/plugins/animate.css" />
    <link rel="stylesheet" href="assets2/css/plugins/swiper-bundle.min.css" />
    <link rel="stylesheet" href="assets2/css/plugins/jquery-ui.min.css" />
    <link rel="stylesheet" href="assets2/css/plugins/countdownTimer.css" />
    <link rel="stylesheet" href="assets2/css/plugins/slick.min.css" />
    <link rel="stylesheet" href="assets2/css/plugins/nouislider.css" />
-   <link rel="stylesheet" href="assets2/css/plugins/bootstrap.css" />
+   <link rel="stylesheet" href="assets2/css/plugins/bootstrap.css" /> -->
 
     <!-- For api -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -261,8 +261,8 @@ $(function() {
                 if (data.items) {
                     // Create an array of suggestions based on book titles
                     var suggestions = data.items.map((item) => ({
-                        label: item.volumeInfo.title,
-                        value: item.id, // Use the book ID as the value
+                        label: item.volumeInfo.title, // Use the book title as the label
+                        value: item.volumeInfo.title, // Also use the book title as the value
                         bookInfo: item.volumeInfo // Store the book information
                     }));
                     response(suggestions);
@@ -287,7 +287,7 @@ function populateBookFields(bookInfo) {
         // Populate the input fields with the book information
         $('#inputTitle').val(bookInfo.title || 'N/A');
         $('#inputName').val(bookInfo.authors ? bookInfo.authors.join(', ') : 'N/A');
-        $('#Categories').val(bookInfo.categories ? bookInfo.categories.join(', ') : 'N/A');
+      //  $('#Categories').val(bookInfo.categories ? bookInfo.categories.join(', ') : 'N/A');
         $('#inputisbn').val(bookInfo.industryIdentifiers ? bookInfo.industryIdentifiers[0].identifier : 'N/A');
         $('#inputyear').val(bookInfo.publishedDate ? bookInfo.publishedDate.substring(0, 4) : 'N/A');
         $('#inputlang').val(getLanguageName(bookInfo.language || ''));
@@ -298,8 +298,8 @@ function populateBookFields(bookInfo) {
         // Set the main book cover image
         const mainImgSrc = bookInfo.imageLinks ? bookInfo.imageLinks.thumbnail : '';
         if (mainImgSrc) {
-            $('.avatar-preview img').attr('src', mainImgSrc);
-            
+             $('.avatar-preview img').attr('src', mainImgSrc);
+            //.attr('style', 'width: 200px; height: 400px; object-fit: cover;')
         }
     }
 }
@@ -310,6 +310,7 @@ function getLanguageName(languageCode) {
         'en': 'English',
         'es': 'Spanish',
         'fr': 'French',
+        'bn':  'Bangla',
         // Add more language codes and names as needed
     };
     return languageNames[languageCode] || 'N/A';
@@ -323,23 +324,22 @@ function getLanguageName(languageCode) {
 
 
    <!-- Vendor JS -->
-   <!-- <script src="assets2/js/vendor/jquery-3.5.1.min.js"></script>
    <script src="assets2/js/vendor/popper.min.js"></script>
-   <script src="assets2/js/vendor/bootstrap.min.js"></script>
-   <script src="assets2/js/vendor/bootstrap-tagsinput.js"></script>
+     <script src="assets2/js/vendor/bootstrap.min.js"></script> 
+  <script src="assets2/js/vendor/bootstrap-tagsinput.js"></script>
    <script src="assets2/js/vendor/jquery-migrate-3.3.0.min.js"></script>
-   <script src="assets2/js/vendor/modernizr-3.11.2.min.js"></script>
-   <script src="assets2/js/vendor/jquery.magnific-popup.min.js"></script> -->
+   <script src="assets2/js/vendor/modernizr-3.11.2.min.js"></script> 
+ <script src="assets2/js/vendor/jquery.magnific-popup.min.js"></script>
 
    <!--Plugins JS-->
-   <!-- <script src="assets2/js/plugins/swiper-bundle.min.js"></script>
+   <script src="assets2/js/plugins/swiper-bundle.min.js"></script>
    <script src="assets2/js/plugins/nouislider.js"></script>
    <script src="assets2/js/plugins/countdownTimer.min.js"></script>
    <script src="assets2/js/plugins/scrollup.js"></script>
    <script src="assets2/js/plugins/jquery.zoom.min.js"></script>
    <script src="assets2/js/plugins/slick.min.js"></script>
    <script src="assets2/js/plugins/infiniteslidev2.js"></script>
-   <script src="assets2/js/plugins/jquery.sticky-sidebar.js"></script> -->
+   <script src="assets2/js/plugins/jquery.sticky-sidebar.js"></script>
   
    <!-- Main Js -->
    <script src="assets2/js/main.js"></script>
