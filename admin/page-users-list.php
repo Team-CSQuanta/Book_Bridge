@@ -1,33 +1,49 @@
 <?php
 require './aside-menu.php';
+// Pagination parameters
+$limit = 2;
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$start = ($page - 1) * $limit;
+
+
+$search = isset($_GET['search-user']) ? $_GET['search-user'] : '';
+// Fetch data with pagination
+$user_fetch = "SELECT * 
+                FROM user";
+
+if (!empty($search)) {
+    $user_fetch .= " WHERE f_name LIKE '%$search%' or l_name LIKE '%$search%' or email LIKE '%$search%'";
+}
+
+$user_fetch .= " ORDER BY f_name LIMIT $start, $limit";
+
+$user_fetch_result = $connection->query($user_fetch);
+if (!$user_fetch_result) {
+    die("Error executing query: " . $connection->error);
+}
+
+// Get total number of records for pagination
+$total_records_query = "SELECT COUNT(*) AS total FROM user";
+if (!empty($search)) {
+    $total_records_query .= " WHERE f_name LIKE '%$search%' or l_name LIKE '%$search%' or email LIKE '%$search%'";
+}
+$total_records_result = $connection->query($total_records_query);
+$total_records_row = $total_records_result->fetch_assoc();
+$total_records = $total_records_row['total'];
+$total_pages = ceil($total_records / $limit);
+
 ?>
 <section class="content-main">
     <div class="content-header">
         <h2 class="content-title">Users list</h2>
-        <div>
-            <a href="#" class="btn btn-primary"><i class="material-icons md-plus"></i> Create new</a>
-        </div>
     </div>
     <div class="card mb-4">
         <header class="card-header">
             <div class="row gx-3">
                 <div class="col-lg-4 col-md-6 me-auto">
-                    <input type="text" placeholder="Search..." class="form-control">
-                </div>
-                <div class="col-lg-2 col-md-3 col-6">
-                    <select class="form-select">
-                        <option>Status</option>
-                        <option>Active</option>
-                        <option>Disabled</option>
-                        <option>Show all</option>
-                    </select>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6">
-                    <select class="form-select">
-                        <option>Show 20</option>
-                        <option>Show 30</option>
-                        <option>Show 40</option>
-                    </select>
+                    <form action="">
+                        <input type="text" placeholder="Search..." class="form-control" name="search-user" value="<?= isset($search) ? $search : '' ?>">
+                    </form>
                 </div>
             </div>
         </header> <!-- card-header end// -->
@@ -36,7 +52,7 @@ require './aside-menu.php';
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Seller</th>
+                            <th>User</th>
                             <th>Email</th>
                             <th>Status</th>
                             <th>Registered</th>
@@ -44,210 +60,45 @@ require './aside-menu.php';
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td width="40%">
-                                <a href="#" class="itemside">
-                                    <div class="left">
-                                        <img src="assets/imgs/people/avatar1.jpg" class="img-sm img-avatar" alt="Userpic">
-                                    </div>
-                                    <div class="info pl-3">
-                                        <h6 class="mb-0 title">Eleanor Pena</h6>
-                                        <small class="text-muted">Seller ID: #439</small>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>eleanor2022@example.com</td>
-                            <td><span class="badge rounded-pill alert-success">Active</span></td>
-                            <td>08.07.2022</td>
-                            <td class="text-end">
-                                <a href="page-seller-detail.php" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="40%">
-                                <a href="#" class="itemside">
-                                    <div class="left">
-                                        <img src="assets/imgs/people/avatar2.jpg" class="img-sm img-avatar" alt="Userpic">
-                                    </div>
-                                    <div class="info pl-3">
-                                        <h6 class="mb-0 title">Mary Monasa</h6>
-                                        <small class="text-muted">Seller ID: #129</small>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>monalisa@example.com</td>
-                            <td><span class="badge rounded-pill alert-success">Active</span></td>
-                            <td>11.07.2022</td>
-                            <td class="text-end">
-                                <a href="page-seller-detail.php" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="40%">
-                                <a href="#" class="itemside">
-                                    <div class="left">
-                                        <img src="assets/imgs/people/avatar3.jpg" class="img-sm img-avatar" alt="Userpic">
-                                    </div>
-                                    <div class="info pl-3">
-                                        <h6 class="mb-0 title">Jonatan Ive</h6>
-                                        <small class="text-muted">Seller ID: #400</small>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>mrjohn@example.com</td>
-                            <td><span class="badge rounded-pill alert-success">Active</span></td>
-                            <td>08.07.2022</td>
-                            <td class="text-end">
-                                <a href="page-seller-detail.php" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="40%">
-                                <a href="#" class="itemside">
-                                    <div class="left">
-                                        <img src="assets/imgs/people/avatar4.jpg" class="img-sm img-avatar" alt="Userpic">
-                                    </div>
-                                    <div class="info pl-3">
-                                        <h6 class="mb-0 title">Eleanor Pena</h6>
-                                        <small class="text-muted">Seller ID: #439</small>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>eleanor2022@example.com</td>
-                            <td><span class="badge rounded-pill alert-danger">Inactive</span></td>
-                            <td>08.07.2022</td>
-                            <td class="text-end">
-                                <a href="page-seller-detail.php" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="40%">
-                                <a href="#" class="itemside">
-                                    <div class="left">
-                                        <img src="assets/imgs/people/avatar1.jpg" class="img-sm img-avatar" alt="Userpic">
-                                    </div>
-                                    <div class="info pl-3">
-                                        <h6 class="mb-0 title">Albert Pushkin</h6>
-                                        <small class="text-muted">Seller ID: #439</small>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>someone@mymail.com</td>
-                            <td><span class="badge rounded-pill alert-success">Active</span></td>
-                            <td>20.11.2019</td>
-                            <td class="text-end">
-                                <a href="page-seller-detail.php" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="40%">
-                                <a href="#" class="itemside">
-                                    <div class="left">
-                                        <img src="assets/imgs/people/avatar2.jpg" class="img-sm img-avatar" alt="Userpic">
-                                    </div>
-                                    <div class="info pl-3">
-                                        <h6 class="mb-0 title">Alexandra Pena</h6>
-                                        <small class="text-muted">Seller ID: #439</small>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>eleanor2022@example.com</td>
-                            <td><span class="badge rounded-pill alert-danger">Inactive</span></td>
-                            <td>08.07.2022</td>
-                            <td class="text-end">
-                                <a href="page-seller-detail.php" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="40%">
-                                <a href="#" class="itemside">
-                                    <div class="left">
-                                        <img src="assets/imgs/people/avatar3.jpg" class="img-sm img-avatar" alt="Userpic">
-                                    </div>
-                                    <div class="info pl-3">
-                                        <h6 class="mb-0 title">Eleanor Pena</h6>
-                                        <small class="text-muted">Seller ID: #439</small>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>eleanor2022@example.com</td>
-                            <td><span class="badge rounded-pill alert-danger">Inactive</span></td>
-                            <td>08.07.2022</td>
-                            <td class="text-end">
-                                <a href="page-seller-detail.php" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="40%">
-                                <a href="#" class="itemside">
-                                    <div class="left">
-                                        <img src="assets/imgs/people/avatar4.jpg" class="img-sm img-avatar" alt="Userpic">
-                                    </div>
-                                    <div class="info pl-3">
-                                        <h6 class="mb-0 title">Alex Pushkina</h6>
-                                        <small class="text-muted">Seller ID: #439</small>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>alex@gmail.org</td>
-                            <td><span class="badge rounded-pill alert-success">Active</span></td>
-                            <td>08.07.2022</td>
-                            <td class="text-end">
-                                <a href="page-seller-detail.php" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="40%">
-                                <a href="#" class="itemside">
-                                    <div class="left">
-                                        <img src="assets/imgs/people/avatar1.jpg" class="img-sm img-avatar" alt="Userpic">
-                                    </div>
-                                    <div class="info pl-3">
-                                        <h6 class="mb-0 title">Eleanor Pena</h6>
-                                        <small class="text-muted">Seller ID: #439</small>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>eleanor2022@example.com</td>
-                            <td><span class="badge rounded-pill alert-success">Active</span></td>
-                            <td>08.07.2022</td>
-                            <td class="text-end">
-                                <a href="page-seller-detail.php" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="40%">
-                                <a href="#" class="itemside">
-                                    <div class="left">
-                                        <img src="assets/imgs/people/avatar2.jpg" class="img-sm img-avatar" alt="Userpic">
-                                    </div>
-                                    <div class="info pl-3">
-                                        <h6 class="mb-0 title">Eleanor Pena</h6>
-                                        <small class="text-muted">Seller ID: #439</small>
-                                    </div>
-                                </a>
-                            </td>
-                            <td>eleanor2022@example.com</td>
-                            <td><span class="badge rounded-pill alert-success">Active</span></td>
-                            <td>08.07.2022</td>
-                            <td class="text-end">
-                                <a href="page-seller-detail.php" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
-                            </td>
-                        </tr>
+                        <?php while ($user = $user_fetch_result->fetch_assoc()) : ?>
+                            <tr>
+                                <td width="40%">
+                                    <a href="page-user-detail.php?user_id=<?= $user['user_id'] ?>" class="itemside">
+                                        <div class="left">
+                                            <img src="../assets/imgs/people/<?= $user['profile_img'] ?>" class="img-sm img-avatar" alt="Userpic">
+                                        </div>
+                                        <div class="info pl-3">
+                                            <h6 class="mb-0 title"><?= $user['f_name'] . " " . $user['l_name'] ?></h6>
+                                            <small class="text-muted">User ID: #<?= $user['user_id'] ?></small>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><?= $user['email'] ?></td>
+                                <td><span class="badge rounded-pill <?= ($user['status'] === 'Active') ? 'alert-success' : 'alert-danger' ?>"><?= $user['status'] ?></span></td>
+                                <td><?= $user['reg_date'] ?></td>
+                                <td class="text-end">
+                                    <a href="page-user-detail.php?user_id=<?= $user['user_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
+                                </td>
+                            </tr>
+                        <?php endwhile ?>
+
                     </tbody>
                 </table> <!-- table-responsive.// -->
             </div>
         </div> <!-- card-body end// -->
     </div> <!-- card end// -->
-    <div class="pagination-area mt-15 mb-50">
+    <div class="pagination-area mt-30 mb-50">
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-start">
-                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                <li class="page-item"><a class="page-link" href="#">16</a></li>
-                <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li>
+                <li class="page-item"><a class="page-link" href="?page=<?= ($page - 1 > 0) ? $page - 1 : $page ?>"><i class="material-icons md-chevron_left"></i></a></li>
+                <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+                    <li class="page-item <?php if ($i == $page) echo 'active'; ?>">
+                        <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                    </li>
+                <?php endfor; ?>
+                <li class="page-item"><a class="page-link" href="?page=<?= ($page + 1 <= $total_pages) ? $page + 1 : $page ?>"><i class="material-icons md-chevron_right"></i></a></li>
+
+
             </ul>
         </nav>
     </div>
