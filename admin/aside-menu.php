@@ -71,7 +71,7 @@ if (!isset($_SESSION['user-logged-email'])) {
                     </div>
                 </li>
                 <li class="menu-item ">
-                    <a class="menu-link" href="page-sellers-list.php"> <i class="icon material-icons md-people"></i>
+                    <a class="menu-link" href="page-users-list.php"> <i class="icon material-icons md-people"></i>
                         <span class="text">Users</span>
                     </a>
                 </li>
