@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 14, 2024 at 01:52 PM
+-- Generation Time: Apr 15, 2024 at 08:19 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,6 +48,18 @@ INSERT INTO `admin` (`email`, `phone_number`, `password`, `role`, `f_name`, `l_n
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `book_images`
+--
+
+CREATE TABLE `book_images` (
+  `ImageID` int(11) NOT NULL,
+  `ISBN` varchar(20) NOT NULL,
+  `ImagePath` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `category`
 --
 
@@ -76,18 +88,6 @@ INSERT INTO `category` (`categoryID`, `categoryName`, `numAvailableBooks`, `numD
 ('CAT-ROM-003', 'Romance', 0, 0, NULL),
 ('CAT-SCI-008', 'Science Fiction', 0, 0, 'Science fiction is a genre of speculative fiction, which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration, time travel, parallel universes, and extraterrestrial life. It is related to fantasy, horror, and superhero fiction and contains many subgenres.'),
 ('CAT-THR-004', 'Thriller', 0, 0, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `book_images`
---
-
-CREATE TABLE `book_images` (
-  `ImageID` int(11) NOT NULL,
-  `ISBN` varchar(20) NOT NULL,
-  `ImagePath` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -128,6 +128,38 @@ CREATE TABLE `exchange_post` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `location`
+--
+
+CREATE TABLE `location` (
+  `location_id` int(11) NOT NULL,
+  `division` varchar(100) DEFAULT NULL,
+  `district` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `location`
+--
+
+INSERT INTO `location` (`location_id`, `division`, `district`) VALUES
+(1, 'Dhaka', 'Dhaka'),
+(2, 'Dhaka', 'Gazipur'),
+(3, 'Dhaka', 'Kishoreganj'),
+(4, 'Dhaka', 'Manikganj'),
+(5, 'Dhaka', 'Munshiganj'),
+(6, 'Dhaka', 'Narayanganj'),
+(7, 'Dhaka', 'Narsingdi'),
+(8, 'Dhaka', 'Tangail'),
+(9, 'Dhaka', 'Faridpur'),
+(10, 'Dhaka', 'Gopalganj'),
+(11, 'Dhaka', 'Madaripur'),
+(12, 'Dhaka', 'Rajbari'),
+(13, 'Dhaka', 'Shariatpur'),
+(17, 'Barisal', 'Barisal');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `review`
 --
 
@@ -144,23 +176,23 @@ CREATE TABLE `review` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `user`
 --
 
-CREATE TABLE `users` (
-  `UserID` int(11) NOT NULL,
-  `Username` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `Email` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `Password` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `FirstName` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `LastName` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
-  `PhoneNumber` varchar(20) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
-  `UniversityAffiliation` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
-  `UniversityCity` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
-  `RegistrationDate` date DEFAULT NULL,
-  `ProfilePicture` varchar(255) DEFAULT NULL,
-  `Ratings` int(11) DEFAULT NULL,
-  `Bio` text CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL
+CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL,
+  `phone_number` varchar(20) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `f_name` varchar(255) DEFAULT NULL,
+  `l_name` varchar(255) DEFAULT NULL,
+  `reg_date` date DEFAULT current_timestamp(),
+  `bio` varchar(500) DEFAULT '',
+  `profile_img` varchar(500) DEFAULT 'defualt_profile.jpg',
+  `book_wallet` int(11) DEFAULT 0,
+  `street_address` varchar(300) DEFAULT NULL,
+  `apartment_num` varchar(300) DEFAULT NULL,
+  `postal_code` varchar(300) DEFAULT NULL,
+  `location_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -174,20 +206,19 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`email`,`phone_number`);
 
 --
-
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`categoryID`),
-  ADD UNIQUE KEY `categoryID` (`categoryID`),
-  ADD UNIQUE KEY `unique_category_name` (`categoryName`);
-
 -- Indexes for table `book_images`
 --
 ALTER TABLE `book_images`
   ADD PRIMARY KEY (`ImageID`),
   ADD KEY `ISBN` (`ISBN`);
 
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`categoryID`),
+  ADD UNIQUE KEY `categoryID` (`categoryID`),
+  ADD UNIQUE KEY `unique_category_name` (`categoryName`);
 
 --
 -- Indexes for table `exchangerequest`
@@ -206,6 +237,13 @@ ALTER TABLE `exchange_post`
   ADD KEY `OwnerUserID` (`OwnerUserID`);
 
 --
+-- Indexes for table `location`
+--
+ALTER TABLE `location`
+  ADD PRIMARY KEY (`location_id`),
+  ADD UNIQUE KEY `district` (`district`);
+
+--
 -- Indexes for table `review`
 --
 ALTER TABLE `review`
@@ -216,13 +254,12 @@ ALTER TABLE `review`
   ADD KEY `idx_ratings` (`Ratings`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `user`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`UserID`),
-  ADD UNIQUE KEY `Username` (`Username`),
-  ADD UNIQUE KEY `Email` (`Email`),
-  ADD KEY `FK_Ratings` (`Ratings`);
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `phone_number` (`phone_number`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -241,16 +278,22 @@ ALTER TABLE `exchangerequest`
   MODIFY `RequestID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `location_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
   MODIFY `ReviewID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `user`
 --
-ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -283,12 +326,6 @@ ALTER TABLE `review`
   ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`ReviewedUserID`) REFERENCES `users` (`UserID`),
   ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`ReviewerUserID`) REFERENCES `users` (`UserID`),
   ADD CONSTRAINT `review_ibfk_3` FOREIGN KEY (`ExchangeRequestID`) REFERENCES `exchangerequest` (`RequestID`);
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `FK_Ratings` FOREIGN KEY (`Ratings`) REFERENCES `review` (`Ratings`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
