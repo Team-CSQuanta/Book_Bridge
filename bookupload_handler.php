@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-session_start();
+// session_start();
 
 // Establish database connection
 $servername = "localhost";
@@ -38,29 +38,30 @@ if ($conn->connect_error) {
 // Handle form submission
 if (isset($_POST['Submit'])) {
     // Retrieve book details from the form
-    $title = $conn->real_escape_string($_POST['inputTitle']);
-    $author = $conn->real_escape_string($_POST['inputName']);
-    $genre = $conn->real_escape_string($_POST['Categories']);
-    $isbn = $conn->real_escape_string($_POST['inputisbn']);
-    $publishedYear = $conn->real_escape_string($_POST['inputyear']);
-    $language = $conn->real_escape_string($_POST['inputlang']);
-    $condition = $conn->real_escape_string($_POST['inputCond']);
-    $availabilityStatus = $conn->real_escape_string($_POST['inputStatus']);
-    $description = $conn->real_escape_string($_POST['description']);
+    $title = mysqli_real_escape_string($conn,$_POST['inputtitle']);
+    $author =mysqli_real_escape_string($conn,$_POST['inputname']);
+    $genre = mysqli_real_escape_string($conn,$_POST['categories']);
+    $isbn = mysqli_real_escape_string($conn,$_POST['inputIsbn']);
+    $publishedYear = mysqli_real_escape_string($conn,$_POST['inputYear']);
+    $language = mysqli_real_escape_string($conn,$_POST['inputLang']);
+    $condition = mysqli_real_escape_string($conn,$_POST['inputcond']);
+    $availabilityStatus = mysqli_real_escape_string($conn,$_POST['inputstatus']);
+    $description = mysqli_real_escape_string($conn,$_POST['description']);
 
     // Prepare statement to insert book data into `exchange_post` table
-    $sql = "INSERT INTO exchange_post (Title, Author, Genre, ISBN, PublishedYear, Description, Language, Conditions, AvailabilityStatus)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO exchange_post (Title, Author, ISBN, Genre,PublishedYear, Description, Language, Conditions, AvailabilityStatus)
+            VALUES ('$title','$author', '$isbn',' $genre','$publishedYear','$description', '$language', '$condition', '$availabilityStatus')";
+     
+     echo '<script>alert("Form submitted successfully!");</script>';
+    // $stmt = $conn->prepare($sql);
 
-    $stmt = $conn->prepare($sql);
+    // if (!$stmt) {
+    //     error_log("Error preparing statement: " . $conn->error);
+    //     return;
+    // }
 
-    if (!$stmt) {
-        error_log("Error preparing statement: " . $conn->error);
-        return;
-    }
-
-    // Bind parameters and execute the statement
-    $stmt->bind_param("sssisisss", $title, $author, $genre, $isbn, $publishedYear, $description, $language, $condition, $availabilityStatus);
+    // // Bind parameters and execute the statement
+    // $stmt->bind_param("sssisisss", $title, $author, $genre, $isbn, $publishedYear, $description, $language, $condition, $availabilityStatus);
 
     // if ($stmt->execute()) {
     //     // Define the upload directory
@@ -116,4 +117,4 @@ if (isset($_POST['Submit'])) {
 
 // Close the database connection
 $conn->close();
-?>
+
