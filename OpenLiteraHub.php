@@ -68,6 +68,16 @@
                                                <input type="text" class="form-control" id="inputVillage" placeholder="" required>
                                            </div>
                                         
+                                           <div class="col-md-6">
+                                               <label for="inputMobile" class="form-label">Phone Number<span style="color: red;">*</span></label>
+                                               <input type="text" class="form-control" id="inputMobile" placeholder="" required>
+                                           </div>
+                                        
+                                           <div class="col-md-6">
+                                               <label for="inputVillage" class="form-label">Additional phone number</label>
+                                               <input type="text" class="form-control" id="inputVillage" placeholder="" >
+                                           </div>
+                                        
                                           
                                
                                            <div class="col-md-12">
