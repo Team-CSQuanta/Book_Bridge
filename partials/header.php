@@ -192,6 +192,7 @@
                                             <li><a href="page-contact.php">Contact</a></li>
                                             <li><a href="page-account.php">My Account</a></li>
                                             <li><a href="page-login-register.php">login/register</a></li>
+                                            <li><a href="OpenLiteraHUb.php">Apply for Litera Hub</a></li>
                                             <li><a href="page-purchase-guide.php">Purchase Guide</a></li>
                                             <li><a href="page-privacy-policy.php">Privacy Policy</a></li>
                                             <li><a href="page-terms.php">Terms of Service</a></li>
