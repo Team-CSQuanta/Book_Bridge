@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2024 at 10:29 AM
+-- Generation Time: Apr 22, 2024 at 10:35 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -45,6 +45,22 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`admin_id`, `email`, `phone_number`, `password`, `role`, `f_name`, `l_name`, `profile_img`, `address`) VALUES
 (1, 'foyez4m@gmail.com', '01965750798', 'admin', 'admin', 'Foyez Ahammed ', 'Naeem', '661647f5ab3064.76243598.png', 'Mouchak');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bibliophile_club`
+--
+
+CREATE TABLE `bibliophile_club` (
+  `club_id` int(11) NOT NULL,
+  `club_name` varchar(250) DEFAULT NULL,
+  `address_line` varchar(500) DEFAULT NULL,
+  `location_id` int(11) DEFAULT NULL,
+  `club_manager_id` int(11) DEFAULT NULL,
+  `club_description` varchar(500) DEFAULT NULL,
+  `club_img` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -221,6 +237,14 @@ ALTER TABLE `admin`
   ADD UNIQUE KEY `unique_phone_name` (`email`,`phone_number`);
 
 --
+-- Indexes for table `bibliophile_club`
+--
+ALTER TABLE `bibliophile_club`
+  ADD PRIMARY KEY (`club_id`),
+  ADD KEY `location_id` (`location_id`),
+  ADD KEY `club_manager_id` (`club_manager_id`);
+
+--
 -- Indexes for table `book_images`
 --
 ALTER TABLE `book_images`
@@ -287,6 +311,12 @@ ALTER TABLE `admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `bibliophile_club`
+--
+ALTER TABLE `bibliophile_club`
+  MODIFY `club_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `book_images`
 --
 ALTER TABLE `book_images`
@@ -319,6 +349,13 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `bibliophile_club`
+--
+ALTER TABLE `bibliophile_club`
+  ADD CONSTRAINT `bibliophile_club_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`),
+  ADD CONSTRAINT `bibliophile_club_ibfk_2` FOREIGN KEY (`club_manager_id`) REFERENCES `admin` (`admin_id`);
 
 --
 -- Constraints for table `book_images`
