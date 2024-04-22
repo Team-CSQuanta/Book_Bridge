@@ -27,7 +27,7 @@ require './aside-menu.php';
         <div class="col-lg-3">
             <div class="card card-body mb-4">
                 <article class="icontext">
-                    <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-star"></i></span>
+                    <span class="icon icon-sm rounded-circle bg-success-light"><i class="text-success material-icons md-stars"></i></span>
                     <div class="text">
                         <h6 class="mb-1 card-title">Total Whishes</h6> <span>32324</span>
                         <span class="text-sm">

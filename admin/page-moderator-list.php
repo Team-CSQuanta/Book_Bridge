@@ -1,7 +1,7 @@
 <?php
 require './aside-menu.php';
 // Pagination parameters
-$limit = 6;
+$limit = 2;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($page - 1) * $limit;
 
