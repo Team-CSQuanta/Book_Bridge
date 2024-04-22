@@ -13,9 +13,9 @@
    <meta name="author" content="ashishmaraviya">
 
    <!-- site Favicon -->
-   <link rel="icon" href="assets2/images/favicon/favicon.png" sizes="32x32" />
-   <link rel="apple-touch-icon" href="assets2/images/favicon/favicon.png" />
-   <meta name="msapplication-TileImage" content="assets2/images/favicon/favicon.png" />
+   <link rel="icon" href="assets/imgs/theme/favicon.png" sizes="32x32" />
+   <link rel="apple-touch-icon" href="assets/imgs/theme/favicon.png" />
+   <meta name="msapplication-TileImage" content="assets/imgs/theme/favicon.png" />
 
    <!-- css Icon Font -->
    <link rel="stylesheet" href="assets2/css/vendor/ecicons.min.css" />
@@ -36,15 +36,12 @@
    <!-- Main Style -->
    <link rel="stylesheet" href="assets2/css/style.css" />
    <link rel="stylesheet" href="assets2/css/responsive.css" />
-
+   <?php include_once 'bookupload_handler.php';?>
    <!-- Background css -->
    <link rel="stylesheet" id="bg-switcher-css" href="assets2/css/backgrounds/bg-4.css">
-   <?php include_once 'bookupload_handler.php'; ?>
+  
 </head>
 <body class="shop_page">
-  
-
-
   
    <!-- Vendor upload section -->
    <section class="ec-page-content ec-vendor-uploads section-space-p">
@@ -171,14 +168,14 @@
                                </div>
                                <div class="col-lg-8">
                                    <div class="ec-vendor-upload-detail">
-                                       <form class="row g-3">
+                                       <form class="row g-3" method="post" action="bookupload_handler.php">
                                            <div class="col-md-6">
                                                <label for="inputTitle" class="form-label">Book Title</label>
-                                               <input type="text" class="form-control" id="inputTitle">
+                                               <input type="text" class="form-control" id="inputTitle"  name="inputtitle">
                                            </div>
                                            <div class="col-md-6">
                                                <label for="inputName" class="form-label">Author Name</label>
-                                               <input type="text" class="form-control" id="inputName">
+                                               <input type="text" class="form-control" id="inputName" name="inputname">
                                            </div>
                                           
                                            <div class="col-md-6">
@@ -201,28 +198,28 @@
                                            </div>
                                            <div class="col-md-6">
                                                <label for="inputisbn" class="form-label">ISBN</label>
-                                               <input type="text" class="form-control" id="inputisbn">
+                                               <input type="text" class="form-control" id="inputisbn" name="inputIsbn">
                                            </div>
                                            <div class="col-md-6">
                                                <label for="inputyear" class="form-label">Publishing Year</label>
-                                               <input type="text" class="form-control" id="inputyear">
+                                               <input type="text" class="form-control" id="inputyear" name="inputYear">
                                            </div>
                                            <div class="col-md-6">
                                                <label for="inputlang" class="form-label">Language</label>
-                                               <input type="text" class="form-control" id="inputlang">
+                                               <input type="text" class="form-control" id="inputlang" name="inputLang">
                                            </div>
                                            <div class="col-md-6">
                                                <label for="inputCond" class="form-label">Condition</label>
-                                               <input type="text" class="form-control" id="inputCond">
+                                               <input type="text" class="form-control" id="inputCond" name="inputcond">
                                            </div>
                                            <div class="col-md-6">
                                                <label for="inputStatus" class="form-label">Availability Status</label>
-                                               <input type="text" class="form-control" id="inputStatus">
+                                               <input type="text" class="form-control" id="inputStatus" name="inputstatus">
                                            </div>
                                            <div class="col-md-12">
                                                <label class="form-label">Short Description</label>
-                                               <textarea class="form-control"
-                                                   rows="2"></textarea>
+                                               <textarea class="form-control" rows="2" name="description"></textarea>
+
                                            </div>
                                           
                                        
@@ -310,7 +307,7 @@ function getLanguageName(languageCode) {
         'en': 'English',
         'es': 'Spanish',
         'fr': 'French',
-        'bn':  'Bangla',
+        'bn': 'Bangla',
         // Add more language codes and names as needed
     };
     return languageNames[languageCode] || 'N/A';
