@@ -5,12 +5,7 @@ require './aside-menu.php';
     <div class="content-header">
         <div>
             <h2 class="content-title card-title">Exchange offers</h2>
-            <p>Lorem ipsum dolor sit amet.</p>
-        </div>
-        <div>
-            <a href="#" class="btn btn-light rounded font-md">Export</a>
-            <a href="#" class="btn btn-light rounded  font-md">Import</a>
-            <a href="#" class="btn btn-primary btn-sm rounded">Create new</a>
+            <p>Plaforms Available Offers</p>
         </div>
     </div>
     <div class="card mb-4">

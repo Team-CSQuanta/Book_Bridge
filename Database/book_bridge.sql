@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 15, 2024 at 09:18 AM
+-- Generation Time: Apr 22, 2024 at 10:29 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
+  `admin_id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone_number` varchar(11) NOT NULL,
   `password` varchar(100) NOT NULL,
@@ -42,8 +43,8 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`email`, `phone_number`, `password`, `role`, `f_name`, `l_name`, `profile_img`, `address`) VALUES
-('foyez4m@gmail.com', '01965750798', 'admin', 'admin', 'Foyez Ahammed ', 'Naeem', '661647f5ab3064.76243598.png', 'Mouchak');
+INSERT INTO `admin` (`admin_id`, `email`, `phone_number`, `password`, `role`, `f_name`, `l_name`, `profile_img`, `address`) VALUES
+(1, 'foyez4m@gmail.com', '01965750798', 'admin', 'admin', 'Foyez Ahammed ', 'Naeem', '661647f5ab3064.76243598.png', 'Mouchak');
 
 -- --------------------------------------------------------
 
@@ -192,8 +193,21 @@ CREATE TABLE `user` (
   `street_address` varchar(300) DEFAULT NULL,
   `apartment_num` varchar(300) DEFAULT NULL,
   `postal_code` varchar(300) DEFAULT NULL,
-  `location_id` int(11) DEFAULT NULL
+  `location_id` int(11) DEFAULT NULL,
+  `status` varchar(50) NOT NULL DEFAULT 'Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `phone_number`, `email`, `f_name`, `l_name`, `reg_date`, `bio`, `profile_img`, `book_wallet`, `street_address`, `apartment_num`, `postal_code`, `location_id`, `status`) VALUES
+(1, '01715031376', 'sadia@gmail.com', 'Sadia Islam', 'Ema', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
+(2, '01715031420', 'rakib@gmail.com', 'Rakibul Islam', 'Rakib', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
+(6, '01795031420', 'motasim@gmail.com', 'Motasim Billah', '', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
+(7, '017153431420', 'sakib@gmail.com', 'Sakibul Islam', 'Rakib', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Inactive'),
+(8, '01715031820', 'somik@gmail.com', 'Somik hasan', 'oikko', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
+(9, '01836923942', 'Tanvir@gmail.com', 'Tanvir', 'Ahmend', '2024-04-15', 'This is a bio for tanvir ahmed', 'defualt_profile.jpg', 0, 'Kawran Bazar', 'Apt-33', '2143', 2, 'Active');
 
 --
 -- Indexes for dumped tables
@@ -203,7 +217,8 @@ CREATE TABLE `user` (
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`email`,`phone_number`);
+  ADD PRIMARY KEY (`admin_id`),
+  ADD UNIQUE KEY `unique_phone_name` (`email`,`phone_number`);
 
 --
 -- Indexes for table `book_images`
@@ -266,6 +281,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `book_images`
 --
 ALTER TABLE `book_images`
@@ -293,7 +314,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables
@@ -304,28 +325,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `book_images`
   ADD CONSTRAINT `book_images_ibfk_1` FOREIGN KEY (`ISBN`) REFERENCES `exchange_post` (`ISBN`) ON DELETE CASCADE;
-
---
--- Constraints for table `exchangerequest`
---
-ALTER TABLE `exchangerequest`
-  ADD CONSTRAINT `exchangerequest_ibfk_1` FOREIGN KEY (`SenderUserID`) REFERENCES `users` (`UserID`),
-  ADD CONSTRAINT `exchangerequest_ibfk_2` FOREIGN KEY (`ReceiverUserID`) REFERENCES `users` (`UserID`),
-  ADD CONSTRAINT `exchangerequest_ibfk_3` FOREIGN KEY (`BookISBN`) REFERENCES `exchange_post` (`ISBN`);
-
---
--- Constraints for table `exchange_post`
---
-ALTER TABLE `exchange_post`
-  ADD CONSTRAINT `exchange_post_ibfk_1` FOREIGN KEY (`OwnerUserID`) REFERENCES `users` (`UserID`);
-
---
--- Constraints for table `review`
---
-ALTER TABLE `review`
-  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`ReviewedUserID`) REFERENCES `users` (`UserID`),
-  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`ReviewerUserID`) REFERENCES `users` (`UserID`),
-  ADD CONSTRAINT `review_ibfk_3` FOREIGN KEY (`ExchangeRequestID`) REFERENCES `exchangerequest` (`RequestID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

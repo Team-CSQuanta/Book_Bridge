@@ -5,13 +5,13 @@ require './aside-menu.php';
     <div class="content-header">
         <div>
             <h2 class="content-title card-title">All wishes</h2>
-            <p>Lorem ipsum dolor sit amet.</p>
+            <p>Here you can see which books are users wanted right now!</p>
         </div>
-        <div>
+        <!-- <div>
             <a href="#" class="btn btn-light rounded font-md">Export</a>
             <a href="#" class="btn btn-light rounded  font-md">Import</a>
             <a href="#" class="btn btn-primary btn-sm rounded">Create new</a>
-        </div>
+        </div> -->
     </div>
     <div class="card mb-4">
         <header class="card-header">
