@@ -76,6 +76,7 @@ if (!isset($_SESSION['user-logged-email'])) {
                     <div class="submenu">
                         <a href="page-club-list.php">Club List</a>
                         <a href="page-form-add-club.php">Add Club</a>
+                        <a href="page-form-add-club.php">Club Managers</a>
                         <a href="page-club-request-list.php">Club Requests</a>
                     </div>
                 </li>
@@ -104,7 +105,7 @@ if (!isset($_SESSION['user-logged-email'])) {
                         <a href="page-form-product-4.php">Add product 4</a>
                     </div>
                 </li> -->
-                <li class="menu-item has-submenu">
+                <!-- <li class="menu-item has-submenu">
                     <a class="menu-link" href="page-transactions-1.php"> <i class="icon material-icons md-update"></i>
                         <span class="text">Book Transaction</span>
                     </a>
@@ -113,13 +114,13 @@ if (!isset($_SESSION['user-logged-email'])) {
                         <a href="page-transactions-2.php">Transaction 2</a>
                         <a href="page-transactions-details.php">Transaction Details</a>
                     </div>
-                </li>
+                </li> -->
 
-                <li class="menu-item">
+                <!-- <li class="menu-item">
                     <a class="menu-link" href="page-reviews.php"> <i class="icon material-icons md-comment"></i>
                         <span class="text">Reviews</span>
                     </a>
-                </li>
+                </li> -->
 
             </ul>
             <hr>
