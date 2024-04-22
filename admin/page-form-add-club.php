@@ -1,5 +1,8 @@
 <?php
 require './aside-menu.php';
+$location_query = "SELECT *
+                   FROM location";
+$location_query_result = $connection->query($location_query);
 ?>
 <section class="content-main">
     <div class="row">
@@ -7,7 +10,6 @@ require './aside-menu.php';
             <div class="content-header">
                 <h2 class="content-title">Add New Club</h2>
                 <div>
-                    <!-- <button class="btn btn-light rounded font-sm mr-5 text-body hover-up">Save to draft</button> -->
                     <button class="btn btn-md rounded font-sm hover-up">Add</button>
                 </div>
             </div>
@@ -15,50 +17,18 @@ require './aside-menu.php';
         <div class="col-lg-6">
             <div class="card mb-4">
                 <div class="card-header">
-                    <h4>Basic</h4>
+                    <h4>Basic info</h4>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="./handler/add-club.php" method="post">
                         <div class="mb-4">
-                            <label for="product_name" class="form-label">Club name</label>
-                            <input type="text" placeholder="Type here" class="form-control" id="product_name">
+                            <label for="club_name" class="form-label">Club name</label>
+                            <input type="text" placeholder="Type here" class="form-control" id="club_name" name="club_name" required>
                         </div>
                         <div class="mb-4">
                             <label class="form-label">Full description</label>
-                            <textarea placeholder="Type here" class="form-control" rows="4"></textarea>
+                            <textarea placeholder="Type here" class="form-control" rows="4" name="club_description"></textarea>
                         </div>
-                        <!-- <div class="row">
-                            <div class="col-lg-4">
-                                <div class="mb-4">
-                                    <label class="form-label">Regular price</label>
-                                    <div class="row gx-2">
-                                        <input placeholder="$" type="text" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="mb-4">
-                                    <label class="form-label">Promotional price</label>
-                                    <input placeholder="$" type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <label class="form-label">Currency</label>
-                                <select class="form-select">
-                                    <option> USD </option>
-                                    <option> EUR </option>
-                                    <option> RUBL </option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="mb-4">
-                            <label class="form-label">Tax rate</label>
-                            <input type="text" placeholder="%" class="form-control" id="product_name">
-                        </div>
-                        <label class="form-check mb-4">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <span class="form-check-label"> Make a template </span>
-                        </label> -->
                     </form>
                 </div>
             </div> <!-- card end// -->
@@ -67,40 +37,34 @@ require './aside-menu.php';
                     <h4>Location</h4>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="./handler/add-club.php" method="post">
                         <div class="row">
                             <div class="mb-4">
                                 <label for="product_name" class="form-label">Address Line 1</label>
-                                <input type="text" placeholder="" class="form-control" id="product_name" required>
+                                <input type="text" placeholder="" class="form-control" id="product_name" name="address-line" required>
                             </div>
-
                             <div class="col-lg-6">
                                 <label class="form-label">District</label>
-                                <select class="form-select">
-                                    <option> Dhaka </option>
-                                    <option> Gazipur</option>
-                                    <option> Narayangang </option>
-                                    <option> Chandpur </option>
-                                    <option> Rajshahi </option>
-                                    <option> Chattogram </option>
+                                <select class="form-select" name="district">
+                                    <?php while ($district = $location_query_result->fetch_assoc()) : ?>
+                                        <option> <?= $district['district'] ?> </option>
+                                    <?php endwhile ?>
                                 </select>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-4">
                                     <label class="form-label">Division</label>
                                     <select class="form-select">
-                                        <option> Dhaka </option>
-                                        <option> Kumilla</option>
-                                        <option> Chattogram </option>
+                                        <?php while ($division = $location_query_result->fetch_assoc()) : ?>
+                                            <option> <?= $division['division'] ?> </option>
+                                        <?php endwhile ?>
                                     </select>
                                 </div>
                             </div>
                         </div>
-
-
                     </form>
                 </div>
-            </div> <!-- card end// -->
+            </div>
         </div>
         <div class="col-lg-3">
             <div class="card mb-4">
@@ -108,50 +72,42 @@ require './aside-menu.php';
                     <h4>Club Profile Picture</h4>
                 </div>
                 <div class="card-body">
-                    <div class="input-upload">
-                        <img src="assets/imgs/theme/upload.svg" alt="">
-                        <input class="form-control" type="file">
-                    </div>
-                </div>
-            </div> <!-- card end// -->
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h4>Administration</h4>
-                </div>
-                <div class="card-body">
-                    <div class="row gx-2">
-                        <div class=" mb-4">
-                            <label class="form-label">Manager</label>
-                            <select class="form-select">
-                                <option> Automobiles </option>
-                                <option> Home items </option>
-                                <option> Electronics </option>
-                                <option> Smartphones </option>
-                                <option> Sport items </option>
-                                <option> Baby and Tous </option>
-                            </select>
+                    <form action="./handler/add-club.php" method="post" enctype="multipart/form-data">
+                        <div class="input-upload">
+                            <img id="previewImage" src="assets/imgs/theme/upload.svg" alt="Preview Image">
+                            <input class="form-control" type="file" id="clubImageInput" onchange="previewImage(event)">
                         </div>
-                        <!-- <div class="col-sm-6 mb-3">
-                            <label class="form-label">Sub-category</label>
-                            <select class="form-select">
-                                <option> Nissan </option>
-                                <option> Honda </option>
-                                <option> Mercedes </option>
-                                <option> Chevrolet </option>
-                            </select>
-                        </div> -->
-                        <!-- <div class="mb-4">
-                            <label for="product_name" class="form-label">Tags</label>
-                            <input type="text" class="form-control">
-                        </div> -->
-                    </div> <!-- row.// -->
+                    </form>
                 </div>
-            </div> <!-- card end// -->
+            </div>
         </div>
     </div>
 </section> <!-- content-main end// -->
 
 </main>
+<script>
+    window.onload = function() {
+        document.getElementById('clubImageInput').addEventListener('change', previewImage);
+    };
+
+    function previewImage(event) {
+        const preview = document.getElementById('previewImage');
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function() {
+            preview.src = reader.result;
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "assets/imgs/theme/upload.svg"; // Display default image if no file selected
+        }
+    }
+</script>
+
+
 <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
 <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
 <script src="assets/js/vendors/select2.min.js"></script>
