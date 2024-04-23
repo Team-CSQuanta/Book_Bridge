@@ -64,19 +64,24 @@
           
                                                 </select>
                                            </div>
+
+                                           <div class="col-md-6">
+                                               <label for="inputCity" class="form-label">Division<span style="color: red;">*</span></label>
+                                               <input type="text" class="form-control" id="inputCity" name="division"   placeholder="" required>
+                                           </div>
+
                                            <div class="col-md-6">
                                                <label for="inputDis" class="form-label">District<span style="color: red;">*</span></label>
                                                <input type="text" class="form-control" id="inputDis" name="district" placeholder="" required>
                                            </div>
 
+                                           
+
                                            <div class="col-md-6">
                                                <label for="inputCity" class="form-label">City/ Upazila/ Thana<span style="color: red;">*</span></label>
                                                <input type="text" class="form-control" id="inputCity" name="upazila"   placeholder="" required>
                                            </div>
-                                           <div class="col-md-6">
-                                               <label for="inputVillage" class="form-label">Village/ Area<span style="color: red;">*</span></label>
-                                               <input type="text" class="form-control" id="inputVillage" name="village" placeholder="" required>
-                                           </div>
+                                          
                                         
                                            <div class="col-md-6">
                                                <label for="inputMobile" class="form-label">Phone Number<span style="color: red;">*</span></label>
@@ -84,8 +89,8 @@
                                            </div>
                                         
                                            <div class="col-md-6">
-                                               <label for="inputVillage" class="form-label">Additional phone number</label>
-                                               <input type="text" class="form-control" id="inputVillage" name="phoneNum2" placeholder="" >
+                                               <label for="inputMobile2" class="form-label">Additional phone number</label>
+                                               <input type="text" class="form-control" id="inputMobile2" name="phoneNum2" placeholder="" >
                                            </div>
                                         
                                           
