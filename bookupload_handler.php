@@ -17,23 +17,23 @@ if ($conn->connect_error) {
 }
 
 // Function to handle image uploads
-// function handleImageUpload($file, $isbn, $uploadDir) {
-//     if ($file['error'] !== UPLOAD_ERR_OK) {
-//         error_log("Error uploading file: " . $file['error']);
-//         return false;
-//     }
+function handleImageUpload($file, $isbn, $uploadDir) {
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+        error_log("Error uploading file: " . $file['error']);
+        return false;
+    }
 
-//     $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
-//     $fileName = $isbn . '_' . uniqid() . '.' . $extension;
-//     $filePath = $uploadDir . $fileName;
+    $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+    $fileName = $isbn . '_' . uniqid() . '.' . $extension;
+    $filePath = $uploadDir . $fileName;
 
-//     if (move_uploaded_file($file['tmp_name'], $filePath)) {
-//         return $filePath;
-//     } else {
-//         error_log("Error moving file: " . $file['name']);
-//         return false;
-//     }
-// }
+    if (move_uploaded_file($file['tmp_name'], $filePath)) {
+        return $filePath;
+    } else {
+        error_log("Error moving file: " . $file['name']);
+        return false;
+    }
+}
 
 // Handle form submission
 if (isset($_POST['Submit'])) {
@@ -53,66 +53,66 @@ if (isset($_POST['Submit'])) {
             VALUES ('$title','$author', '$isbn',' $genre','$publishedYear','$description', '$language', '$condition', '$availabilityStatus')";
      
      echo '<script>alert("Form submitted successfully!");</script>';
-    // $stmt = $conn->prepare($sql);
+    $stmt = $conn->prepare($sql);
 
-    // if (!$stmt) {
-    //     error_log("Error preparing statement: " . $conn->error);
-    //     return;
-    // }
+    if (!$stmt) {
+        error_log("Error preparing statement: " . $conn->error);
+        return;
+    }
 
-    // // Bind parameters and execute the statement
-    // $stmt->bind_param("sssisisss", $title, $author, $genre, $isbn, $publishedYear, $description, $language, $condition, $availabilityStatus);
+    // Bind parameters and execute the statement
+    $stmt->bind_param("sssisisss", $title, $author, $genre, $isbn, $publishedYear, $description, $language, $condition, $availabilityStatus);
 
-    // if ($stmt->execute()) {
-    //     // Define the upload directory
-    //     $uploadDir = "uploads/";
+    if ($stmt->execute()) {
+        // Define the upload directory
+        $uploadDir = "uploads/";
 
-    //     // Define the array of file input IDs
-    //     $fileInputIDs = [
-    //         'imageUpload',
-    //         'thumbUpload01',
-    //         'thumbUpload02',
-    //         'thumbUpload03',
-    //         'thumbUpload04',
-    //         'thumbUpload05',
-    //         'thumbUpload06'
-    //     ];
+        // Define the array of file input IDs
+        $fileInputIDs = [
+            'imageUpload',
+            'thumbUpload01',
+            'thumbUpload02',
+            'thumbUpload03',
+            'thumbUpload04',
+            'thumbUpload05',
+            'thumbUpload06'
+        ];
 
-    //     // Handle each file upload
-    //     foreach ($fileInputIDs as $inputID) {
-    //         if (isset($_FILES[$inputID])) {
-    //             $file = $_FILES[$inputID];
+        // Handle each file upload
+        foreach ($fileInputIDs as $inputID) {
+            if (isset($_FILES[$inputID])) {
+                $file = $_FILES[$inputID];
 
-    //             // Handle image upload
-    //             $filePath = handleImageUpload($file, $isbn, $uploadDir);
+                // Handle image upload
+                $filePath = handleImageUpload($file, $isbn, $uploadDir);
 
-    //             if ($filePath) {
-    //                 // Insert the file path into the `book_images` table
-    //                 $sql = "INSERT INTO book_images (ISBN, ImagePath) VALUES (?, ?)";
-    //                 $stmt = $conn->prepare($sql);
+                if ($filePath) {
+                    // Insert the file path into the `book_images` table
+                    $sql = "INSERT INTO book_images (ISBN, ImagePath) VALUES (?, ?)";
+                    $stmt = $conn->prepare($sql);
 
-    //                 if (!$stmt) {
-    //                     error_log("Error preparing statement: " . $conn->error);
-    //                     continue;
-    //                 }
+                    if (!$stmt) {
+                        error_log("Error preparing statement: " . $conn->error);
+                        continue;
+                    }
 
-    //                 $stmt->bind_param("ss", $isbn, $filePath);
+                    $stmt->bind_param("ss", $isbn, $filePath);
 
-    //                 if (!$stmt->execute()) {
-    //                     error_log("Error inserting image path into book_images table: " . $stmt->error);
-    //                 }
-    //             } else {
-    //                 error_log("Error uploading file for input: " . $inputID);
-    //             }
-    //         }
-    //     }
-    //     echo '<script>alert("Book and images uploaded successfully!"); location="index.php";</script>';
-    // } else {
-    //     error_log("Error inserting book data: " . $stmt->error);
-    // }
+                    if (!$stmt->execute()) {
+                        error_log("Error inserting image path into book_images table: " . $stmt->error);
+                    }
+                } else {
+                    error_log("Error uploading file for input: " . $inputID);
+                }
+            }
+        }
+        echo '<script>alert("Book and images uploaded successfully!"); location="index.php";</script>';
+    } else {
+        error_log("Error inserting book data: " . $stmt->error);
+    }
 
-    // // Close the statement
-    // $stmt->close();
+    // Close the statement
+    $stmt->close();
 }
 
 // Close the database connection
