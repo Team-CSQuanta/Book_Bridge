@@ -2,10 +2,12 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 23, 2024 at 03:45 AM
+
+-- Host: localhost
+-- Generation Time: Apr 23, 2024 at 03:31 AM
+
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,15 +38,19 @@ CREATE TABLE `admin` (
   `f_name` varchar(255) NOT NULL,
   `l_name` varchar(255) NOT NULL,
   `profile_img` varchar(255) NOT NULL,
-  `address` varchar(255) DEFAULT NULL
+  `address` varchar(255) DEFAULT NULL,
+  `location_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`admin_id`, `email`, `phone_number`, `password`, `role`, `f_name`, `l_name`, `profile_img`, `address`) VALUES
-(1, 'foyez4m@gmail.com', '01965750798', 'admin', 'admin', 'Foyez Ahammed ', 'Naeem', '661647f5ab3064.76243598.png', 'Mouchak');
+
+INSERT INTO `admin` (`admin_id`, `email`, `phone_number`, `password`, `role`, `f_name`, `l_name`, `profile_img`, `address`, `location_id`) VALUES
+(1, 'foyez4m@gmail.com', '01965750798', 'admin', 'admin', 'Foyez Ahammed ', 'Naeem', '6626b030bab5a2.42704375.jpg', 'Mouchak', 1),
+(10, 'rifat@gmail.com', '01936599274', '$2y$10$VDh.ILZQqaIrXmZwL9dPcu8Cxrr8VWwb4AqN9Gh6pQx/oIB7b9X5q', 'moderator', 'Rifat', 'Hossain', 'MODERATOR-66270f437de282.98001612.jpg', 'Mouchak, Kaliakair', 12);
+
 
 -- --------------------------------------------------------
 
@@ -154,6 +160,7 @@ CREATE TABLE `location` (
   `division` varchar(100) DEFAULT NULL,
   `district` varchar(100) DEFAULT NULL,
   `upazila` varchar(20) NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -200,6 +207,7 @@ CREATE TABLE `request_to_set_up_hub` (
 
 INSERT INTO `request_to_set_up_hub` (`RequestID`, `FullName`, `email`, `LocationID`, `Phone_Num`, `Add_Phn_Num`, `RequestStatus`) VALUES
 (0, 'foyezz', 'foyezz@gmail.com', 22, '234567', '', NULL);
+
 
 -- --------------------------------------------------------
 
@@ -261,7 +269,10 @@ INSERT INTO `user` (`user_id`, `phone_number`, `email`, `f_name`, `l_name`, `reg
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`),
-  ADD UNIQUE KEY `unique_phone_name` (`email`,`phone_number`);
+
+  ADD UNIQUE KEY `unique_phone_name` (`email`,`phone_number`),
+  ADD KEY `fk_location_id` (`location_id`);
+
 
 --
 -- Indexes for table `bibliophile_club`
@@ -335,7 +346,8 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `bibliophile_club`
@@ -359,7 +371,8 @@ ALTER TABLE `exchangerequest`
 -- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
-  MODIFY `location_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+  MODIFY `location_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -376,6 +389,13 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
+
+--
+
+-- Constraints for table `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `fk_location_id` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`);
 
 --
 -- Constraints for table `bibliophile_club`

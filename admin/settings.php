@@ -64,9 +64,9 @@ require './aside-menu.php';
                                 </div> <!-- col.// -->
                                 <aside class="col-lg-4">
                                     <figure class="text-lg-center">
-                                        <img class="img-lg mb-3 img-avatar" src="<?= './assets/imgs/people/' . $_SESSION['profile_img'] ?>" alt="User Photo">
+                                        <img class="img-lg mb-3 img-avatar" id="previewImage" src="<?= './assets/imgs/people/' . $_SESSION['profile_img'] ?>" alt="User Photo">
                                         <figcaption>
-                                        <input class="form-control" type="file" name="profile_img" accept="image/*">
+                                        <input class="form-control" type="file" id="profile_img" name="profile_img" accept="image/*" onchange="previewImage(event)">
                                         </figcaption>
                                     </figure>
                                 </aside> <!-- col.// -->
@@ -99,6 +99,27 @@ require './aside-menu.php';
 </section> <!-- content-main end// -->
 
 </main>
+<script>
+    window.onload = function() {
+        document.getElementById('profile_img').addEventListener('change', previewImage);
+    };
+
+    function previewImage(event) {
+        const preview = document.getElementById('previewImage');
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function() {
+            preview.src = reader.result;
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "<?= './assets/imgs/people/' . $_SESSION['profile_img'] ?>";
+        }
+    }
+</script>
 <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
 <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
 <script src="assets/js/vendors/select2.min.js"></script>

@@ -8,8 +8,7 @@ require './config/database.php';
 if (!isset($_SESSION['user-logged-email'])) {
     header("Location: http://localhost/Book_Bridge/admin-login.php");
     exit();
-
-} 
+}
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -24,7 +23,7 @@ if (!isset($_SESSION['user-logged-email'])) {
     <meta property="og:type" content="">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
-    
+
     <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -59,7 +58,7 @@ if (!isset($_SESSION['user-logged-email'])) {
                     </a>
                 </li>
                 <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-orders-1.php"> <i class="icon material-icons md-shopping_cart"></i>
+                    <a class="menu-link" href="page-orders-1.php"> <i class="icon material-icons md-swap_calls"></i>
                         <span class="text">On going exchange</span>
                     </a>
                     <div class="submenu">
@@ -70,12 +69,32 @@ if (!isset($_SESSION['user-logged-email'])) {
                         <a href="page-invoice.php">Invoice</a>
                     </div>
                 </li>
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href=""> <i class="icon material-icons md-business"></i>
+                        <span class="text">Bibliophile Club</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="page-club-list.php">Club List</a>
+                        <a href="page-form-add-club.php">Add Club</a>
+                        <a href="page-form-add-club.php">Club Managers</a>
+                        <a href="page-club-request-list.php">Club Requests</a>
+                    </div>
+                </li>
                 <li class="menu-item ">
-                    <a class="menu-link" href="page-sellers-list.php"> <i class="icon material-icons md-people"></i>
+                    <a class="menu-link" href="page-users-list.php"> <i class="icon material-icons md-people"></i>
                         <span class="text">Users</span>
                     </a>
                 </li>
                 <li class="menu-item has-submenu">
+                    <a class="menu-link" href="page-moderator-list.php"> <i class="icon material-icons md-supervised_user_circle"></i>
+                        <span class="text">Moderators</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="page-add-moderator.php">Add Moderator</a>
+                        <a href="page-moderator-list.php">Moderators List</a>
+                    </div>
+                </li>
+                <!-- <li class="menu-item has-submenu">
                     <a class="menu-link" href="page-form-product-1.php"> <i class="icon material-icons md-add_box"></i>
                         <span class="text">Add product</span>
                     </a>
@@ -85,23 +104,23 @@ if (!isset($_SESSION['user-logged-email'])) {
                         <a href="page-form-product-3.php">Add product 3</a>
                         <a href="page-form-product-4.php">Add product 4</a>
                     </div>
-                </li>
-                <li class="menu-item has-submenu">
-                    <a class="menu-link" href="page-transactions-1.php"> <i class="icon material-icons md-monetization_on"></i>
-                        <span class="text">Transactions</span>
+                </li> -->
+                <!-- <li class="menu-item has-submenu">
+                    <a class="menu-link" href="page-transactions-1.php"> <i class="icon material-icons md-update"></i>
+                        <span class="text">Book Transaction</span>
                     </a>
                     <div class="submenu">
                         <a href="page-transactions-1.php">Transaction 1</a>
                         <a href="page-transactions-2.php">Transaction 2</a>
                         <a href="page-transactions-details.php">Transaction Details</a>
                     </div>
-                </li>
+                </li> -->
 
-                <li class="menu-item">
+                <!-- <li class="menu-item">
                     <a class="menu-link" href="page-reviews.php"> <i class="icon material-icons md-comment"></i>
                         <span class="text">Reviews</span>
                     </a>
-                </li>
+                </li> -->
 
             </ul>
             <hr>
