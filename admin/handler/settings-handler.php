@@ -87,8 +87,6 @@ if (isset($_POST['save-changes'])) {
             echo '<script>alert("The file type is not allowed!");</script>';
         }
         $_SESSION['profile_img'] = $file_name_for_upload;
-
-
         $query = "UPDATE admin
                   SET profile_img = '$file_name_for_upload'
                   WHERE email = '$actual_email'";

@@ -3,24 +3,27 @@ require './aside-menu.php';
 $location_query = "SELECT *
                    FROM location";
 $location_query_result = $connection->query($location_query);
+$location_query_division = "SELECT distinct division
+                            FROM location";
+$location_query_division_result = $connection->query($location_query_division);
 ?>
 <section class="content-main">
-    <div class="row">
-        <div class="col-9">
-            <div class="content-header">
-                <h2 class="content-title">Add New Club</h2>
-                <div>
-                    <button class="btn btn-md rounded font-sm hover-up">Add</button>
+    <form action="./handler/add-club.php" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-9">
+                <div class="content-header">
+                    <h2 class="content-title">Add New Club</h2>
+                    <div>
+                        <button class="btn btn-md rounded font-sm hover-up" name="add-btn">Add</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h4>Basic info</h4>
-                </div>
-                <div class="card-body">
-                    <form action="./handler/add-club.php" method="post">
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>Basic info</h4>
+                    </div>
+                    <div class="card-body">
                         <div class="mb-4">
                             <label for="club_name" class="form-label">Club name</label>
                             <input type="text" placeholder="Type here" class="form-control" id="club_name" name="club_name" required>
@@ -29,23 +32,21 @@ $location_query_result = $connection->query($location_query);
                             <label class="form-label">Full description</label>
                             <textarea placeholder="Type here" class="form-control" rows="4" name="club_description"></textarea>
                         </div>
-                    </form>
-                </div>
-            </div> <!-- card end// -->
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h4>Location</h4>
-                </div>
-                <div class="card-body">
-                    <form action="./handler/add-club.php" method="post">
+                    </div>
+                </div> <!-- card end// -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>Location</h4>
+                    </div>
+                    <div class="card-body">
                         <div class="row">
                             <div class="mb-4">
                                 <label for="product_name" class="form-label">Address Line 1</label>
-                                <input type="text" placeholder="" class="form-control" id="product_name" name="address-line" required>
+                                <input type="text" placeholder="" class="form-control" id="address-line" name="address-line" required>
                             </div>
                             <div class="col-lg-6">
                                 <label class="form-label">District</label>
-                                <select class="form-select" name="district">
+                                <select class="form-select" name="district" required>
                                     <?php while ($district = $location_query_result->fetch_assoc()) : ?>
                                         <option> <?= $district['district'] ?> </option>
                                     <?php endwhile ?>
@@ -54,34 +55,33 @@ $location_query_result = $connection->query($location_query);
                             <div class="col-lg-6">
                                 <div class="mb-4">
                                     <label class="form-label">Division</label>
-                                    <select class="form-select">
-                                        <?php while ($division = $location_query_result->fetch_assoc()) : ?>
+                                    <select class="form-select" required name="division">
+                                        <?php while ($division = $location_query_division_result->fetch_assoc()) : ?>
                                             <option> <?= $division['division'] ?> </option>
                                         <?php endwhile ?>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <h4>Club Profile Picture</h4>
-                </div>
-                <div class="card-body">
-                    <form action="./handler/add-club.php" method="post" enctype="multipart/form-data">
+            <div class="col-lg-3">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>Club Profile Picture</h4>
+                    </div>
+                    <div class="card-body">
                         <div class="input-upload">
                             <img id="previewImage" src="assets/imgs/theme/upload.svg" alt="Preview Image">
-                            <input class="form-control" type="file" id="clubImageInput" onchange="previewImage(event)">
+                            <input class="form-control" type="file" id="clubImageInput" name="club-img" onchange="previewImage(event)">
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
+
 </section> <!-- content-main end// -->
 
 </main>

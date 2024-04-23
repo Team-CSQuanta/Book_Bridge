@@ -90,7 +90,7 @@ if (!isset($_SESSION['user-logged-email'])) {
                         <span class="text">Moderators</span>
                     </a>
                     <div class="submenu">
-                        <a href="page-add-moderator.php">Add Moderators</a>
+                        <a href="page-add-moderator.php">Add Moderator</a>
                         <a href="page-moderator-list.php">Moderators List</a>
                     </div>
                 </li>
