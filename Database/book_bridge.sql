@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2024 at 05:12 AM
+-- Generation Time: Apr 24, 2024 at 04:43 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -32,7 +32,6 @@ CREATE TABLE `admin` (
   `email` varchar(100) NOT NULL,
   `phone_number` varchar(11) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `role` varchar(25) NOT NULL,
   `f_name` varchar(255) NOT NULL,
   `l_name` varchar(255) NOT NULL,
   `profile_img` varchar(255) NOT NULL,
@@ -44,9 +43,20 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`admin_id`, `email`, `phone_number`, `password`, `role`, `f_name`, `l_name`, `profile_img`, `address`, `location_id`) VALUES
-(1, 'foyez4m@gmail.com', '01965750798', 'admin', 'admin', 'Foyez Ahammed ', 'Naeem', '6626b030bab5a2.42704375.jpg', 'Mouchak', 1),
-(10, 'rifat@gmail.com', '01936599274', '$2y$10$VDh.ILZQqaIrXmZwL9dPcu8Cxrr8VWwb4AqN9Gh6pQx/oIB7b9X5q', 'moderator', 'Rifat', 'Hossain', 'MODERATOR-66270f437de282.98001612.jpg', 'Mouchak, Kaliakair', 12);
+INSERT INTO `admin` (`admin_id`, `email`, `phone_number`, `password`, `f_name`, `l_name`, `profile_img`, `address`, `location_id`) VALUES
+(1, 'foyeznaeem@gmail.com', '01965750792', 'admin', 'Foyez  Naeem', 'Ahammed ', '662737fbed6eb3.21219675.jpg', 'Mouchak, Kaliakair', 1);
+
+--
+-- Triggers `admin`
+--
+DELIMITER $$
+CREATE TRIGGER `trg_check_moderator_club_id` BEFORE INSERT ON `admin` FOR EACH ROW BEGIN
+    IF NEW.role = 'moderator' AND NEW.club_id IS NULL THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Moderator must have a club_id.';
+    END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -56,13 +66,39 @@ INSERT INTO `admin` (`admin_id`, `email`, `phone_number`, `password`, `role`, `f
 
 CREATE TABLE `bibliophile_club` (
   `club_id` int(11) NOT NULL,
-  `club_name` varchar(250) DEFAULT NULL,
+  `club_name` varchar(250) NOT NULL,
   `address_line` varchar(500) DEFAULT NULL,
-  `location_id` int(11) DEFAULT NULL,
-  `club_manager_id` int(11) DEFAULT NULL,
+  `district` varchar(100) NOT NULL,
+  `club_manager_id` int(11) NOT NULL,
   `club_description` varchar(500) DEFAULT NULL,
   `club_img` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bibliophile_club_admin`
+--
+
+CREATE TABLE `bibliophile_club_admin` (
+  `club_admin_id` int(11) NOT NULL,
+  `email` varchar(300) DEFAULT NULL,
+  `phone_number` varchar(300) DEFAULT NULL,
+  `password` varchar(500) DEFAULT NULL,
+  `f_name` varchar(200) DEFAULT NULL,
+  `l_name` varchar(200) DEFAULT NULL,
+  `profile_img` varchar(300) DEFAULT NULL,
+  `address_line` varchar(300) DEFAULT NULL,
+  `location_id` int(11) DEFAULT NULL,
+  `club_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bibliophile_club_admin`
+--
+
+INSERT INTO `bibliophile_club_admin` (`club_admin_id`, `email`, `phone_number`, `password`, `f_name`, `l_name`, `profile_img`, `address_line`, `location_id`, `club_id`) VALUES
+(1, 'rifat@gmail.com', '01936566238', '$2y$10$mj8l1hrBY4Ccmre./06.8e/eZ93leCnoyo/wEWL6i3awcVghFRHyq', 'Rifat', 'Hossain', 'MODERATOR-66291a52028e10.49054479.jpg', 'Mouchak, Kaliakair', 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -244,8 +280,17 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `bibliophile_club`
   ADD PRIMARY KEY (`club_id`),
-  ADD KEY `location_id` (`location_id`),
-  ADD KEY `club_manager_id` (`club_manager_id`);
+  ADD KEY `fk_bibliopile_club_district` (`district`);
+
+--
+-- Indexes for table `bibliophile_club_admin`
+--
+ALTER TABLE `bibliophile_club_admin`
+  ADD PRIMARY KEY (`club_admin_id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `phone_number` (`phone_number`),
+  ADD KEY `club_id` (`club_id`),
+  ADD KEY `location_id` (`location_id`);
 
 --
 -- Indexes for table `book_images`
@@ -320,6 +365,12 @@ ALTER TABLE `bibliophile_club`
   MODIFY `club_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `bibliophile_club_admin`
+--
+ALTER TABLE `bibliophile_club_admin`
+  MODIFY `club_admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `book_images`
 --
 ALTER TABLE `book_images`
@@ -363,8 +414,14 @@ ALTER TABLE `admin`
 -- Constraints for table `bibliophile_club`
 --
 ALTER TABLE `bibliophile_club`
-  ADD CONSTRAINT `bibliophile_club_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`),
-  ADD CONSTRAINT `bibliophile_club_ibfk_2` FOREIGN KEY (`club_manager_id`) REFERENCES `admin` (`admin_id`);
+  ADD CONSTRAINT `fk_bibliopile_club_district` FOREIGN KEY (`district`) REFERENCES `location` (`district`);
+
+--
+-- Constraints for table `bibliophile_club_admin`
+--
+ALTER TABLE `bibliophile_club_admin`
+  ADD CONSTRAINT `bibliophile_club_admin_ibfk_1` FOREIGN KEY (`club_id`) REFERENCES `bibliophile_club` (`club_id`),
+  ADD CONSTRAINT `bibliophile_club_admin_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`);
 
 --
 -- Constraints for table `book_images`
