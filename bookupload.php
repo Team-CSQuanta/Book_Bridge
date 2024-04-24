@@ -61,7 +61,7 @@
                    <div class="ec-vendor-dashboard-card">
                        <div class="ec-vendor-card-body">
                            <div class="row">
-                               <div class="col-lg-4">
+                               <div class="col-lg-4" method="post" action="bookupload_handler.php">
                                    <div class="ec-vendor-img-upload">
                                        <div class="ec-vendor-main-img">
                                            <div class="avatar-upload">

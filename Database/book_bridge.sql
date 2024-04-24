@@ -140,7 +140,7 @@ CREATE TABLE `exchange_post` (
   `Description` text DEFAULT NULL,
   `Language` varchar(50) DEFAULT NULL,
   `Conditions` enum('Like New','Good','Acceptable','Antique') DEFAULT NULL,
-  `OwnerUserID` int(11) DEFAULT NULL,
+  `UserIDOwner` int(11) DEFAULT NULL,
   `AvailabilityStatus` enum('Available','Unavailable') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

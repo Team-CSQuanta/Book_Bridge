@@ -1,7 +1,6 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-// session_start();
 
 // Establish database connection
 $servername = "localhost";
@@ -17,14 +16,14 @@ if ($conn->connect_error) {
 }
 
 // Function to handle image uploads
-function handleImageUpload($file, $isbn, $uploadDir) {
+function handleImageUpload($file, $uploadDir) {
     if ($file['error'] !== UPLOAD_ERR_OK) {
         error_log("Error uploading file: " . $file['error']);
         return false;
     }
 
     $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
-    $fileName = $isbn . '_' . uniqid() . '.' . $extension;
+    $fileName = uniqid() . '.' . $extension;
     $filePath = $uploadDir . $fileName;
 
     if (move_uploaded_file($file['tmp_name'], $filePath)) {
@@ -36,23 +35,22 @@ function handleImageUpload($file, $isbn, $uploadDir) {
 }
 
 // Handle form submission
-if (isset($_POST['Submit'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve book details from the form
-    $title = mysqli_real_escape_string($conn,$_POST['inputtitle']);
-    $author =mysqli_real_escape_string($conn,$_POST['inputname']);
-    $genre = mysqli_real_escape_string($conn,$_POST['categories']);
-    $isbn = mysqli_real_escape_string($conn,$_POST['inputIsbn']);
-    $publishedYear = mysqli_real_escape_string($conn,$_POST['inputYear']);
-    $language = mysqli_real_escape_string($conn,$_POST['inputLang']);
-    $condition = mysqli_real_escape_string($conn,$_POST['inputcond']);
-    $availabilityStatus = mysqli_real_escape_string($conn,$_POST['inputstatus']);
-    $description = mysqli_real_escape_string($conn,$_POST['description']);
+    $title = mysqli_real_escape_string($conn, $_POST['inputtitle']);
+    $author = mysqli_real_escape_string($conn, $_POST['inputname']);
+    $genre = mysqli_real_escape_string($conn, $_POST['categories']);
+    $isbn = mysqli_real_escape_string($conn, $_POST['inputIsbn']);
+    $publishedYear = mysqli_real_escape_string($conn, $_POST['inputYear']);
+    $language = mysqli_real_escape_string($conn, $_POST['inputLang']);
+    $condition = mysqli_real_escape_string($conn, $_POST['inputcond']);
+    $availabilityStatus = mysqli_real_escape_string($conn, $_POST['inputstatus']);
+    $description = mysqli_real_escape_string($conn, $_POST['description']);
 
     // Prepare statement to insert book data into `exchange_post` table
-    $sql = "INSERT INTO exchange_post (Title, Author, ISBN, Genre,PublishedYear, Description, Language, Conditions, AvailabilityStatus)
-            VALUES ('$title','$author', '$isbn',' $genre','$publishedYear','$description', '$language', '$condition', '$availabilityStatus')";
-     
-     echo '<script>alert("Form submitted successfully!");</script>';
+    $sql = "INSERT INTO exchange_post (Title, Author, ISBN, Genre, PublishedYear, Description, Language, Conditions, AvailabilityStatus)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
     $stmt = $conn->prepare($sql);
 
     if (!$stmt) {
@@ -61,48 +59,43 @@ if (isset($_POST['Submit'])) {
     }
 
     // Bind parameters and execute the statement
-    $stmt->bind_param("sssisisss", $title, $author, $genre, $isbn, $publishedYear, $description, $language, $condition, $availabilityStatus);
+    $stmt->bind_param("ssssissss", $title, $author, $isbn, $genre, $publishedYear, $description, $language, $condition, $availabilityStatus);
 
     if ($stmt->execute()) {
         // Define the upload directory
         $uploadDir = "uploads/";
 
-        // Define the array of file input IDs
-        $fileInputIDs = [
-            'imageUpload',
-            'thumbUpload01',
-            'thumbUpload02',
-            'thumbUpload03',
-            'thumbUpload04',
-            'thumbUpload05',
-            'thumbUpload06'
-        ];
+        // Create the upload directory if it doesn't exist
+        if (!is_dir($uploadDir) && !mkdir($uploadDir, 0777, true)) {
+            die("Failed to create upload directory");
+        }
 
-        // Handle each file upload
-        foreach ($fileInputIDs as $inputID) {
-            if (isset($_FILES[$inputID])) {
-                $file = $_FILES[$inputID];
-
+        // Handle image uploads for each file input
+        foreach ($_FILES as $fileInputName => $file) {
+            // Check if file input exists and is not empty
+            if (isset($file['name']) && !empty($file['name'])) {
                 // Handle image upload
-                $filePath = handleImageUpload($file, $isbn, $uploadDir);
+                $filePath = handleImageUpload($file, $uploadDir);
 
                 if ($filePath) {
                     // Insert the file path into the `book_images` table
                     $sql = "INSERT INTO book_images (ISBN, ImagePath) VALUES (?, ?)";
-                    $stmt = $conn->prepare($sql);
+                    $stmt_img = $conn->prepare($sql);
 
-                    if (!$stmt) {
+                    if (!$stmt_img) {
                         error_log("Error preparing statement: " . $conn->error);
                         continue;
                     }
 
-                    $stmt->bind_param("ss", $isbn, $filePath);
+                    $stmt_img->bind_param("ss", $isbn, $filePath);
 
-                    if (!$stmt->execute()) {
-                        error_log("Error inserting image path into book_images table: " . $stmt->error);
+                    if (!$stmt_img->execute()) {
+                        error_log("Error inserting image path into book_images table: " . $stmt_img->error);
                     }
+
+                    $stmt_img->close();
                 } else {
-                    error_log("Error uploading file for input: " . $inputID);
+                    error_log("Error uploading file for input: " . $fileInputName);
                 }
             }
         }
@@ -111,10 +104,10 @@ if (isset($_POST['Submit'])) {
         error_log("Error inserting book data: " . $stmt->error);
     }
 
-    // Close the statement
+    // Close the statements
     $stmt->close();
 }
 
 // Close the database connection
 $conn->close();
-
+?>
