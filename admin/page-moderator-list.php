@@ -78,13 +78,13 @@ $total_pages = ceil($total_records / $limit);
                                     <!-- <td><span class="badge rounded-pill <?= ($moderator['status'] === 'Active') ? 'alert-success' : 'alert-danger' ?>"><?= $moderator['status'] ?></span></td> -->
                                     <!-- <td><?= $moderator['reg_date'] ?></td> -->
                                     <td class="text-end">
-                                        <a href="page-user-detail.php?user_id=<?= $moderator['club_admin_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
+                                        <a href="page-moderator-detail.php?moderator_id=<?= $moderator['club_admin_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
                                     </td>
                                 </tr>
                             <?php endwhile ?>
                         <?php else : ?>
                             <tr>
-                                
+
                                 <p>No result found!!</p>
                             </tr>
                         <?php endif ?>
