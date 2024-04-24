@@ -10,10 +10,10 @@ $search = isset($_GET['search-moderator']) ? $_GET['search-moderator'] : '';
 // Fetch data with pagination
 $moderator_fetch = "SELECT * 
                 FROM admin
-                WHERE role = 'moderator' and";
+                WHERE role = 'moderator'";
 
 if (!empty($search)) {
-    $moderator_fetch .= " f_name LIKE '%$search%' or l_name LIKE '%$search%' or email LIKE '%$search%' ";
+    $moderator_fetch .= " and f_name LIKE '%$search%' or l_name LIKE '%$search%' or email LIKE '%$search%' ";
 }
 
 $moderator_fetch .= " ORDER BY f_name LIMIT $start, $limit";
@@ -24,9 +24,9 @@ if (!$moderator_fetch_result) {
 }
 
 // Get total number of records for pagination
-$total_records_query = "SELECT COUNT(*) AS total FROM admin WHERE role = 'moderator' and ";
+$total_records_query = "SELECT COUNT(*) AS total FROM admin WHERE role = 'moderator' ";
 if (!empty($search)) {
-    $total_records_query .= " f_name LIKE '%$search%' or l_name LIKE '%$search%' or email LIKE '%$search%'";
+    $total_records_query .= "and  f_name LIKE '%$search%' or l_name LIKE '%$search%' or email LIKE '%$search%'";
 }
 $total_records_result = $connection->query($total_records_query);
 $total_records_row = $total_records_result->fetch_assoc();
@@ -55,30 +55,31 @@ $total_pages = ceil($total_records / $limit);
                         <tr>
                             <th>User</th>
                             <th>Email</th>
-                            <th>Status</th>
+                            <th>Assigned Club</th>
                             <th>Registered</th>
                             <th class="text-end"> Action </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($user = $moderator_fetch_result->fetch_assoc()) : ?>
+                        <?php while ($moderator = $moderator_fetch_result->fetch_assoc()) : ?>
                             <tr>
                                 <td width="40%">
-                                    <a href="page-user-detail.php?user_id=<?= $user['user_id'] ?>" class="itemside">
+                                    <a href="page-user-detail.php?user_id=<?= $moderator['admin_id'] ?>" class="itemside">
                                         <div class="left">
-                                            <img src="../assets/imgs/people/<?= $user['profile_img'] ?>" class="img-sm img-avatar" alt="Userpic">
+                                            <img src="./assets/imgs/people/<?= $moderator['profile_img'] ?>" class="img-sm img-avatar" alt="Moderatorpic">
                                         </div>
                                         <div class="info pl-3">
-                                            <h6 class="mb-0 title"><?= $user['f_name'] . " " . $user['l_name'] ?></h6>
-                                            <small class="text-muted">User ID: #<?= $user['user_id'] ?></small>
+                                            <h6 class="mb-0 title"><?= $moderator['f_name'] . " " . $moderator['l_name'] ?></h6>
+                                            <small class="text-muted">Moderator ID: #<?= $moderator['admin_id'] ?></small>
                                         </div>
                                     </a>
                                 </td>
-                                <td><?= $user['email'] ?></td>
-                                <td><span class="badge rounded-pill <?= ($user['status'] === 'Active') ? 'alert-success' : 'alert-danger' ?>"><?= $user['status'] ?></span></td>
-                                <td><?= $user['reg_date'] ?></td>
+                                <td><?= $moderator['email'] ?></td>
+                                <td><?= $moderator['email'] ?></td>
+                                <td><span class="badge rounded-pill <?= ($moderator['status'] === 'Active') ? 'alert-success' : 'alert-danger' ?>"><?= $moderator['status'] ?></span></td>
+                                <td><?= $moderator['reg_date'] ?></td>
                                 <td class="text-end">
-                                    <a href="page-user-detail.php?user_id=<?= $user['user_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
+                                    <a href="page-user-detail.php?user_id=<?= $moderator['admin_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
                                 </td>
                             </tr>
                         <?php endwhile ?>
