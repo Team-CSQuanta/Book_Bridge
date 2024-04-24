@@ -8,9 +8,12 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
    <title>BookBridge Online</title>
-   <meta name="keywords" content="apparel, catalog, clean, ecommerce, ecommerce HTML, electronics, fashion, html eCommerce, html store, minimal, multipurpose, multipurpose ecommerce, online store, responsive ecommerce template, shops" />
-   <meta name="description" content="Best ecommerce html template for single and multi vendor store.">
-   <meta name="author" content="ashishmaraviya">
+
+
+   <!-- Favicon -->
+   <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.png">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="assets/css/main.css?v=3.4">
 
    <!-- site Favicon -->
    <link rel="icon" href="assets/imgs/theme/favicon.png" sizes="32x32" />
@@ -42,6 +45,11 @@
   
 </head>
 <body class="shop_page">
+
+<?php
+    include 'partials/header.php';
+    include  'partials/mobile-header.php'
+    ?>
   
    <!-- Vendor upload section -->
    <section class="ec-page-content ec-vendor-uploads section-space-p">
@@ -343,3 +351,6 @@ function getLanguageName(languageCode) {
 
 </body>
 </html>
+<?php
+    include 'partials/footer.php'
+    ?>

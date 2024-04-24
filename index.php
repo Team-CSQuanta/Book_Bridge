@@ -23,8 +23,8 @@
     <!-- Quick view -->
     <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">              
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>       
+            <div class="modal-content">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6 col-sm-12 col-xs-12">
@@ -102,7 +102,7 @@
                                 <div class="short-desc mb-30">
                                     <p class="font-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam rem officia, corrupti reiciendis minima nisi modi,!</p>
                                 </div>
-                                
+
                                 <div class="attr-detail attr-color mb-15">
                                     <strong class="mr-10">Color</strong>
                                     <ul class="list-filter color-filter">
@@ -147,8 +147,8 @@
                             <!-- Detail Info -->
                         </div>
                     </div>
-                </div>        
-        </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -157,7 +157,7 @@
     include  'partials/mobile-header.php'
     ?>
     <main class="main">
-        <section class="home-slider position-relative pt-25 pb-20">
+        <!-- <section class="home-slider position-relative pt-25 pb-20">
             <div class="container">
                 <div class="row" style="justify-content: center;">
                     <div class="col-lg-9">
@@ -199,27 +199,9 @@
                             <div class="slider-arrow hero-slider-1-arrow style-3"></div>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-3 d-md-none d-lg-block">
-                        <div class="banner-img banner-1 wow fadeIn  animated home-3">
-                            <img class="border-radius-10" src="assets/imgs/banner/banner-5.jpg" alt="">
-                            <div class="banner-text">
-                                <span>Accessories</span>
-                                <h4>Save 17% on <br>Autumn Hat</h4>
-                                <a href="shop-grid-right.php">Shop Now <i class="fi-rs-arrow-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="banner-img banner-2 wow fadeIn  animated mb-0">
-                            <img class="border-radius-10" src="assets/imgs/banner/banner-7.jpg" alt="">
-                            <div class="banner-text">
-                                <span>Smart Offer</span>
-                                <h4>Save 20% on <br>Eardrop</h4>
-                                <a href="shop-grid-right.php">Shop Now <i class="fi-rs-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
-        </section>
+        </section> -->
         <section class="featured section-padding">
             <div class="container">
                 <div class="row">
@@ -282,7 +264,7 @@
                 <div class="tab-content wow fadeIn animated" id="myTabContent">
                     <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
                         <div class="row product-grid-4">
-                        <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                            <div class="col-lg-4 col-md-4 col-12 col-sm-6">
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
@@ -297,8 +279,8 @@
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                           
-                                        <span class="new">Fifth Edition</span>
+
+                                            <span class="new">Fifth Edition</span>
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">
@@ -313,7 +295,7 @@
                                         </div>
                                         <div class="product-price">
                                             <span>Coin-1000 </span>
-                                            <span class="old-price">1500</span> 
+                                            <span class="old-price">1500</span>
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
@@ -332,12 +314,12 @@
                                         </div>
                                         <div class="product-action-1">
                                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
+                                                <i class="fi-rs-search"></i></a>
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="hot">Damaged</span> 
+                                            <span class="hot">Damaged</span>
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">
@@ -371,12 +353,13 @@
                                         </div>
                                         <div class="product-action-1">
                                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
+                                                <i class="fi-rs-search"></i></a>
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="new">Gift Quality</span>                                        </div>
+                                            <span class="new">Gift Quality</span>
+                                        </div>
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
@@ -409,12 +392,13 @@
                                         </div>
                                         <div class="product-action-1">
                                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
+                                                <i class="fi-rs-search"></i></a>
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="new">Library Binding</span>                                        </div>
+                                            <span class="new">Library Binding</span>
+                                        </div>
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
@@ -447,12 +431,13 @@
                                         </div>
                                         <div class="product-action-1">
                                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
+                                                <i class="fi-rs-search"></i></a>
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="new">like-new</span>                                        </div>
+                                            <span class="new">like-new</span>
+                                        </div>
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
@@ -485,12 +470,13 @@
                                         </div>
                                         <div class="product-action-1">
                                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
+                                                <i class="fi-rs-search"></i></a>
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                    <span class="hot">Restored</span>                                        </div>
+                                            <span class="hot">Restored</span>
+                                        </div>
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
@@ -523,14 +509,15 @@
                                         </div>
                                         <div class="product-action-1">
                                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
+                                                <i class="fi-rs-search"></i></a>
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
-                                     <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="new">Collectible</span>                                        </div>
+                                        <div class="product-badges product-badges-position product-badges-mrg">
+                                            <span class="new">Collectible</span>
+                                        </div>
                                     </div>
-                                    
+
                                     <div class="product-content-wrap">
                                         <div class="product-category">
                                             <a href="shop-grid-right.php">Nature</a>
@@ -549,7 +536,7 @@
                                         </div>
                                     </div>
                                 </div>
-</div>
+                            </div>
                             <div class="col-lg-4 col-md-4 col-12 col-sm-6">
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
@@ -561,7 +548,7 @@
                                         </div>
                                         <div class="product-action-1">
                                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
+                                                <i class="fi-rs-search"></i></a>
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
@@ -597,7 +584,7 @@
                                         </div>
                                         <div class="product-action-1">
                                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
+                                                <i class="fi-rs-search"></i></a>
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
@@ -633,7 +620,7 @@
                                         </div>
                                         <div class="product-action-1">
                                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
+                                                <i class="fi-rs-search"></i></a>
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
@@ -672,7 +659,7 @@
                                         </div>
                                         <div class="product-action-1">
                                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
+                                                <i class="fi-rs-search"></i></a>
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
@@ -692,7 +679,7 @@
                                         </div>
                                         <div class="product-price">
                                             <span>Coin- 500 </span>
-                                            
+
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
@@ -700,624 +687,623 @@
                                     </div>
                                 </div>
                             </div>
-                        <!--End product-grid-4-->
-                    </div>
-                    <!--En tab one (Featured)-->
-                    <div class="tab-pane fade" id="tab-two" role="tabpanel" aria-labelledby="tab-two">
-                        <div class="row product-grid-4">
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-9-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-9-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Donec </a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Lorem ipsum dolor</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>90%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-10-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-10-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="new">New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Music</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Sed tincidunt interdum</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>50%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$138.85 </span>
-                                            <span class="old-price">$255.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-11-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-11-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="best">Best Sell</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Watch</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Fusce metus orci</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>95%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$338.85 </span>
-                                            <span class="old-price">$445.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-12-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-12-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="sale">Sale</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Music</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Integer venenatis libero</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$123.85 </span>
-                                            <span class="old-price">$235.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-13-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-13-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">-30%</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Speaker</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Cras tempor orci id</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$28.85 </span>
-                                            <span class="old-price">$45.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-14-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-14-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">-22%</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Camera</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Nullam cursus mi qui</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-15-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-15-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="new">New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Phone</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Fusce fringilla ultrices</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>98%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$1275.85 </span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-1-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Accessories </a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Sed sollicitudin est</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!--End product-grid-4-->
                         </div>
-                        <!--End product-grid-4-->
-                    </div>
-                    <!--En tab two (Popular)-->
-                    <div class="tab-pane fade" id="tab-three" role="tabpanel" aria-labelledby="tab-three">
-                        <div class="row product-grid-4">
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="">
-                                            </a>
+                        <!--En tab one (Featured)-->
+                        <div class="tab-pane fade" id="tab-two" role="tabpanel" aria-labelledby="tab-two">
+                            <div class="row product-grid-4">
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="default-img" src="assets/imgs/shop/product-9-1.jpg" alt="">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-9-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="hot">Hot</span>
+                                            </div>
                                         </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Donec </a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php">Lorem ipsum dolor</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>90%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$238.85 </span>
+                                                <span class="old-price">$245.8</span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Music</a>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="default-img" src="assets/imgs/shop/product-10-1.jpg" alt="">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-10-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="new">New</span>
+                                            </div>
                                         </div>
-                                        <h2><a href="shop-product-full.php">Donec ut nisl rutrum</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>90%</span>
-                                            </span>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Music</a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php">Sed tincidunt interdum</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>50%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$138.85 </span>
+                                                <span class="old-price">$255.8</span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
                                         </div>
-                                        <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="default-img" src="assets/imgs/shop/product-11-1.jpg" alt="">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-11-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="best">Best Sell</span>
+                                            </div>
                                         </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Watch</a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php">Fusce metus orci</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>95%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$338.85 </span>
+                                                <span class="old-price">$445.8</span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="default-img" src="assets/imgs/shop/product-12-1.jpg" alt="">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-12-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="sale">Sale</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Music</a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php">Integer venenatis libero</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>70%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$123.85 </span>
+                                                <span class="old-price">$235.8</span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="default-img" src="assets/imgs/shop/product-13-1.jpg" alt="">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-13-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="hot">-30%</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Speaker</a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php">Cras tempor orci id</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>70%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$28.85 </span>
+                                                <span class="old-price">$45.8</span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="default-img" src="assets/imgs/shop/product-14-1.jpg" alt="">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-14-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="hot">-22%</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Camera</a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php">Nullam cursus mi qui</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>70%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$238.85 </span>
+                                                <span class="old-price">$245.8</span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="default-img" src="assets/imgs/shop/product-15-1.jpg" alt="">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-15-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="new">New</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Phone</a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php">Fusce fringilla ultrices</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>98%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$1275.85 </span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="default-img" src="assets/imgs/shop/product-1-1.jpg" alt="">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Accessories </a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php">Sed sollicitudin est</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>70%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$238.85 </span>
+                                                <span class="old-price">$245.8</span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="hover-img" src="assets/imgs/shop/product-3-1.jpg" alt="">
-                                                <img class="default-img" src="assets/imgs/shop/product-3-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="new">New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Music</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Nullam dapibus pharetra</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>50%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$138.85 </span>
-                                            <span class="old-price">$255.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="hover-img" src="assets/imgs/shop/product-4-1.jpg" alt="">
-                                                <img class="default-img" src="assets/imgs/shop/product-4-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="best">Best Sell</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Watch</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Morbi dictum finibus</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>95%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$338.85 </span>
-                                            <span class="old-price">$445.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="hover-img" src="assets/imgs/shop/product-5-1.jpg" alt="">
-                                                <img class="default-img" src="assets/imgs/shop/product-5-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="sale">Sale</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Music</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Nunc volutpat massa</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$123.85 </span>
-                                            <span class="old-price">$235.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="hover-img" src="assets/imgs/shop/product-6-1.jpg" alt="">
-                                                <img class="default-img" src="assets/imgs/shop/product-6-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">-30%</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Speaker</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Nullam ultricies luctus</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$28.85 </span>
-                                            <span class="old-price">$45.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="hover-img" src="assets/imgs/shop/product-7-1.jpg" alt="">
-                                                <img class="default-img" src="assets/imgs/shop/product-7-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">-22%</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Camera</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Nullam mattis enim</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="hover-img" src="assets/imgs/shop/product-8-1.jpg" alt="">
-                                                <img class="default-img" src="assets/imgs/shop/product-8-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="new">New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Phone</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Vivamus sollicitudin</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>98%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$1275.85 </span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="hover-img" src="assets/imgs/shop/product-9-1.jpg" alt="">
-                                                <img class="default-img" src="assets/imgs/shop/product-9-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Accessories </a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php"> Donec ut nisl rutrum</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!--End product-grid-4-->
                         </div>
-                        <!--End product-grid-4-->
+                        <!--En tab two (Popular)-->
+                        <div class="tab-pane fade" id="tab-three" role="tabpanel" aria-labelledby="tab-three">
+                            <!-- <div class="row product-grid-4">
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="hot">Hot</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Music</a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php">Donec ut nisl rutrum</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>90%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$238.85 </span>
+                                                <span class="old-price">$245.8</span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-3-1.jpg" alt="">
+                                                    <img class="default-img" src="assets/imgs/shop/product-3-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="new">New</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Music</a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php">Nullam dapibus pharetra</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>50%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$138.85 </span>
+                                                <span class="old-price">$255.8</span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-4-1.jpg" alt="">
+                                                    <img class="default-img" src="assets/imgs/shop/product-4-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="best">Best Sell</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Watch</a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php">Morbi dictum finibus</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>95%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$338.85 </span>
+                                                <span class="old-price">$445.8</span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-5-1.jpg" alt="">
+                                                    <img class="default-img" src="assets/imgs/shop/product-5-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="sale">Sale</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Music</a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php">Nunc volutpat massa</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>70%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$123.85 </span>
+                                                <span class="old-price">$235.8</span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-6-1.jpg" alt="">
+                                                    <img class="default-img" src="assets/imgs/shop/product-6-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="hot">-30%</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Speaker</a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php">Nullam ultricies luctus</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>70%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$28.85 </span>
+                                                <span class="old-price">$45.8</span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-7-1.jpg" alt="">
+                                                    <img class="default-img" src="assets/imgs/shop/product-7-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="hot">-22%</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Camera</a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php">Nullam mattis enim</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>70%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$238.85 </span>
+                                                <span class="old-price">$245.8</span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-8-1.jpg" alt="">
+                                                    <img class="default-img" src="assets/imgs/shop/product-8-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="new">New</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Phone</a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php">Vivamus sollicitudin</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>98%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$1275.85 </span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <img class="hover-img" src="assets/imgs/shop/product-9-1.jpg" alt="">
+                                                    <img class="default-img" src="assets/imgs/shop/product-9-2.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php">Accessories </a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php"> Donec ut nisl rutrum</a></h2>
+                                            <div class="rating-result" title="90%">
+                                                <span>
+                                                    <span>70%</span>
+                                                </span>
+                                            </div>
+                                            <div class="product-price">
+                                                <span>$238.85 </span>
+                                                <span class="old-price">$245.8</span>
+                                            </div>
+                                            <div class="product-action-1 show">
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!--En tab three (New added)-->
                     </div>
-                    <!--En tab three (New added)-->
+                    <!--End tab-content-->
                 </div>
-                <!--End tab-content-->
-            </div>
         </section>
         <!-- <section class="banner-2 section-padding pb-0">
             <div class="container">
@@ -1331,7 +1317,7 @@
                 </div>
             </div>
         </section> -->
-        <section class="popular-categories section-padding mt-15">
+        <!-- <section class="popular-categories section-padding mt-15">
             <div class="container wow fadeIn animated">
                 <h3 class="section-title mb-20"><span>Popular</span> Categories</h3>
                 <div class="carausel-6-columns-cover position-relative">
@@ -1388,9 +1374,9 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
-        <div style="height: 2.5rem;"></div>
+        <!-- <div style="height: 2.5rem;"></div> -->
     </main>
     <?php
     include 'partials/footer.php'

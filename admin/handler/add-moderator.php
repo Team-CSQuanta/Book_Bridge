@@ -50,8 +50,8 @@ if(isset($_POST['add-moderator'])){
     }
 
     
-    $add_moderator_query = "INSERT INTO admin (email, phone_number, password, role,  f_name, l_name, profile_img, address, location_id)
-                            VALUES ('$email', '$phone', '$hashed_password','moderator' ,'$f_name', '$l_name', '$file_name_for_upload', '$address_line', '$location_id')";
+    $add_moderator_query = "INSERT INTO bibliophile_club_admin (email, phone_number, password,  f_name, l_name, profile_img, address_line, location_id)
+                            VALUES ('$email', '$phone', '$hashed_password' ,'$f_name', '$l_name', '$file_name_for_upload', '$address_line', '$location_id')";
 
     if ($connection->query($add_moderator_query) === TRUE) {
         // Success, redirect to page

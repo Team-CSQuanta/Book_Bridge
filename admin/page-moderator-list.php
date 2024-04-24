@@ -1,29 +1,29 @@
 <?php
 require './aside-menu.php';
 // Pagination parameters
-$limit = 2;
+$limit = 5;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($page - 1) * $limit;
 
 
-$search = isset($_GET['search-user']) ? $_GET['search-user'] : '';
+$search = isset($_GET['search-moderator']) ? $_GET['search-moderator'] : '';
 // Fetch data with pagination
-$user_fetch = "SELECT * 
-                FROM user";
+$moderator_fetch = "SELECT * 
+                FROM bibliophile_club_admin";
 
 if (!empty($search)) {
-    $user_fetch .= " WHERE f_name LIKE '%$search%' or l_name LIKE '%$search%' or email LIKE '%$search%'";
+    $moderator_fetch .= " WHERE f_name LIKE '%$search%' or l_name LIKE '%$search%' or email LIKE '%$search%' ";
 }
 
-$user_fetch .= " ORDER BY f_name LIMIT $start, $limit";
+$moderator_fetch .= " ORDER BY f_name LIMIT $start, $limit";
 
-$user_fetch_result = $connection->query($user_fetch);
-if (!$user_fetch_result) {
+$moderator_fetch_result = $connection->query($moderator_fetch);
+if (!$moderator_fetch_result) {
     die("Error executing query: " . $connection->error);
 }
 
 // Get total number of records for pagination
-$total_records_query = "SELECT COUNT(*) AS total FROM user";
+$total_records_query = "SELECT COUNT(*) AS total FROM bibliophile_club_admin";
 if (!empty($search)) {
     $total_records_query .= " WHERE f_name LIKE '%$search%' or l_name LIKE '%$search%' or email LIKE '%$search%'";
 }
@@ -35,14 +35,14 @@ $total_pages = ceil($total_records / $limit);
 ?>
 <section class="content-main">
     <div class="content-header">
-        <h2 class="content-title">Users list</h2>
+        <h2 class="content-title">Moderator list</h2>
     </div>
     <div class="card mb-4">
         <header class="card-header">
             <div class="row gx-3">
                 <div class="col-lg-4 col-md-6 me-auto">
                     <form action="">
-                        <input type="text" placeholder="Search..." class="form-control" name="search-user" value="<?= isset($search) ? $search : '' ?>">
+                        <input type="text" placeholder="Search..." class="form-control" name="search-moderator" value="<?= isset($search) ? $search : '' ?>">
                     </form>
                 </div>
             </div>
@@ -54,33 +54,40 @@ $total_pages = ceil($total_records / $limit);
                         <tr>
                             <th>User</th>
                             <th>Email</th>
-                            <th>Status</th>
-                            <th>Registered</th>
+                            <th>Assigned Club</th>
                             <th class="text-end"> Action </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($user = $user_fetch_result->fetch_assoc()) : ?>
+                        <?php if ($moderator_fetch_result->num_rows > 0) : ?>
+                            <?php while ($moderator = $moderator_fetch_result->fetch_assoc()) : ?>
+                                <tr>
+                                    <td width="40%">
+                                        <a href="page-user-detail.php?user_id=<?= $moderator['club_admin_id'] ?>" class="itemside">
+                                            <div class="left">
+                                                <img src="./assets/imgs/people/<?= $moderator['profile_img'] ?>" class="img-sm img-avatar" alt="Moderatorpic">
+                                            </div>
+                                            <div class="info pl-3">
+                                                <h6 class="mb-0 title"><?= $moderator['f_name'] . " " . $moderator['l_name'] ?></h6>
+                                                <small class="text-muted">Moderator ID: #<?= $moderator['club_admin_id'] ?></small>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td><?= $moderator['email'] ?></td>
+                                    <td><?= ($moderator['club_id']) ? $moderator['club_id'] : "None" ?></td>
+                                    <!-- <td><span class="badge rounded-pill <?= ($moderator['status'] === 'Active') ? 'alert-success' : 'alert-danger' ?>"><?= $moderator['status'] ?></span></td> -->
+                                    <!-- <td><?= $moderator['reg_date'] ?></td> -->
+                                    <td class="text-end">
+                                        <a href="page-moderator-detail.php?moderator_id=<?= $moderator['club_admin_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
+                                    </td>
+                                </tr>
+                            <?php endwhile ?>
+                        <?php else : ?>
                             <tr>
-                                <td width="40%">
-                                    <a href="page-user-detail.php?user_id=<?= $user['user_id'] ?>" class="itemside">
-                                        <div class="left">
-                                            <img src="../assets/imgs/people/<?= $user['profile_img'] ?>" class="img-sm img-avatar" alt="Userpic">
-                                        </div>
-                                        <div class="info pl-3">
-                                            <h6 class="mb-0 title"><?= $user['f_name'] . " " . $user['l_name'] ?></h6>
-                                            <small class="text-muted">User ID: #<?= $user['user_id'] ?></small>
-                                        </div>
-                                    </a>
-                                </td>
-                                <td><?= $user['email'] ?></td>
-                                <td><span class="badge rounded-pill <?= ($user['status'] === 'Active') ? 'alert-success' : 'alert-danger' ?>"><?= $user['status'] ?></span></td>
-                                <td><?= $user['reg_date'] ?></td>
-                                <td class="text-end">
-                                    <a href="page-user-detail.php?user_id=<?= $user['user_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
-                                </td>
+
+                                <p>No result found!!</p>
                             </tr>
-                        <?php endwhile ?>
+                        <?php endif ?>
 
                     </tbody>
                 </table> <!-- table-responsive.// -->
