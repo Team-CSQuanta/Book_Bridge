@@ -76,7 +76,6 @@ if (!isset($_SESSION['user-logged-email'])) {
                     <div class="submenu">
                         <a href="page-club-list.php">Club List</a>
                         <a href="page-form-add-club.php">Add Club</a>
-                        <a href="page-form-add-club.php">Club Managers</a>
                         <a href="page-club-request-list.php">Club Requests</a>
                     </div>
                 </li>
