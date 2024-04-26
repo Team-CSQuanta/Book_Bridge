@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 24, 2024 at 04:43 PM
+-- Generation Time: Apr 26, 2024 at 07:02 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -44,19 +44,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `email`, `phone_number`, `password`, `f_name`, `l_name`, `profile_img`, `address`, `location_id`) VALUES
-(1, 'foyeznaeem@gmail.com', '01965750792', 'admin', 'Foyez  Naeem', 'Ahammed ', '662737fbed6eb3.21219675.jpg', 'Mouchak, Kaliakair', 1);
-
---
--- Triggers `admin`
---
-DELIMITER $$
-CREATE TRIGGER `trg_check_moderator_club_id` BEFORE INSERT ON `admin` FOR EACH ROW BEGIN
-    IF NEW.role = 'moderator' AND NEW.club_id IS NULL THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Moderator must have a club_id.';
-    END IF;
-END
-$$
-DELIMITER ;
+(1, 'foyeznaeem@gmail.com', '01965750792', 'admin', 'Foyez  Naeem', 'Ahammed ', '6629315dad94a7.57274626.png', 'Mouchak, Kaliakair', 1);
 
 -- --------------------------------------------------------
 
@@ -69,10 +57,17 @@ CREATE TABLE `bibliophile_club` (
   `club_name` varchar(250) NOT NULL,
   `address_line` varchar(500) DEFAULT NULL,
   `district` varchar(100) NOT NULL,
-  `club_manager_id` int(11) NOT NULL,
+  `club_manager_id` int(11) DEFAULT NULL,
   `club_description` varchar(500) DEFAULT NULL,
-  `club_img` varchar(250) DEFAULT NULL
+  `club_img` varchar(250) DEFAULT 'CLUB-IMG-Defualt.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bibliophile_club`
+--
+
+INSERT INTO `bibliophile_club` (`club_id`, `club_name`, `address_line`, `district`, `club_manager_id`, `club_description`, `club_img`) VALUES
+(1, 'Gazipur Book Club', 'Mouchak Bazar, Kalikair', 'Gazipur', 1, '\r\nA book club is a gathering of individuals who come together to discuss and engage with literature. Typically, members of a book club read the same book over a set period of time and then meet to discuss their thoughts, opinions, and insights about the book. Book clubs can be organized by friends, family, colleagues, or hosted by libraries, community centers, or online platforms.', 'CLUB-IMG-Defualt.jpg');
 
 -- --------------------------------------------------------
 
@@ -82,14 +77,15 @@ CREATE TABLE `bibliophile_club` (
 
 CREATE TABLE `bibliophile_club_admin` (
   `club_admin_id` int(11) NOT NULL,
-  `email` varchar(300) DEFAULT NULL,
-  `phone_number` varchar(300) DEFAULT NULL,
-  `password` varchar(500) DEFAULT NULL,
-  `f_name` varchar(200) DEFAULT NULL,
-  `l_name` varchar(200) DEFAULT NULL,
+  `email` varchar(300) NOT NULL,
+  `phone_number` varchar(300) NOT NULL,
+  `password` varchar(500) NOT NULL,
+  `f_name` varchar(200) NOT NULL,
+  `l_name` varchar(200) NOT NULL,
+  `bio` varchar(1000) DEFAULT NULL,
   `profile_img` varchar(300) DEFAULT NULL,
   `address_line` varchar(300) DEFAULT NULL,
-  `location_id` int(11) DEFAULT NULL,
+  `location_id` int(11) NOT NULL,
   `club_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -97,8 +93,9 @@ CREATE TABLE `bibliophile_club_admin` (
 -- Dumping data for table `bibliophile_club_admin`
 --
 
-INSERT INTO `bibliophile_club_admin` (`club_admin_id`, `email`, `phone_number`, `password`, `f_name`, `l_name`, `profile_img`, `address_line`, `location_id`, `club_id`) VALUES
-(1, 'rifat@gmail.com', '01936566238', '$2y$10$mj8l1hrBY4Ccmre./06.8e/eZ93leCnoyo/wEWL6i3awcVghFRHyq', 'Rifat', 'Hossain', 'MODERATOR-66291a52028e10.49054479.jpg', 'Mouchak, Kaliakair', 2, NULL);
+INSERT INTO `bibliophile_club_admin` (`club_admin_id`, `email`, `phone_number`, `password`, `f_name`, `l_name`, `bio`, `profile_img`, `address_line`, `location_id`, `club_id`) VALUES
+(1, 'rifat@gmail.com', '01936566238', '$2y$10$mj8l1hrBY4Ccmre./06.8e/eZ93leCnoyo/wEWL6i3awcVghFRHyq', 'Rifat', 'Hossain', '', 'MODERATOR-66291a52028e10.49054479.jpg', 'Mouchak, Kaliakair', 2, 1),
+(2, 'mim@gmail.com', '01999483690', '$2y$10$OB4nf3ITjh4KZWsyGBSOdutzhVoU81EMLHBmpKHpT5kAcnkBYig2e', 'Khadiza Akter', 'Mim', NULL, 'defualt_profile.jpg', 'United City, Satarkul, vatara', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -280,7 +277,8 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `bibliophile_club`
   ADD PRIMARY KEY (`club_id`),
-  ADD KEY `fk_bibliopile_club_district` (`district`);
+  ADD KEY `fk_bibliopile_club_district` (`district`),
+  ADD KEY `fk_club_admin_id` (`club_manager_id`);
 
 --
 -- Indexes for table `bibliophile_club_admin`
@@ -362,13 +360,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `bibliophile_club`
 --
 ALTER TABLE `bibliophile_club`
-  MODIFY `club_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `club_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `bibliophile_club_admin`
 --
 ALTER TABLE `bibliophile_club_admin`
-  MODIFY `club_admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `club_admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `book_images`
@@ -414,7 +412,8 @@ ALTER TABLE `admin`
 -- Constraints for table `bibliophile_club`
 --
 ALTER TABLE `bibliophile_club`
-  ADD CONSTRAINT `fk_bibliopile_club_district` FOREIGN KEY (`district`) REFERENCES `location` (`district`);
+  ADD CONSTRAINT `fk_bibliopile_club_district` FOREIGN KEY (`district`) REFERENCES `location` (`district`),
+  ADD CONSTRAINT `fk_club_admin_id` FOREIGN KEY (`club_manager_id`) REFERENCES `bibliophile_club_admin` (`club_admin_id`);
 
 --
 -- Constraints for table `bibliophile_club_admin`
