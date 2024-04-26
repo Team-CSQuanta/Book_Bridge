@@ -1,4 +1,12 @@
 
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,8 +56,8 @@
 
 <?php
     include 'partials/header.php';
-    include  'partials/mobile-header.php'
-    ?>
+    include  'partials/mobile-header.php';
+ ?>
   
 
   <div class="page-header breadcrumb-wrap">
@@ -58,6 +66,7 @@
                     <a href="index.php" rel="nofollow">Home</a>
                     <span></span> Pages
                     <span></span> Account
+                    <span></span> Wish A Book
                 </div>
             </div>
         </div>
@@ -90,104 +99,13 @@
                                                    </div>
                                                </div>
                                            </div>
-                                           <div class="thumb-upload-set colo-md-12">
-                                               <div class="thumb-upload">
-                                                   <div class="thumb-edit">
-                                                       <input type='file' id="thumbUpload01" class="ec-image-upload"
-                                                           accept=".png, .jpg, .jpeg" />
-                                                       <label for="imageUpload"><img src="assets2/images/icons/edit.svg"
-                                                               class="svg_img header_svg" alt="edit" /></label>
-                                                   </div>
-                                                   <div class="thumb-preview ec-preview">
-                                                       <div class="image-thumb-preview">
-                                                           <img class="image-thumb-preview ec-image-preview"
-                                                               src="assets2/images/product-image/vender-upload-thumb-preview.jpg"
-                                                               alt="edit" />
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                               <div class="thumb-upload">
-                                                   <div class="thumb-edit">
-                                                       <input type='file' id="thumbUpload02" class="ec-image-upload"
-                                                           accept=".png, .jpg, .jpeg" />
-                                                       <label for="imageUpload"><img src="assets2/images/icons/edit.svg"
-                                                               class="svg_img header_svg" alt="edit" /></label>
-                                                   </div>
-                                                   <div class="thumb-preview ec-preview">
-                                                       <div class="image-thumb-preview">
-                                                           <img class="image-thumb-preview ec-image-preview"
-                                                               src="assets2/images/product-image/vender-upload-thumb-preview.jpg"
-                                                               alt="edit" />
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                               <div class="thumb-upload">
-                                                   <div class="thumb-edit">
-                                                       <input type='file' id="thumbUpload03" class="ec-image-upload"
-                                                           accept=".png, .jpg, .jpeg" />
-                                                       <label for="imageUpload"><img src="assets2/images/icons/edit.svg"
-                                                               class="svg_img header_svg" alt="edit" /></label>
-                                                   </div>
-                                                   <div class="thumb-preview ec-preview">
-                                                       <div class="image-thumb-preview">
-                                                           <img class="image-thumb-preview ec-image-preview"
-                                                               src="assets2/images/product-image/vender-upload-thumb-preview.jpg"
-                                                               alt="edit" />
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                               <div class="thumb-upload">
-                                                   <div class="thumb-edit">
-                                                       <input type='file' id="thumbUpload04" class="ec-image-upload"
-                                                           accept=".png, .jpg, .jpeg" />
-                                                       <label for="imageUpload"><img src="assets2/images/icons/edit.svg"
-                                                               class="svg_img header_svg" alt="edit" /></label>
-                                                   </div>
-                                                   <div class="thumb-preview ec-preview">
-                                                       <div class="image-thumb-preview">
-                                                           <img class="image-thumb-preview ec-image-preview"
-                                                               src="assets2/images/product-image/vender-upload-thumb-preview.jpg"
-                                                               alt="edit" />
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                               <div class="thumb-upload">
-                                                   <div class="thumb-edit">
-                                                       <input type='file' id="thumbUpload05" class="ec-image-upload"
-                                                           accept=".png, .jpg, .jpeg" />
-                                                       <label for="imageUpload"><img src="assets2/images/icons/edit.svg"
-                                                               class="svg_img header_svg" alt="edit" /></label>
-                                                   </div>
-                                                   <div class="thumb-preview ec-preview">
-                                                       <div class="image-thumb-preview">
-                                                           <img class="image-thumb-preview ec-image-preview"
-                                                               src="assets2/images/product-image/vender-upload-thumb-preview.jpg"
-                                                               alt="edit" />
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                               <div class="thumb-upload">
-                                                   <div class="thumb-edit">
-                                                       <input type='file' id="thumbUpload06" class="ec-image-upload"
-                                                           accept=".png, .jpg, .jpeg" />
-                                                       <label for="imageUpload"><img src="assets2/images/icons/edit.svg"
-                                                               class="svg_img header_svg" alt="edit" /></label>
-                                                   </div>
-                                                   <div class="thumb-preview ec-preview">
-                                                       <div class="image-thumb-preview">
-                                                           <img class="image-thumb-preview ec-image-preview"
-                                                               src="assets2/images/product-image/vender-upload-thumb-preview.jpg"
-                                                               alt="edit" />
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                           </div>
+                                          
                                        </div>
                                    </div>
                                </div>
                                <div class="col-lg-8">
                                    <div class="ec-vendor-upload-detail">
-                                       <form class="row g-3" method="post" action="bookupload_handler.php">
+                                       <form class="row g-3" method="post" action="WishABookHandler.php">
                                            <div class="col-md-6">
                                                <label for="inputTitle" class="form-label">Book Title</label>
                                                <input type="text" class="form-control" id="inputTitle"  name="inputtitle">
@@ -227,14 +145,7 @@
                                                <label for="inputlang" class="form-label">Language</label>
                                                <input type="text" class="form-control" id="inputlang" name="inputLang">
                                            </div>
-                                           <div class="col-md-6">
-                                               <label for="inputCond" class="form-label">Condition</label>
-                                               <input type="text" class="form-control" id="inputCond" name="inputcond">
-                                           </div>
-                                           <div class="col-md-6">
-                                               <label for="inputStatus" class="form-label">Availability Status</label>
-                                               <input type="text" class="form-control" id="inputStatus" name="inputstatus">
-                                           </div>
+
                                            <div class="col-md-12">
                                                <label class="form-label">Short Description</label>
                                                <textarea class="form-control" rows="2" name="description"></textarea>
