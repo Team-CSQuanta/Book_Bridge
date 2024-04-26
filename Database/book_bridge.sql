@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 24, 2024 at 04:43 PM
+-- Generation Time: Apr 26, 2024 at 07:17 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -44,19 +44,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `email`, `phone_number`, `password`, `f_name`, `l_name`, `profile_img`, `address`, `location_id`) VALUES
-(1, 'foyeznaeem@gmail.com', '01965750792', 'admin', 'Foyez  Naeem', 'Ahammed ', '662737fbed6eb3.21219675.jpg', 'Mouchak, Kaliakair', 1);
-
---
--- Triggers `admin`
---
-DELIMITER $$
-CREATE TRIGGER `trg_check_moderator_club_id` BEFORE INSERT ON `admin` FOR EACH ROW BEGIN
-    IF NEW.role = 'moderator' AND NEW.club_id IS NULL THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Moderator must have a club_id.';
-    END IF;
-END
-$$
-DELIMITER ;
+(1, 'foyeznaeem@gmail.com', '01965750792', 'admin', 'Foyez  Naeem', 'Ahammed ', '6629315dad94a7.57274626.png', 'Mouchak, Kaliakair', 1);
 
 -- --------------------------------------------------------
 
@@ -69,10 +57,20 @@ CREATE TABLE `bibliophile_club` (
   `club_name` varchar(250) NOT NULL,
   `address_line` varchar(500) DEFAULT NULL,
   `district` varchar(100) NOT NULL,
-  `club_manager_id` int(11) NOT NULL,
+  `club_manager_id` int(11) DEFAULT NULL,
   `club_description` varchar(500) DEFAULT NULL,
-  `club_img` varchar(250) DEFAULT NULL
+  `club_img` varchar(250) DEFAULT 'CLUB-IMG-Defualt.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `bibliophile_club`
+--
+
+INSERT INTO `bibliophile_club` (`club_id`, `club_name`, `address_line`, `district`, `club_manager_id`, `club_description`, `club_img`) VALUES
+(1, 'Gazipur Book Club', 'Mouchak Bazar, Kalikair', 'Gazipur', 1, '\r\nA book club is a gathering of individuals who come together to discuss and engage with literature. Typically, members of a book club read the same book over a set period of time and then meet to discuss their thoughts, opinions, and insights about the book. Book clubs can be organized by friends, family, colleagues, or hosted by libraries, community centers, or online platforms.', 'CLUB-IMG-Defualt.jpg'),
+(2, 'Dhaka Bibliophile Club', 'United City, Madani Avenue, Vatara', 'Dhaka', NULL, 'The Dhaka Book Club offers a vibrant community for book lovers in Dhaka, Bangladesh. With a focus on fostering a love for reading and intellectual engagement, our club organizes regular meetings, discussions, and events centered around diverse literary works. Join us to explore new books, exchange ideas, and connect with fellow book enthusiasts in Dhaka.', 'CLUB-IMG-Defualt.jpg'),
+(4, 'Tangail Book Club', '123 ABC Road, Tangail West Akur Takur, Tangail Sadar', 'Tangail', NULL, 'The Tangail Book Club is a dynamic hub for bibliophiles and literary enthusiasts located in the heart of Tangail. Our club is dedicated to cultivating a vibrant reading culture and fostering intellectual engagement among members of all ages and backgrounds.', 'CLUB-IMG-662b44546f6443.90704513.jpeg'),
+(5, 'Munshiganj Book Club', 'Street: 17/A, Gobindapur Road', 'Munshiganj', NULL, '&#13;&#10;The Munshiganj Book Club is a vibrant community of book enthusiasts dedicated to promoting a love for literature and intellectual exchange. Located in the heart of Munshiganj, Bangladesh, this club provides a platform for avid readers to come together, discuss literary works, share insights, and engage in meaningful conversations.', 'CLUB-IMG-662b451f49f516.61951131.jpg');
 
 -- --------------------------------------------------------
 
@@ -82,14 +80,15 @@ CREATE TABLE `bibliophile_club` (
 
 CREATE TABLE `bibliophile_club_admin` (
   `club_admin_id` int(11) NOT NULL,
-  `email` varchar(300) DEFAULT NULL,
-  `phone_number` varchar(300) DEFAULT NULL,
-  `password` varchar(500) DEFAULT NULL,
-  `f_name` varchar(200) DEFAULT NULL,
-  `l_name` varchar(200) DEFAULT NULL,
+  `email` varchar(300) NOT NULL,
+  `phone_number` varchar(300) NOT NULL,
+  `password` varchar(500) NOT NULL,
+  `f_name` varchar(200) NOT NULL,
+  `l_name` varchar(200) NOT NULL,
+  `bio` varchar(1000) DEFAULT NULL,
   `profile_img` varchar(300) DEFAULT NULL,
   `address_line` varchar(300) DEFAULT NULL,
-  `location_id` int(11) DEFAULT NULL,
+  `location_id` int(11) NOT NULL,
   `club_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -97,8 +96,43 @@ CREATE TABLE `bibliophile_club_admin` (
 -- Dumping data for table `bibliophile_club_admin`
 --
 
-INSERT INTO `bibliophile_club_admin` (`club_admin_id`, `email`, `phone_number`, `password`, `f_name`, `l_name`, `profile_img`, `address_line`, `location_id`, `club_id`) VALUES
-(1, 'rifat@gmail.com', '01936566238', '$2y$10$mj8l1hrBY4Ccmre./06.8e/eZ93leCnoyo/wEWL6i3awcVghFRHyq', 'Rifat', 'Hossain', 'MODERATOR-66291a52028e10.49054479.jpg', 'Mouchak, Kaliakair', 2, NULL);
+INSERT INTO `bibliophile_club_admin` (`club_admin_id`, `email`, `phone_number`, `password`, `f_name`, `l_name`, `bio`, `profile_img`, `address_line`, `location_id`, `club_id`) VALUES
+(1, 'rifat@gmail.com', '01936566238', '$2y$10$mj8l1hrBY4Ccmre./06.8e/eZ93leCnoyo/wEWL6i3awcVghFRHyq', 'Rifat', 'Hossain', '', 'MODERATOR-66291a52028e10.49054479.jpg', 'Mouchak, Kaliakair', 2, 1),
+(2, 'mim@gmail.com', '01999483690', '$2y$10$OB4nf3ITjh4KZWsyGBSOdutzhVoU81EMLHBmpKHpT5kAcnkBYig2e', 'Khadiza Akter', 'Mim', NULL, 'defualt_profile.jpg', 'United City, Satarkul, vatara', 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bibliophile_club_membership`
+--
+
+CREATE TABLE `bibliophile_club_membership` (
+  `membership_id` int(20) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `membership_date` date DEFAULT curdate()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `book`
+--
+
+CREATE TABLE `book` (
+  `book_id` int(11) NOT NULL,
+  `isbn` varchar(20) DEFAULT NULL,
+  `title` varchar(255) NOT NULL,
+  `authors` varchar(255) NOT NULL,
+  `category_id` varchar(20) DEFAULT NULL,
+  `edition` varchar(50) DEFAULT NULL,
+  `num_of_pages` int(11) DEFAULT NULL,
+  `language` varchar(50) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `publisher` varchar(255) DEFAULT NULL,
+  `publication_date` date DEFAULT NULL,
+  `cover_img` varchar(255) DEFAULT NULL,
+  `additional_imgs` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -121,8 +155,6 @@ CREATE TABLE `book_images` (
 CREATE TABLE `category` (
   `categoryID` varchar(20) NOT NULL,
   `categoryName` varchar(50) DEFAULT NULL,
-  `numAvailableBooks` int(11) DEFAULT 0,
-  `numDesiredBooks` int(11) DEFAULT 0,
   `categoryDescription` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -130,19 +162,36 @@ CREATE TABLE `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`categoryID`, `categoryName`, `numAvailableBooks`, `numDesiredBooks`, `categoryDescription`) VALUES
-('CAT-ACA-010', 'Academic', 0, 0, 'Academic books are publications that are written by scholars or experts in a particular field and are intended for an academic audience. These books typically cover specialized topics in depth, providing comprehensive analyses, theories, and findings related to the subject matter. They are often used as supplementary or primary sources in academic research, teaching, and learning. Academic books can be found across various disciplines, including but not limited to, the sciences, social sciences, humanities, and professional fields.'),
-('CAT-BIO-005', 'Biography', 0, 0, 'The biography book genre offers readers a glimpse into the lives of fascinating individuals, spanning historical figures, cultural icons, political leaders, artists, scientists, athletes, and everyday people with remarkable stories. Biographies delve into the personal and professional journeys of their subjects, offering insights into their upbringing, experiences, challenges, achievements, and legacies.\r\n\r\nWhat sets biographies apart is their commitment to presenting a factual and comprehensive account of a person\'s life, often based on thorough research and interviews with people who knew the subject. Biographers strive to capture the essence of their subjects, providing readers with a deeper understanding of their motivations, struggles, triumphs, and impact on the world around them.'),
-('CAT-COO-011', 'Cookbook', 0, 0, 'A cookbook or cookery book is a kitchen reference containing recipes. Cookbooks may be general, or may specialize in a particular cuisine or category of food. Recipes in cookbooks are organized in various ways: by course, by main ingredient, by cooking technique, alphabetically, by region or country, and so on.'),
-('CAT-FAN-002', 'Fantasy', 0, 0, 'The fantasy book genre whisks readers away to magical realms filled with extraordinary creatures, mystical powers, and epic adventures. It\'s a genre characterized by imaginative storytelling that often incorporates elements such as magic, mythical creatures, and supernatural phenomena. '),
-('CAT-GRA-012', 'Graphic novel', 0, 0, 'A graphic novel is a long-form work of sequential art. The term graphic novel is often applied broadly, including fiction, non-fiction, and anthologized work, though this practice is highly contested by comics scholars and industry professionals.'),
-('CAT-HIS-001', 'History', 0, 0, 'The history book genre provides readers with a window into the past, offering insights into the events, people, and cultures that have shaped the world we live in today. '),
-('CAT-HOR-006', 'Horror', 0, 0, NULL),
-('CAT-MEM-007', 'Memoir', 0, 0, 'A memoir is any nonfiction narrative writing based on the author\'s personal memories. The assertions made in the work are thus understood to be factual. '),
-('CAT-MYS-009', 'Mystery', 0, 0, 'Mystery is a fiction genre where the nature of an event, usually a murder or other crime, remains mysterious until the end of the story. Often within a closed circle of suspects, each suspect is usually provided with a credible motive and a reasonable opportunity for committing the crime.'),
-('CAT-ROM-003', 'Romance', 0, 0, NULL),
-('CAT-SCI-008', 'Science Fiction', 0, 0, 'Science fiction is a genre of speculative fiction, which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration, time travel, parallel universes, and extraterrestrial life. It is related to fantasy, horror, and superhero fiction and contains many subgenres.'),
-('CAT-THR-004', 'Thriller', 0, 0, NULL);
+INSERT INTO `category` (`categoryID`, `categoryName`, `categoryDescription`) VALUES
+('CAT-ACA-010', 'Academic', 'Academic books are publications that are written by scholars or experts in a particular field and are intended for an academic audience. These books typically cover specialized topics in depth, providing comprehensive analyses, theories, and findings related to the subject matter. They are often used as supplementary or primary sources in academic research, teaching, and learning. Academic books can be found across various disciplines, including but not limited to, the sciences, social sciences, humanities, and professional fields.'),
+('CAT-BIO-005', 'Biography', 'The biography book genre offers readers a glimpse into the lives of fascinating individuals, spanning historical figures, cultural icons, political leaders, artists, scientists, athletes, and everyday people with remarkable stories. Biographies delve into the personal and professional journeys of their subjects, offering insights into their upbringing, experiences, challenges, achievements, and legacies.\r\n\r\nWhat sets biographies apart is their commitment to presenting a factual and comprehensive account of a person\'s life, often based on thorough research and interviews with people who knew the subject. Biographers strive to capture the essence of their subjects, providing readers with a deeper understanding of their motivations, struggles, triumphs, and impact on the world around them.'),
+('CAT-COO-011', 'Cookbook', 'A cookbook or cookery book is a kitchen reference containing recipes. Cookbooks may be general, or may specialize in a particular cuisine or category of food. Recipes in cookbooks are organized in various ways: by course, by main ingredient, by cooking technique, alphabetically, by region or country, and so on.'),
+('CAT-FAN-002', 'Fantasy', 'The fantasy book genre whisks readers away to magical realms filled with extraordinary creatures, mystical powers, and epic adventures. It\'s a genre characterized by imaginative storytelling that often incorporates elements such as magic, mythical creatures, and supernatural phenomena. '),
+('CAT-GRA-012', 'Graphic novel', 'A graphic novel is a long-form work of sequential art. The term graphic novel is often applied broadly, including fiction, non-fiction, and anthologized work, though this practice is highly contested by comics scholars and industry professionals.'),
+('CAT-HIS-001', 'History', 'The history book genre provides readers with a window into the past, offering insights into the events, people, and cultures that have shaped the world we live in today. '),
+('CAT-HOR-006', 'Horror', NULL),
+('CAT-MEM-007', 'Memoir', 'A memoir is any nonfiction narrative writing based on the author\'s personal memories. The assertions made in the work are thus understood to be factual. '),
+('CAT-MYS-009', 'Mystery', 'Mystery is a fiction genre where the nature of an event, usually a murder or other crime, remains mysterious until the end of the story. Often within a closed circle of suspects, each suspect is usually provided with a credible motive and a reasonable opportunity for committing the crime.'),
+('CAT-ROM-003', 'Romance', NULL),
+('CAT-SCI-008', 'Science Fiction', 'Science fiction is a genre of speculative fiction, which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration, time travel, parallel universes, and extraterrestrial life. It is related to fantasy, horror, and superhero fiction and contains many subgenres.'),
+('CAT-THR-004', 'Thriller', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contribution_request`
+--
+
+CREATE TABLE `contribution_request` (
+  `request_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `book_id` int(11) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL CHECK (`status` in ('pending','user is requested to send','received by the club member','quality checking of the book','published')),
+  `date_of_request` date DEFAULT curdate(),
+  `date_of_received` date DEFAULT NULL,
+  `book_received_date` date DEFAULT NULL,
+  `published_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -178,6 +227,23 @@ CREATE TABLE `exchange_post` (
   `Conditions` enum('Like New','Good','Acceptable','Antique') DEFAULT NULL,
   `OwnerUserID` int(11) DEFAULT NULL,
   `AvailabilityStatus` enum('Available','Unavailable') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `global_book_collection`
+--
+
+CREATE TABLE `global_book_collection` (
+  `collection_id` bigint(20) UNSIGNED NOT NULL,
+  `book_id` int(11) DEFAULT NULL,
+  `owner_id` int(11) DEFAULT NULL,
+  `book_condition` enum('like new','good','acceptable') DEFAULT NULL,
+  `availability_status` enum('yes','no') DEFAULT 'yes',
+  `club_id` int(11) DEFAULT NULL,
+  `club_member_id` int(11) DEFAULT NULL,
+  `date_added` date DEFAULT curdate()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -280,7 +346,8 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `bibliophile_club`
   ADD PRIMARY KEY (`club_id`),
-  ADD KEY `fk_bibliopile_club_district` (`district`);
+  ADD KEY `fk_bibliopile_club_district` (`district`),
+  ADD KEY `fk_club_admin_id` (`club_manager_id`);
 
 --
 -- Indexes for table `bibliophile_club_admin`
@@ -291,6 +358,20 @@ ALTER TABLE `bibliophile_club_admin`
   ADD UNIQUE KEY `phone_number` (`phone_number`),
   ADD KEY `club_id` (`club_id`),
   ADD KEY `location_id` (`location_id`);
+
+--
+-- Indexes for table `bibliophile_club_membership`
+--
+ALTER TABLE `bibliophile_club_membership`
+  ADD PRIMARY KEY (`membership_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `book`
+--
+ALTER TABLE `book`
+  ADD PRIMARY KEY (`book_id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Indexes for table `book_images`
@@ -304,8 +385,15 @@ ALTER TABLE `book_images`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`categoryID`),
-  ADD UNIQUE KEY `categoryID` (`categoryID`),
   ADD UNIQUE KEY `unique_category_name` (`categoryName`);
+
+--
+-- Indexes for table `contribution_request`
+--
+ALTER TABLE `contribution_request`
+  ADD PRIMARY KEY (`request_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `book_id` (`book_id`);
 
 --
 -- Indexes for table `exchangerequest`
@@ -322,6 +410,16 @@ ALTER TABLE `exchangerequest`
 ALTER TABLE `exchange_post`
   ADD PRIMARY KEY (`ISBN`),
   ADD KEY `OwnerUserID` (`OwnerUserID`);
+
+--
+-- Indexes for table `global_book_collection`
+--
+ALTER TABLE `global_book_collection`
+  ADD PRIMARY KEY (`collection_id`),
+  ADD KEY `book_id` (`book_id`),
+  ADD KEY `owner_id` (`owner_id`),
+  ADD KEY `club_id` (`club_id`),
+  ADD KEY `club_member_id` (`club_member_id`);
 
 --
 -- Indexes for table `location`
@@ -362,13 +460,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `bibliophile_club`
 --
 ALTER TABLE `bibliophile_club`
-  MODIFY `club_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `club_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `bibliophile_club_admin`
 --
 ALTER TABLE `bibliophile_club_admin`
-  MODIFY `club_admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `club_admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `bibliophile_club_membership`
+--
+ALTER TABLE `bibliophile_club_membership`
+  MODIFY `membership_id` int(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `book`
+--
+ALTER TABLE `book`
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `book_images`
@@ -377,10 +487,22 @@ ALTER TABLE `book_images`
   MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `contribution_request`
+--
+ALTER TABLE `contribution_request`
+  MODIFY `request_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `exchangerequest`
 --
 ALTER TABLE `exchangerequest`
   MODIFY `RequestID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `global_book_collection`
+--
+ALTER TABLE `global_book_collection`
+  MODIFY `collection_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `location`
@@ -414,7 +536,8 @@ ALTER TABLE `admin`
 -- Constraints for table `bibliophile_club`
 --
 ALTER TABLE `bibliophile_club`
-  ADD CONSTRAINT `fk_bibliopile_club_district` FOREIGN KEY (`district`) REFERENCES `location` (`district`);
+  ADD CONSTRAINT `fk_bibliopile_club_district` FOREIGN KEY (`district`) REFERENCES `location` (`district`),
+  ADD CONSTRAINT `fk_club_admin_id` FOREIGN KEY (`club_manager_id`) REFERENCES `bibliophile_club_admin` (`club_admin_id`);
 
 --
 -- Constraints for table `bibliophile_club_admin`
@@ -424,13 +547,40 @@ ALTER TABLE `bibliophile_club_admin`
   ADD CONSTRAINT `bibliophile_club_admin_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`);
 
 --
+-- Constraints for table `bibliophile_club_membership`
+--
+ALTER TABLE `bibliophile_club_membership`
+  ADD CONSTRAINT `bibliophile_club_membership_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `book`
+--
+ALTER TABLE `book`
+  ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`categoryID`);
+
+--
 -- Constraints for table `book_images`
 --
 ALTER TABLE `book_images`
   ADD CONSTRAINT `book_images_ibfk_1` FOREIGN KEY (`ISBN`) REFERENCES `exchange_post` (`ISBN`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `contribution_request`
+--
+ALTER TABLE `contribution_request`
+  ADD CONSTRAINT `contribution_request_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `contribution_request_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`);
+
+--
+-- Constraints for table `global_book_collection`
+--
+ALTER TABLE `global_book_collection`
+  ADD CONSTRAINT `global_book_collection_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
+  ADD CONSTRAINT `global_book_collection_ibfk_2` FOREIGN KEY (`owner_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `global_book_collection_ibfk_3` FOREIGN KEY (`club_id`) REFERENCES `bibliophile_club` (`club_id`),
+  ADD CONSTRAINT `global_book_collection_ibfk_4` FOREIGN KEY (`club_member_id`) REFERENCES `bibliophile_club_membership` (`membership_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
