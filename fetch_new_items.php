@@ -41,8 +41,8 @@ if ($result->num_rows > 0) {
                     <div class="product-img-action-wrap">
                         <div class="product-img product-img-zoom">
                             <a href="shop-product-full.php">
-                                <img class="default-img" src="' . $row["ImageURL"] . '" alt="">
-                                <img class="hover-img" src="' . $row["ImageURL"] . '" alt="">
+                                <img class="default-img" src="' . $row["BookImage"] . '" alt="">
+                                <img class="hover-img" src="' . $row["BookImage"] . '" alt="">
                             </a>
                         </div>
                         <!-- Product action buttons -->

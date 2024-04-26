@@ -215,9 +215,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row product-grid-3">
-                        <div id="itemContainer">
-                            <!-- ,,,,,,, -->
+
+
+                        <div class="row product-grid-3"  id="itemContainer">
+                        
+                            <!-- Item start -->
                             <div class="col-lg-4 col-md-4 col-12 col-sm-6">
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
@@ -229,7 +231,7 @@
                                         </div>
                                         <div class="product-action-1">
                                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
+                                           <i class="fi-rs-search"></i></a>
                                             <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
@@ -254,13 +256,13 @@
                                         </div>
                                         <div class="product-action-1 show">
                                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
-                            </div>
-
-                            <script>
+                        </div>
+  <!-- Item end -->
+    <script>
     $(document).ready(function() {
         // Function to fetch new items from the server
         function fetchNewItems() {
