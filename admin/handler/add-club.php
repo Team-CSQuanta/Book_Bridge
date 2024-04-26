@@ -35,5 +35,5 @@ if(isset($_POST['add-btn'])){
     $get_location_result = $connection->query($get_location)->fetch_assoc();
     $location_id_for_club = $get_location_result['location_id'];
     $insert_query ="INSERT INTO bioliophile_club(club_name, address_line, location_id, club_manager_id, club_description, club_img
-                    VALUES(`$club_name`, `$club_address_line`, `$location_id_for_club`, null,))"
+                    VALUES(`$club_name`, `$club_address_line`, `$location_id_for_club`, null,))";
 }

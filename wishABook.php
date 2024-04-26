@@ -1,4 +1,12 @@
 
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +47,7 @@
    <!-- Main Style -->
    <link rel="stylesheet" href="assets2/css/style.css" />
    <link rel="stylesheet" href="assets2/css/responsive.css" />
-   <?php include_once 'bookupload_handler.php';?> 
+   <?php include_once 'bookupload_handler.php';?>
    <!-- Background css -->
    <link rel="stylesheet" id="bg-switcher-css" href="assets2/css/backgrounds/bg-4.css">
   
@@ -48,8 +56,8 @@
 
 <?php
     include 'partials/header.php';
-    include  'partials/mobile-header.php'
-    ?>
+    include  'partials/mobile-header.php';
+ ?>
   
 
   <div class="page-header breadcrumb-wrap">
@@ -58,6 +66,7 @@
                     <a href="index.php" rel="nofollow">Home</a>
                     <span></span> Pages
                     <span></span> Account
+                    <span></span> Wish A Book
                 </div>
             </div>
         </div>
@@ -72,11 +81,31 @@
                    <div class="ec-vendor-dashboard-card">
                        <div class="ec-vendor-card-body">
                            <div class="row">
+                               <div class="col-lg-4">
+                                   <div class="ec-vendor-img-upload">
+                                       <div class="ec-vendor-main-img">
+                                           <div class="avatar-upload">
+                                               <div class="avatar-edit">
+                                                   <input type='file' id="imageUpload" class="ec-image-upload"
+                                                       accept=".png, .jpg, .jpeg" />
+                                                   <label for="imageUpload"><img src="assets2/images/icons/edit.svg"
+                                                           class="svg_img header_svg" alt="edit" /></label>
+                                               </div>
+                                               <div class="avatar-preview ec-preview">
+                                                   <div class="imagePreview ec-div-preview">
+                                                       <img class="ec-image-preview"
+                                                           src="assets2/images/product-image/vender-upload-preview.jpg"
+                                                           alt="edit" />
+                                                   </div>
+                                               </div>
+                                           </div>
                                           
-                               
+                                       </div>
+                                   </div>
+                               </div>
                                <div class="col-lg-8">
                                    <div class="ec-vendor-upload-detail">
-                                       <form class="row g-3" method="POST" action="bookupload_handler.php" enctype="multipart/form-data">
+                                       <form class="row g-3" method="post" action="WishABookHandler.php">
                                            <div class="col-md-6">
                                                <label for="inputTitle" class="form-label">Book Title</label>
                                                <input type="text" class="form-control" id="inputTitle"  name="inputtitle">
@@ -116,14 +145,7 @@
                                                <label for="inputlang" class="form-label">Language</label>
                                                <input type="text" class="form-control" id="inputlang" name="inputLang">
                                            </div>
-                                           <div class="col-md-6">
-                                               <label for="inputCond" class="form-label">Condition</label>
-                                               <input type="text" class="form-control" id="inputCond" name="inputcond">
-                                           </div>
-                                           <div class="col-md-6">
-                                               <label for="inputStatus" class="form-label">Availability Status</label>
-                                               <input type="text" class="form-control" id="inputStatus" name="inputstatus">
-                                           </div>
+
                                            <div class="col-md-12">
                                                <label class="form-label">Short Description</label>
                                                <textarea class="form-control" rows="2" name="description"></textarea>
@@ -137,25 +159,6 @@
                                                <input type="text" class="form-control" id="group_tag" name="group_tag"
                                                    value="" placeholder="" data-role="tagsinput" />
                                            </div>
-                                           <div class="col-lg-4">
-                                          <div class="ec-vendor-img-upload">
-                                          <div class="ec-vendor-main-img">
-                                           <div class="avatar-upload">
-                                               <div class="avatar-edit">
-                                                   <input type='file' id="imageupload" name ="imageUpload"class="ec-image-upload"
-                                                       accept=".png, .jpg, .jpeg" />
-                                                   <label for="imageUpload"><img src="assets2/images/icons/edit.svg"
-                                                           class="svg_img header_svg" alt="edit" /></label>
-                                               </div>
-                                               <div class="avatar-preview ec-preview">
-                                                   <div class="imagePreview ec-div-preview">
-                                                       <img class="ec-image-preview"
-                                                           src="assets2/images/product-image/vender-upload-preview.jpg"
-                                                           alt="edit" />
-                                                   </div>
-                                               </div>
-                                           </div>
-
                                            <div class="col-md-12">
                                                <button type="submit" class="btn btn-primary" name="Submit">Submit</button>
                                            </div>
