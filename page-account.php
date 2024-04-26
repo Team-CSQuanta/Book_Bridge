@@ -20,7 +20,35 @@
 <body>
 <?php
     include 'partials/header.php';
-    include  'partials/mobile-header.php'
+    include  'partials/mobile-header.php';
+
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "book_bridge";
+
+
+    // Assume you have a database connection named $con
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+           // Retrieve the number of book contributions
+           $num_Contribution_query = "SELECT COUNT(*) as total FROM exchangerequest";
+           $num_Contribution_query_run = mysqli_query($conn, $num_Contribution_query);
+   
+           // Check if query executed successfully
+           if ($num_Contribution_query_run) {
+               $row = mysqli_fetch_assoc($num_Contribution_query_run);
+               $total_num = $row['total'];
+               $message = "You have contributed " . $total_num . " books.";
+           } else {
+               $message = "Error in fetching contribution data.";
+           }
+
     ?>
     <main class="main">
         <div class="page-header breadcrumb-wrap">
@@ -44,10 +72,16 @@
                                             <a class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="false"><i class="fi-rs-settings-sliders mr-10"></i>Dashboard</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="address-tab" data-bs-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="true"><i class="fi-rs-marker mr-10"></i>Book Exchange Post</a>
+                                            <a class="nav-link" id="contribution-tab" data-bs-toggle="tab" href="#contribution" role="tab" aria-controls="contribution" aria-selected="true"><i class="fi-rs-marker mr-10"></i>Contribute a Book</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="orders-tab" data-bs-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Orders</a>
+                                            <a class="nav-link" id="wishes-tab" data-bs-toggle="tab" href="#wishes" role="tab" aria-controls="wishes" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Wish a Book</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="request-tab" data-bs-toggle="tab" href="#request" role="tab" aria-controls="request" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Request a Book</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="history-tab" data-bs-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>History</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="track-orders-tab" data-bs-toggle="tab" href="#track-orders" role="tab" aria-controls="track-orders" aria-selected="false"><i class="fi-rs-shopping-cart-check mr-10"></i>Track Your Order</a>
@@ -69,58 +103,64 @@
                                     <div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h5 class="mb-0">Hello Rosie! </h5>
+                                                <h5 class="mb-0">Hello Rakib! </h5>
                                             </div>
                                             <div class="card-body">
-                                                <p>From your account dashboard. you can easily check &amp; view your <a href="#">recent orders</a>, manage your <a href="#">shipping and billing addresses</a> and <a href="#">edit your password and account details.</a></p>
+                                                <p>From your account dashboard. you can easily check &amp; view your <a href="#history">recent requests</a>, manage your <a href="#">shipping and billing addresses</a> and <a href="#">edit your password and account details.</a></p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h5 class="mb-0">Your Orders</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Order</th>
-                                                                <th>Date</th>
-                                                                <th>Status</th>
-                                                                <th>Total</th>
-                                                                <th>Actions</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>#1357</td>
-                                                                <td>March 45, 2020</td>
-                                                                <td>Processing</td>
-                                                                <td>$125.00 for 2 item</td>
-                                                                <td><a href="#" class="btn-small d-block">View</a></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>#2468</td>
-                                                                <td>June 29, 2020</td>
-                                                                <td>Completed</td>
-                                                                <td>$364.00 for 5 item</td>
-                                                                <td><a href="#" class="btn-small d-block">View</a></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>#2366</td>
-                                                                <td>August 02, 2020</td>
-                                                                <td>Completed</td>
-                                                                <td>$280.00 for 3 item</td>
-                                                                <td><a href="#" class="btn-small d-block">View</a></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+
+
+                                    <div class="tab-pane fade" id="contribution" role="tabpanel" aria-labelledby="contribution-tab">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-6 mx-auto">
+                                                <div class="card mb-3 mb-lg-0" style="width: 400px; height: 300px;">
+                                                    <div class="card-header">
+                                                        <h5 class="mb-0">My Book Contribution</h5>
+                                                    </div>
+                                                    <div class="card-body d-flex flex-column justify-content-between">
+
+                               
+                                                    <?php echo $message; ?>
+
+                                                    <div class="text-center">  
+                                                    <form action="bookupload.php" method="post">
+                                                            <button type="submit" class="btn btn-primary">Contribute a Book</button>
+                                                        </form>
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                              </div>
+                                    <div class="tab-pane fade" id="wishes" role="tabpanel" aria-labelledby="wishes-tab">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-6 mx-auto">
+                                                <div class="card mb-3 mb-lg-0" style="width: 400px; height: 300px;">
+                                                    <div class="card-header">
+                                                        <h5 class="mb-0">My WishList</h5>
+                                                    </div>
+                                                    <div class="card-body d-flex flex-column justify-content-between">
+
+                               
+                                                    <?php echo $message; ?>
+
+                                                    <div class="text-center">  
+                                                    <form action="wishABook.php" method="post">
+                                                            <button type="submit" class="btn btn-primary">Wish a Book</button>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                              </div>
+                                 
+
+
                                     <div class="tab-pane fade" id="track-orders" role="tabpanel" aria-labelledby="track-orders-tab">
                                         <div class="card">
                                             <div class="card-header">
@@ -228,6 +268,13 @@
             </div>
         </section>
     </main>
+</body>
+</html>
+
+
+
     <?php
-    include 'partials/footer.php'
+    include 'partials/footer.php';
+
+    mysqli_close($con);
     ?>

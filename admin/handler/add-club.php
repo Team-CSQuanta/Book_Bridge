@@ -34,6 +34,7 @@ if (isset($_POST['add-btn'])) {
         }
     }
 
+
     // Insert club data into database
     $insert_query = "INSERT INTO bibliophile_club (club_name, address_line, district, club_description, club_img)
                          VALUES ('$club_name', '$club_address_line', '$club_district', '$club_description', '$file_name_for_upload')";
@@ -47,3 +48,6 @@ if (isset($_POST['add-btn'])) {
         echo "Error: " . $insert_query . "<br>" . $connection->error;
     }
 }
+
+
+
