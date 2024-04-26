@@ -2,7 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Establish database connection
+// Database connection
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -15,98 +15,89 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Function to handle image uploads
-function handleImageUpload($file, $uploadDir) {
-    if ($file['error'] !== UPLOAD_ERR_OK) {
-        error_log("Error uploading file: " . $file['error']);
-        return false;
-    }
-
-    $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
-    $fileName = uniqid() . '.' . $extension;
-    $filePath = $uploadDir . $fileName;
-
-    if (move_uploaded_file($file['tmp_name'], $filePath)) {
-        return $filePath;
-    } else {
-        error_log("Error moving file: " . $file['name']);
-        return false;
-    }
-}
-
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve book details from the form
-    $title = mysqli_real_escape_string($conn, $_POST['inputtitle']);
-    $author = mysqli_real_escape_string($conn, $_POST['inputname']);
-    $genre = mysqli_real_escape_string($conn, $_POST['categories']);
-    $isbn = mysqli_real_escape_string($conn, $_POST['inputIsbn']);
-    $publishedYear = mysqli_real_escape_string($conn, $_POST['inputYear']);
-    $language = mysqli_real_escape_string($conn, $_POST['inputLang']);
-    $condition = mysqli_real_escape_string($conn, $_POST['inputcond']);
-    $availabilityStatus = mysqli_real_escape_string($conn, $_POST['inputstatus']);
-    $description = mysqli_real_escape_string($conn, $_POST['description']);
+    if (isset($_FILES['imageUpload'])) {
+        if ($_FILES['imageUpload']['error'] === UPLOAD_ERR_OK) {
 
-    // Prepare statement to insert book data into `exchange_post` table
-    $sql = "INSERT INTO exchange_post (Title, Author, ISBN, Genre, PublishedYear, Description, Language, Conditions, AvailabilityStatus)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    
-    $stmt = $conn->prepare($sql);
+            $uploadDir = "uploads/"; // Ensure this directory exists and has write permissions
+            $allowedImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
-    if (!$stmt) {
-        error_log("Error preparing statement: " . $conn->error);
-        return;
-    }
-
-    // Bind parameters and execute the statement
-    $stmt->bind_param("ssssissss", $title, $author, $isbn, $genre, $publishedYear, $description, $language, $condition, $availabilityStatus);
-
-    if ($stmt->execute()) {
-        // Define the upload directory
-        $uploadDir = "uploads/";
-
-        // Create the upload directory if it doesn't exist
-        if (!is_dir($uploadDir) && !mkdir($uploadDir, 0777, true)) {
-            die("Failed to create upload directory");
-        }
-
-        // Handle image uploads for each file input
-        foreach ($_FILES as $fileInputName => $file) {
-            // Check if file input exists and is not empty
-            if (isset($file['name']) && !empty($file['name'])) {
-                // Handle image upload
-                $filePath = handleImageUpload($file, $uploadDir);
-
-                if ($filePath) {
-                    // Insert the file path into the `book_images` table
-                    $sql = "INSERT INTO book_images (ISBN, ImagePath) VALUES (?, ?)";
-                    $stmt_img = $conn->prepare($sql);
-
-                    if (!$stmt_img) {
-                        error_log("Error preparing statement: " . $conn->error);
-                        continue;
-                    }
-
-                    $stmt_img->bind_param("ss", $isbn, $filePath);
-
-                    if (!$stmt_img->execute()) {
-                        error_log("Error inserting image path into book_images table: " . $stmt_img->error);
-                    }
-
-                    $stmt_img->close();
-                } else {
-                    error_log("Error uploading file for input: " . $fileInputName);
-                }
+            // Validate image type
+            $check = getimagesize($_FILES['imageUpload']['tmp_name']);
+            if ($check === false || !in_array($check['mime'], $allowedImageTypes)) {
+                echo '<script>alert("Invalid image file type. Please upload a JPEG, PNG, or GIF image.");</script>';
+                exit();
             }
+
+            $fileName = uniqid('', true) . '_' . $_FILES['imageUpload']['name'];
+            $filePath = $uploadDir . $fileName;
+
+            // Try to upload the image
+            if (!move_uploaded_file($_FILES['imageUpload']['tmp_name'], $filePath)) {
+                echo '<script>alert("Error uploading image!");</script>';
+                exit();
+            }
+
+            // Process and escape book details
+            $title = mysqli_real_escape_string($conn, $_POST['inputtitle']);
+            $author = mysqli_real_escape_string($conn, $_POST['inputname']);
+            $genre = mysqli_real_escape_string($conn, $_POST['categories']);
+            $isbn = mysqli_real_escape_string($conn, $_POST['inputIsbn']);
+            $publishedYear = mysqli_real_escape_string($conn, $_POST['inputYear']);
+            $language = mysqli_real_escape_string($conn, $_POST['inputLang']);
+            $condition = mysqli_real_escape_string($conn, $_POST['inputcond']);
+            $availabilityStatus = mysqli_real_escape_string($conn, $_POST['inputstatus']);
+            $description = mysqli_real_escape_string($conn, $_POST['description']);
+
+            // Prepare and execute SQL statement with error handling
+            $sql = "INSERT INTO exchange_post (Title, Author, ISBN, Genre, PublishedYear, Description, Language, Conditions, AvailabilityStatus, BookImage)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+
+            if ($stmt) {
+                $stmt->bind_param("ssssisssss", $title, $author, $isbn, $genre, $publishedYear, $description, $language, $condition, $availabilityStatus, $filePath);
+
+                if ($stmt->execute()) {
+                    echo '<script>alert("Book uploaded successfully!"); location="index.php";</script>';
+                } else {
+                    echo '<script>alert("Error inserting book data: ' . $stmt->error . '");</script>';
+                }
+
+                $stmt->close();
+            } else {
+                echo '<script>alert("Error preparing statement: ' . $conn->error . '");</script>';
+            }
+        } else {
+            // Error handling for file upload issues
+            $errorMessage = "Image upload failed";
+            switch ($_FILES['imageUpload']['error']) {
+                case UPLOAD_ERR_INI_SIZE:
+                    $errorMessage = "The uploaded file exceeds the upload_max_filesize directive in php.ini.";
+                    break;
+                case UPLOAD_ERR_FORM_SIZE:
+                    $errorMessage = "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form.";
+                    break;
+                case UPLOAD_ERR_PARTIAL:
+                    $errorMessage = "The uploaded file was only partially uploaded.";
+                    break;
+                case UPLOAD_ERR_NO_FILE:
+                    $errorMessage = "No file was uploaded.";
+                    break;
+                case UPLOAD_ERR_NO_TMP_DIR:
+                    $errorMessage = "Missing a temporary folder.";
+                    break;
+                case UPLOAD_ERR_CANT_WRITE:
+                    $errorMessage = "Failed to write file to disk.";
+                    break;
+                case UPLOAD_ERR_EXTENSION:
+                    $errorMessage = "A PHP extension stopped the file upload.";
+                    break;
+            }
+            echo '<script>alert("' . $errorMessage . '");</script>';
         }
-        echo '<script>alert("Book and images uploaded successfully!"); location="index.php";</script>';
     } else {
-        error_log("Error inserting book data: " . $stmt->error);
+        echo '<script>alert("Image upload field not found");</script>';
     }
-
-    // Close the statements
-    $stmt->close();
 }
-
-// Close the database connection
-$conn->close();
+?>
