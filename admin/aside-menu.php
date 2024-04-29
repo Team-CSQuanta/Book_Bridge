@@ -48,7 +48,7 @@ if (!isset($_SESSION['user-logged-email'])) {
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="page-products-grid-wishes.php"> <i class="icon material-icons md-star"></i>
+                    <a class="menu-link" href="page-wishes-list.php"> <i class="icon material-icons md-star"></i>
                         <span class="text">Wishes</span>
                     </a>
                 </li>
