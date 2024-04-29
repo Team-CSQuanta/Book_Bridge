@@ -43,7 +43,7 @@ if (!isset($_SESSION['user-logged-email'])) {
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="page-products-grid.php"> <i class="icon material-icons md-local_offer"></i>
+                    <a class="menu-link" href="page-exchange-offers.php"> <i class="icon material-icons md-local_offer"></i>
                         <span class="text">Exchange offers</span>
                     </a>
                 </li>
