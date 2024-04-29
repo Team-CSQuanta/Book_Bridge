@@ -84,7 +84,29 @@ $total_pages = ceil($total_records / $limit);
                                     <tr>
                                         <td><?= $category['categoryID'] ?></td>
                                         <td><b><?= $category['categoryName'] ?></b></td>
-                                        <td><?= $category['numAvailableBooks'] ?></td>
+                                        <td>
+                                            <?php
+                                            // Query to get the count of distinct book category IDs for the current category ID
+                                            $categoryId = $category['categoryID'];
+                                            $query = "SELECT COUNT(DISTINCT book.categoryID) AS bookCount 
+                                                      FROM global_book_collection
+                                                      JOIN book ON global_book_collection.book_id = book.book_id
+                                                      WHERE book.categoryID = '$categoryId' AND global_book_collection.availability_status = 'yes'";
+                                            $result = $connection->query($query);
+
+                                            if ($result) {
+                                                if ($result->num_rows > 0) {
+                                                    $row = $result->fetch_assoc();
+                                                    echo $row['bookCount'];
+                                                } else {
+                                                    echo "0";
+                                                }
+                                            } else {
+                                                echo "Error executing the query: " . $connection->error;
+                                            }
+                                            ?>
+
+                                        </td>
                                         <td><?= $category['numDesiredBooks'] ?></td>
                                         <td class="text-end">
                                             <div class="dropdown">
