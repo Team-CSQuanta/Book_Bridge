@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 29, 2024 at 03:50 AM
+-- Generation Time: Apr 29, 2024 at 07:13 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -375,6 +375,13 @@ CREATE TABLE `users_wishes` (
   `book_wishes_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `users_wishes`
+--
+
+INSERT INTO `users_wishes` (`user_id`, `book_wishes_id`) VALUES
+(1, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -384,8 +391,18 @@ CREATE TABLE `users_wishes` (
 CREATE TABLE `wishes_list` (
   `book_wishes_id` int(11) NOT NULL,
   `book_id` int(11) DEFAULT NULL,
-  `date_added` date DEFAULT NULL
+  `date_added` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `wishes_list`
+--
+
+INSERT INTO `wishes_list` (`book_wishes_id`, `book_id`, `date_added`) VALUES
+(1, 2, '2024-04-29 02:52:45'),
+(3, 4, '2024-04-29 02:52:45'),
+(4, 5, '2024-04-29 02:52:45'),
+(6, 7, '2024-04-29 03:36:14');
 
 --
 -- Indexes for dumped tables
@@ -598,7 +615,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `wishes_list`
 --
 ALTER TABLE `wishes_list`
-  MODIFY `book_wishes_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `book_wishes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
