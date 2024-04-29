@@ -43,12 +43,12 @@ if (!isset($_SESSION['user-logged-email'])) {
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="page-products-grid.php"> <i class="icon material-icons md-local_offer"></i>
+                    <a class="menu-link" href="page-exchange-offers.php"> <i class="icon material-icons md-local_offer"></i>
                         <span class="text">Exchange offers</span>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a class="menu-link" href="page-products-grid-wishes.php"> <i class="icon material-icons md-star"></i>
+                    <a class="menu-link" href="page-wishes-list.php"> <i class="icon material-icons md-star"></i>
                         <span class="text">Wishes</span>
                     </a>
                 </li>
@@ -76,7 +76,6 @@ if (!isset($_SESSION['user-logged-email'])) {
                     <div class="submenu">
                         <a href="page-club-list.php">Club List</a>
                         <a href="page-form-add-club.php">Add Club</a>
-                        <a href="page-form-add-club.php">Club Managers</a>
                         <a href="page-club-request-list.php">Club Requests</a>
                     </div>
                 </li>

@@ -1,7 +1,7 @@
 <?php
 require './aside-menu.php';
 require './handler/fetch-data-by-id.php';
-$moderator_id = $_GET['moderator_id'];
+$moderator_id = filter_var($_GET['moderator_id'], FILTER_SANITIZE_NUMBER_INT);
 
 $query = "SELECT * 
           FROM bibliophile_club_admin
@@ -33,8 +33,6 @@ if (isset($_GET['AssignOrRevoke'])) {
             if ($result1 && $result2) {
                 //redirect or display a success message here
                 echo '<meta http-equiv="refresh" content="0;url=http://localhost/Book_Bridge/admin/page-moderator-detail.php?moderator_id=' . $moderator_id . '">';
-               
-                
             } else {
                 // Handle error if any of the queries fail
             }
@@ -58,7 +56,6 @@ if (isset($_GET['AssignOrRevoke'])) {
         if ($result1 && $result2) {
             //redirect or display a success message here
             echo '<meta http-equiv="refresh" content="0;url=http://localhost/Book_Bridge/admin/page-moderator-detail.php?moderator_id=' . $moderator_id . '">';
-
         } else {
             // Handle error if any of the queries fail
         }
@@ -261,247 +258,11 @@ if (isset($_GET['AssignOrRevoke'])) {
                             }
                         }
                         ?>
-
                     </tbody>
                 </table> <!-- table-responsive.// -->
             </div>
         </div>
     </div> <!--  card.// -->
-    <!-- <div class="card mb-4">
-        <div class="card-body">
-            <h5 class="card-title">Products by seller</h5>
-            <div class="row">
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/1.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/2.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div>
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/3.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Jeans short new model</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div>
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/4.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Travel Bag XL</a>
-                            <div class="price mt-1">$179.00</div>
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/5.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/6.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/7.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/8.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Apple Airpods CB-133</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/9.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/10.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/11.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Jeans short new model</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/12.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Travel Bag XL</a>
-                            <div class="price mt-1">$179.00</div>
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/1.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/2.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/3.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Jeans short new model</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/4.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Travel Bag XL</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/5.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/6.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/7.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/8.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Apple Airpods CB-133</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/9.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/10.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/11.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Jeans short new model</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/12.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Travel Bag XL</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-            </div> 
-        </div> 
-    </div>  -->
-    <!-- <div class="pagination-area mt-30 mb-50">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-start">
-                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                <li class="page-item"><a class="page-link" href="#">16</a></li>
-                <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li>
-            </ul>
-        </nav>
-    </div> -->
 </section> <!-- content-main end// -->
 
 </main>
