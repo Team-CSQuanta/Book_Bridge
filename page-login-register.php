@@ -28,7 +28,7 @@
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.php" rel="nofollow">Home</a>
+                    <a href="page-account.php" rel="nofollow">Home</a>
                     <span></span> Pages
                     <span></span> Login / Register
                 </div>
@@ -47,15 +47,15 @@
                                         </div>
                                         <form method="post" >
                                             <div class="form-group">
-                                                <input type="text" required="" name="email" placeholder="Your Email">
+                                                <input type="text" required="" name="email" placeholder="Your Email "required>
                                             </div>
                                             <div class="form-group">
-                                                <input required="" type="password" name="password" placeholder="Password">
+                                                <input required="" type="password" name="password" placeholder="Password" required>
                                             </div>
                                             <div class="login_footer form-group">
                                                 <div class="chek-form">
                                                     <div class="custome-checkbox">
-                                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="">
+                                                        <input class="form-check-input" type="checkbox" name="remember" id="exampleCheckbox1" value="">
                                                         <label class="form-check-label" for="exampleCheckbox1"><span>Remember me</span></label>
                                                     </div>
                                                 </div>
