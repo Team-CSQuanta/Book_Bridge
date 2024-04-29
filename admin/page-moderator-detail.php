@@ -1,7 +1,7 @@
 <?php
 require './aside-menu.php';
 require './handler/fetch-data-by-id.php';
-$moderator_id = $_GET['moderator_id'];
+$moderator_id = filter_var($_GET['moderator_id'], FILTER_SANITIZE_NUMBER_INT);
 
 $query = "SELECT * 
           FROM bibliophile_club_admin
@@ -11,13 +11,57 @@ $query_result = $connection->query($query);
 $query_result_associative_arr = $query_result->fetch_assoc();
 $club_data = null;
 $location_data = null;
-if(isset($_GET['AssignOrRevoke'])){
-    if(isset($_GET['club_id_to_Assign'])){
 
-    }else if(isset($_GET['club_id_to_Revoke'])){
-        
+if (isset($_GET['AssignOrRevoke'])) {
+    if ($_GET['AssignOrRevoke'] == 'Assign') {
+        if (isset($_GET['club_id_to_Assign']) && isset($_GET['moderator_id'])) {
+            $club_id = filter_var($_GET['club_id_to_Assign'], FILTER_SANITIZE_NUMBER_INT);
+            $moderator_id = filter_var($_GET['moderator_id'], FILTER_SANITIZE_NUMBER_INT);
+
+            // Update bibliophile club table manager_id
+            $query1 = "UPDATE bibliophile_club
+                      SET club_manager_id = '$moderator_id'
+                      WHERE club_id = '$club_id'";
+            $result1 = $connection->query($query1);
+
+            // Update bibliophile club admin table club_id
+            $query2 = "UPDATE bibliophile_club_admin
+                      SET club_id = '$club_id'
+                      WHERE club_admin_id = '$moderator_id'";
+            $result2 = $connection->query($query2);
+
+            if ($result1 && $result2) {
+                //redirect or display a success message here
+                echo '<meta http-equiv="refresh" content="0;url=http://localhost/Book_Bridge/admin/page-moderator-detail.php?moderator_id=' . $moderator_id . '">';
+            } else {
+                // Handle error if any of the queries fail
+            }
+        }
+    } elseif ($_GET['AssignOrRevoke'] == 'Revoke') {
+        $club_id = filter_var($_GET['club_id_to_Revoke'], FILTER_SANITIZE_NUMBER_INT);
+        $moderator_id = filter_var($_GET['moderator_id'], FILTER_SANITIZE_NUMBER_INT);
+
+        // Update bibliophile club table manager_id
+        $query1 = "UPDATE bibliophile_club
+                   SET club_manager_id = null
+                   WHERE club_id = '$club_id'";
+        $result1 = $connection->query($query1);
+
+        // Update bibliophile club admin table club_id
+        $query2 = "UPDATE bibliophile_club_admin
+                   SET club_id = null
+                   WHERE club_admin_id = '$moderator_id'";
+        $result2 = $connection->query($query2);
+
+        if ($result1 && $result2) {
+            //redirect or display a success message here
+            echo '<meta http-equiv="refresh" content="0;url=http://localhost/Book_Bridge/admin/page-moderator-detail.php?moderator_id=' . $moderator_id . '">';
+        } else {
+            // Handle error if any of the queries fail
+        }
     }
 }
+
 ?>
 <section class="content-main">
     <div class="content-header">
@@ -142,286 +186,83 @@ if(isset($_GET['AssignOrRevoke'])){
                     </thead>
                     <tbody>
                         <?php
-                        $query_club_info = "SELECT * 
-                                FROM bibliophile_club
-                                WHERE district = '{$location_data['district']}' and club_manager_id IS NULL";
-                        $result_club_info = $connection->query($query_club_info);
-
-                        if ($result_club_info->num_rows > 0) : ?>
-                            <?php while ($club = $result_club_info->fetch_assoc()) : ?>
-                                <tr>
-                                    <td width="40%">
-                                        <a href="page-user-detail.php?user_id=<?= $club['club_id'] ?>" class="itemside">
-                                            <div class="left">
-                                                <img src="./assets/imgs/club/<?= $club['club_img'] ?>" class="img-sm img-avatar" alt="Club Image">
-                                            </div>
-                                            <div class="info pl-3">
-                                                <h6 class="mb-0 title"><?= $club['club_name'] ?></h6>
-                                                <small class="text-muted">Club ID: #<?= $club['club_id'] ?></small>
-                                            </div>
-                                        </a>
-                                    </td>
-                                    <td><?= $club['club_description'] ?></td>
-                                    <td class="text-end">
-                                        <div class="dropdown">
-                                            <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="page-moderator-detail.php?AssignOrRevoke=<?= (($club_data == $club['club_id']) ? 'Remove' : 'Assign') ?>&club_id_to_<?= (($club_data == $club['club_id']) ? 'Remove' : 'Assign') ?>=<?= $club['club_id'] ?>&moderator_id=<?=$moderator_id?>">
-                                                    <?= ($club_data == $club['club_id']) ? 'Remove' : 'Assign' ?>
-                                                </a>
-                                                <!-- <a class="dropdown-item text-danger" href="#">Delete</a> -->
-                                            </div>
-                                        </div> <!-- dropdown //end -->
-                                    </td>
-                                </tr>
-                            <?php endwhile ?>
-                        <?php else : ?>
+                        if ($club_data) {
+                            // Handle the case when $club_data exists
+                        ?>
                             <tr>
-
-                                <p>No result found!!</p>
+                                <td width="40%">
+                                    <a href="page-user-detail.php?user_id=<?= $club_data['club_id'] ?>" class="itemside">
+                                        <div class="left">
+                                            <img src="./assets/imgs/club/<?= $club_data['club_img'] ?>" class="img-sm img-avatar" alt="Club Image">
+                                        </div>
+                                        <div class="info pl-3">
+                                            <h6 class="mb-0 title"><?= $club_data['club_name'] ?></h6>
+                                            <small class="text-muted">Club ID: #<?= $club_data['club_id'] ?></small>
+                                        </div>
+                                    </a>
+                                </td>
+                                <td><?= $club_data['club_description'] ?></td>
+                                <td class="text-end">
+                                    <div class="dropdown">
+                                        <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="page-moderator-detail.php?AssignOrRevoke=Revoke&club_id_to_Revoke=<?= $club_data['club_id'] ?>&moderator_id=<?= $moderator_id ?>">
+                                                Revoke
+                                            </a>
+                                        </div>
+                                    </div> <!-- dropdown //end -->
+                                </td>
                             </tr>
-                        <?php endif ?>
+                            <?php
+                        } else {
+                            $query_club_info = "SELECT * 
+                        FROM bibliophile_club
+                        WHERE district = '{$location_data['district']}' AND club_manager_id IS NULL";
+                            $result_club_info = $connection->query($query_club_info);
 
+                            if ($result_club_info->num_rows > 0) {
+                                while ($club = $result_club_info->fetch_assoc()) {
+                            ?>
+                                    <tr>
+                                        <td width="40%">
+                                            <a href="page-user-detail.php?user_id=<?= $club['club_id'] ?>" class="itemside">
+                                                <div class="left">
+                                                    <img src="./assets/imgs/club/<?= $club['club_img'] ?>" class="img-sm img-avatar" alt="Club Image">
+                                                </div>
+                                                <div class="info pl-3">
+                                                    <h6 class="mb-0 title"><?= $club['club_name'] ?></h6>
+                                                    <small class="text-muted">Club ID: #<?= $club['club_id'] ?></small>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td><?= $club['club_description'] ?></td>
+                                        <td class="text-end">
+                                            <div class="dropdown">
+                                                <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="page-moderator-detail.php?AssignOrRevoke=<?= (($club_data == $club['club_id']) ? 'Revoke' : 'Assign') ?>&club_id_to_<?= (($club_data == $club['club_id']) ? 'Remove' : 'Assign') ?>=<?= $club['club_id'] ?>&moderator_id=<?= $moderator_id ?>">
+                                                        <?= ($club_data == $club['club_id']) ? 'Revoke' : 'Assign' ?>
+                                                    </a>
+                                                </div>
+                                            </div> <!-- dropdown //end -->
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                            } else {
+                                ?>
+                                <tr>
+                                    <td colspan="3">No result found!!</td>
+                                </tr>
+                        <?php
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table> <!-- table-responsive.// -->
             </div>
         </div>
     </div> <!--  card.// -->
-    <!-- <div class="card mb-4">
-        <div class="card-body">
-            <h5 class="card-title">Products by seller</h5>
-            <div class="row">
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/1.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/2.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div>
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/3.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Jeans short new model</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div>
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/4.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Travel Bag XL</a>
-                            <div class="price mt-1">$179.00</div>
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/5.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/6.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/7.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/8.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Apple Airpods CB-133</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/9.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/10.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/11.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Jeans short new model</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/12.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Travel Bag XL</a>
-                            <div class="price mt-1">$179.00</div>
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/1.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/2.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/3.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Jeans short new model</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/4.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Travel Bag XL</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/5.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/6.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/7.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/8.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Apple Airpods CB-133</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/9.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/10.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Product name</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/11.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Jeans short new model</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="col-xl-2 col-lg-3 col-md-6">
-                    <div class="card card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="assets/imgs/items/12.jpg" alt="Product"> </a>
-                        <div class="info-wrap">
-                            <a href="#" class="title">Travel Bag XL</a>
-                            <div class="price mt-1">$179.00</div> 
-                        </div>
-                    </div> 
-                </div> 
-            </div> 
-        </div> 
-    </div>  -->
-    <!-- <div class="pagination-area mt-30 mb-50">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-start">
-                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                <li class="page-item"><a class="page-link" href="#">16</a></li>
-                <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li>
-            </ul>
-        </nav>
-    </div> -->
 </section> <!-- content-main end// -->
 
 </main>
