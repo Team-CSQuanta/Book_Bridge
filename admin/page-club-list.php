@@ -74,7 +74,21 @@ $total_pages = ceil($total_records / $limit);
                                     </a>
                                 </td>
                                 <td><?= $club['district'] ?></td>
-                                <td><?= $club['club_manager_id'] ?></td>
+                                <td><?php
+                                    $managerID =  $club['club_manager_id'];
+                                    $club_manager_info_query = "SELECT *
+                                                                FROM bibliophile_club_admin
+                                                                WHERE club_admin_id = '$managerID'";
+                                    $club_manager_info_result = $connection->query($club_manager_info_query);
+                                    $club_manager_info = $club_manager_info_result->fetch_assoc();
+                                    if($club_manager_info_result->num_rows == 1){
+                                        echo $club_manager_info['f_name'] . " ". $club_manager_info['l_name'];
+                                    }else{
+                                        echo "No one assigned";
+                                    }
+                                    
+                                    ?>
+                                </td>
                                 <td class="text-end">
                                     <a href="page-club-detail.php?club_id=<?= $club['club_id']?>" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
                                 </td>
