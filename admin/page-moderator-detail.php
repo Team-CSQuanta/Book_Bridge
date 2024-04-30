@@ -6,11 +6,14 @@ $moderator_id = filter_var($_GET['moderator_id'], FILTER_SANITIZE_NUMBER_INT);
 $query = "SELECT * 
           FROM bibliophile_club_admin
           WHERE club_admin_id = '$moderator_id'";
-
+$query_club = "SELECT *
+               FROM bibliophile_club
+               WHERE club_manager_id = '$moderator_id'";
+$query_club_result = $connection->query($query_club);
 $query_result = $connection->query($query);
 $query_result_associative_arr = $query_result->fetch_assoc();
-$club_data = null;
 $location_data = null;
+$club_data = null;
 
 if (isset($_GET['AssignOrRevoke'])) {
     if ($_GET['AssignOrRevoke'] == 'Assign') {
@@ -19,18 +22,13 @@ if (isset($_GET['AssignOrRevoke'])) {
             $moderator_id = filter_var($_GET['moderator_id'], FILTER_SANITIZE_NUMBER_INT);
 
             // Update bibliophile club table manager_id
-            $query1 = "UPDATE bibliophile_club
+            $query = "UPDATE bibliophile_club
                       SET club_manager_id = '$moderator_id'
                       WHERE club_id = '$club_id'";
-            $result1 = $connection->query($query1);
+            $result = $connection->query($query);
 
-            // Update bibliophile club admin table club_id
-            $query2 = "UPDATE bibliophile_club_admin
-                      SET club_id = '$club_id'
-                      WHERE club_admin_id = '$moderator_id'";
-            $result2 = $connection->query($query2);
 
-            if ($result1 && $result2) {
+            if ($result) {
                 //redirect or display a success message here
                 echo '<meta http-equiv="refresh" content="0;url=http://localhost/Book_Bridge/admin/page-moderator-detail.php?moderator_id=' . $moderator_id . '">';
             } else {
@@ -41,19 +39,12 @@ if (isset($_GET['AssignOrRevoke'])) {
         $club_id = filter_var($_GET['club_id_to_Revoke'], FILTER_SANITIZE_NUMBER_INT);
         $moderator_id = filter_var($_GET['moderator_id'], FILTER_SANITIZE_NUMBER_INT);
 
-        // Update bibliophile club table manager_id
-        $query1 = "UPDATE bibliophile_club
+        $query = "UPDATE bibliophile_club
                    SET club_manager_id = null
                    WHERE club_id = '$club_id'";
-        $result1 = $connection->query($query1);
+        $result = $connection->query($query);
 
-        // Update bibliophile club admin table club_id
-        $query2 = "UPDATE bibliophile_club_admin
-                   SET club_id = null
-                   WHERE club_admin_id = '$moderator_id'";
-        $result2 = $connection->query($query2);
-
-        if ($result1 && $result2) {
+        if ($result) {
             //redirect or display a success message here
             echo '<meta http-equiv="refresh" content="0;url=http://localhost/Book_Bridge/admin/page-moderator-detail.php?moderator_id=' . $moderator_id . '">';
         } else {
@@ -87,24 +78,14 @@ if (isset($_GET['AssignOrRevoke'])) {
 
                     <p>
                         <?php
-                        $club_id = $query_result_associative_arr['club_id'];
-                        if ($club_id) {
-                            $query = "SELECT * FROM bibliophile_club WHERE club_id = '$club_id'";
-                            $result = $connection->query($query);
-                            if ($result) {
-                                $club_data = $result->fetch_assoc();
-                                if ($club_data) {
-                                    echo "<span class='badge rounded-pill alert-success'>" . $club_data['club_name'] . "</span>";
-                                } else {
-                                    echo "<span class='badge rounded-pill alert-danger'>No bibliophile club is assigned</span>";
-                                }
-                            } else {
-                                echo "<span class='badge rounded-pill alert-danger'>Error retrieving club data</span>";
+                        if ($query_club_result->num_rows == 1) {
+                            $club_data = $query_club_result->fetch_assoc();
+                            if ($club_data) {
+                                echo "<span class='badge rounded-pill alert-success'>" . $club_data['club_name'] . "</span>";
                             }
                         } else {
                             echo "<span class='badge rounded-pill alert-danger'>No bibliophile club is assigned</span>";
                         }
-
                         ?>
                     </p>
 
@@ -216,8 +197,8 @@ if (isset($_GET['AssignOrRevoke'])) {
                             <?php
                         } else {
                             $query_club_info = "SELECT * 
-                        FROM bibliophile_club
-                        WHERE district = '{$location_data['district']}' AND club_manager_id IS NULL";
+                                                FROM bibliophile_club
+                                                WHERE district = '{$location_data['district']}' AND club_manager_id IS NULL";
                             $result_club_info = $connection->query($query_club_info);
 
                             if ($result_club_info->num_rows > 0) {

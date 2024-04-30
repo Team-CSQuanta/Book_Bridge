@@ -39,10 +39,10 @@ if(isset($_SESSION['user-logged-email'])){
                         </div> 
                         <div class="mb-3">
                             <a href="#" class="float-end font-sm text-muted">Forgot password?</a>
-                            <label class="form-check">
+                            <!-- <label class="form-check">
                                 <input type="checkbox" class="form-check-input" checked="">
                                 <span class="form-check-label">Remember</span>
-                            </label>
+                            </label> -->
                         </div>
                         <div class="mb-4">
                             <button type="submit" name="submit" class="btn btn-primary w-100"> Login </button>
