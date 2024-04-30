@@ -74,7 +74,19 @@ $total_pages = ceil($total_records / $limit);
                                         </a>
                                     </td>
                                     <td><?= $moderator['email'] ?></td>
-                                    <td><?= ($moderator['club_id']) ? $moderator['club_id'] : "None" ?></td>
+                                    <td><?php
+                                        $query= "SELECT *
+                                                FROM bibliophile_club
+                                                WHERE club_manager_id = {$moderator['club_admin_id']}";
+                                        $query_result = $connection->query($query);
+                                        if($query_result->num_rows ==1){
+                                            $club_detail = $query_result->fetch_assoc();
+                                            echo $club_detail['club_name'];
+                                        }else{
+                                            echo "No club is assigned!";
+                                        }
+                                         ?>
+                                    </td>
                                     <!-- <td><span class="badge rounded-pill <?= ($moderator['status'] === 'Active') ? 'alert-success' : 'alert-danger' ?>"><?= $moderator['status'] ?></span></td> -->
                                     <!-- <td><?= $moderator['reg_date'] ?></td> -->
                                     <td class="text-end">

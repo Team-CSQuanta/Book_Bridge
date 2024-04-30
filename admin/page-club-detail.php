@@ -121,11 +121,11 @@ $total_pages = ceil($total_records / $limit);
                     <h6>Contacts</h6>
                     <p>
                         <?php
-                        if($club_manager_info){
+                        if ($club_manager_info) {
                             echo "Manager : " . $club_manager_info['f_name'] . " " . $club_manager_info['l_name'] . "<br>";
                             echo "Email : " . $club_manager_info['email'] . "<br>";
                             echo "Phone : " . $club_manager_info['phone_number'];
-                        }else{
+                        } else {
                             echo "No one assigned to this club!";
                         }
                         ?>
@@ -134,18 +134,10 @@ $total_pages = ceil($total_records / $limit);
                 <div class="col-sm-6 col-lg-4 col-xl-3">
                     <h6>Address</h6>
                     <p>
-
                         <?= $club_assoc['address_line'] ?> <br>
                         District : <?= $club_assoc['district'] ?>
                     </p>
                 </div> <!--  col.// -->
-                <!-- <div class="col-sm-6 col-xl-4 text-xl-end">
-                    <map class="mapbox position-relative d-inline-block">
-                        <img src="assets/imgs/misc/map.jpg" class="rounded2" height="120" alt="map">
-                        <span class="map-pin" style="top:50px; left: 100px"></span>
-                        <button class="btn btn-sm btn-brand position-absolute bottom-0 end-0 mb-15 mr-15 font-xs"> Large </button>
-                    </map>
-                </div> -->
             </div> <!--  row.// -->
         </div> <!--  card-body.// -->
     </div> <!--  card.// -->
@@ -160,25 +152,25 @@ $total_pages = ceil($total_records / $limit);
                             <a href="#" class="img-wrap"> <img src="../assets/imgs/books/<?= $books['cover_img'] ?>" alt="Book"> </a>
                             <div class="info-wrap">
                                 <a href="#" class="title"><?= $books['title'] ?></a>
-                                <div class="price mt-1"><?="Collected date: ". $books['date_added'] ?></div> <!-- price-wrap.// -->
+                                <div class="price mt-1"><?= "Collected date: " . $books['date_added'] ?></div> <!-- price-wrap.// -->
                             </div>
                         </div>
                     </div>
                 <?php endwhile ?>
-                
+
             </div> <!-- row.// -->
         </div> <!--  card-body.// -->
     </div> <!--  card.// -->
     <div class="pagination-area mt-30 mb-50">
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-start">
-                <li class="page-item"><a class="page-link" href="?club_id=<?= $club_id?>&page=<?= ($page - 1 > 0) ? $page - 1 : $page ?>"><i class="material-icons md-chevron_left"></i></a></li>
+                <li class="page-item"><a class="page-link" href="?club_id=<?= $club_id ?>&page=<?= ($page - 1 > 0) ? $page - 1 : $page ?>"><i class="material-icons md-chevron_left"></i></a></li>
                 <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
                     <li class="page-item <?php if ($i == $page) echo 'active'; ?>">
-                        <a class="page-link" href="?club_id=<?= $club_id?>&page=<?= $i ?>"><?= $i ?></a>
+                        <a class="page-link" href="?club_id=<?= $club_id ?>&page=<?= $i ?>"><?= $i ?></a>
                     </li>
                 <?php endfor; ?>
-                <li class="page-item"><a class="page-link" href="?club_id=<?= $club_id?>&page=<?= ($page + 1 <= $total_pages) ? $page + 1 : $page ?>"><i class="material-icons md-chevron_right"></i></a></li>
+                <li class="page-item"><a class="page-link" href="?club_id=<?= $club_id ?>&page=<?= ($page + 1 <= $total_pages) ? $page + 1 : $page ?>"><i class="material-icons md-chevron_right"></i></a></li>
 
 
             </ul>
