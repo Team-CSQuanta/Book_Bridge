@@ -45,7 +45,7 @@ if(mysqli_num_rows($result) > 0) {
             VALUES ('$username', '$email', '$hashedPassword', '$firstName', '$lastName', '$phoneNumber', '$universityAffiliation', '$universityCity', '$registrationDate','$bio')";
 
     if (mysqli_query($conn, $sql)) {
-        echo '<script>alert("Form submitted successfully!"); location="index.php";</script>';
+        echo '<script>alert("Form submitted successfully!"); location="page-account.php";</script>';
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
@@ -68,7 +68,14 @@ if(isset($_POST['login'])) {
         if (password_verify($password, $row['Password'])) {
             // Password is correct, set session variables or redirect to dashboard
             $_SESSION['user_id'] = $row['UserID'];
-            echo '<script>alert("Login successful!"); location="index.php";</script>';
+           // Set longer session duration if "Remember Me" is checked
+          if(isset($_POST['remember'])) {
+
+         // Set session duration to 1 week 
+          ini_set('session.gc_maxlifetime', 604800);
+               }             
+
+            echo '<script>alert("Login successful!"); location="page-account.php";</script>';
         } else {
             // Invalid password
             echo '<script>alert("Invalid password!");</script>';
