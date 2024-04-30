@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 30, 2024 at 10:05 AM
+-- Host: localhost
+-- Generation Time: Apr 30, 2024 at 10:38 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -88,17 +88,16 @@ CREATE TABLE `bibliophile_club_admin` (
   `bio` varchar(1000) DEFAULT NULL,
   `profile_img` varchar(300) DEFAULT NULL,
   `address_line` varchar(300) DEFAULT NULL,
-  `location_id` int(11) NOT NULL,
-  `club_id` int(11) DEFAULT NULL
+  `location_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bibliophile_club_admin`
 --
 
-INSERT INTO `bibliophile_club_admin` (`club_admin_id`, `email`, `phone_number`, `password`, `f_name`, `l_name`, `bio`, `profile_img`, `address_line`, `location_id`, `club_id`) VALUES
-(1, 'rifat@gmail.com', '01936566238', '$2y$10$mj8l1hrBY4Ccmre./06.8e/eZ93leCnoyo/wEWL6i3awcVghFRHyq', 'Rifat', 'Hossain', '', 'MODERATOR-66291a52028e10.49054479.jpg', 'Mouchak, Kaliakair', 2, NULL),
-(2, 'mim@gmail.com', '01999483690', '$2y$10$OB4nf3ITjh4KZWsyGBSOdutzhVoU81EMLHBmpKHpT5kAcnkBYig2e', 'Khadiza Akter', 'Mim', NULL, 'defualt_profile.jpg', 'United City, Satarkul, vatara', 1, NULL);
+INSERT INTO `bibliophile_club_admin` (`club_admin_id`, `email`, `phone_number`, `password`, `f_name`, `l_name`, `bio`, `profile_img`, `address_line`, `location_id`) VALUES
+(1, 'rifat@gmail.com', '01936566238', '$2y$10$mj8l1hrBY4Ccmre./06.8e/eZ93leCnoyo/wEWL6i3awcVghFRHyq', 'Rifat', 'Hossain', '', 'MODERATOR-66291a52028e10.49054479.jpg', 'Mouchak, Kaliakair', 2),
+(2, 'mim@gmail.com', '01999483690', '$2y$10$OB4nf3ITjh4KZWsyGBSOdutzhVoU81EMLHBmpKHpT5kAcnkBYig2e', 'Khadiza Akter', 'Mim', NULL, 'defualt_profile.jpg', 'United City, Satarkul, vatara', 1);
 
 -- --------------------------------------------------------
 
@@ -415,7 +414,6 @@ ALTER TABLE `bibliophile_club_admin`
   ADD PRIMARY KEY (`club_admin_id`),
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `phone_number` (`phone_number`),
-  ADD KEY `club_id` (`club_id`),
   ADD KEY `location_id` (`location_id`);
 
 --
@@ -602,7 +600,6 @@ ALTER TABLE `bibliophile_club`
 -- Constraints for table `bibliophile_club_admin`
 --
 ALTER TABLE `bibliophile_club_admin`
-  ADD CONSTRAINT `bibliophile_club_admin_ibfk_1` FOREIGN KEY (`club_id`) REFERENCES `bibliophile_club` (`club_id`),
   ADD CONSTRAINT `bibliophile_club_admin_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`);
 
 --
