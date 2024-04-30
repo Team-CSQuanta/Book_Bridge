@@ -25,7 +25,6 @@
 
   
 
-/*
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -50,7 +49,7 @@
                $message = "You have contributed " . $total_num . " books.";
            } else {
                $message = "Error in fetching contribution data.";
-           }*/
+           }
 
     ?> 
     <main class="main">
