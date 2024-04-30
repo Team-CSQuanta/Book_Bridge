@@ -38,19 +38,6 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-           // Retrieve the number of book contributions
-           $num_Contribution_query = "SELECT COUNT(*) as total FROM exchangerequest";
-           $num_Contribution_query_run = mysqli_query($conn, $num_Contribution_query);
-   
-           // Check if query executed successfully
-           if ($num_Contribution_query_run) {
-               $row = mysqli_fetch_assoc($num_Contribution_query_run);
-               $total_num = $row['total'];
-               $message = "You have contributed " . $total_num . " books.";
-           } else {
-               $message = "Error in fetching contribution data.";
-           }
-
     ?> 
     <main class="main">
         <div class="page-header breadcrumb-wrap">
@@ -115,27 +102,38 @@
 
 
                                     <div class="tab-pane fade" id="contribution" role="tabpanel" aria-labelledby="contribution-tab">
-                                        <div class="row justify-content-center">
-                                            <div class="col-lg-6 mx-auto">
-                                                <div class="card mb-3 mb-lg-0" style="width: 400px; height: 300px;">
-                                                    <div class="card-header">
-                                                        <h5 class="mb-0">My Book Contribution</h5>
-                                                    </div>
-                                                    <div class="card-body d-flex flex-column justify-content-between">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 mx-auto">
+            <div class="card mb-3 mb-lg-0" style="width: 400px; height: auto;">
+                <div class="card-header">
+                    <h5 class="mb-0">My Book Contribution</h5>
+                </div>
+                <div class="card-body">
+                    <div class="text-center">
+                        <form action="bookupload.php" method="post">
+                            <button type="submit" class="btn btn-primary">Contribute a Book</button>
+                        </form>
+                    </div>
+                    <hr>
+                    <h6 class="mt-4">Contributed Books:</h6>
+                    <?php if ($contributed_books_count > 0) : ?>
+                        <ul>
+                            <?php
+                            $books_array = explode(", ", $contributed_books_list);
+                            foreach ($books_array as $book_title) {
+                                echo "<li>$book_title</li>";
+                            }
+                            ?>
+                        </ul>
+                    <?php else : ?>
+                        <p>No books contributed yet!</p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                               
-                                                    <?php echo $message; ?>
-
-                                                    <div class="text-center">  
-                                                    <form action="bookupload.php" method="post">
-                                                            <button type="submit" class="btn btn-primary">Contribute a Book</button>
-                                                        </form>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                               </div>
                                     <div class="tab-pane fade" id="wishes" role="tabpanel" aria-labelledby="wishes-tab">
                                         <div class="row justify-content-center">
@@ -147,8 +145,7 @@
                                                     <div class="card-body d-flex flex-column justify-content-between">
 
                                
-                                                    <?php echo $message; ?>
-
+                                                    
                                                     <div class="text-center">  
                                                     <form action="wishABook.php" method="post">
                                                             <button type="submit" class="btn btn-primary">Wish a Book</button>

@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Update the user's password in the database
-    $stmt = $conn->prepare("UPDATE users SET password = ? WHERE email IN (SELECT email FROM password_resets WHERE token = ?)");
+    $stmt = $conn->prepare("UPDATE user SET password = ? WHERE email IN (SELECT email FROM password_resets WHERE token = ?)");
     $stmt->bind_param("ss", $hashed_password, $token);
 
     if ($stmt->execute()) {
