@@ -33,6 +33,16 @@ $exchange_offers_fetch = "SELECT gbc.*, b.*, c.*
                           JOIN book AS b ON gbc.book_id = b.book_id
                           JOIN category AS c ON b.categoryID = c.categoryID 
                           WHERE gbc.availability_status = 'yes' ";
+if($_SESSION['user-logged-role'] == "club-manager"){
+    // get club id 
+    $query_for_club_id = "SELECT club_id
+                          FROM bibliophile_club
+                          WHERE club_manager_id = {$_SESSION['user-logged-id']}";
+    $club_id_result = $connection->query($query_for_club_id);
+    $club_id_assoc = $club_id_result->fetch_assoc();
+    $club_id = $club_id_assoc['club_id'];
+    $exchange_offers_fetch .= " AND club_id = '$club_id' ";
+}
 
 if (!empty($search)) {
     $exchange_offers_fetch .= " AND (b.title LIKE '%$search%' OR b.isbn LIKE '%$search%' OR b.authors LIKE '%$search%')";
@@ -55,6 +65,16 @@ $total_records_query = "SELECT COUNT(*) AS total
                         WHERE gbc.availability_status = 'yes' ";
 if (!empty($search)) {
     $total_records_query .= " AND (b.title LIKE '%$search%' OR b.isbn LIKE '%$search%' OR b.authors LIKE '%$search%')";
+}
+if($_SESSION['user-logged-role'] == "club-manager"){
+    // get club id 
+    $query_for_club_id = "SELECT club_id
+                          FROM bibliophile_club
+                          WHERE club_manager_id = {$_SESSION['user-logged-id']}";
+    $club_id_result = $connection->query($query_for_club_id);
+    $club_id_assoc = $club_id_result->fetch_assoc();
+    $club_id = $club_id_assoc['club_id'];
+    $total_records_query .= " AND club_id = '$club_id' ";
 }
 if (!empty($category_search) && $category_search !== 'All category') {
     $total_records_query .= " AND c.categoryID = '$category_search'";

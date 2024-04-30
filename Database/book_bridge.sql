@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 29, 2024 at 07:13 AM
+-- Generation Time: Apr 30, 2024 at 10:38 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -88,17 +88,16 @@ CREATE TABLE `bibliophile_club_admin` (
   `bio` varchar(1000) DEFAULT NULL,
   `profile_img` varchar(300) DEFAULT NULL,
   `address_line` varchar(300) DEFAULT NULL,
-  `location_id` int(11) NOT NULL,
-  `club_id` int(11) DEFAULT NULL
+  `location_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bibliophile_club_admin`
 --
 
-INSERT INTO `bibliophile_club_admin` (`club_admin_id`, `email`, `phone_number`, `password`, `f_name`, `l_name`, `bio`, `profile_img`, `address_line`, `location_id`, `club_id`) VALUES
-(1, 'rifat@gmail.com', '01936566238', '$2y$10$mj8l1hrBY4Ccmre./06.8e/eZ93leCnoyo/wEWL6i3awcVghFRHyq', 'Rifat', 'Hossain', '', 'MODERATOR-66291a52028e10.49054479.jpg', 'Mouchak, Kaliakair', 2, NULL),
-(2, 'mim@gmail.com', '01999483690', '$2y$10$OB4nf3ITjh4KZWsyGBSOdutzhVoU81EMLHBmpKHpT5kAcnkBYig2e', 'Khadiza Akter', 'Mim', NULL, 'defualt_profile.jpg', 'United City, Satarkul, vatara', 1, NULL);
+INSERT INTO `bibliophile_club_admin` (`club_admin_id`, `email`, `phone_number`, `password`, `f_name`, `l_name`, `bio`, `profile_img`, `address_line`, `location_id`) VALUES
+(1, 'rifat@gmail.com', '01936566238', '$2y$10$mj8l1hrBY4Ccmre./06.8e/eZ93leCnoyo/wEWL6i3awcVghFRHyq', 'Rifat', 'Hossain', '', 'MODERATOR-66291a52028e10.49054479.jpg', 'Mouchak, Kaliakair', 2),
+(2, 'mim@gmail.com', '01999483690', '$2y$10$OB4nf3ITjh4KZWsyGBSOdutzhVoU81EMLHBmpKHpT5kAcnkBYig2e', 'Khadiza Akter', 'Mim', NULL, 'defualt_profile.jpg', 'United City, Satarkul, vatara', 1);
 
 -- --------------------------------------------------------
 
@@ -158,18 +157,6 @@ INSERT INTO `book` (`book_id`, `isbn`, `title`, `authors`, `categoryID`, `editio
 (8, '978-0-345-47650-3', 'The Firm', 'John Grisham', 'CAT-MYS-009', 'Reprint Edition', 501, 'English', 'A legal thriller novel about a young attorney who becomes embroiled in a dangerous conspiracy at a prestigious law firm.', 'Doubleday', '1991-03-01', 'default_cover.png', NULL),
 (9, '978-1-4197-3903-1', 'The Hate U Give', 'Angie Thomas', 'CAT-THR-004', 'Reprint Edition', 464, 'English', 'A young adult novel inspired by the Black Lives Matter movement, following the aftermath of a police shooting.', 'Balzer + Bray', '2017-02-28', 'default_cover.png', NULL),
 (10, '978-0-553-57340-2', 'The Secret History', 'Donna Tartt', 'CAT-MYS-009', 'Reprint Edition', 559, 'English', 'A mystery novel centered around a group of elite college students who become involved in a murder.', 'Alfred A. Knopf', '1992-09-05', 'default_cover.png', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `book_images`
---
-
-CREATE TABLE `book_images` (
-  `ImageID` int(11) NOT NULL,
-  `ISBN` varchar(20) NOT NULL,
-  `ImagePath` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -238,25 +225,6 @@ CREATE TABLE `exchangerequest` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `exchange_post`
---
-
-CREATE TABLE `exchange_post` (
-  `Title` varchar(255) NOT NULL,
-  `Author` varchar(255) DEFAULT NULL,
-  `Genre` varchar(100) DEFAULT NULL,
-  `ISBN` varchar(20) NOT NULL,
-  `PublishedYear` int(11) DEFAULT NULL,
-  `Description` text DEFAULT NULL,
-  `Language` varchar(50) DEFAULT NULL,
-  `Conditions` enum('Like New','Good','Acceptable','Antique') DEFAULT NULL,
-  `OwnerUserID` int(11) DEFAULT NULL,
-  `AvailabilityStatus` enum('Available','Unavailable') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `global_book_collection`
 --
 
@@ -316,6 +284,19 @@ INSERT INTO `location` (`location_id`, `division`, `district`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `expiration_timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `review`
 --
 
@@ -343,6 +324,7 @@ CREATE TABLE `user` (
   `l_name` varchar(255) DEFAULT NULL,
   `reg_date` date DEFAULT current_timestamp(),
   `bio` varchar(500) DEFAULT '',
+  `Password` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `profile_img` varchar(500) DEFAULT 'defualt_profile.jpg',
   `book_wallet` int(11) DEFAULT 0,
   `street_address` varchar(300) DEFAULT NULL,
@@ -356,13 +338,14 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `phone_number`, `email`, `f_name`, `l_name`, `reg_date`, `bio`, `profile_img`, `book_wallet`, `street_address`, `apartment_num`, `postal_code`, `location_id`, `status`) VALUES
-(1, '01715031376', 'sadia@gmail.com', 'Sadia Islam', 'Ema', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
-(2, '01715031420', 'rakib@gmail.com', 'Rakibul Islam', 'Rakib', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
-(6, '01795031420', 'motasim@gmail.com', 'Motasim Billah', '', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
-(7, '017153431420', 'sakib@gmail.com', 'Sakibul Islam', 'Rakib', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Inactive'),
-(8, '01715031820', 'somik@gmail.com', 'Somik hasan', 'oikko', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
-(9, '01836923942', 'Tanvir@gmail.com', 'Tanvir', 'Ahmend', '2024-04-15', 'This is a bio for tanvir ahmed', 'defualt_profile.jpg', 0, 'Kawran Bazar', 'Apt-33', '2143', 2, 'Active');
+INSERT INTO `user` (`user_id`, `phone_number`, `email`, `f_name`, `l_name`, `reg_date`, `bio`, `Password`, `profile_img`, `book_wallet`, `street_address`, `apartment_num`, `postal_code`, `location_id`, `status`) VALUES
+(1, '01715031376', 'sadia@gmail.com', 'Sadia Islam', 'Ema', '2024-04-15', '', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
+(2, '01715031420', 'rakib@gmail.com', 'Rakibul Islam', 'Rakib', '2024-04-15', '', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
+(6, '01795031420', 'motasim@gmail.com', 'Motasim Billah', '', '2024-04-15', '', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
+(7, '017153431420', 'sakib@gmail.com', 'Sakibul Islam', 'Rakib', '2024-04-15', '', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Inactive'),
+(8, '01715031820', 'somik@gmail.com', 'Somik hasan', 'oikko', '2024-04-15', '', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
+(9, '01836923942', 'Tanvir@gmail.com', 'Tanvir', 'Ahmend', '2024-04-15', 'This is a bio for tanvir ahmed', '', 'defualt_profile.jpg', 0, 'Kawran Bazar', 'Apt-33', '2143', 2, 'Active'),
+(13, '01906901852', 'jubairahmed13260@gmail.com', 'Jubair ', 'Ahmed', '2024-04-30', 'Hello', '$2y$10$fGsVRA1YuURvj5pX/Eqoq.EatBct.2N6vCaXLgZOD5Av2jZK0m992', 'defualt_profile.jpg', 0, 'Jagannathpur', '26', '1229', NULL, 'Active');
 
 -- --------------------------------------------------------
 
@@ -431,7 +414,6 @@ ALTER TABLE `bibliophile_club_admin`
   ADD PRIMARY KEY (`club_admin_id`),
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `phone_number` (`phone_number`),
-  ADD KEY `club_id` (`club_id`),
   ADD KEY `location_id` (`location_id`);
 
 --
@@ -447,13 +429,6 @@ ALTER TABLE `bibliophile_club_membership`
 ALTER TABLE `book`
   ADD PRIMARY KEY (`book_id`),
   ADD KEY `category_id` (`categoryID`);
-
---
--- Indexes for table `book_images`
---
-ALTER TABLE `book_images`
-  ADD PRIMARY KEY (`ImageID`),
-  ADD KEY `ISBN` (`ISBN`);
 
 --
 -- Indexes for table `category`
@@ -478,13 +453,6 @@ ALTER TABLE `exchangerequest`
   ADD KEY `SenderUserID` (`SenderUserID`),
   ADD KEY `ReceiverUserID` (`ReceiverUserID`),
   ADD KEY `BookISBN` (`BookISBN`);
-
---
--- Indexes for table `exchange_post`
---
-ALTER TABLE `exchange_post`
-  ADD PRIMARY KEY (`ISBN`),
-  ADD KEY `OwnerUserID` (`OwnerUserID`);
 
 --
 -- Indexes for table `global_book_collection`
@@ -570,12 +538,6 @@ ALTER TABLE `book`
   MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
--- AUTO_INCREMENT for table `book_images`
---
-ALTER TABLE `book_images`
-  MODIFY `ImageID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `contribution_request`
 --
 ALTER TABLE `contribution_request`
@@ -609,7 +571,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `wishes_list`
@@ -638,7 +600,6 @@ ALTER TABLE `bibliophile_club`
 -- Constraints for table `bibliophile_club_admin`
 --
 ALTER TABLE `bibliophile_club_admin`
-  ADD CONSTRAINT `bibliophile_club_admin_ibfk_1` FOREIGN KEY (`club_id`) REFERENCES `bibliophile_club` (`club_id`),
   ADD CONSTRAINT `bibliophile_club_admin_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`);
 
 --
@@ -652,12 +613,6 @@ ALTER TABLE `bibliophile_club_membership`
 --
 ALTER TABLE `book`
   ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`categoryID`) REFERENCES `category` (`categoryID`);
-
---
--- Constraints for table `book_images`
---
-ALTER TABLE `book_images`
-  ADD CONSTRAINT `book_images_ibfk_1` FOREIGN KEY (`ISBN`) REFERENCES `exchange_post` (`ISBN`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `contribution_request`
