@@ -18,14 +18,15 @@ if (!$conn) {
 
 // Handle form submission
 if(isset($_POST['register'])) {
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    // $username = mysqli_real_escape_string($conn, $_POST['username']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
     $lastName = mysqli_real_escape_string($conn, $_POST['lastName']);
     $phoneNumber = mysqli_real_escape_string($conn, $_POST['phoneNumber']);
-    $universityAffiliation = mysqli_real_escape_string($conn, $_POST['universityAffiliation']);
-    $universityCity = mysqli_real_escape_string($conn, $_POST['universityCity']);
+    $streetAddress = mysqli_real_escape_string($conn, $_POST['streetAddress']);
+    $apartmentNo = mysqli_real_escape_string($conn, $_POST['apartmentNo']);
+    $postalCode = mysqli_real_escape_string($conn, $_POST['postalCode']);
     $bio = mysqli_real_escape_string($conn, $_POST['bio']);
 
     // Hash the password
@@ -35,14 +36,15 @@ if(isset($_POST['register'])) {
     $registrationDate = date('Y-m-d');
 
 // Check if username or email already exists
-$checkUserExists = "SELECT * FROM Users WHERE Username='$username' OR Email='$email'";
+$checkUserExists = "SELECT * FROM user WHERE email='$email'";
 $result = mysqli_query($conn, $checkUserExists);
 if(mysqli_num_rows($result) > 0) {
     echo '<script>alert("Username or email already exists!");</script>';
 } else {
     // Insert user data into the database
-    $sql = "INSERT INTO Users (Username, Email, Password, FirstName, LastName, PhoneNumber, UniversityAffiliation, UniversityCity,RegistrationDate, Bio) 
-            VALUES ('$username', '$email', '$hashedPassword', '$firstName', '$lastName', '$phoneNumber', '$universityAffiliation', '$universityCity', '$registrationDate','$bio')";
+    $sql = "INSERT INTO `user` (phone_number, email, f_name, l_name, reg_date, bio , street_address, apartment_num, postal_code, Password) 
+    VALUES ('$phoneNumber', '$email', '$firstName', '$lastName', '$registrationDate', '$bio','$streetAddress' , '$apartmentNo' ,'$postalCode', '$hashedPassword')";
+
 
     if (mysqli_query($conn, $sql)) {
         echo '<script>alert("Form submitted successfully!"); location="page-account.php";</script>';
@@ -59,7 +61,7 @@ if(isset($_POST['login'])) {
     $password = $_POST['password'];
 
     // Query the database for the user with the given email
-    $sql = "SELECT * FROM Users WHERE Email='$email'";
+    $sql = "SELECT * FROM user WHERE email='$email'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) == 1) {
@@ -67,7 +69,7 @@ if(isset($_POST['login'])) {
         $row = mysqli_fetch_assoc($result);
         if (password_verify($password, $row['Password'])) {
             // Password is correct, set session variables or redirect to dashboard
-            $_SESSION['user_id'] = $row['UserID'];
+            $_SESSION['UserID'] = $row['user_id'];
            // Set longer session duration if "Remember Me" is checked
           if(isset($_POST['remember'])) {
 

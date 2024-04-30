@@ -47,10 +47,10 @@
                                         </div>
                                         <form method="post" >
                                             <div class="form-group">
-                                                <input type="text" required="" name="email" placeholder="Your Email "required>
+                                                <input type="text" required="" name="email" placeholder="Your Email ">
                                             </div>
                                             <div class="form-group">
-                                                <input required="" type="password" name="password" placeholder="Password" required>
+                                                <input required="" type="password" name="password" placeholder="Password">
                                             </div>
                                             <div class="login_footer form-group">
                                                 <div class="chek-form">
@@ -78,13 +78,28 @@
                                         <p class="mb-50 font-sm">
                                             Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our privacy policy
                                         </p>
-                                        <form method="post" action="login_register_handler.php">
-                                            <div class="form-group">
+
+                                        <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector("form[name='registrationForm']").addEventListener("submit", function(event) {
+            var checkbox = document.getElementById('exampleCheckbox12');
+            
+            if (!checkbox.checked) {
+                alert("Please agree to the terms & policy.");
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    });
+</script>
+
+                                        <form method="post" action="login_register_handler.php" name = "registrationForm">
+                                            <!-- <div class="form-group">
                                                 <input type="text" required="" name="username" placeholder="Username">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="text" required="" name="email" placeholder="Email">
-                                            </div>
+                                            </div> -->
+
+                                           
+
+                                            
                                             <div class="form-group">
                                                 <input type="text" required="" name="firstName" placeholder="First Name">
                                             </div>
@@ -92,13 +107,20 @@
                                                 <input type="text" required="" name="lastName" placeholder="Last Name">
                                             </div>
                                             <div class="form-group">
+                                                <input type="text" required="" name="email" placeholder="Email">
+                                            </div>
+                                            <div class="form-group">
                                                 <input type="text" required="" name="phoneNumber" placeholder="Phone Number">
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" required="" name="universityAffiliation" placeholder="University Affiliation">
+                                                <input type="text" required="" name="streetAddress" placeholder="Street Address">
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" required="" name="universityCity" placeholder="University City">
+                                                <input type="text" required="" name="apartmentNo" placeholder="Apartment">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" required="" name="postalCode" placeholder="Postal Code">
+                                            </div>
                                                
                                             </div>
                                             <div class="form-group">
@@ -112,16 +134,18 @@
                                             <div class="form-group">
                                                 <input required="" type="password" name="password" placeholder="Confirm password">
                                             </div>
-                                            <!-- <div class="form-group">
+                                            <div class="form-group">
                                            
                                            <input type="file" class="form-control-file" id="profileImage" name="profileImage">
-                                              </div>  -->
+                                              </div> 
                                             <div class="login_footer form-group">
                                                 <div class="chek-form">
                                                     <div class="custome-checkbox">
-                                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox12" value="">
+                                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox12" value="" required>
                                                         <label class="form-check-label" for="exampleCheckbox12"><span>I agree to terms &amp; Policy.</span></label>
                                                     </div>
+                                                   
+                                                  </div>
                                                 </div>
                                                 <a href="page-privacy-policy.php"><i class="fi-rs-book-alt mr-5 text-muted"></i>Lean more</a>
                                             </div>
