@@ -1,61 +1,76 @@
 <?php
-// Database credentials
+// Database connection
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "book_bridge";
+$dbname = "book_bridge";
 
 // Create connection
-$con = new mysqli($servername, $username, $password, $database);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
-if ($con->connect_error) {
-    die("Connection failed: " . $con->connect_error);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
-if (isset($_POST['submit'])) {
-    // Retrieve form data
-    $title = $_POST["inputtitle"];
-    $author = $_POST["inputname"];
-    $genre = $_POST["categories"];
-    $isbn = $_POST["inputIsbn"];
-    $publishedYear = $_POST["inputYear"];
-    $language = $_POST["inputLang"];
-    $description = $_POST["description"];
+// Collect form data
+$title = $_POST['inputtitle'];
+$author = $_POST['inputname'];
+$categoryName = $_POST['categories']; // Category name selected in the form
+$isbn = $_POST['inputIsbn'];
+$publishedYear = $_POST['inputYear'];
+$language = $_POST['inputLang'];
+$description = $_POST['description'];
 
+// File upload
+$target_dir = "uploads/"; // Specify the directory where uploaded files will be stored
+$target_file = $target_dir . basename($_FILES["imageUpload"]["name"]); // Get the path of the uploaded file
+$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); // Get the file extension
 
-    // Retrieve OwnerUserID from user table (assuming you have the user ID available)
-    $userID = "user_id_here"; // Replace with the actual user ID or retrieve it from session or elsewhere
-    $ownerUserID = null;
+// Check if file has been uploaded and move it to the target directory
+if (move_uploaded_file($_FILES["imageUpload"]["tmp_name"], $target_file)) {
+    echo "The file " . htmlspecialchars(basename($_FILES["imageUpload"]["name"])) . " has been uploaded.";
+} else {
+    echo "Sorry, there was an error uploading your file.";
+}
 
-    // Prepare SQL statement to fetch OwnerUserID
-    $user_query = "SELECT OwnerUserID FROM user WHERE UserID = ?";
-    $stmt = $con->prepare($user_query);
-    $stmt->bind_param("s", $userID);
-    $stmt->execute();
-    $stmt->bind_result($ownerUserID);
-    $stmt->fetch();
-    $stmt->close();
+// Prepare SQL statement to retrieve category ID based on category name
+$sql_category = "SELECT categoryID FROM category WHERE categoryName = ?";
+$stmt_category = $conn->prepare($sql_category);
+$stmt_category->bind_param("s", $categoryName);
 
-    // Prepare SQL statement to insert wish data
-    $wish_sql = "INSERT INTO wish (Title, Author, Genre, ISBN, PublishedYear, Description, Language, OwnerUserID) 
-                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+// Execute the query
+$stmt_category->execute();
 
-    // Prepare and bind parameters for wish insertion
-    $wish_stmt = $con->prepare($wish_sql);
-    $wish_stmt->bind_param("ssssisss", $title, $author, $genre, $isbn, $publishedYear, $description, $language, $ownerUserID);
+// Get the result
+$result_category = $stmt_category->get_result();
 
-    // Execute the wish insertion statement
-    if ($wish_stmt->execute()) {
-        echo "New wish added successfully.";
+// Check if category exists
+if ($result_category->num_rows > 0) {
+    // Fetch category ID
+    $row = $result_category->fetch_assoc();
+    $categoryID = $row["categoryID"];
+
+    // Prepare SQL statement to insert data into the book table
+    $sql = "INSERT INTO book (isbn, title, authors, categoryID, language, description, publication_date, cover_img)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+
+    // Bind parameters and execute query
+    $stmt->bind_param("sssissss", $isbn, $title, $author, $categoryID, $language, $description, $publishedYear, $target_file);
+
+    if ($stmt->execute()) {
+        echo "New record inserted successfully";
     } else {
-        echo "Error: " . $wish_stmt->error;
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
-    // Close statement
-    $wish_stmt->close();
+    $stmt->close();
+} else {
+    echo "Category not found";
 }
 
-// Close connection
-$con->close();
+// Close all statements and connection
+$stmt_category->close();
+$conn->close();
 ?>

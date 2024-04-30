@@ -331,38 +331,50 @@ CREATE TABLE `review` (
 
 -- --------------------------------------------------------
 
+
+
+
 --
--- Table structure for table `user`
+-- Table structure for table `password_resets`
 --
 
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
-  `phone_number` varchar(20) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `f_name` varchar(255) DEFAULT NULL,
-  `l_name` varchar(255) DEFAULT NULL,
-  `reg_date` date DEFAULT current_timestamp(),
-  `bio` varchar(500) DEFAULT '',
-  `profile_img` varchar(500) DEFAULT 'defualt_profile.jpg',
-  `book_wallet` int(11) DEFAULT 0,
-  `street_address` varchar(300) DEFAULT NULL,
-  `apartment_num` varchar(300) DEFAULT NULL,
-  `postal_code` varchar(300) DEFAULT NULL,
-  `location_id` int(11) DEFAULT NULL,
-  `status` varchar(50) NOT NULL DEFAULT 'Active'
+CREATE TABLE `password_resets` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `expiration_timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user`
+-- Table structure for table `users`
 --
 
-INSERT INTO `user` (`user_id`, `phone_number`, `email`, `f_name`, `l_name`, `reg_date`, `bio`, `profile_img`, `book_wallet`, `street_address`, `apartment_num`, `postal_code`, `location_id`, `status`) VALUES
-(1, '01715031376', 'sadia@gmail.com', 'Sadia Islam', 'Ema', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
-(2, '01715031420', 'rakib@gmail.com', 'Rakibul Islam', 'Rakib', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
-(6, '01795031420', 'motasim@gmail.com', 'Motasim Billah', '', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
-(7, '017153431420', 'sakib@gmail.com', 'Sakibul Islam', 'Rakib', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Inactive'),
-(8, '01715031820', 'somik@gmail.com', 'Somik hasan', 'oikko', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
-(9, '01836923942', 'Tanvir@gmail.com', 'Tanvir', 'Ahmend', '2024-04-15', 'This is a bio for tanvir ahmed', 'defualt_profile.jpg', 0, 'Kawran Bazar', 'Apt-33', '2143', 2, 'Active');
+CREATE TABLE `users` (
+  `UserID` int(11) NOT NULL,
+  `Username` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `Email` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `Password` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `FirstName` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `LastName` varchar(50) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `PhoneNumber` varchar(20) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
+  `UniversityAffiliation` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
+  `UniversityCity` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
+  `RegistrationDate` date DEFAULT NULL,
+  `ProfilePicture` varchar(255) DEFAULT NULL,
+  `Ratings` int(11) DEFAULT NULL,
+  `Bio` text CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`UserID`, `Username`, `Email`, `Password`, `FirstName`, `LastName`, `PhoneNumber`, `UniversityAffiliation`, `UniversityCity`, `RegistrationDate`, `ProfilePicture`, `Ratings`, `Bio`) VALUES
+(1, 'w3se4d5rftygu', '4567gyuh', '$2y$10$KA//ivSbK3O46J4/NlrVl.uqomPaP58cOHn7SUeIuVjdBuTmsnZxu', '56tgyu', '56t7y', 'tyuh', 'ftyguh', '56t7y', '2024-04-14', NULL, NULL, '67y'),
+(2, 'weryhefweiofj', 'ruwijwlrkjw', '$2y$10$hpllUfCfZQVzcbj9OiNPL.PTvsniav68EjbzXWDiCnEL6fpnOL0uW', 'uiwh', 'uh', 'hh', 'jjh', 'yuu', '2024-04-15', NULL, NULL, 'uu'),
+(3, 'eruiirwe', 'wriowrj', '$2y$10$JOdThh93QcsdHOotD0k3hOjInkn.Aty/zspx1J3UT3WbGCx.zVYGi', 'fklrj', 'egiejr', 'ergj', 'rgje', 'ge', '2024-04-15', NULL, NULL, 'e'),
+(4, 'jubairahmed13260', 'jubairahmed13260@gmail.com', '$2y$10$gpNi89.8kEQ4ndK6hdrGdepgFSmDnrSyz3tbxjChfQKwwYzji.mSG', 'Jubair', 'Ahmed', '01906901852', 'UIU', 'Dhaka', '2024-04-23', NULL, NULL, 'weiwhcnw'),
+(5, 'twudyqidh', 'jubair010ahmed@gmail.com', '$2y$10$lpSF3Jk45.0CsUJg5z2cLu4WPgXy9XQMkVV8noNdIzBY55DYWrFYO', 'Ahmed', 'J', '35354', 'wuyw', 'wefuiweyd', '2024-04-29', NULL, NULL, 'weuiwy');
 
 -- --------------------------------------------------------
 

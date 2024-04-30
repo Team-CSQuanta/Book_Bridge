@@ -151,9 +151,9 @@
                                                     <?php echo $message; ?>
 
                                                     <div class="text-center">  
-                                                    <form action="wishABook.php" method="post">
-                                                            <button type="submit" class="btn btn-primary">Wish a Book</button>
-                                                        </form>
+                                                 
+                                                            <button type="submit" class="btn btn-primary" onclick="location.href='wishABook.php'">Wish a Book</button>
+                                                  
 
                                                     </div>
                                                 </div>

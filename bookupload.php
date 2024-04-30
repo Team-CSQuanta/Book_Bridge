@@ -58,6 +58,7 @@
                     <a href="index.php" rel="nofollow">Home</a>
                     <span></span> Pages
                     <span></span> Account
+                    <span></span> Contribute a book
                 </div>
             </div>
         </div>
@@ -91,12 +92,17 @@
                                                <select name="categories" id="Categories" class="form-select">
                                                    
                                                        <option value="Scifi">Science Fiction</option>
+                                                       <option value="cookBook">Cook book</option>
+                                                       <option value="grafic">Grafic Novel</option>
+                                                       <option value="memoir">Memoir</option>
+                                                       <option value="academic">Academic</option>
                                                        <option value="fantasy">Fantasy</option>
+                                                    
                                                        <option value="mystery">Mystery</option>
                                                        <option value="thriller">Thriller</option>
                                            
                                                        <option value="romance">Romance</option>
-                                                       <option value="horrro">Horror</option>
+                                                       <option value="horror">Horror</option>
                                                    
                                                   
                                                        <option value="adventure">Adventure</option>
