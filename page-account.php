@@ -102,33 +102,43 @@
                                     </div>
 
 
-                                    <div class="tab-pane fade" id="contribution" role="tabpanel" aria-labelledby="contribution-tab">
-                                    <div class="container mt-5">
+<div class="tab-pane fade" id="contribution" role="tabpanel" aria-labelledby="contribution-tab">
     <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card">
+        <div class="col-lg-6 mx-auto">
+            <div class="card mb-3 mb-lg-0" style="width: 700px; height: 470px; overflow-y: auto;">
                 <div class="card-header">
                     <h5 class="mb-0">My Book Contribution</h5>
                 </div>
                 <div class="card-body">
-                    <div class="text-center mb-3">
+                    <div class="text-center">
                         <form action="bookupload.php" method="post">
                             <button type="submit" class="btn btn-primary">Contribute a Book</button>
                         </form>
                     </div>
                     <hr>
-                    <h6 class="mt-4">Contributed Books:</h6>
+                    <h6 class="mt-4" style="margin-top: 10px;">Total Books Contributed: <strong> <?php echo $result_books->num_rows; ?></p></strong></h6>
                     <?php if ($result_books->num_rows > 0) : ?>
-                        <ul class="list-group">
-                            <?php while ($row_book = $result_books->fetch_assoc()) : ?>
-                                <li class="list-group-item">
-                                    <strong><?php echo $row_book['book_title']; ?></strong> - 
-                                   <em><?php echo $row_book['authors']; ?></em><br>
-                                    <span class="badge badge-primary"><?php echo $row_book['categoryName']; ?></span>
-                                </li>
-                            <?php endwhile; ?>
-                        </ul>
-                        <p class="mt-3">Total Books Contributed: <strong><?php echo $result_books->num_rows; ?></strong></p>
+                        <table class="table" style="border-collapse: collapse; width: 100%;">
+                            <thead>
+                                <tr style="background-color: #6AB187;">
+                                    <th style="border: 1px solid #dddddd; padding: 8px;">Book Title</th>
+                                    <th style="border: 1px solid #dddddd; padding: 8px;">Author</th>
+                                    <th style="border: 1px solid #dddddd; padding: 8px;">Category</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $row_color = true; ?>
+                                <?php while ($row_book = $result_books->fetch_assoc()) : ?>
+                                    <tr style="background-color: <?php echo $row_color ? 'white' : '#CED2CC'; ?>;">
+                                        <td style="border: 1px solid #dddddd; padding: 8px;"><?php echo $row_book['book_title']; ?></td>
+                                        <td style="border: 1px solid #dddddd; padding: 8px;"><i><?php echo $row_book['authors']; ?></i></td>
+                                        <td style="border: 1px solid #dddddd; padding: 8px;"><?php echo $row_book['categoryName']; ?></td>
+                                    </tr>
+                                    <?php $row_color = !$row_color; ?>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                
                     <?php else : ?>
                         <p>No books contributed yet.</p>
                     <?php endif; ?>
@@ -138,7 +148,8 @@
     </div>
 </div>
 
-                              </div>
+
+
                                     <div class="tab-pane fade" id="wishes" role="tabpanel" aria-labelledby="wishes-tab">
                                         <div class="row justify-content-center">
                                             <div class="col-lg-6 mx-auto">

@@ -206,24 +206,6 @@ CREATE TABLE `contribution_request` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
-
---
--- Table structure for table `exchangerequest`
---
-
-CREATE TABLE `exchangerequest` (
-  `RequestID` int(11) NOT NULL,
-  `SenderUserID` int(11) DEFAULT NULL,
-  `ReceiverUserID` int(11) DEFAULT NULL,
-  `RequestDate` date DEFAULT NULL,
-  `Status` enum('Pending','Accepted','Declined','Completed') DEFAULT NULL,
-  `Message` text DEFAULT NULL,
-  `BookISBN` varchar(20) DEFAULT NULL,
-  `ExchangeRequestDate` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
 --
 -- Table structure for table `global_book_collection`
 --
