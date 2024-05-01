@@ -44,6 +44,13 @@ $sql_books = "SELECT
 
 $result_books = $conn->query($sql_books);
 
+// Calculate total contributed books count
+$total_contributed_books_count = $result_books->num_rows;
+
+// Update the user's book_wallet column with the total count
+$update_wallet_sql = "UPDATE user SET book_wallet = $total_contributed_books_count WHERE user_id = $User_id";
+$conn->query($update_wallet_sql);
+
 // Close the database connection
 mysqli_close($conn);
 ?>
