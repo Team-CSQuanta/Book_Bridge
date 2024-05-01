@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $insert_request_sql = "INSERT INTO contribution_request (user_id, book_id, status) 
                                    VALUES ('$user_id', '$book_id', 'pending')";
             if ($conn->query($insert_request_sql) === TRUE) {
-                echo '<script>alert("Contribution request submitted successfully.");</script>';
+                echo '<script>alert("Contribution request submitted successfully.");location="page-account.php";</script>';
             } else {
                 echo '<script>alert("Error creating contribution request: ' . $conn->error . '");</script>';
             }

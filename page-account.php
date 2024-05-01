@@ -111,9 +111,7 @@
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                        <form action="bookupload.php" method="post">
-                            <button type="submit" class="btn btn-primary">Contribute a Book</button>
-                        </form>
+                    <button type="submit" class="btn btn-primary" onclick="window.location.href='bookupload.php'">Contribute a Book</button>
                     </div>
                     <hr>
                     <h6 class="mt-4" style="margin-top: 10px;">Total Books Contributed: <strong> <?php echo $result_books->num_rows; ?></p></strong></h6>
