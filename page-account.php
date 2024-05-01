@@ -15,6 +15,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/main.css?v=3.4">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <?php include_once 'account_handler.php'; ?>
 </head>
 
@@ -102,31 +103,34 @@
 
 
                                     <div class="tab-pane fade" id="contribution" role="tabpanel" aria-labelledby="contribution-tab">
+                                    <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-lg-6 mx-auto">
-            <div class="card mb-3 mb-lg-0" style="width: 400px; height: auto;">
+        <div class="col-lg-8">
+            <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0">My Book Contribution</h5>
                 </div>
                 <div class="card-body">
-                    <div class="text-center">
+                    <div class="text-center mb-3">
                         <form action="bookupload.php" method="post">
                             <button type="submit" class="btn btn-primary">Contribute a Book</button>
                         </form>
                     </div>
                     <hr>
                     <h6 class="mt-4">Contributed Books:</h6>
-                    <?php if ($contributed_books_count > 0) : ?>
-                        <ul>
-                            <?php
-                            $books_array = explode(", ", $contributed_books_list);
-                            foreach ($books_array as $book_title) {
-                                echo "<li>$book_title</li>";
-                            }
-                            ?>
+                    <?php if ($result_books->num_rows > 0) : ?>
+                        <ul class="list-group">
+                            <?php while ($row_book = $result_books->fetch_assoc()) : ?>
+                                <li class="list-group-item">
+                                    <strong><?php echo $row_book['book_title']; ?></strong> - 
+                                   <em><?php echo $row_book['authors']; ?></em><br>
+                                    <span class="badge badge-primary"><?php echo $row_book['categoryName']; ?></span>
+                                </li>
+                            <?php endwhile; ?>
                         </ul>
+                        <p class="mt-3">Total Books Contributed: <strong><?php echo $result_books->num_rows; ?></strong></p>
                     <?php else : ?>
-                        <p>No books contributed yet!</p>
+                        <p>No books contributed yet.</p>
                     <?php endif; ?>
                 </div>
             </div>
@@ -267,6 +271,8 @@
             </div>
         </section>
     </main>
+    <!-- Bootstrap JS (optional) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
 

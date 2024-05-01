@@ -1,21 +1,6 @@
 
 <?php
-session_start();
-
-// Establish database connection
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "book_bridge";
-
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
+ include_once 'db_connection.php'; 
 // Handle form submission
 if(isset($_POST['register'])) {
     // $username = mysqli_real_escape_string($conn, $_POST['username']);
@@ -45,12 +30,18 @@ if(mysqli_num_rows($result) > 0) {
     $sql = "INSERT INTO `user` (phone_number, email, f_name, l_name, reg_date, bio , street_address, apartment_num, postal_code, Password) 
     VALUES ('$phoneNumber', '$email', '$firstName', '$lastName', '$registrationDate', '$bio','$streetAddress' , '$apartmentNo' ,'$postalCode', '$hashedPassword')";
 
-
-    if (mysqli_query($conn, $sql)) {
-        echo '<script>alert("Form submitted successfully!"); location="page-account.php";</script>';
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
+if (mysqli_query($conn, $sql)) {
+    // Retrieve the user ID of the newly registered user
+    $userID = mysqli_insert_id($conn);
+    
+    // Set session variables
+    $_SESSION['UserID'] = $userID;
+    // $_SESSION['Email'] = $email;
+    
+    echo '<script>alert("Form submitted successfully!"); location="page-account.php";</script>';
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
 }
 }
 
