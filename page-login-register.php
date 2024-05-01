@@ -81,7 +81,7 @@
 
                                     
 
-                                        <form id="registerForm" method="post" action="login_register_handler.php">
+                                        <form id="registerForm" method="post" action="login_register_handler.php" enctype="multipart/form-data">
                                             <!-- <div class="form-group">
                                                 <input type="text" required="" name="username" placeholder="Username">
                                             </div> -->
