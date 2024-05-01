@@ -58,6 +58,7 @@
                     <a href="index.php" rel="nofollow">Home</a>
                     <span></span> Pages
                     <span></span> Account
+                    <span></span> Contribute a book
                 </div>
             </div>
         </div>
@@ -72,8 +73,7 @@
                    <div class="ec-vendor-dashboard-card">
                        <div class="ec-vendor-card-body">
                            <div class="row">
-                                          
-                               
+                                        
                                <div class="col-lg-8">
                                    <div class="ec-vendor-upload-detail">
                                        <form class="row g-3" method="POST" action="bookupload_handler.php" enctype="multipart/form-data">
@@ -87,18 +87,24 @@
                                            </div>
                                           
                                            <div class="col-md-6">
-                                               <label  class="form-label">Book Genre</label>
+                                               <label  class="form-label">Book Category</label>
                                                <select name="categories" id="Categories" class="form-select">
                                                    
                                                        <option value="Scifi">Science Fiction</option>
+                                                       <option value="cookBook">Cook book</option>
+                                                       <option value="grafic">Grafic Novel</option>
+                                                       <option value="memoir">Memoir</option>
+                                                       <option value="academic">Academic</option>
                                                        <option value="fantasy">Fantasy</option>
+                                                    
                                                        <option value="mystery">Mystery</option>
                                                        <option value="thriller">Thriller</option>
-                                           
+                                                       <option value="graphicnovel">Graphic novel</option>
                                                        <option value="romance">Romance</option>
-                                                       <option value="horrro">Horror</option>
+                                                       <option value="horror">Horror</option>
                                                    
                                                   
+
                                                        <option value="adventure">Adventure</option>
                                                        <option value="bio">Biography</option>
                                                    
@@ -108,22 +114,28 @@
                                                <label for="inputisbn" class="form-label">ISBN</label>
                                                <input type="text" class="form-control" id="inputisbn" name="inputIsbn">
                                            </div>
-                                           <div class="col-md-6">
-                                               <label for="inputyear" class="form-label">Publishing Year</label>
-                                               <input type="text" class="form-control" id="inputyear" name="inputYear">
-                                           </div>
+                                           
                                            <div class="col-md-6">
                                                <label for="inputlang" class="form-label">Language</label>
                                                <input type="text" class="form-control" id="inputlang" name="inputLang">
                                            </div>
                                            <div class="col-md-6">
-                                               <label for="inputCond" class="form-label">Condition</label>
-                                               <input type="text" class="form-control" id="inputCond" name="inputcond">
+                                               <label for="inputpage" class="form-label">Page No</label>
+                                               <input type="text" class="form-control" id="inputpage" name="inputPage">
                                            </div>
                                            <div class="col-md-6">
-                                               <label for="inputStatus" class="form-label">Availability Status</label>
-                                               <input type="text" class="form-control" id="inputStatus" name="inputstatus">
+                                               <label for="inputedition" class="form-label">Edition</label>
+                                               <input type="text" class="form-control" id="inputedition" name="inputEdition">
                                            </div>
+                                           <div class="col-md-6">
+                                               <label for="inputPublisher" class="form-label">Publisher</label>
+                                               <input type="text" class="form-control" id="inputpublisher" name="inputPublisher">
+                                           </div>
+                                           <div class="col-md-6">
+                                               <label for="inputdate" class="form-label">Publishing Date</label>
+                                               <input type="text" class="form-control" id="inputdate" name="inputDate">
+                                           </div>
+                                          
                                            <div class="col-md-12">
                                                <label class="form-label">Short Description</label>
                                                <textarea class="form-control" rows="2" name="description"></textarea>
@@ -131,30 +143,46 @@
                                            </div>
                                           
                                        
-                                           <div class="col-md-12">
-                                               <label class="form-label">Book Tags <span>( Type and
-                                                       make comma to separate tags )</span></label>
-                                               <input type="text" class="form-control" id="group_tag" name="group_tag"
-                                                   value="" placeholder="" data-role="tagsinput" />
-                                           </div>
+                                    
+
                                            <div class="col-lg-4">
-                                          <div class="ec-vendor-img-upload">
-                                          <div class="ec-vendor-main-img">
+    <div class="ec-vendor-img-upload">
+        <!-- Main Cover Image Upload -->
+        <div class="avatar-upload">
+        <div class="ec-vendor-main-img">
                                            <div class="avatar-upload">
-                                               <div class="avatar-edit">
-                                                   <input type='file' id="imageupload" name ="imageUpload"class="ec-image-upload"
-                                                       accept=".png, .jpg, .jpeg" />
-                                                   <label for="imageUpload"><img src="assets2/images/icons/edit.svg"
+            <div class="avatar-edit">
+                <input type='file' id="mainImageUpload" name="mainImageUpload" class="ec-image-upload" accept=".png, .jpg, .jpeg" />
+                <label for="mainImageUpload"><img src="assets2/images/icons/edit.svg"
                                                            class="svg_img header_svg" alt="edit" /></label>
-                                               </div>
-                                               <div class="avatar-preview ec-preview">
-                                                   <div class="imagePreview ec-div-preview">
-                                                       <img class="ec-image-preview"
-                                                           src="assets2/images/product-image/vender-upload-preview.jpg"
-                                                           alt="edit" />
-                                                   </div>
-                                               </div>
-                                           </div>
+            </div>
+            <div class="avatar-preview ec-preview">
+                <div class="imagePreview ec-div-preview">
+                    <img class="ec-image-preview" id="mainImagePreview" src="assets2/images/product-image/vender-upload-preview.jpg" alt="edit" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div> 
+<div class="col-lg-8" style="margin-bottom: 20px;">
+    <!-- Additional Images Upload -->
+    <div class="ec-vendor-img-upload" style="border: 1px dashed #ccc; padding: 10px; text-align: center;">
+        <label for="additionalImagesUpload" style="cursor: pointer;">
+            <strong>Upload Additional Images</strong><br>
+            (Multiple images allowed)
+        </label>
+        <!-- Single file input field for multiple images -->
+        <input type="file" id="additionalImagesUpload" name="additionalImagesUpload[]" class="ec-image-upload" accept=".png, .jpg, .jpeg" multiple style="display: none;">
+        <div id="additionalImagesPreview" class="avatar-preview ec-preview" style="margin-top: 10px;">
+            <!-- Additional images preview will be shown here -->
+        </div>
+        <div id="imagePaths" style="margin-top: 10px;"></div>
+    </div>
+</div>
+
+
 
                                            <div class="col-md-12">
                                                <button type="submit" class="btn btn-primary" name="Submit">Submit</button>
@@ -208,24 +236,30 @@ $(function() {
 // Function to populate book fields based on the selected book info
 function populateBookFields(bookInfo) {
     if (bookInfo) {
-        // Populate the input fields with the book information
-        $('#inputTitle').val(bookInfo.title || 'N/A');
-        $('#inputName').val(bookInfo.authors ? bookInfo.authors.join(', ') : 'N/A');
-      //  $('#Categories').val(bookInfo.categories ? bookInfo.categories.join(', ') : 'N/A');
-        $('#inputisbn').val(bookInfo.industryIdentifiers ? bookInfo.industryIdentifiers[0].identifier : 'N/A');
-        $('#inputyear').val(bookInfo.publishedDate ? bookInfo.publishedDate.substring(0, 4) : 'N/A');
-        $('#inputlang').val(getLanguageName(bookInfo.language || ''));
+    // Populate the input fields with the book information
+    $('#inputTitle').val(bookInfo.title || 'N/A');
+    $('#inputName').val(bookInfo.authors ? bookInfo.authors.join(', ') : 'N/A');
+    // $('#Categories').val(bookInfo.categories ? bookInfo.categories.join(', ') : 'N/A');
+    $('#inputisbn').val(bookInfo.industryIdentifiers ? bookInfo.industryIdentifiers[0].identifier : 'N/A');
+    $('#inputdate').val(bookInfo.publishedDate ? bookInfo.publishedDate : 'N/A'); // Changed to Publishing Date
+    $('#inputlang').val(getLanguageName(bookInfo.language || ''));
 
-        // Populate the text area with the book description
-        $('textarea').val(bookInfo.description || 'N/A');
+    // Populate the text area with the book description
+    $('textarea').val(bookInfo.description || 'N/A');
 
-        // Set the main book cover image
-        const mainImgSrc = bookInfo.imageLinks ? bookInfo.imageLinks.thumbnail : '';
-        if (mainImgSrc) {
-             $('.avatar-preview img').attr('src', mainImgSrc);
-            //.attr('style', 'width: 200px; height: 400px; object-fit: cover;')
-        }
-    }
+    // // Set the main book cover image
+    // const mainImgSrc = bookInfo.imageLinks ? bookInfo.imageLinks.thumbnail : '';
+    // if (mainImgSrc) {
+    //     $('.avatar-preview img').attr('src', mainImgSrc);
+    //     //.attr('style', 'width: 200px; height: 400px; object-fit: cover;')
+    // }
+
+    // Additional fields
+    $('#inputpage').val(bookInfo.pageCount || 'N/A');
+    $('#inputedition').val(bookInfo.edition || 'N/A');
+    $('#inputpublisher').val(bookInfo.publisher || 'N/A');
+}
+
 }
 
 // Function to get the full language name from the language code
@@ -242,9 +276,22 @@ function getLanguageName(languageCode) {
 </script>
 <!-- Script for google book api, ends here. -->
    <!-- End Vendor upload section -->
+   <script>
+   $(document).ready(function() {
+    $('#additionalImagesUpload').on('change', function() {
+        // Get the selected files
+        var files = $(this).prop('files');
+        var paths = [];
+        // Loop through each selected file and get its path
+        $.each(files, function(index, file) {
+            paths.push(file.name);
+        });
+        // Display the paths as comma-separated values
+        $('#imagePaths').text(paths.join(', '));
+    });
+});
 
-
-   
+</script>
 
 
    <!-- Vendor JS -->

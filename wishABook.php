@@ -86,14 +86,14 @@
                                        <div class="ec-vendor-main-img">
                                            <div class="avatar-upload">
                                                <div class="avatar-edit">
-                                                   <input type='file' id="imageUpload" class="ec-image-upload"
+                                                   <input type='file' id="imageUpload" class="ec-image-upload" name="imageUpload"
                                                        accept=".png, .jpg, .jpeg" />
                                                    <label for="imageUpload"><img src="assets2/images/icons/edit.svg"
                                                            class="svg_img header_svg" alt="edit" /></label>
                                                </div>
                                                <div class="avatar-preview ec-preview">
                                                    <div class="imagePreview ec-div-preview">
-                                                       <img class="ec-image-preview"
+                                                       <img id="previewImage" class="ec-image-preview"
                                                            src="assets2/images/product-image/vender-upload-preview.jpg"
                                                            alt="edit" />
                                                    </div>
@@ -119,13 +119,18 @@
                                                <label  class="form-label">Book Genre</label>
                                                <select name="categories" id="Categories" class="form-select">
                                                    
-                                                       <option value="Scifi">Science Fiction</option>
+                                               <option value="Scifi">Science Fiction</option>
+                                                       <option value="cookBook">Cook book</option>
+                                                       <option value="grafic">Grafic Novel</option>
+                                                       <option value="memoir">Memoir</option>
+                                                       <option value="academic">Academic</option>
                                                        <option value="fantasy">Fantasy</option>
+                                                    
                                                        <option value="mystery">Mystery</option>
                                                        <option value="thriller">Thriller</option>
                                            
                                                        <option value="romance">Romance</option>
-                                                       <option value="horrro">Horror</option>
+                                                       <option value="horror">Horror</option>
                                                    
                                                   
                                                        <option value="adventure">Adventure</option>
@@ -153,12 +158,7 @@
                                            </div>
                                           
                                        
-                                           <div class="col-md-12">
-                                               <label class="form-label">Book Tags <span>( Type and
-                                                       make comma to separate tags )</span></label>
-                                               <input type="text" class="form-control" id="group_tag" name="group_tag"
-                                                   value="" placeholder="" data-role="tagsinput" />
-                                           </div>
+                                         
                                            <div class="col-md-12">
                                                <button type="submit" class="btn btn-primary" name="Submit">Submit</button>
                                            </div>

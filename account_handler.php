@@ -1,23 +1,5 @@
 <?php
-session_start();
-
-// Establish database connection
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "book_bridge";
-
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+ include_once 'db_connection.php'; 
 
 // Check if the user is logged in
 if (!isset($_SESSION['UserID'])) {
@@ -40,7 +22,36 @@ if (mysqli_num_rows($result) > 0) {
     // Handle case where user's information is not found
     $first_name = "User";
 }
+// Query to fetch count of contributed books 
+$sql_books = "SELECT 
+                b.title AS book_title,
+                COUNT(cr.request_id) AS contributed_books_count,
+                b.authors,
+                c.categoryName
+            FROM 
+                user u
+            LEFT JOIN 
+                contribution_request cr ON u.user_id = cr.user_id
+            LEFT JOIN 
+                book b ON cr.book_id = b.book_id
+            LEFT JOIN 
+                category c ON b.categoryID = c.categoryID
+            WHERE 
+                u.user_id = $User_id
+                AND cr.status = 'published'
+            GROUP BY 
+                b.book_id";
+
+$result_books = $conn->query($sql_books);
+
+// Calculate total contributed books count
+$total_contributed_books_count = $result_books->num_rows;
+
+// Update the user's book_wallet column with the total count
+$update_wallet_sql = "UPDATE user SET book_wallet = $total_contributed_books_count WHERE user_id = $User_id";
+$conn->query($update_wallet_sql);
 
 // Close the database connection
 mysqli_close($conn);
 ?>
+
