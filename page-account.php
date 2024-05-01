@@ -15,6 +15,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/main.css?v=3.4">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <?php include_once 'account_handler.php'; ?>
 </head>
 
@@ -37,19 +38,6 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-
-           // Retrieve the number of book contributions
-           $num_Contribution_query = "SELECT COUNT(*) as total FROM exchangerequest";
-           $num_Contribution_query_run = mysqli_query($conn, $num_Contribution_query);
-   
-           // Check if query executed successfully
-           if ($num_Contribution_query_run) {
-               $row = mysqli_fetch_assoc($num_Contribution_query_run);
-               $total_num = $row['total'];
-               $message = "You have contributed " . $total_num . " books.";
-           } else {
-               $message = "Error in fetching contribution data.";
-           }
 
     ?> 
     <main class="main">
@@ -114,29 +102,52 @@
                                     </div>
 
 
-                                    <div class="tab-pane fade" id="contribution" role="tabpanel" aria-labelledby="contribution-tab">
-                                        <div class="row justify-content-center">
-                                            <div class="col-lg-6 mx-auto">
-                                                <div class="card mb-3 mb-lg-0" style="width: 400px; height: 300px;">
-                                                    <div class="card-header">
-                                                        <h5 class="mb-0">My Book Contribution</h5>
-                                                    </div>
-                                                    <div class="card-body d-flex flex-column justify-content-between">
+<div class="tab-pane fade" id="contribution" role="tabpanel" aria-labelledby="contribution-tab">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 mx-auto">
+            <div class="card mb-3 mb-lg-0" style="width: 700px; height: 470px; overflow-y: auto;">
+                <div class="card-header">
+                    <h5 class="mb-0">My Book Contribution</h5>
+                </div>
+                <div class="card-body">
+                    <div class="text-center">
+                    <button type="submit" class="btn btn-primary" onclick="window.location.href='bookupload.php'">Contribute a Book</button>
+                    </div>
+                    <hr>
+                    <h6 class="mt-4" style="margin-top: 10px;">Total Books Contributed: <strong> <?php echo $result_books->num_rows; ?></p></strong></h6>
+                    <?php if ($result_books->num_rows > 0) : ?>
+                        <table class="table" style="border-collapse: collapse; width: 100%;">
+                            <thead>
+                                <tr style="background-color: #6AB187;">
+                                    <th style="border: 1px solid #dddddd; padding: 8px;">Book Title</th>
+                                    <th style="border: 1px solid #dddddd; padding: 8px;">Author</th>
+                                    <th style="border: 1px solid #dddddd; padding: 8px;">Category</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $row_color = true; ?>
+                                <?php while ($row_book = $result_books->fetch_assoc()) : ?>
+                                    <tr style="background-color: <?php echo $row_color ? 'white' : '#CED2CC'; ?>;">
+                                        <td style="border: 1px solid #dddddd; padding: 8px;"><?php echo $row_book['book_title']; ?></td>
+                                        <td style="border: 1px solid #dddddd; padding: 8px;"><i><?php echo $row_book['authors']; ?></i></td>
+                                        <td style="border: 1px solid #dddddd; padding: 8px;"><?php echo $row_book['categoryName']; ?></td>
+                                    </tr>
+                                    <?php $row_color = !$row_color; ?>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                
+                    <?php else : ?>
+                        <p>No books contributed yet.</p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                               
-                                                    <?php echo $message; ?>
 
-                                                    <div class="text-center">  
-                                                    <form action="bookupload.php" method="post">
-                                                            <button type="submit" class="btn btn-primary">Contribute a Book</button>
-                                                        </form>
 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                              </div>
                                     <div class="tab-pane fade" id="wishes" role="tabpanel" aria-labelledby="wishes-tab">
                                         <div class="row justify-content-center">
                                             <div class="col-lg-6 mx-auto">
@@ -147,8 +158,7 @@
                                                     <div class="card-body d-flex flex-column justify-content-between">
 
                                
-                                                    <?php echo $message; ?>
-
+                                                    
                                                     <div class="text-center">  
                                                  
                                                             <button type="submit" class="btn btn-primary" onclick="location.href='wishABook.php'">Wish a Book</button>
@@ -270,6 +280,8 @@
             </div>
         </section>
     </main>
+    <!-- Bootstrap JS (optional) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
 

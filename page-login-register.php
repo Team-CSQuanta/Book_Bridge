@@ -79,26 +79,13 @@
                                             Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our privacy policy
                                         </p>
 
-                                        <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.querySelector("form[name='registrationForm']").addEventListener("submit", function(event) {
-            var checkbox = document.getElementById('exampleCheckbox12');
-            
-            if (!checkbox.checked) {
-                alert("Please agree to the terms & policy.");
-                event.preventDefault(); // Prevent form submission
-            }
-        });
-    });
-</script>
+                                    
 
-                                        <form method="post" action="login_register_handler.php" name = "registrationForm">
+                                        <form id="registerForm" method="post" action="login_register_handler.php" enctype="multipart/form-data">
                                             <!-- <div class="form-group">
                                                 <input type="text" required="" name="username" placeholder="Username">
                                             </div> -->
-
-                                           
-
+                                        
                                             
                                             <div class="form-group">
                                                 <input type="text" required="" name="firstName" placeholder="First Name">
@@ -141,7 +128,7 @@
                                             <div class="login_footer form-group">
                                                 <div class="chek-form">
                                                     <div class="custome-checkbox">
-                                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox12" value="" required>
+                                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox12" value="">
                                                         <label class="form-check-label" for="exampleCheckbox12"><span>I agree to terms &amp; Policy.</span></label>
                                                     </div>
                                                    
@@ -150,14 +137,15 @@
                                                 <a href="page-privacy-policy.php"><i class="fi-rs-book-alt mr-5 text-muted"></i>Lean more</a>
                                             </div>
                                             <div class="form-group text-center">
-                                                <button type="submit" class="btn btn-fill-out btn-block hover-up" name="register">Submit &amp; Register</button>
+                                                <button type="submit" class="btn btn-fill-out btn-block hover-up" id="submitButton" name="register">Submit &amp; Register</button>
                                             </div>
                                         </form>
+
                                         <div class="divider-text-center mt-15 mb-15">
                                             <span> or</span>
                                         </div>
                                         <ul class="btn-login list_none text-center mb-15">
-                                            <!-- <li><a href="#" class="btn btn-facebook hover-up mb-lg-0 mb-sm-4">Login With Facebook</a></li> -->
+                                           
                                             <li><a href="#" class="btn btn-google hover-up">Login With Google</a></li>
                                         </ul>
                                         <div class="text-muted text-center">Already have an account? <a href="#">Sign in now</a></div>
@@ -170,6 +158,26 @@
             </div>
         </section>
     </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the form element
+            var form = document.getElementById("registerForm");
+
+            // Add submit event listener to the form
+            form.addEventListener("submit", function(event) {
+                // Select the checkbox element
+                var checkBox = document.getElementById("exampleCheckbox12");
+
+                // Check if it is checked
+                if (!checkBox.checked) {
+                    // Checkbox is not checked, show an alert
+                    alert("Please agree to the terms & policy.");
+                    // Prevent form submission
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
     <?php
     include 'partials/footer.php'
     ?>

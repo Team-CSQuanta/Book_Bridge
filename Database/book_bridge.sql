@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 30, 2024 at 10:38 AM
+-- Host: 127.0.0.1
+-- Generation Time: May 01, 2024 at 03:45 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -88,16 +88,17 @@ CREATE TABLE `bibliophile_club_admin` (
   `bio` varchar(1000) DEFAULT NULL,
   `profile_img` varchar(300) DEFAULT NULL,
   `address_line` varchar(300) DEFAULT NULL,
-  `location_id` int(11) NOT NULL
+  `location_id` int(11) NOT NULL,
+  `club_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bibliophile_club_admin`
 --
 
-INSERT INTO `bibliophile_club_admin` (`club_admin_id`, `email`, `phone_number`, `password`, `f_name`, `l_name`, `bio`, `profile_img`, `address_line`, `location_id`) VALUES
-(1, 'rifat@gmail.com', '01936566238', '$2y$10$mj8l1hrBY4Ccmre./06.8e/eZ93leCnoyo/wEWL6i3awcVghFRHyq', 'Rifat', 'Hossain', '', 'MODERATOR-66291a52028e10.49054479.jpg', 'Mouchak, Kaliakair', 2),
-(2, 'mim@gmail.com', '01999483690', '$2y$10$OB4nf3ITjh4KZWsyGBSOdutzhVoU81EMLHBmpKHpT5kAcnkBYig2e', 'Khadiza Akter', 'Mim', NULL, 'defualt_profile.jpg', 'United City, Satarkul, vatara', 1);
+INSERT INTO `bibliophile_club_admin` (`club_admin_id`, `email`, `phone_number`, `password`, `f_name`, `l_name`, `bio`, `profile_img`, `address_line`, `location_id`, `club_id`) VALUES
+(1, 'rifat@gmail.com', '01936566238', '$2y$10$mj8l1hrBY4Ccmre./06.8e/eZ93leCnoyo/wEWL6i3awcVghFRHyq', 'Rifat', 'Hossain', '', 'MODERATOR-66291a52028e10.49054479.jpg', 'Mouchak, Kaliakair', 2, NULL),
+(2, 'mim@gmail.com', '01999483690', '$2y$10$OB4nf3ITjh4KZWsyGBSOdutzhVoU81EMLHBmpKHpT5kAcnkBYig2e', 'Khadiza Akter', 'Mim', NULL, 'defualt_profile.jpg', 'United City, Satarkul, vatara', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -156,7 +157,10 @@ INSERT INTO `book` (`book_id`, `isbn`, `title`, `authors`, `categoryID`, `editio
 (7, '978-0-307-88839-6', 'Jurassic Park', 'Michael Crichton', 'CAT-SCI-008', 'Reprint Edition', 464, 'English', 'A science fiction thriller novel about a theme park populated with genetically engineered dinosaurs.', 'Ballantine Books', '1991-05-14', 'default_cover.png', NULL),
 (8, '978-0-345-47650-3', 'The Firm', 'John Grisham', 'CAT-MYS-009', 'Reprint Edition', 501, 'English', 'A legal thriller novel about a young attorney who becomes embroiled in a dangerous conspiracy at a prestigious law firm.', 'Doubleday', '1991-03-01', 'default_cover.png', NULL),
 (9, '978-1-4197-3903-1', 'The Hate U Give', 'Angie Thomas', 'CAT-THR-004', 'Reprint Edition', 464, 'English', 'A young adult novel inspired by the Black Lives Matter movement, following the aftermath of a police shooting.', 'Balzer + Bray', '2017-02-28', 'default_cover.png', NULL),
-(10, '978-0-553-57340-2', 'The Secret History', 'Donna Tartt', 'CAT-MYS-009', 'Reprint Edition', 559, 'English', 'A mystery novel centered around a group of elite college students who become involved in a murder.', 'Alfred A. Knopf', '1992-09-05', 'default_cover.png', NULL);
+(10, '978-0-553-57340-2', 'The Secret History', 'Donna Tartt', 'CAT-MYS-009', 'Reprint Edition', 559, 'English', 'A mystery novel centered around a group of elite college students who become involved in a murder.', 'Alfred A. Knopf', '1992-09-05', 'default_cover.png', NULL),
+(102, '9781119015260', 'Fundamental of Calculus', 'Carla C. Morris, Robert M. Stark', 'CAT-ACA-010', 'N/A', 368, 'English', 'Features the techniques, methods, and applications of calculus using real-world examples from business and economics as well as the life and social sciences An introduction to differential and integral calculus, Fundamentals of Calculus presents key topics suited for a variety of readers in fields ranging from entrepreneurship and economics to environmental and social sciences. Practical examples from a variety of subject areas are featured throughout each chapter and step-by-step explanations for the solutions are presented. Specific techniques are also applied to highlight important information in each section, including symbols interspersed throughout to further reader comprehension. In addition, the book illustrates the elements of finite calculus with the varied formulas for power, quotient, and product rules that correlate markedly with traditional calculus. Featuring calculus as the “mathematics of change,” each chapter concludes with a historical notes section. Fundamentals of Calculus chapter coverage includes: Linear Equations and Functions The Derivative Using the Derivative Exponents and Logarithms Differentiation Techniques Integral Calculus Integrations Techniques Functions of Several Variables Series and Summations Applications to Probability Supplemented with online instructional support materials, Fundamentals of Calculus is an ideal textbook for undergraduate students majoring in business, economics, biology, chemistry, and environmental science.', 'John Wiley & Sons', '2015-08-10', '', ''),
+(103, '9781317583660', 'Colloquial Bengali (eBook And MP3 Pack)', 'Mithun B. Nasrin, W.A.M van der Wurff', 'CAT-ACA-010', 'N/A', 289, 'English', 'First published in 2004. Routledge is an imprint of Taylor & Francis, an informa company.', 'Routledge', '2014-10-14', 'uploadedBooks/663241398d47d6.30774829_book-9.png', 'uploadedBooks/663241398d8ee9.31754898_book-10 (1).png,uploadedBooks/663241398dbc91.89594408_book-1 (1).png'),
+(104, '8173711461', 'Wings of Fire', 'Avul Pakir Jainulabdeen Abdul Kalam, Arun Tiwari', 'CAT-ACA-010', 'N/A', 228, 'English', 'Avul Pakir Jainulabdeen Abdul Kalam, The Son Of A Little-Educated Boat-Owner In Rameswaram, Tamil Nadu, Had An Unparalled Career As A Defence Scientist, Culminating In The Highest Civilian Award Of India, The Bharat Ratna. As Chief Of The Country`S Defence Research And Development Programme, Kalam Demonstrated The Great Potential For Dynamism And Innovation That Existed In Seemingly Moribund Research Establishments. This Is The Story Of Kalam`S Rise From Obscurity And His Personal And Professional Struggles, As Well As The Story Of Agni, Prithvi, Akash, Trishul And Nag--Missiles That Have Become Household Names In India And That Have Raised The Nation To The Level Of A Missile Power Of International Reckoning.', 'Universities Press', '0000-00-00', 'uploadedBooks/663244ebdcf894.75795716_book-8.png', 'uploadedBooks/663244ebdd41c2.11878679_book-5 (1).png,uploadedBooks/663244ebdd7913.97885658_book-10 (1).png,uploadedBooks/663244ebde1ed8.80129238_book-1 (1).png');
 
 -- --------------------------------------------------------
 
@@ -205,22 +209,23 @@ CREATE TABLE `contribution_request` (
   `published_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `exchangerequest`
+-- Dumping data for table `contribution_request`
 --
 
-CREATE TABLE `exchangerequest` (
-  `RequestID` int(11) NOT NULL,
-  `SenderUserID` int(11) DEFAULT NULL,
-  `ReceiverUserID` int(11) DEFAULT NULL,
-  `RequestDate` date DEFAULT NULL,
-  `Status` enum('Pending','Accepted','Declined','Completed') DEFAULT NULL,
-  `Message` text DEFAULT NULL,
-  `BookISBN` varchar(20) DEFAULT NULL,
-  `ExchangeRequestDate` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `contribution_request` (`request_id`, `user_id`, `book_id`, `status`, `date_of_request`, `date_of_received`, `book_received_date`, `published_date`) VALUES
+(1, 1, 5, 'pending', '2024-04-09', '2024-04-10', '2024-04-16', '2024-04-23'),
+(2, 2, 4, 'pending', '2024-04-09', '2024-04-10', '2024-04-16', '2024-04-23'),
+(6, 13, 5, 'published', '2024-05-28', NULL, NULL, NULL),
+(7, 13, 6, 'published', '2024-05-28', NULL, NULL, NULL),
+(9, 13, 10, 'published', '0000-00-00', NULL, NULL, NULL),
+(56, 13, 3, 'published', '0000-00-00', NULL, NULL, NULL),
+(67, 13, 8, 'published', '0000-00-00', NULL, NULL, NULL),
+(69, 13, 9, 'published', '0000-00-00', NULL, NULL, NULL),
+(100, 13, 4, 'published', '0000-00-00', NULL, NULL, NULL),
+(101, 13, 102, 'published', '2024-05-01', NULL, NULL, NULL),
+(102, 13, 103, 'published', '2024-05-01', NULL, NULL, NULL),
+(103, 13, 104, 'pending', '2024-05-01', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -333,20 +338,29 @@ CREATE TABLE `user` (
   `apartment_num` varchar(300) DEFAULT NULL,
   `postal_code` varchar(300) DEFAULT NULL,
   `location_id` int(11) DEFAULT NULL,
-  `status` varchar(50) NOT NULL DEFAULT 'Active'
+  `status` varchar(50) NOT NULL DEFAULT 'Active',
+  `verifiedEmail` int(11) NOT NULL DEFAULT 0,
+  `token` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `user` (`user_id`, `phone_number`, `email`, `f_name`, `l_name`, `reg_date`, `bio`, `profile_img`, `book_wallet`, `street_address`, `apartment_num`, `postal_code`, `location_id`, `status`) VALUES
-(1, '01715031376', 'sadia@gmail.com', 'Sadia Islam', 'Ema', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
-(2, '01715031420', 'rakib@gmail.com', 'Rakibul Islam', 'Rakib', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
-(6, '01795031420', 'motasim@gmail.com', 'Motasim Billah', '', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
-(7, '017153431420', 'sakib@gmail.com', 'Sakibul Islam', 'Rakib', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Inactive'),
-(8, '01715031820', 'somik@gmail.com', 'Somik hasan', 'oikko', '2024-04-15', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active'),
-(9, '01836923942', 'Tanvir@gmail.com', 'Tanvir', 'Ahmend', '2024-04-15', 'This is a bio for tanvir ahmed', 'defualt_profile.jpg', 0, 'Kawran Bazar', 'Apt-33', '2143', 2, 'Active');
+
+
+INSERT INTO `user` (`user_id`, `phone_number`, `email`, `f_name`, `l_name`, `reg_date`, `bio`, `Password`, `profile_img`, `book_wallet`, `street_address`, `apartment_num`, `postal_code`, `location_id`, `status`, `verifiedEmail`, `token`) VALUES
+(1, '01715031376', 'sadia@gmail.com', 'Sadia Islam', 'Ema', '2024-04-15', '', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active', 0, ''),
+(2, '01715031420', 'rakib@gmail.com', 'Rakibul Islam', 'Rakib', '2024-04-15', '', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active', 0, ''),
+(6, '01795031420', 'motasim@gmail.com', 'Motasim Billah', '', '2024-04-15', '', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active', 0, ''),
+(7, '017153431420', 'sakib@gmail.com', 'Sakibul Islam', 'Rakib', '2024-04-15', '', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Inactive', 0, ''),
+(8, '01715031820', 'somik@gmail.com', 'Somik hasan', 'oikko', '2024-04-15', '', '', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active', 0, ''),
+(9, '01836923942', 'Tanvir@gmail.com', 'Tanvir', 'Ahmend', '2024-04-15', 'This is a bio for tanvir ahmed', '', 'defualt_profile.jpg', 0, 'Kawran Bazar', 'Apt-33', '2143', 2, 'Active', 0, ''),
+(13, '01906901852', 'jubairahmed13260@gmail.com', 'Jubair ', 'Ahmed', '2024-04-30', 'Hello', '$2y$10$KwTlk5qHCO26ZIDbftCPKudnwUyjCoyMZYplEmneP5ifWSbabrhJC', 'profileImages/663251ae22f933.55754647_profileimg.png', 9, 'Jagannathpur', '26', '1229', NULL, 'Active', 0, ''),
+(17, '01797030757', 'jubair010ahmed@gmail.com', 'Shibly', 'Purification', '2024-05-01', 'hi', '$2y$10$JupUOJI6qjI7Fjq9dZu3Yeu6onrv9VS3yA4ANIx9wmsh.K.4A0jVq', 'defualt_profile.jpg', 0, 'Jagannathpur', '67', '1229', NULL, 'Active', 0, ''),
+(19, '0190690185267', 'jubairahmed13260', 'AB', 'C', '2024-05-01', 'gg', '$2y$10$0OdSmbGIRRlIa.R9JphYieRnxP6gGM/PUdl.wYUdXGn/7baCMODXO', 'defualt_profile.jpg', 0, 'Jagannathpur,Shahid Abdul Aziz Sarak,vatara', '5564', '1229', NULL, 'Active', 0, ''),
+(20, '4567890', 'abcs@gmail.com', 'DFG', 'FGH', '2024-05-01', 'we', '$2y$10$66a.NHL6OrhPAQ2A5ZQJY.G42Yf/DevofoyKKkwOw/4ODhhvTlcQG', 'defualt_profile.jpg', 0, '2', '3', '234', NULL, 'Active', 0, '');
+
 
 -- --------------------------------------------------------
 
@@ -415,6 +429,7 @@ ALTER TABLE `bibliophile_club_admin`
   ADD PRIMARY KEY (`club_admin_id`),
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `phone_number` (`phone_number`),
+  ADD KEY `club_id` (`club_id`),
   ADD KEY `location_id` (`location_id`);
 
 --
@@ -445,15 +460,6 @@ ALTER TABLE `contribution_request`
   ADD PRIMARY KEY (`request_id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `book_id` (`book_id`);
-
---
--- Indexes for table `exchangerequest`
---
-ALTER TABLE `exchangerequest`
-  ADD PRIMARY KEY (`RequestID`),
-  ADD KEY `SenderUserID` (`SenderUserID`),
-  ADD KEY `ReceiverUserID` (`ReceiverUserID`),
-  ADD KEY `BookISBN` (`BookISBN`);
 
 --
 -- Indexes for table `global_book_collection`
@@ -536,19 +542,13 @@ ALTER TABLE `bibliophile_club_membership`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `contribution_request`
 --
 ALTER TABLE `contribution_request`
-  MODIFY `request_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `exchangerequest`
---
-ALTER TABLE `exchangerequest`
-  MODIFY `RequestID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `request_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `global_book_collection`
@@ -572,7 +572,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `wishes_list`
@@ -601,6 +601,7 @@ ALTER TABLE `bibliophile_club`
 -- Constraints for table `bibliophile_club_admin`
 --
 ALTER TABLE `bibliophile_club_admin`
+  ADD CONSTRAINT `bibliophile_club_admin_ibfk_1` FOREIGN KEY (`club_id`) REFERENCES `bibliophile_club` (`club_id`),
   ADD CONSTRAINT `bibliophile_club_admin_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`);
 
 --
