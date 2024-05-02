@@ -15,7 +15,7 @@ $search = isset($_GET['search-contribution-request']) ? $connection->real_escape
 $contribution_fetch = "SELECT cr.*, u.*, cr.status AS cr_status
                FROM contribution_request AS cr 
                JOIN user AS u ON cr.user_id = u.user_id
-               WHERE cr.status = 'pending' ";
+               WHERE cr.status = 'pending' AND cr.processed_by IS NULL AND  u.location_id = {$_SESSION['user-location-id']} ";
 
 
 if (!empty($search)) {
@@ -35,7 +35,8 @@ if (!$contribution_fetch_result) {
 $total_records_query = "SELECT COUNT(*) AS total 
                         FROM contribution_request AS cr 
                         JOIN user AS u ON cr.user_id = u.user_id
-                        WHERE cr.status = 'pending' ";
+                        WHERE cr.status = 'pending' AND cr.processed_by IS NULL AND  u.location_id = {$_SESSION['user-location-id']} ";
+
 
 
 if (!empty($search)) {
@@ -54,6 +55,18 @@ $total_records = $total_records_row['total'];
 
 
 $total_pages = ceil($total_records / $limit);
+
+if(isset($_GET['request_id'])){
+    $request_id = filter_input(INPUT_GET, 'request_id', FILTER_SANITIZE_NUMBER_INT);
+    $query_for_update = "UPDATE contribution_request
+                        set processed_by = {$_SESSION['user-logged-id']} , processed_user_role = 'moderator'
+                        WHERE request_id = {$request_id}";
+    
+    if($connection->query($query_for_update)){
+        echo "<script>window.location.href = 'http://localhost/Book_Bridge/admin/page-contribution-request.php';</script>";
+        exit();
+    }
+}
 ?>
 
 <section class="content-main">
@@ -115,7 +128,7 @@ $total_pages = ceil($total_records / $limit);
 
                                 <td><span class="badge rounded-pill alert-danger"><?= $contribution['cr_status'] ?></span></td>
                                 <td class="text-end">
-                                    <a href="page-user-detail.php?user_id=<?= $contribution['request_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">Accept</a>
+                                    <a href="?request_id=<?= $contribution['request_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">Accept</a>
                                 </td>
                             </tr>
                         <?php endwhile ?>
