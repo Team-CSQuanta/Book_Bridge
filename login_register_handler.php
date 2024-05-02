@@ -23,10 +23,13 @@ if(isset($_POST['register'])) {
 
      // Handle profile image upload
      if (isset($_FILES['profileImage']) && $_FILES['profileImage']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = "profileImages/"; // Ensure this directory exists and has write permissions
+        $assetsDir = "assets/";
+        $imgDir = $assetsDir . "imgs/";
+        $peopleDir = $imgDir . "people/";
+        $uploadDir = $peopleDir;
         $profileImageName = uniqid('', true) . '_' . $_FILES['profileImage']['name'];
-        $profileImagePath = $uploadDir . $profileImageName;
-        move_uploaded_file($_FILES['profileImage']['tmp_name'],  $profileImagePath );
+        //$profileImagePath = $uploadDir . $profileImageName;
+        move_uploaded_file($_FILES['profileImage']['tmp_name'], $profileImageName );
     }
 
 
@@ -38,7 +41,7 @@ if(mysqli_num_rows($result) > 0) {
 } else {
     // Insert user data into the database
     $sql = "INSERT INTO `user` (phone_number, email, f_name, l_name, reg_date, bio , street_address, apartment_num, postal_code, Password,profile_img) 
-    VALUES ('$phoneNumber', '$email', '$firstName', '$lastName', '$registrationDate', '$bio','$streetAddress' , '$apartmentNo' ,'$postalCode', '$hashedPassword', '$profileImagePath')";
+    VALUES ('$phoneNumber', '$email', '$firstName', '$lastName', '$registrationDate', '$bio','$streetAddress' , '$apartmentNo' ,'$postalCode', '$hashedPassword', '$profileImageName')";
 
 if (mysqli_query($conn, $sql)) {
     // Retrieve the user ID of the newly registered user

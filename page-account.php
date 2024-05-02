@@ -65,6 +65,9 @@
                                             <a class="nav-link" id="contribution-tab" data-bs-toggle="tab" href="#contribution" role="tab" aria-controls="contribution" aria-selected="true"><i class="fi-rs-marker mr-10"></i>Contribute a Book</a>
                                         </li>
                                         <li class="nav-item">
+                                         <a class="nav-link" id="not-published-tab" data-bs-toggle="tab" href="#not-published" role="tab" aria-controls="not-published" aria-selected="false"><i class="fi-rs-marker mr-10"></i>Yet to Publish</a>
+                                        </li>
+                                        <li class="nav-item">
                                             <a class="nav-link" id="wishes-tab" data-bs-toggle="tab" href="#wishes" role="tab" aria-controls="wishes" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Wish a Book</a>
                                         </li>
                                         <li class="nav-item">
@@ -98,18 +101,21 @@
                                             <div class="card-body">
                                                 <p>From your account dashboard. you can easily check &amp; view your <a href="#history">recent requests</a>, manage your <a href="#">shipping and billing addresses</a> and <a href="#">edit your password and account details.</a></p>
                                             </div>
-                                        </div>
-                                    </div>
+                                         </div> <!-- card end -->
+                                    </div> <!--  -->
+                                   
+                           
+                       
 
+                <div class="tab-pane fade" id="contribution" role="tabpanel" aria-labelledby="contribution-tab">
+                        <div class="row justify-content-center">
+                        <div class="col-lg-6 mx-auto">
 
-<div class="tab-pane fade" id="contribution" role="tabpanel" aria-labelledby="contribution-tab">
-    <div class="row justify-content-center">
-        <div class="col-lg-6 mx-auto">
-            <div class="card mb-3 mb-lg-0" style="width: 700px; height: 470px; overflow-y: auto;">
-                <div class="card-header">
-                    <h5 class="mb-0">My Book Contribution</h5>
-                </div>
-                <div class="card-body">
+                      <div class="card mb-3 mb-lg-0" style="width: 700px; height: 530px; overflow-y: auto;">
+                 <div class="card-header">
+                     <h5 class="mb-0">My Book Contribution</h5>
+                 </div>
+                 <div class="card-body">
                     <div class="text-center">
                     <button type="submit" class="btn btn-primary" onclick="window.location.href='bookupload.php'">Contribute a Book</button>
                     </div>
@@ -142,6 +148,49 @@
                     <?php endif; ?>
                 </div>
             </div>
+
+        </div>
+    </div>
+</div>
+ 
+
+<div class="tab-pane fade" id="not-published" role="tabpanel" aria-labelledby="not-published-tab">
+   <div class="row justify-content-center">
+        <div class="col-lg-6 mx-auto">
+            <div class="card mb-3 mb-lg-0" style="width: 700px; height: 530px; overflow-y: auto;">
+                <div class="card-header">
+                    <h5 class="mb-0">Books Yet to Publish</h5>
+                </div>
+                <div class="card-body" >
+                    <?php if ($result_not_published_books->num_rows > 0) : ?>
+                        <table class="table" style="border-collapse: collapse; width: 100%;">
+                            <thead>
+                                <tr style="background-color: #6AB187;">
+                                    <th style="border: 1px solid #dddddd; padding: 8px;">Book Title</th>
+                                    <th style="border: 1px solid #dddddd; padding: 8px;">Author</th>
+                                    <th style="border: 1px solid #dddddd; padding: 8px;">Category</th>
+                                     <th style="border: 1px solid #dddddd; padding: 8px;">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $row_color = true; ?>
+                                <?php while ($row_not_published_book = $result_not_published_books->fetch_assoc()) : ?>
+                                    <tr style="background-color: <?php echo $row_color ? 'white' : '#CED2CC'; ?>;">
+                                        <td style="border: 1px solid #dddddd; padding: 8px;"><?php echo $row_not_published_book['book_title']; ?></td>
+                                        <td style="border: 1px solid #dddddd; padding: 8px;"><i><?php echo $row_not_published_book['authors']; ?></i></td>
+                                        <td style="border: 1px solid #dddddd; padding: 8px;"><?php echo $row_not_published_book['categoryName']; ?></td>
+                                         <td style="border: 1px solid #dddddd; padding: 8px;"><span class="badge badge-primary"><?php echo $row_not_published_book['status']; ?></span></td>
+                                    </tr>
+                                    <?php $row_color = !$row_color; ?>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    <?php else : ?>
+                        <p>No books with status not published.</p>
+                    <?php endif; ?>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
