@@ -15,7 +15,7 @@ $search = isset($_GET['search-accepted-contribution-request']) ? $connection->re
 $contribution_fetch = "SELECT cr.*, u.*, cr.status AS cr_status
                FROM contribution_request AS cr 
                JOIN user AS u ON cr.user_id = u.user_id
-               WHERE cr.status = 'pending' AND cr.processed_by = {$_SESSION['user-logged-id']} ";
+               WHERE cr.status != 'Pending' AND cr.status != 'Published' AND cr.processed_by = {$_SESSION['user-logged-id']} ";
 
 
 if (!empty($search)) {
@@ -23,7 +23,7 @@ if (!empty($search)) {
     $contribution_fetch .= " AND (u.f_name LIKE '$searchCondition' OR u.l_name LIKE '$searchCondition' OR u.email LIKE '$searchCondition')";
 }
 
-$contribution_fetch .= " ORDER BY cr.date_of_request DESC LIMIT $start, $limit";
+$contribution_fetch .= " ORDER BY FIELD(cr.status, 'Processing', 'Requested to courier', 'Received the book', 'QC in progress') LIMIT $start, $limit";
 
 
 $contribution_fetch_result = $connection->query($contribution_fetch);
@@ -35,7 +35,7 @@ if (!$contribution_fetch_result) {
 $total_records_query = "SELECT COUNT(*) AS total 
                         FROM contribution_request AS cr 
                         JOIN user AS u ON cr.user_id = u.user_id
-                        WHERE cr.status = 'pending' AND cr.processed_by = {$_SESSION['user-logged-id']} ";
+                        WHERE cr.status != 'Pending' AND cr.status != 'Published' AND cr.processed_by = {$_SESSION['user-logged-id']} ";
 
 
 
