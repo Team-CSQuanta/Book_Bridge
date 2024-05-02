@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 02, 2024 at 06:35 PM
+-- Host: localhost
+-- Generation Time: May 02, 2024 at 06:20 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -68,7 +68,7 @@ CREATE TABLE `bibliophile_club` (
 
 INSERT INTO `bibliophile_club` (`club_id`, `club_name`, `address_line`, `district`, `club_manager_id`, `club_description`, `club_img`) VALUES
 (1, 'Gazipur Book Club', 'Mouchak Bazar, Kalikair', 'Gazipur', NULL, '\r\nA book club is a gathering of individuals who come together to discuss and engage with literature. Typically, members of a book club read the same book over a set period of time and then meet to discuss their thoughts, opinions, and insights about the book. Book clubs can be organized by friends, family, colleagues, or hosted by libraries, community centers, or online platforms.', 'CLUB-IMG-Defualt.jpg'),
-(2, 'Dhaka Bibliophile Club', 'United City, Madani Avenue, Vatara', 'Dhaka', NULL, 'The Dhaka Book Club offers a vibrant community for book lovers in Dhaka, Bangladesh. With a focus on fostering a love for reading and intellectual engagement, our club organizes regular meetings, discussions, and events centered around diverse literary works. Join us to explore new books, exchange ideas, and connect with fellow book enthusiasts in Dhaka.', 'CLUB-IMG-Defualt.jpg'),
+(2, 'Dhaka Bibliophile Club', 'United City, Madani Avenue, Vatara', 'Dhaka', 2, 'The Dhaka Book Club offers a vibrant community for book lovers in Dhaka, Bangladesh. With a focus on fostering a love for reading and intellectual engagement, our club organizes regular meetings, discussions, and events centered around diverse literary works. Join us to explore new books, exchange ideas, and connect with fellow book enthusiasts in Dhaka.', 'CLUB-IMG-Defualt.jpg'),
 (4, 'Tangail Book Club', '123 ABC Road, Tangail West Akur Takur, Tangail Sadar', 'Tangail', NULL, 'The Tangail Book Club is a dynamic hub for bibliophiles and literary enthusiasts located in the heart of Tangail. Our club is dedicated to cultivating a vibrant reading culture and fostering intellectual engagement among members of all ages and backgrounds.', 'CLUB-IMG-662b44546f6443.90704513.jpeg'),
 (5, 'Munshiganj Book Club', 'Street: 17/A, Gobindapur Road', 'Munshiganj', NULL, '&#13;&#10;The Munshiganj Book Club is a vibrant community of book enthusiasts dedicated to promoting a love for literature and intellectual exchange. Located in the heart of Munshiganj, Bangladesh, this club provides a platform for avid readers to come together, discuss literary works, share insights, and engage in meaningful conversations.', 'CLUB-IMG-662b451f49f516.61951131.jpg');
 
@@ -160,8 +160,7 @@ INSERT INTO `book` (`book_id`, `isbn`, `title`, `authors`, `categoryID`, `editio
 (10, '978-0-553-57340-2', 'The Secret History', 'Donna Tartt', 'CAT-MYS-009', 'Reprint Edition', 559, 'English', 'A mystery novel centered around a group of elite college students who become involved in a murder.', 'Alfred A. Knopf', '1992-09-05', 'default_cover.png', NULL),
 (102, '9781119015260', 'Fundamental of Calculus', 'Carla C. Morris, Robert M. Stark', 'CAT-ACA-010', 'N/A', 368, 'English', 'Features the techniques, methods, and applications of calculus using real-world examples from business and economics as well as the life and social sciences An introduction to differential and integral calculus, Fundamentals of Calculus presents key topics suited for a variety of readers in fields ranging from entrepreneurship and economics to environmental and social sciences. Practical examples from a variety of subject areas are featured throughout each chapter and step-by-step explanations for the solutions are presented. Specific techniques are also applied to highlight important information in each section, including symbols interspersed throughout to further reader comprehension. In addition, the book illustrates the elements of finite calculus with the varied formulas for power, quotient, and product rules that correlate markedly with traditional calculus. Featuring calculus as the “mathematics of change,” each chapter concludes with a historical notes section. Fundamentals of Calculus chapter coverage includes: Linear Equations and Functions The Derivative Using the Derivative Exponents and Logarithms Differentiation Techniques Integral Calculus Integrations Techniques Functions of Several Variables Series and Summations Applications to Probability Supplemented with online instructional support materials, Fundamentals of Calculus is an ideal textbook for undergraduate students majoring in business, economics, biology, chemistry, and environmental science.', 'John Wiley & Sons', '2015-08-10', '', ''),
 (103, '9781317583660', 'Colloquial Bengali (eBook And MP3 Pack)', 'Mithun B. Nasrin, W.A.M van der Wurff', 'CAT-ACA-010', 'N/A', 289, 'English', 'First published in 2004. Routledge is an imprint of Taylor & Francis, an informa company.', 'Routledge', '2014-10-14', 'uploadedBooks/663241398d47d6.30774829_book-9.png', 'uploadedBooks/663241398d8ee9.31754898_book-10 (1).png,uploadedBooks/663241398dbc91.89594408_book-1 (1).png'),
-(104, '8173711461', 'Wings of Fire', 'Avul Pakir Jainulabdeen Abdul Kalam, Arun Tiwari', 'CAT-ACA-010', 'N/A', 228, 'English', 'Avul Pakir Jainulabdeen Abdul Kalam, The Son Of A Little-Educated Boat-Owner In Rameswaram, Tamil Nadu, Had An Unparalled Career As A Defence Scientist, Culminating In The Highest Civilian Award Of India, The Bharat Ratna. As Chief Of The Country`S Defence Research And Development Programme, Kalam Demonstrated The Great Potential For Dynamism And Innovation That Existed In Seemingly Moribund Research Establishments. This Is The Story Of Kalam`S Rise From Obscurity And His Personal And Professional Struggles, As Well As The Story Of Agni, Prithvi, Akash, Trishul And Nag--Missiles That Have Become Household Names In India And That Have Raised The Nation To The Level Of A Missile Power Of International Reckoning.', 'Universities Press', '0000-00-00', 'uploadedBooks/663244ebdcf894.75795716_book-8.png', 'uploadedBooks/663244ebdd41c2.11878679_book-5 (1).png,uploadedBooks/663244ebdd7913.97885658_book-10 (1).png,uploadedBooks/663244ebde1ed8.80129238_book-1 (1).png'),
-(105, '9781905583805', 'The Book of Dhaka', 'Wasi Ahmed, Moinul Ahsan Saber, Shaheen Akhtar, Salma Bani, Bipradash Barua, Akhteruzzaman Elias, Parvez Hossain, Syed Manzoorul Islam, Rashida Sultana, Anwara Syed Haq', 'CAT-ACA-010', 'N/A', 164, 'English', 'Dhaka may be one of the most densely populated cities in the world - noisy, grid-locked, short on public amenities, and blighted with sprawling slums - but, as these stories show, it is also one of the most colourful and chaotically joyful places you could possibly call home. Slum kids and film stars, day-dreaming rich boys, gangsters and former freedom fighters all rub shoulders in these streets, often with Dhaka\'s famous rickshaws ferrying them to and fro across cultural, economic and ethnic divides. Just like Dhaka itself, these stories thrive on the rich interplay between folk culture and high art; they both cherish and lampoon the city\'s great tradition of political protest, and they pay tribute to a nation that was borne out of a love of language, one language in particular, Bangla (from which all these stories have been translated).', 'Comma Press', '2016-09-29', 'uploadedBooks/66333724b95974.91948091_book-1 (1).png', '');
+(104, '8173711461', 'Wings of Fire', 'Avul Pakir Jainulabdeen Abdul Kalam, Arun Tiwari', 'CAT-ACA-010', 'N/A', 228, 'English', 'Avul Pakir Jainulabdeen Abdul Kalam, The Son Of A Little-Educated Boat-Owner In Rameswaram, Tamil Nadu, Had An Unparalled Career As A Defence Scientist, Culminating In The Highest Civilian Award Of India, The Bharat Ratna. As Chief Of The Country`S Defence Research And Development Programme, Kalam Demonstrated The Great Potential For Dynamism And Innovation That Existed In Seemingly Moribund Research Establishments. This Is The Story Of Kalam`S Rise From Obscurity And His Personal And Professional Struggles, As Well As The Story Of Agni, Prithvi, Akash, Trishul And Nag--Missiles That Have Become Household Names In India And That Have Raised The Nation To The Level Of A Missile Power Of International Reckoning.', 'Universities Press', '0000-00-00', 'uploadedBooks/663244ebdcf894.75795716_book-8.png', 'uploadedBooks/663244ebdd41c2.11878679_book-5 (1).png,uploadedBooks/663244ebdd7913.97885658_book-10 (1).png,uploadedBooks/663244ebde1ed8.80129238_book-1 (1).png');
 
 -- --------------------------------------------------------
 
@@ -205,29 +204,30 @@ CREATE TABLE `contribution_request` (
   `book_id` int(11) DEFAULT NULL,
   `status` varchar(50) DEFAULT NULL CHECK (`status` in ('pending','user is requested to send','received by the club member','quality checking of the book','published')),
   `date_of_request` date DEFAULT curdate(),
-  `date_of_received` date DEFAULT NULL,
   `book_received_date` date DEFAULT NULL,
-  `published_date` date DEFAULT NULL
+  `published_date` date DEFAULT NULL,
+  `processed_by` int(11) DEFAULT NULL,
+  `processed_user_role` varchar(50) DEFAULT NULL,
+  `notes` varchar(500) DEFAULT 'No notes'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `contribution_request`
 --
 
-INSERT INTO `contribution_request` (`request_id`, `user_id`, `book_id`, `status`, `date_of_request`, `date_of_received`, `book_received_date`, `published_date`) VALUES
-(1, 1, 5, 'pending', '2024-04-09', '2024-04-10', '2024-04-16', '2024-04-23'),
-(2, 2, 4, 'pending', '2024-04-09', '2024-04-10', '2024-04-16', '2024-04-23'),
-(6, 13, 5, 'published', '2024-05-28', NULL, NULL, NULL),
-(7, 13, 6, 'published', '2024-05-28', NULL, NULL, NULL),
-(9, 13, 10, 'quality checking of the book', '0000-00-00', NULL, NULL, NULL),
-(56, 13, 3, 'published', '0000-00-00', NULL, NULL, NULL),
-(67, 13, 8, 'published', '0000-00-00', NULL, NULL, NULL),
-(69, 13, 9, 'received by the club member', '0000-00-00', NULL, NULL, NULL),
-(100, 13, 4, 'received by the club member', '0000-00-00', NULL, NULL, NULL),
-(101, 13, 102, 'published', '2024-05-01', NULL, NULL, NULL),
-(102, 13, 103, 'published', '2024-05-01', NULL, NULL, NULL),
-(103, 13, 104, 'pending', '2024-05-01', NULL, NULL, NULL),
-(104, 13, 105, 'pending', '2024-05-02', NULL, NULL, NULL);
+INSERT INTO `contribution_request` (`request_id`, `user_id`, `book_id`, `status`, `date_of_request`, `book_received_date`, `published_date`, `processed_by`, `processed_user_role`, `notes`) VALUES
+(1, 1, 5, 'pending', '2024-04-09', '2024-04-16', '2024-04-23', NULL, NULL, ''),
+(2, 2, 4, 'pending', '2024-04-09', '2024-04-16', '2024-04-23', NULL, NULL, ''),
+(6, 13, 5, 'published', '2024-05-28', NULL, NULL, NULL, NULL, ''),
+(7, 13, 6, 'published', '2024-05-28', NULL, NULL, NULL, NULL, ''),
+(9, 13, 10, 'published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(56, 13, 3, 'published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(67, 13, 8, 'published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(69, 13, 9, 'published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(100, 13, 4, 'published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(101, 13, 102, 'published', '2024-05-01', NULL, NULL, NULL, NULL, ''),
+(102, 13, 103, 'published', '2024-05-01', NULL, NULL, NULL, NULL, ''),
+(103, 13, 104, 'pending', '2024-05-01', NULL, NULL, 2, 'moderator', 'dfasfsadfs');
 
 -- --------------------------------------------------------
 
@@ -354,12 +354,12 @@ INSERT INTO `user` (`user_id`, `phone_number`, `email`, `f_name`, `l_name`, `reg
 (7, '017153431420', 'sakib@gmail.com', 'Sakibul Islam', 'Rakib', '2024-04-15', '', '67', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Inactive', 0, ''),
 (8, '01715031820', 'somik@gmail.com', 'Somik hasan', 'oikko', '2024-04-15', '', '34', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active', 0, ''),
 (9, '01836923942', 'Tanvir@gmail.com', 'Tanvir', 'Ahmend', '2024-04-15', 'This is a bio for tanvir ahmed', '566', 'defualt_profile.jpg', 0, 'Kawran Bazar', 'Apt-33', '2143', 2, 'Active', 0, ''),
-(13, '01906901852', 'jubairahmed13260@gmail.com', 'JUBAIR', 'Ahmed', '2024-04-30', 'FR', '$2y$10$8M6MnACxuY6Kd1y9WUFBEexc1fcqcMtgkB1AOjsJnORTXX81vApau', '66333db634d940.49234976_profileimg.jpg', 6, 'Jagannathpur', '26', '1229', 2, 'Active', 0, ''),
+(13, '01906901852', 'jubairahmed13260@gmail.com', 'Jubair ', 'Ahmed', '2024-04-30', 'Hello', '$2y$10$KwTlk5qHCO26ZIDbftCPKudnwUyjCoyMZYplEmneP5ifWSbabrhJC', '66333db634d940.49234976_profileimg.jpg', 6, 'Jagannathpur', '26', '1229', NULL, 'Active', 0, ''),
 (17, '01797030757', 'jubair010ahmed@gmail.com', 'Shibly', 'Purification', '2024-05-01', 'hi', '$2y$10$JupUOJI6qjI7Fjq9dZu3Yeu6onrv9VS3yA4ANIx9wmsh.K.4A0jVq', 'defualt_profile.jpg', 0, 'Jagannathpur', '67', '1229', NULL, 'Active', 0, ''),
 (19, '0190690185267', 'jubairahmed13260', 'AB', 'C', '2024-05-01', 'gg', '$2y$10$0OdSmbGIRRlIa.R9JphYieRnxP6gGM/PUdl.wYUdXGn/7baCMODXO', 'defualt_profile.jpg', 0, 'Jagannathpur,Shahid Abdul Aziz Sarak,vatara', '5564', '1229', NULL, 'Active', 0, ''),
 (20, '4567890', 'abcs@gmail.com', 'DFG', 'FGH', '2024-05-01', 'we', '$2y$10$66a.NHL6OrhPAQ2A5ZQJY.G42Yf/DevofoyKKkwOw/4ODhhvTlcQG', 'defualt_profile.jpg', 0, '2', '3', '234', NULL, 'Active', 0, ''),
-(26, '3456789098765435678', 'awsedrgyuhji', 'wert', 'ertfygu', '2024-05-02', '34567', '$2y$10$gJ4iDeZejEXTL5I8aEGziOq03/lkREMnNXZSV0Gp6qnDbusYGtNxC', '', 0, 'tryu', 'tryu', '4567', 0, 'Active', 0, ''),
-(27, '234567890234567890', 'jubair0104567ahmed@gmail.com', 'Jubair ', 'Ahmed', '2024-05-02', 'yyy', '$2y$10$JNhci2isuWLXmppkQzb8dOK3NcDei2J46OVClwr5Rbh4GMhiBbIKu', '', 0, 'Jagannathpur,Shahid Abdul Aziz Sarak,vatara', '46', '1229', 2, 'Active', 0, '');
+(24, '456789034567890', 'fwefwe', 'Arman ', 'Ali', '2024-05-02', '567', '$2y$10$p4EO/zPgBNN3j6jMgcZB3OIuA/SBpea2f2F6Q6iPbZZfybn6QmHdy', '66333db634d940.49234976_profileimg.jpg', 0, 'Jagannathpur', '78', '1229', NULL, 'Active', 0, ''),
+(25, '546789098976543256', '1tqudihdk', 'Rehman', 'Subhan', '2024-05-02', 'wseddf', '$2y$10$.NzSIHSlyLdjMLGZkS0.j.QwKjjlKGxYLQpbzoNXI1pdS9288zwc6', '66333db634d940.49234976_profileimg.jpg', 0, 'Jagannathpur', '44', '1229', NULL, 'Active', 0, '');
 
 -- --------------------------------------------------------
 
@@ -432,7 +432,6 @@ CREATE TABLE `wishes_list` (
 
 INSERT INTO `wishes_list` (`book_wishes_id`, `book_id`, `date_added`) VALUES
 (1, 2, '2024-04-29 02:52:45'),
-(3, 4, '2024-04-29 02:52:45'),
 (4, 5, '2024-04-29 02:52:45'),
 (6, 7, '2024-04-29 03:36:14');
 
@@ -583,13 +582,13 @@ ALTER TABLE `bibliophile_club_membership`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `contribution_request`
 --
 ALTER TABLE `contribution_request`
-  MODIFY `request_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `request_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `global_book_collection`
@@ -613,13 +612,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
-
---
--- AUTO_INCREMENT for table `user_activity`
---
-ALTER TABLE `user_activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `wishes_list`

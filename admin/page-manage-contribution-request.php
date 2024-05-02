@@ -116,7 +116,7 @@ $total_pages = ceil($total_records / $limit);
 
                                 <td><span class="badge rounded-pill alert-danger"><?= $contribution['cr_status'] ?></span></td>
                                 <td class="text-end">
-                                    <a href="?request_id=<?= $contribution['request_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">Accept</a>
+                                    <a href="page-manage-contribution-request-detail.php?request_id=<?= $contribution['request_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">View Details</a>
                                 </td>
                             </tr>
                         <?php endwhile ?>
