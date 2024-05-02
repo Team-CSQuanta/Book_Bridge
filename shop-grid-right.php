@@ -262,7 +262,7 @@
                             </div>
                         </div>
   <!-- Item end -->
-    <script>
+    <!-- <script>
     $(document).ready(function() {
         // Function to fetch new items from the server
         function fetchNewItems() {
@@ -296,10 +296,10 @@
         }
 
         // Call fetchNewItems initially and then every 10 seconds
-        fetchNewItems();
-        setInterval(fetchNewItems, 100); // Adjust the interval as needed
+        fetchNewItems(); -->
+        <!-- setInterval(fetchNewItems, 100); // Adjust the interval as needed
     });
-</script>
+</script> -->
 
 
                             

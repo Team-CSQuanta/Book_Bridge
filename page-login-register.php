@@ -36,7 +36,7 @@
         </div>
         <section class="pt-150 pb-150">
             <div class="container">
-                <div class="row">
+                <!-- <div class="row"> -->
                     <div class="col-lg-10 m-auto">
                         <div class="row">
                             <div class="col-lg-5">
@@ -108,6 +108,9 @@
                                             <div class="form-group">
                                                 <input type="text" required="" name="postalCode" placeholder="Postal Code">
                                             </div>
+                                             <div class="form-group">
+                                                <input type="text" required="" name="distDiv" placeholder="Enter district,division">
+                                            </div>
                                                
                                             </div>
                                             <div class="form-group">
@@ -154,7 +157,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
         </section>
     </main>
