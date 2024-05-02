@@ -280,6 +280,7 @@ if(isset($_GET['search'])) {
     if ($search_result->num_rows > 0) {
         // Loop through each row of the result set
         while ($row = $search_result->fetch_assoc()) {
+            if($row["availability_status"] == "yes") { 
             ?>
             <!-- Card component for each book -->
             
@@ -291,9 +292,9 @@ if(isset($_GET['search'])) {
                                 <?php if(!empty($row["cover_img"]) && file_exists($row["cover_img"])) { ?>
                                     <img class="default-img" src="<?php echo $row["cover_img"]; ?>" alt="">
                                 <?php } else { ?>
-                                    <img class="default-img" src="assets/imgs/books/default_cover.png" alt="Default Book Cover">
+                                    <img class="default-img" src="uploadedBooks/default_cover.png" alt="Default Book Cover">
                                 <?php } ?>
-                                <img class="hover-img" src="assets/imgs/books/default_cover.png" alt="">
+                                <img class="hover-img" src="uploadedBooks/default_cover.png" alt="">
                             </a>
                         </div>
                         <div class="product-action-1">
@@ -351,16 +352,17 @@ if(isset($_GET['search'])) {
             <!-- End Quick View Modal -->
 
             <?php
-        }
+        } }
     } else { ?>
        <h3> <?php echo "Sorry!! No books found.";?></h3> 
+       <button class="wish-button" onclick="wishForBook('Book Title')">Wish for this Book</button>
+
   <?php  }
 }
 
 
 ?>
     
-    <button class="wish-button" onclick="wishForBook('Book Title')">Wish for this Book</button>
 
             
         
