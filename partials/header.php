@@ -25,6 +25,9 @@
                                 <input type="text" placeholder="Search for books...">
                             </form>
                         </div>
+
+
+                        
                         <div class="header-action-right">
                             <div class="header-action-2">
                                 <div class="header-action-icon-2">
@@ -78,7 +81,10 @@
                                 </div>
                             </div>
                         </div>
+
+                        
                     </div>
+
                 </div>
             </div>
         </div>

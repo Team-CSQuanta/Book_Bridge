@@ -252,7 +252,7 @@
                                             <div class="col-lg-6">
                                                 <div class="card mb-3 mb-lg-0">
                                                     <div class="card-header">
-                                                        <h5 class="mb-0">Billing Address</h5>
+                                                        <h5 class="mb-0">Shipping Address</h5>
                                                     </div>
                                                     <div class="card-body">
                                                         <address>3522 Interstate<br> 75 Business Spur,<br> Sault Ste. <br>Marie, MI 49783</address>
@@ -261,7 +261,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <!-- <div class="col-lg-6">
                                                 <div class="card">
                                                     <div class="card-header">
                                                         <h5 class="mb-0">Shipping Address</h5>
@@ -273,45 +273,45 @@
                                                         <a href="#" class="btn-small">Edit</a>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h5>Account Details</h5>
+                                                <h5>Update Account Details</h5>
                                             </div>
                                             <div class="card-body">
-                                                <p>Already have an account? <a href="page-login-register.php">Log in instead!</a></p>
+                                                <!-- <p>Already have an account? <a href="page-login-register.php">Log in instead!</a></p> -->
                                                 <form method="post" name="enq">
                                                     <div class="row">
                                                         <div class="form-group col-md-6">
-                                                            <label>First Name <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="name" type="text">
+                                                            <label>First Name <span class="required"></span></label>
+                                                            <input class="form-control square" name="FName" type="FName">
                                                         </div>
                                                         <div class="form-group col-md-6">
-                                                            <label>Last Name <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="phone">
+                                                            <label>Last Name <span class="required"></span></label>
+                                                            <input class="form-control square" name="LName" type="LName">
                                                         </div>
-                                                        <div class="form-group col-md-12">
+                                                        <!-- <div class="form-group col-md-12">
                                                             <label>Display Name <span class="required">*</span></label>
                                                             <input required="" class="form-control square" name="dname" type="text">
-                                                        </div>
+                                                        </div> -->
                                                         <div class="form-group col-md-12">
-                                                            <label>Email Address <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="email" type="email">
+                                                            <label>Email Address <span class="required"></span></label>
+                                                            <input  class="form-control square" name="email" type="email">
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Current Password <span class="required">*</span></label>
                                                             <input required="" class="form-control square" name="password" type="password">
                                                         </div>
                                                         <div class="form-group col-md-12">
-                                                            <label>New Password <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="npassword" type="password">
+                                                            <label>New Password <span class="required"></span></label>
+                                                            <input  class="form-control square" name="npassword" type="password">
                                                         </div>
                                                         <div class="form-group col-md-12">
-                                                            <label>Confirm Password <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="cpassword" type="password">
+                                                            <label>Confirm Password <span class="required"></span></label>
+                                                            <input  class="form-control square" name="cpassword" type="password">
                                                         </div>
                                                         <div class="col-md-12">
                                                             <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Save</button>
