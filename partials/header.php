@@ -171,7 +171,7 @@
                                             </li>
                                         </ul>
                                     </li> -->
-                                    <li><a href="page-login-register.php">Account </a>
+                                    <li><a href="page-account.php">Account </a>
                                         <!-- <ul class="sub-menu">
                                             <li><a href="page-about.php">About Us</a></li>
                                             <li><a href="page-contact.php">Contact</a></li>
