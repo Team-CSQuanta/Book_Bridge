@@ -78,7 +78,7 @@ if(isset($_POST['login'])) {
           ini_set('session.gc_maxlifetime', 604800);
                }             
 
-            echo '<script>alert("Login successful!"); location="page-account.php";</script>';
+            echo '<script>location="page-account.php";</script>';
         } else {
             // Invalid password
             echo '<script>alert("Invalid password!");</script>';
