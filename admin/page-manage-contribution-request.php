@@ -1,48 +1,72 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 require './aside-menu.php';
+
 // Pagination parameters
-$limit = 6;
-$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$limit = 8;
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $start = ($page - 1) * $limit;
 
 
-$search = isset($_GET['search-user']) ? $_GET['search-user'] : '';
-// Fetch data with pagination
-$user_fetch = "SELECT * 
-                FROM user";
+$search = isset($_GET['search-accepted-contribution-request']) ? $connection->real_escape_string($_GET['search-accepted-contribution-request']) : '';
+
+
+$contribution_fetch = "SELECT cr.*, u.*, cr.status AS cr_status
+               FROM contribution_request AS cr 
+               JOIN user AS u ON cr.user_id = u.user_id
+               WHERE cr.status = 'pending' AND cr.processed_by = {$_SESSION['user-logged-id']} ";
+
 
 if (!empty($search)) {
-    $user_fetch .= " WHERE f_name LIKE '%$search%' or l_name LIKE '%$search%' or email LIKE '%$search%'";
+    $searchCondition = "%" . $search . "%";
+    $contribution_fetch .= " AND (u.f_name LIKE '$searchCondition' OR u.l_name LIKE '$searchCondition' OR u.email LIKE '$searchCondition')";
 }
 
-$user_fetch .= " ORDER BY f_name LIMIT $start, $limit";
+$contribution_fetch .= " ORDER BY cr.date_of_request DESC LIMIT $start, $limit";
 
-$user_fetch_result = $connection->query($user_fetch);
-if (!$user_fetch_result) {
+
+$contribution_fetch_result = $connection->query($contribution_fetch);
+if (!$contribution_fetch_result) {
     die("Error executing query: " . $connection->error);
 }
 
-// Get total number of records for pagination
-$total_records_query = "SELECT COUNT(*) AS total FROM user";
+
+$total_records_query = "SELECT COUNT(*) AS total 
+                        FROM contribution_request AS cr 
+                        JOIN user AS u ON cr.user_id = u.user_id
+                        WHERE cr.status = 'pending' AND cr.processed_by = {$_SESSION['user-logged-id']} ";
+
+
+
 if (!empty($search)) {
-    $total_records_query .= " WHERE f_name LIKE '%$search%' or l_name LIKE '%$search%' or email LIKE '%$search%'";
+    $total_records_query .= " AND (u.f_name LIKE '$searchCondition' OR u.l_name LIKE '$searchCondition' OR u.email LIKE '$searchCondition')";
 }
+
+
 $total_records_result = $connection->query($total_records_query);
+if (!$total_records_result) {
+    die("Error executing query: " . $connection->error);
+}
+
+
 $total_records_row = $total_records_result->fetch_assoc();
 $total_records = $total_records_row['total'];
-$total_pages = ceil($total_records / $limit);
 
+
+$total_pages = ceil($total_records / $limit);
 ?>
+
 <section class="content-main">
     <div class="content-header">
-        <h2 class="content-title">Contribution Request list</h2>
+        <h2 class="content-title">Manage Contribution Request</h2>
     </div>
     <div class="card mb-4">
         <header class="card-header">
             <div class="row gx-3">
                 <div class="col-lg-4 col-md-6 me-auto">
                     <form action="">
-                        <input type="text" placeholder="Search..." class="form-control" name="search-user" value="<?= isset($search) ? $search : '' ?>">
+                        <input type="text" placeholder="Search..." class="form-control" name="search-accepted-contribution-request" value="<?= isset($search) ? $search : '' ?>">
                     </form>
                 </div>
             </div>
@@ -55,30 +79,44 @@ $total_pages = ceil($total_records / $limit);
                             <th>Request ID</th>
                             <th>Requested User</th>
                             <th>Email</th>
+                            <th>Address</th>
                             <th>Request Date</th>
                             <th>Status</th>
                             <th class="text-end"> Action </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($user = $user_fetch_result->fetch_assoc()) : ?>
+                        <?php while ($contribution = $contribution_fetch_result->fetch_assoc()) : ?>
                             <tr>
-                                <td width="40%">
-                                    <a href="page-user-detail.php?user_id=<?= $user['user_id'] ?>" class="itemside">
-                                        <div class="left">
-                                            <img src="../assets/imgs/people/<?= $user['profile_img'] ?>" class="img-sm img-avatar" alt="Userpic">
-                                        </div>
-                                        <div class="info pl-3">
-                                            <h6 class="mb-0 title"><?= $user['f_name'] . " " . $user['l_name'] ?></h6>
-                                            <small class="text-muted">User ID: #<?= $user['user_id'] ?></small>
-                                        </div>
-                                    </a>
+                                <td><?= $contribution['request_id'] ?></td>
+                                <td><?= $contribution['f_name'] . $contribution['l_name'] ?></td>
+                                <td><?= $contribution['email'] ?></td>
+                                <td>
+                                    <?php
+                                    if (isset($contribution['appartment_num'])) {
+                                        echo "Apart num: " . $contribution['appartment_num'] . ",";
+                                    }
+                                    if (isset($contribution['street_address'])) {
+                                        echo "Street Address: " . $contribution['street_address'] . ",";
+                                    }
+                                    if (isset($contribution['postal_code'])) {
+                                        echo "Postal code: " . $contribution['postal_code'] . "<br>";
+                                    }
+                                    if (isset($contribution['location_id'])) {
+                                        $query_for_location = "SELECT * 
+                                        FROM location 
+                                        WHERE location_id = {$contribution['location_id']}";
+                                        $query_execute = $connection->query($query_for_location);
+                                        $query_result = $query_execute->fetch_assoc();
+                                        echo "District: " . $query_result['district'] . "  " . "Division: " . $query_result['division'];
+                                    }
+                                    ?>
                                 </td>
-                                <td><?= $user['email'] ?></td>
-                                <td><span class="badge rounded-pill <?= ($user['status'] === 'Active') ? 'alert-success' : 'alert-danger' ?>"><?= $user['status'] ?></span></td>
-                                <td><?= $user['reg_date'] ?></td>
+                                <td><?=$contribution['date_of_request'] ?></td>
+
+                                <td><span class="badge rounded-pill alert-danger"><?= $contribution['cr_status'] ?></span></td>
                                 <td class="text-end">
-                                    <a href="page-user-detail.php?user_id=<?= $user['user_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">View details</a>
+                                    <a href="?request_id=<?= $contribution['request_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">Accept</a>
                                 </td>
                             </tr>
                         <?php endwhile ?>
