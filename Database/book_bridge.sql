@@ -408,11 +408,7 @@ INSERT INTO `user_activity` (`id`, `user_id`, `activity_description`, `timestamp
 (9, 13, 'User logged in', '2024-05-02 15:00:01'),
 (10, 13, 'User logged out', '2024-05-02 15:00:08'),
 (11, 13, 'User logged in', '2024-05-02 15:00:15'),
-(12, 13, 'User logged out', '2024-05-02 16:07:55'),
-(13, 26, 'User registered', '2024-05-02 16:14:33'),
-(14, 26, 'User logged out', '2024-05-02 16:21:06'),
-(15, 27, 'User registered', '2024-05-02 16:23:29'),
-(16, 27, 'User logged out', '2024-05-02 16:24:39');
+(12, 13, 'User logged out', '2024-05-02 16:07:55');
 
 -- --------------------------------------------------------
 
