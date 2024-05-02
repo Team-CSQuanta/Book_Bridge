@@ -1,4 +1,5 @@
-﻿
+
+
 <?php 
 
 // Database connection
@@ -16,8 +17,7 @@ if ($conn->connect_error) {
 }
 
  
-$sql= "SELECT * FROM global_book_collection INNER JOIN book ON global_book_collection.book_id = book.book_id INNER JOIN category ON book.categoryID = category.categoryID ";
-$all_books=  $conn->query($sql);
+
 
 ?>
 
@@ -48,6 +48,26 @@ $all_books=  $conn->query($sql);
 <!-- Bootstrap JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0-alpha1/js/bootstrap.bundle.min.js"></script>
 
+<style>
+        .wish-button {
+            background-color: #0B8082;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .wish-button:hover {
+            background-color: #45a049; /* Change background color on hover */
+        }
+    </style>
+   
 
 </head>
 
@@ -243,8 +263,26 @@ $all_books=  $conn->query($sql);
 <script src="path/to/bootstrap.min.js"></script>
 
 <div class="row product-grid-4">
-    <?php while($row = $all_books->fetch_assoc()) { 
-        if($row["availability_status"] == "yes") { ?>
+    <?php // Check if the search form is submitted
+if(isset($_GET['search'])) {
+    // Get the search term from the form
+    $search_term = $_GET['search'];
+
+    // SQL query to search for books by book name
+    $sql = "SELECT * FROM global_book_collection 
+            INNER JOIN book ON global_book_collection.book_id = book.book_id 
+            INNER JOIN category ON book.categoryID = category.categoryID 
+            WHERE book.title LIKE '%$search_term%'";
+
+    $search_result = $conn->query($sql);
+
+    // Check if there are any rows returned from the query
+    if ($search_result->num_rows > 0) {
+        // Loop through each row of the result set
+        while ($row = $search_result->fetch_assoc()) {
+            ?>
+            <!-- Card component for each book -->
+            
             <div class="col-lg-4 col-md-4 col-12 col-sm-6">
                 <div class="product-cart-wrap mb-30">
                     <div class="product-img-action-wrap">
@@ -311,8 +349,21 @@ $all_books=  $conn->query($sql);
                 </div>
             </div>
             <!-- End Quick View Modal -->
+
+            <?php
+        }
+    } else { ?>
+       <h3> <?php echo "Sorry!! No books found.";?></h3> 
+  <?php  }
+}
+
+
+?>
+    
+    <button class="wish-button" onclick="wishForBook('Book Title')">Wish for this Book</button>
+
             
-        <?php } } ?>
+        
 </div>
 
 

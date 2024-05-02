@@ -7,7 +7,9 @@
                     </div>
                     <div class="header-right">
                         <div class="search-style-2">
-                            <form action="#">
+                        <div class="input-group mb-1">
+
+                            <form action="searchBooks.php">
                                 <select class="select-active">
                                     <option>All Categories</option>
                                     <option>Mystery</option>
@@ -22,8 +24,16 @@
                                     <option>Academic</option>
                                     <option>Religion</option>
                                 </select>
-                                <input type="text" placeholder="Search for books...">
+                                  
+                                <form action="searchBooks.php" method="GET">
+                                        <input type="text" class="form-control" placeholder="Search for books" name="search">
+                                        <button class="btn btn-primary" type="submit">Search</button>
+                                    </div>
+                                </form>
+
+
                             </form>
+
                         </div>
                         <div class="header-action-right">
                             <div class="header-action-2">
