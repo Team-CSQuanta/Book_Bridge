@@ -51,6 +51,31 @@ $total_contributed_books_count = $result_books->num_rows;
 $update_wallet_sql = "UPDATE user SET book_wallet = $total_contributed_books_count WHERE user_id = $User_id";
 $conn->query($update_wallet_sql);
 
+
+// Query to fetch books with status not published
+$sql_not_published_books = "SELECT 
+                                b.title AS book_title,
+                                b.authors,
+                                c.categoryName,
+                                cr.status
+                            FROM 
+                                user u
+                            LEFT JOIN 
+                                contribution_request cr ON u.user_id = cr.user_id
+                            LEFT JOIN 
+                                book b ON cr.book_id = b.book_id
+                            LEFT JOIN 
+                                category c ON b.categoryID = c.categoryID
+                            WHERE 
+                                u.user_id = $User_id
+                                AND cr.status != 'published'
+                            GROUP BY 
+                               b.book_id";    
+
+$result_not_published_books = $conn->query($sql_not_published_books);
+
+
+
 // Close the database connection
 mysqli_close($conn);
 ?>
