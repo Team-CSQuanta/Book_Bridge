@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿
+
+
+
+
+
+
+
+<!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head>
@@ -74,13 +82,15 @@
                                 </ul>
                             </div>
                         </div>
+                        
+                        <?php while($row = $all_books->fetch_assoc()) { ?>
+
+
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="detail-info">
-                                <h3 class="title-detail mt-30">Muted Color Poster Template</h3>
+                                <h3 class="title-detail mt-30"><?php echo $row['title']; ?></h3>
                                 <div class="product-detail-rating">
-                                    <div class="pro-details-brand">
-                                        <span> Publisher: <a href="shop-grid-right.php">Springer</a></span>
-                                    </div>
+                                    
                                     <div class="product-rate-cover text-end">
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width:90%">
@@ -144,6 +154,8 @@
                             </div>
                             <!-- Detail Info -->
                         </div>
+                        <?php }  ?>
+
                     </div>
                 </div>        
         </div>
