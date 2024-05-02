@@ -200,15 +200,18 @@ $book_info = $query_book_result->fetch_assoc();
                                 <?php
                                 $book_info
                                 ?>
-                                <img src="../uploadedBooks/<?= isset($book_info['cover_img']) ? $book_info['cover_img'] : '' ?>" alt="">
+                                <img src="../<?= isset($book_info['cover_img']) ? $book_info['cover_img'] : '' ?>" alt="">
                                 <?php
-                                // Debugging: Echo the value of $book_info['cover_img']
-                                echo "Cover image: " . $book_info['cover_img'];
-
-                                // Output the image tag
+                                if (isset($book_info['additional_imgs'])) {
+                                    $imgs = explode(',', $book_info['additional_imgs']);
+                                    foreach ($imgs as $img) {
+                                        echo "<img src=\"../" . $img . "\" alt=\"\">";
+                                    }
+                                }
                                 ?>
-
-                                <input class="form-control" type="file">
+                                <br>
+                                <img id="previewImage" src="assets/imgs/theme/upload.svg" alt="Preview Image">
+                                <input class="form-control" type="file" id="clubImageInput" name="club-img" onchange="previewImage(event)">
                             </div>
                         </div>
                     </div> <!-- card end// -->
@@ -225,6 +228,27 @@ $book_info = $query_book_result->fetch_assoc();
 </section> <!-- content-main end// -->
 
 </main>
+<script>
+    window.onload = function() {
+        document.getElementById('clubImageInput').addEventListener('change', previewImage);
+    };
+
+    function previewImage(event) {
+        const preview = document.getElementById('previewImage');
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function() {
+            preview.src = reader.result;
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "assets/imgs/theme/upload.svg"; // Display default image if no file selected
+        }
+    }
+</script>
 <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
 <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
 <script src="assets/js/vendors/select2.min.js"></script>
