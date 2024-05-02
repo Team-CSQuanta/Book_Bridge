@@ -354,10 +354,12 @@ INSERT INTO `user` (`user_id`, `phone_number`, `email`, `f_name`, `l_name`, `reg
 (7, '017153431420', 'sakib@gmail.com', 'Sakibul Islam', 'Rakib', '2024-04-15', '', '67', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Inactive', 0, ''),
 (8, '01715031820', 'somik@gmail.com', 'Somik hasan', 'oikko', '2024-04-15', '', '34', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active', 0, ''),
 (9, '01836923942', 'Tanvir@gmail.com', 'Tanvir', 'Ahmend', '2024-04-15', 'This is a bio for tanvir ahmed', '566', 'defualt_profile.jpg', 0, 'Kawran Bazar', 'Apt-33', '2143', 2, 'Active', 0, ''),
-(13, '01906901852', 'jubairahmed13260@gmail.com', 'Jubair ', 'Ahmed', '2024-04-30', 'Hello', '$2y$10$KwTlk5qHCO26ZIDbftCPKudnwUyjCoyMZYplEmneP5ifWSbabrhJC', 'profileImages/663251ae22f933.55754647_profileimg.png', 9, 'Jagannathpur', '26', '1229', 1, 'Active', 0, ''),
+(13, '01906901852', 'jubairahmed13260@gmail.com', 'Jubair ', 'Ahmed', '2024-04-30', 'Hello', '$2y$10$KwTlk5qHCO26ZIDbftCPKudnwUyjCoyMZYplEmneP5ifWSbabrhJC', '66333db634d940.49234976_profileimg.jpg', 6, 'Jagannathpur', '26', '1229', NULL, 'Active', 0, ''),
 (17, '01797030757', 'jubair010ahmed@gmail.com', 'Shibly', 'Purification', '2024-05-01', 'hi', '$2y$10$JupUOJI6qjI7Fjq9dZu3Yeu6onrv9VS3yA4ANIx9wmsh.K.4A0jVq', 'defualt_profile.jpg', 0, 'Jagannathpur', '67', '1229', NULL, 'Active', 0, ''),
 (19, '0190690185267', 'jubairahmed13260', 'AB', 'C', '2024-05-01', 'gg', '$2y$10$0OdSmbGIRRlIa.R9JphYieRnxP6gGM/PUdl.wYUdXGn/7baCMODXO', 'defualt_profile.jpg', 0, 'Jagannathpur,Shahid Abdul Aziz Sarak,vatara', '5564', '1229', NULL, 'Active', 0, ''),
-(20, '4567890', 'abcs@gmail.com', 'DFG', 'FGH', '2024-05-01', 'we', '$2y$10$66a.NHL6OrhPAQ2A5ZQJY.G42Yf/DevofoyKKkwOw/4ODhhvTlcQG', 'defualt_profile.jpg', 0, '2', '3', '234', NULL, 'Active', 0, '');
+(20, '4567890', 'abcs@gmail.com', 'DFG', 'FGH', '2024-05-01', 'we', '$2y$10$66a.NHL6OrhPAQ2A5ZQJY.G42Yf/DevofoyKKkwOw/4ODhhvTlcQG', 'defualt_profile.jpg', 0, '2', '3', '234', NULL, 'Active', 0, ''),
+(24, '456789034567890', 'fwefwe', 'Arman ', 'Ali', '2024-05-02', '567', '$2y$10$p4EO/zPgBNN3j6jMgcZB3OIuA/SBpea2f2F6Q6iPbZZfybn6QmHdy', '66333db634d940.49234976_profileimg.jpg', 0, 'Jagannathpur', '78', '1229', NULL, 'Active', 0, ''),
+(25, '546789098976543256', '1tqudihdk', 'Rehman', 'Subhan', '2024-05-02', 'wseddf', '$2y$10$.NzSIHSlyLdjMLGZkS0.j.QwKjjlKGxYLQpbzoNXI1pdS9288zwc6', '66333db634d940.49234976_profileimg.jpg', 0, 'Jagannathpur', '44', '1229', NULL, 'Active', 0, '');
 
 -- --------------------------------------------------------
 
@@ -376,6 +378,41 @@ CREATE TABLE `users_wishes` (
 
 INSERT INTO `users_wishes` (`user_id`, `book_wishes_id`) VALUES
 (1, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_activity`
+--
+
+CREATE TABLE `user_activity` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `activity_description` text DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_activity`
+--
+
+INSERT INTO `user_activity` (`id`, `user_id`, `activity_description`, `timestamp`) VALUES
+(1, 13, 'User logged in', '2024-05-02 14:28:06'),
+(2, 13, 'User logged in', '2024-05-02 14:31:04'),
+(3, 13, 'User logged in', '2024-05-02 14:55:35'),
+(4, 13, 'User logged out', '2024-05-02 14:58:51'),
+(5, 13, 'User logged in', '2024-05-02 14:59:14'),
+(6, 13, 'User logged out', '2024-05-02 14:59:36'),
+(7, 13, 'User logged in', '2024-05-02 14:59:46'),
+(8, 13, 'User logged out', '2024-05-02 14:59:53'),
+(9, 13, 'User logged in', '2024-05-02 15:00:01'),
+(10, 13, 'User logged out', '2024-05-02 15:00:08'),
+(11, 13, 'User logged in', '2024-05-02 15:00:15'),
+(12, 13, 'User logged out', '2024-05-02 16:07:55'),
+(13, 26, 'User registered', '2024-05-02 16:14:33'),
+(14, 26, 'User logged out', '2024-05-02 16:21:06'),
+(15, 27, 'User registered', '2024-05-02 16:23:29'),
+(16, 27, 'User logged out', '2024-05-02 16:24:39');
 
 -- --------------------------------------------------------
 
@@ -500,6 +537,13 @@ ALTER TABLE `users_wishes`
   ADD KEY `book_wishes_id` (`book_wishes_id`);
 
 --
+-- Indexes for table `user_activity`
+--
+ALTER TABLE `user_activity`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `wishes_list`
 --
 ALTER TABLE `wishes_list`
@@ -568,7 +612,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `wishes_list`
@@ -635,6 +679,12 @@ ALTER TABLE `global_book_collection`
 ALTER TABLE `users_wishes`
   ADD CONSTRAINT `users_wishes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `users_wishes_ibfk_2` FOREIGN KEY (`book_wishes_id`) REFERENCES `wishes_list` (`book_wishes_id`);
+
+--
+-- Constraints for table `user_activity`
+--
+ALTER TABLE `user_activity`
+  ADD CONSTRAINT `user_activity_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `wishes_list`
