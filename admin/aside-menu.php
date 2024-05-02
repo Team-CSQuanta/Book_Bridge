@@ -51,11 +51,7 @@ if (!isset($_SESSION['user-logged-email'])) {
                         <span class="text">Exchange offers</span>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a class="menu-link" href="page-wishes-list.php"> <i class="icon material-icons md-star"></i>
-                        <span class="text">Wishes</span>
-                    </a>
-                </li>
+
                 <?php if ($_SESSION['user-logged-role'] == "club-manager") : ?>
 
 
@@ -90,6 +86,11 @@ if (!isset($_SESSION['user-logged-email'])) {
                     </li>
                 <?php endif ?>
                 <?php if ($_SESSION['user-logged-role'] == "admin") : ?>
+                    <li class="menu-item">
+                        <a class="menu-link" href="page-wishes-list.php"> <i class="icon material-icons md-star"></i>
+                            <span class="text">Wishes</span>
+                        </a>
+                    </li>
                     <li class="menu-item">
                         <a class="menu-link" href="page-categories.php"> <i class="icon material-icons md-category"></i>
                             <span class="text">Categories</span>
