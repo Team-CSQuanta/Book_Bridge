@@ -87,6 +87,8 @@ if(isset($_POST['submit'])) {
     $currentPassword = mysqli_real_escape_string($conn, $_POST['password']);
     $newPassword = mysqli_real_escape_string($conn, $_POST['npassword']);
     $confirmPassword = mysqli_real_escape_string($conn, $_POST['cpassword']);
+    $Bbio = mysqli_real_escape_string($conn, $_POST['Bio']);
+    $address = mysqli_real_escape_string($conn, $_POST['address']);
 
     // Query to fetch user information based on user_id
     $getUserQuery = "SELECT * FROM user WHERE user_id='$User_id'";
@@ -112,11 +114,35 @@ if(isset($_POST['submit'])) {
             if(!empty($email)) {
                 $updateFields[] = "email='$email'";
             }
+             if(!empty($Bbio)) {
+                $updateFields[] = "bio='$Bbio'";
+            }
             if(!empty($newPassword) && $newPassword === $confirmPassword) {
                 // If a new password is provided and matches the confirmation, hash it and add it to the update fields
                 $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
                 $updateFields[] = "Password='$hashedPassword'";
             }
+
+             // Check if the address field is provided and not empty
+            if(!empty($address)) {
+                // Parse the comma-separated address
+                $addressComponents = explode(',', $address);
+                $streetAddress = trim($addressComponents[0]);
+                $apartmentNo = trim($addressComponents[1]);
+                $postalCode = trim($addressComponents[2]);
+                $district = trim($addressComponents[3]);
+                $division = trim($addressComponents[4]);
+
+                // Query the location table to find the location_id based on district and division
+                $getLocationQuery = "SELECT location_id FROM location WHERE district='$district' AND division='$division'";
+                $locationResult = mysqli_query($conn, $getLocationQuery);
+                $location = mysqli_fetch_assoc($locationResult);
+                $location_id = $location['location_id'];
+
+                // Add the location_id to the update fields
+                $updateFields[] = "location_id='$location_id'";
+            }
+
 
             // Check if any fields need to be updated
             if(!empty($updateFields)) {
@@ -126,7 +152,7 @@ if(isset($_POST['submit'])) {
                 // Execute the update query
                 if(mysqli_query($conn, $updateQuery)) {
                     // User information updated successfully
-                    echo '<script>alert("User informations successfully.");location="page-account.php";</script>';
+                    echo '<script>alert("User informations updated successfully.");location="page-account.php";</script>';
                 } else {
                     // Error updating user information
                     echo "Error updating user information: " . mysqli_error($conn);
@@ -144,6 +170,38 @@ if(isset($_POST['submit'])) {
         echo "User not found.";
     }
 }
+
+
+// Fetch activity log records from the database
+$Activitysql = "SELECT * FROM user_activity WHERE user_id ='$User_id' ORDER BY timestamp DESC"; 
+$Activityresult = mysqli_query($conn, $Activitysql);
+
+
+
+    $getUserQuery = "SELECT * FROM user WHERE user_id='$User_id'";
+    $Uresult = mysqli_query($conn, $getUserQuery);
+    $user = mysqli_fetch_assoc($Uresult);
+
+    // Extract district and division from location table based on location_id
+    $location_id = $user['location_id'];
+    $getLocationQuery = "SELECT district, division FROM location WHERE location_id='$location_id'";
+    $locationResult = mysqli_query($conn, $getLocationQuery);
+    $location = mysqli_fetch_assoc($locationResult);
+
+    // Populate form fields with existing user information
+    $firstName = $user['f_name'];
+    $lastName = $user['l_name'];
+    $email = $user['email'];
+    $bio = $user['bio'];
+    $streetAddress = $user['street_address'];
+    $apartmentNo = $user['apartment_num'];
+    $postalCode = $user['postal_code'];
+    $district = $location['district'];
+    $division = $location['division'];
+
+
+// Concatenate address fields into a single string
+    $address = $user['street_address'] . ', ' . $user['apartment_num'] . ', ' . $user['postal_code'] . ', ' . $district . ', ' . $division;
 
 
 
