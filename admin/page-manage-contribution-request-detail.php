@@ -6,6 +6,13 @@ $query = "SELECT *
           WHERE request_id = '$request_id'";
 $query_execute = $connection->query($query);
 $query_result = $query_execute->fetch_assoc();
+
+
+$query_book = "SELECT *
+               FROM book
+               WHERE book_id = {$query_result['book_id']}";
+$query_book_result = $connection->query($query_book);
+$book_info = $query_book_result->fetch_assoc();
 ?>
 <section class="content-main">
     <div class="content-header">
@@ -24,11 +31,12 @@ $query_result = $query_execute->fetch_assoc();
                 </div>
                 <div class="col-lg-6 col-md-6 ms-auto text-md-end">
                     <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200">
-                        <option>Change status</option>
-                        <option>Awaiting payment</option>
-                        <option>Confirmed</option>
-                        <option>Shipped</option>
-                        <option>Delivered</option>
+                        <option>Pending</option>
+                        <option>Processing</option>
+                        <option>Request to courier</option>
+                        <option>Received the book</option>
+                        <option>QC in progress</option>
+                        <option>Published</option>
                     </select>
                     <a class="btn btn-primary" href="#">Save</a>
                 </div>
@@ -76,9 +84,9 @@ $query_result = $query_execute->fetch_assoc();
                                     $query_for_location = "SELECT * 
                                     FROM location 
                                     WHERE location_id = {$user_info['location_id']}";
-                                    $query_execute = $connection->query($query_for_location);
-                                    $query_result = $query_execute->fetch_assoc();
-                                    echo "District: " . $query_result['district'] . "  " . "Division: " . $query_result['division'];
+                                    $query_execute_location = $connection->query($query_for_location);
+                                    $query_result_location = $query_execute_location->fetch_assoc();
+                                    echo "District: " . $query_result_location['district'] . "  " . "Division: " . $query_result_location['division'];
                                 }
                                 ?>
                             </p>
@@ -89,7 +97,6 @@ $query_result = $query_execute->fetch_assoc();
                 <div class="col-lg-4">
                     <label>Notes</label>
                     <textarea class="form-control" name="notes" id="notes" placeholder="Type some note"><?= isset($query_result['notes']) ? $query_result['notes'] : '' ?></textarea>
-                    <?php echo $query_result['notes'] ?>
                 </div>
             </div> <!-- row // -->
             <div class="row">
@@ -108,61 +115,72 @@ $query_result = $query_execute->fetch_assoc();
                             <form>
                                 <div class="mb-4">
                                     <label for="book_name" class="form-label">Book title</label>
-                                    <input type="text" placeholder="Type here" class="form-control" id="book_name">
+                                    <input type="text" placeholder="Type here" class="form-control" id="book_name" value="<?= $book_info['title'] ?>">
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Full description</label>
-                                    <textarea placeholder="Type here" class="form-control" rows="4"></textarea>
+                                    <textarea placeholder="Type here" class="form-control" rows="4"><?= $book_info['description'] ?></textarea>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-4">
                                             <label class="form-label">ISBN</label>
                                             <div class="row gx-2">
-                                                <input placeholder="" type="text" class="form-control">
+                                                <input type="text" class="form-control" value="<?= $book_info['isbn'] ?>">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-4">
                                             <label class="form-label">Edition</label>
-                                            <input placeholder="" type="text" class="form-control">
+                                            <input type="text" class="form-control" value="<?= $book_info['edition'] ?>">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <label class="form-label">Category</label>
-                                        <select class="form-select">
-                                            <option> USD </option>
-                                            <option> EUR </option>
-                                            <option> RUBL </option>
+                                        <select class="form-select" name="category">
+                                            <?php
+
+                                            $query_cat = "SELECT * FROM category";
+                                            $query_cat_result = $connection->query($query_cat);
+                                            if ($query_cat_result) {
+                                                while ($category = $query_cat_result->fetch_assoc()) {
+                                                    $selected = ($book_info['categoryID'] == $category['categoryID']) ? 'selected' : '';
+                                                    echo '<option value="' . $category['categoryID'] . '" ' . $selected . '>' . $category['categoryName'] . '</option>';
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-4">
                                             <label class="form-label">Number of pages</label>
                                             <div class="row gx-2">
-                                                <input placeholder="" type="text" class="form-control">
+                                                <input value="<?= $book_info['num_of_pages'] ?>" type="text" class="form-control">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-4">
                                             <label class="form-label">language</label>
-                                            <input placeholder="" type="text" class="form-control">
+                                            <input value="<?= $book_info['language'] ?>" type="text" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-4">
                                             <label class="form-label">Publisher</label>
-                                            <input placeholder="" type="text" class="form-control">
+                                            <input value="<?= $book_info['publisher'] ?>" type="text" class="form-control">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Book Condition</label>
-                                    <select class="form-select">
+                                    <select class="form-select" name="book-condition">
+                                        <option>Select Condition</option>
                                         <option> Like New </option>
                                         <option> Good </option>
                                         <option> Acceptable </option>

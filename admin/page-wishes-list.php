@@ -128,7 +128,7 @@ $total_pages = ceil($total_records / $limit);
                     <?php while ($book_wishes = $wishes_book_fetch_result->fetch_assoc()) : ?>
                         <div class="col">
                             <div class="card card-product-grid">
-                                <a href="#" class="img-wrap"> <img src="../assets/imgs/books/<?= $book_wishes['cover_img'] ?>" alt="Offers"> </a>
+                                <a href="#" class="img-wrap"> <img src="../uploadedBooks/<?= $book_wishes['cover_img'] ?>" alt="Offers"> </a>
                                 <div class="info-wrap">
                                     <a href="#" class="title text-truncate"><?= $book_wishes['title'] ?></a>
                                     <div class="price mb-2"><?php
