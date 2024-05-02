@@ -20,7 +20,7 @@ $book_info = $query_book_result->fetch_assoc();
             <h2 class="content-title card-title">Contribution Request Detail</h2>
         </div>
     </div>
-    <form action="manage-contribution-request.php" method="post" enctype="multipart/form-data">
+    <form action="./handler/manage-contribution-request-handler.php" method="post" enctype="multipart/form-data">
         <div class="card">
             <header class="card-header">
                 <div class="row align-items-center">
@@ -34,13 +34,13 @@ $book_info = $query_book_result->fetch_assoc();
                         <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200" name="status">
                             <option <?= $query_result['status'] == 'Pending' ? 'selected' : '' ?>>Pending</option>
                             <option <?= $query_result['status'] == 'Processing' ? 'selected' : '' ?>>Processing</option>
-                            <option <?= $query_result['status'] == 'Request to courier' ? 'selected' : '' ?>>Request to courier</option>
+                            <option <?= $query_result['status'] == 'Requested to courier' ? 'selected' : '' ?>>Requested to courier</option>
                             <option <?= $query_result['status'] == 'Received the book' ? 'selected' : '' ?>>Received the book</option>
                             <option <?= $query_result['status'] == 'QC in progress' ? 'selected' : '' ?>>QC in progress</option>
                             <option <?= $query_result['status'] == 'Published' ? 'selected' : '' ?>>Published</option>
                         </select>
-                        <button class="btn btn-md rounded font-sm hover-up" name="add-moderator">Save</button>
-                        <!-- <a class="btn btn-primary" href="#">Save</a> -->
+                        <input type="hidden" name="request_id" value="<?= $request_id ?>">
+                        <button class="btn btn-primary" name="add-moderator">Save</button>
                     </div>
                 </div>
             </header> <!-- card-header end// -->
@@ -117,11 +117,11 @@ $book_info = $query_book_result->fetch_assoc();
                                 <form>
                                     <div class="mb-4">
                                         <label for="book_name" class="form-label">Book title</label>
-                                        <input type="text" placeholder="Type here" class="form-control" id="book_name" value="<?= $book_info['title'] ?>">
+                                        <input type="text" placeholder="Type here" class="form-control" id="book_name" name="book_title" value="<?= $book_info['title'] ?>">
                                     </div>
                                     <div class="mb-4">
                                         <label class="form-label">Full description</label>
-                                        <textarea placeholder="Type here" class="form-control" rows="4"><?= $book_info['description'] ?></textarea>
+                                        <textarea placeholder="Type here" class="form-control" name="book_description" rows="4"><?= $book_info['description'] ?></textarea>
 
                                     </div>
                                     <div class="row">
@@ -136,7 +136,7 @@ $book_info = $query_book_result->fetch_assoc();
                                         <div class="col-lg-4">
                                             <div class="mb-4">
                                                 <label class="form-label">Edition</label>
-                                                <input type="text" class="form-control" value="<?= $book_info['edition'] ?>">
+                                                <input type="text" name="edition" class="form-control" value="<?= $book_info['edition']?>">
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
@@ -162,20 +162,20 @@ $book_info = $query_book_result->fetch_assoc();
                                             <div class="mb-4">
                                                 <label class="form-label">Number of pages</label>
                                                 <div class="row gx-2">
-                                                    <input value="<?= $book_info['num_of_pages'] ?>" type="text" class="form-control">
+                                                    <input name="num_of_pages" value="<?= $book_info['num_of_pages'] ?>" type="text" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="mb-4">
                                                 <label class="form-label">language</label>
-                                                <input value="<?= $book_info['language'] ?>" type="text" class="form-control">
+                                                <input name="language" value="<?= $book_info['language'] ?>" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="mb-4">
                                                 <label class="form-label">Publisher</label>
-                                                <input value="<?= $book_info['publisher'] ?>" type="text" class="form-control">
+                                                <input name="publisher" value="<?= $book_info['publisher'] ?>" type="text" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -216,7 +216,7 @@ $book_info = $query_book_result->fetch_assoc();
                                     ?>
                                     <br>
                                     <img id="previewImage" src="assets/imgs/theme/upload.svg" alt="Preview Image">
-                                    <input class="form-control" type="file" id="clubImageInput" name="club-img" onchange="previewImage(event)">
+                                    <input class="form-control" type="file" id="Book-image-upload" name="Book-image-upload" onchange="previewImage(event)">
                                 </div>
                             </div>
                         </div> <!-- card end// -->
@@ -236,7 +236,7 @@ $book_info = $query_book_result->fetch_assoc();
 </main>
 <script>
     window.onload = function() {
-        document.getElementById('clubImageInput').addEventListener('change', previewImage);
+        document.getElementById('Book-image-upload').addEventListener('change', previewImage);
     };
 
     function previewImage(event) {
