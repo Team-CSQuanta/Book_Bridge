@@ -317,11 +317,8 @@ CREATE TABLE `review` (
 
 -- --------------------------------------------------------
 
-
-
-
 --
--- Table structure for table `password_resets`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -332,6 +329,7 @@ CREATE TABLE `user` (
   `l_name` varchar(255) DEFAULT NULL,
   `reg_date` date DEFAULT current_timestamp(),
   `bio` varchar(500) DEFAULT '',
+  `Password` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `profile_img` varchar(500) DEFAULT 'defualt_profile.jpg',
   `book_wallet` int(11) DEFAULT 0,
   `street_address` varchar(300) DEFAULT NULL,
@@ -344,10 +342,8 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `user`
 --
-
-
 
 INSERT INTO `user` (`user_id`, `phone_number`, `email`, `f_name`, `l_name`, `reg_date`, `bio`, `Password`, `profile_img`, `book_wallet`, `street_address`, `apartment_num`, `postal_code`, `location_id`, `status`, `verifiedEmail`, `token`) VALUES
 (1, '01715031376', 'sadia@gmail.com', 'Sadia Islam', 'Ema', '2024-04-15', '', '123', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active', 0, ''),
@@ -360,7 +356,6 @@ INSERT INTO `user` (`user_id`, `phone_number`, `email`, `f_name`, `l_name`, `reg
 (17, '01797030757', 'jubair010ahmed@gmail.com', 'Shibly', 'Purification', '2024-05-01', 'hi', '$2y$10$JupUOJI6qjI7Fjq9dZu3Yeu6onrv9VS3yA4ANIx9wmsh.K.4A0jVq', 'defualt_profile.jpg', 0, 'Jagannathpur', '67', '1229', NULL, 'Active', 0, ''),
 (19, '0190690185267', 'jubairahmed13260', 'AB', 'C', '2024-05-01', 'gg', '$2y$10$0OdSmbGIRRlIa.R9JphYieRnxP6gGM/PUdl.wYUdXGn/7baCMODXO', 'defualt_profile.jpg', 0, 'Jagannathpur,Shahid Abdul Aziz Sarak,vatara', '5564', '1229', NULL, 'Active', 0, ''),
 (20, '4567890', 'abcs@gmail.com', 'DFG', 'FGH', '2024-05-01', 'we', '$2y$10$66a.NHL6OrhPAQ2A5ZQJY.G42Yf/DevofoyKKkwOw/4ODhhvTlcQG', 'defualt_profile.jpg', 0, '2', '3', '234', NULL, 'Active', 0, '');
-
 
 -- --------------------------------------------------------
 
