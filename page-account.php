@@ -196,6 +196,49 @@
 </div>
 
 
+<!-- Container for Activity History -->
+<div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 mx-auto">
+            <div class="card mb-3 mb-lg-0" style="width: 700px; height: 530px; overflow-y: auto;">
+                <div class="card-header">
+                    <h5 class="mb-0">Activity History</h5>
+                </div>
+                <div class="card-body">
+                    <?php if ($Activityresult->num_rows > 0) : ?>
+                        <table class="table" style="border-collapse: collapse; width: 100%;">
+                            <thead>
+                                <tr style="background-color: #6AB187;">
+                                    <th style="border: 1px solid #dddddd; padding: 8px;">Time</th>
+                                    <th style="border: 1px solid #dddddd; padding: 8px;">Activity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($row =$Activityresult->fetch_assoc()) : ?>
+                                    <tr>
+                                        <td style="border: 1px solid #dddddd; padding: 8px;"><?php echo $row['timestamp']; ?></td>
+                                        <td style="border: 1px solid #dddddd; padding: 8px;"><?php echo $row['activity_description']; ?></td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    <?php else : ?>
+                        <p>No activity recorded yet.</p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
 
                                     <div class="tab-pane fade" id="wishes" role="tabpanel" aria-labelledby="wishes-tab">
                                         <div class="row justify-content-center">
@@ -252,7 +295,7 @@
                                             <div class="col-lg-6">
                                                 <div class="card mb-3 mb-lg-0">
                                                     <div class="card-header">
-                                                        <h5 class="mb-0">Billing Address</h5>
+                                                        <h5 class="mb-0">Shipping Address</h5>
                                                     </div>
                                                     <div class="card-body">
                                                         <address>3522 Interstate<br> 75 Business Spur,<br> Sault Ste. <br>Marie, MI 49783</address>
@@ -261,7 +304,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <!-- <div class="col-lg-6">
                                                 <div class="card">
                                                     <div class="card-header">
                                                         <h5 class="mb-0">Shipping Address</h5>
@@ -273,45 +316,53 @@
                                                         <a href="#" class="btn-small">Edit</a>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h5>Account Details</h5>
+                                                <h5>Update Account Details</h5>
                                             </div>
                                             <div class="card-body">
-                                                <p>Already have an account? <a href="page-login-register.php">Log in instead!</a></p>
+                                                <!-- <p>Already have an account? <a href="page-login-register.php">Log in instead!</a></p> -->
                                                 <form method="post" name="enq">
                                                     <div class="row">
                                                         <div class="form-group col-md-6">
-                                                            <label>First Name <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="name" type="text">
+                                                            <label>First Name <span class="required"></span></label>
+                                                            <input class="form-control square" name="FName" type="FName" value="<?php echo $firstName; ?>">
                                                         </div>
                                                         <div class="form-group col-md-6">
-                                                            <label>Last Name <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="phone">
+                                                            <label>Last Name <span class="required"></span></label>
+                                                            <input class="form-control square" name="LName" type="LName"value="<?php echo  $lastName; ?>">
                                                         </div>
-                                                        <div class="form-group col-md-12">
+                                                        <!-- <div class="form-group col-md-12">
                                                             <label>Display Name <span class="required">*</span></label>
                                                             <input required="" class="form-control square" name="dname" type="text">
-                                                        </div>
+                                                        </div> -->
                                                         <div class="form-group col-md-12">
-                                                            <label>Email Address <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="email" type="email">
+                                                            <label>Email Address <span class="required"></span></label>
+                                                            <input  class="form-control square" name="email" type="email" value="<?php echo  $email; ?>">
                                                         </div>
                                                         <div class="form-group col-md-12">
                                                             <label>Current Password <span class="required">*</span></label>
                                                             <input required="" class="form-control square" name="password" type="password">
                                                         </div>
                                                         <div class="form-group col-md-12">
-                                                            <label>New Password <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="npassword" type="password">
+                                                            <label>New Password <span class="required"></span></label>
+                                                            <input  class="form-control square" name="npassword" type="password">
                                                         </div>
                                                         <div class="form-group col-md-12">
-                                                            <label>Confirm Password <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="cpassword" type="password">
+                                                            <label>Confirm Password <span class="required"></span></label>
+                                                            <input  class="form-control square" name="cpassword" type="password">
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label>Bio <span class="required"></span></label>
+                                                            <input  class="form-control square" name="Bio" type="bio" value="<?php echo  $bio; ?>">
+                                                        </div>
+                                                        <div class="form-group col-md-12">
+                                                            <label>Address <span class="required"></span></label>
+                                                            <input  class="form-control square" name="address" type="address" value="<?php echo  $address; ?>">
                                                         </div>
                                                         <div class="col-md-12">
                                                             <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Save</button>
@@ -321,6 +372,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

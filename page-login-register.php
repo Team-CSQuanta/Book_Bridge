@@ -108,6 +108,9 @@
                                             <div class="form-group">
                                                 <input type="text" required="" name="postalCode" placeholder="Postal Code">
                                             </div>
+                                             <div class="form-group">
+                                                <input type="text" required="" name="distDiv" placeholder="Enter district,division">
+                                            </div>
                                                
                                             </div>
                                             <div class="form-group">
