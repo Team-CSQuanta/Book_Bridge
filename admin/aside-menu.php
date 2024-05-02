@@ -55,17 +55,19 @@ if (!isset($_SESSION['user-logged-email'])) {
                 <?php if ($_SESSION['user-logged-role'] == "club-manager") : ?>
 
 
-
-
                     <li class="menu-item">
                         <a class="menu-link" href="page-wishes-list.php"> <i class="icon material-icons md-swap_vert"></i>
                             <span class="text">Exchange Request</span>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a class="menu-link" href="page-wishes-list.php"> <i class="icon material-icons md-inbox"></i>
+                    <li class="menu-item has-submenu">
+                        <a class="menu-link" href="#"> <i class="icon material-icons md-inbox"></i>
                             <span class="text">Contribution Request</span>
                         </a>
+                        <div class="submenu">
+                            <a href="page-contribution-request.php">Contribution Request List</a>
+                            <a href="page-manage-contribution-request.php">Manage contribution request</a>
+                        </div>
                     </li>
                     <li class="menu-item has-submenu">
                         <a class="menu-link" href="page-orders-1.php"> <i class="icon material-icons md-swap_calls"></i>
