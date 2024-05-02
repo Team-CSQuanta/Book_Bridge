@@ -197,7 +197,17 @@ $book_info = $query_book_result->fetch_assoc();
                         </div>
                         <div class="card-body">
                             <div class="input-upload">
-                                <img src="assets/imgs/theme/upload.svg" alt="">
+                                <?php
+                                $book_info
+                                ?>
+                                <img src="../uploadedBooks/<?= isset($book_info['cover_img']) ? $book_info['cover_img'] : '' ?>" alt="">
+                                <?php
+                                // Debugging: Echo the value of $book_info['cover_img']
+                                echo "Cover image: " . $book_info['cover_img'];
+
+                                // Output the image tag
+                                ?>
+
                                 <input class="form-control" type="file">
                             </div>
                         </div>
