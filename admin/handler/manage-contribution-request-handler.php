@@ -24,7 +24,6 @@ $book_condition = filter_var($_POST['book-condition'], FILTER_SANITIZE_FULL_SPEC
 
 
 $file_name_for_upload = null;
-
 if ($status != $contribution_reqest_row['status']) {
     if ($status == 'Requested to courier') {
         $query_update_status = "UPDATE contribution_request
@@ -33,8 +32,6 @@ if ($status != $contribution_reqest_row['status']) {
         $query_result = $connection->query($query_update_status);
         if ($query_result) {
             // Update successful
-            header("Location: http://localhost/Book_Bridge/admin/page-manage-contribution-request-detail.php?request_id=" . $request_id);
-            exit();
         } else {
             // Update failed
             echo "Error updating notes: " . $connection->error;
@@ -46,8 +43,6 @@ if ($status != $contribution_reqest_row['status']) {
         $query_result = $connection->query($query_update_status);
         if ($query_result) {
             // Update successful
-            header("Location: http://localhost/Book_Bridge/admin/page-manage-contribution-request-detail.php?request_id=" . $request_id);
-            exit();
         } else {
             // Update failed
             echo "Error updating notes: " . $connection->error;
@@ -59,24 +54,37 @@ if ($status != $contribution_reqest_row['status']) {
         $query_result = $connection->query($query_update_status);
         if ($query_result) {
             // Update successful
-            header("Location: http://localhost/Book_Bridge/admin/page-manage-contribution-request-detail.php?request_id=" . $request_id);
-            exit();
         } else {
             // Update failed
             echo "Error updating notes: " . $connection->error;
         }
     } elseif ($status == 'Published') {
-        $query_update_status = "UPDATE contribution_request
-                                set status = '$status'
-                                WHERE request_id = '$request_id'";
-        $query_result = $connection->query($query_update_status);
-        if ($query_result) {
-            // Update successful
-            header("Location: http://localhost/Book_Bridge/admin/page-manage-contribution-request-detail.php?request_id=" . $request_id);
-            exit();
+        echo $book_condition;
+        if (isset($book_condition) && $book_condition != "Select Condition") {
+            $query_update_status = "UPDATE contribution_request
+                                    set status = '$status'
+                                    WHERE request_id = '$request_id'";
+            $query_result = $connection->query($query_update_status);
+            if ($query_result) {
+                // Update successful
+                $query_for_club_id = "SELECT club_id
+                                      FROM bibliophile_club
+                                      WHERE club_manager_id = {$_SESSION['user-logged-id']}";
+                $query_club_id_result = $connection->query($query_for_club_id);
+                $query_club_id = $query_club_id_result->fetch_assoc();
+                $query_for_adding_to_platform = "INSERT INTO global_book_collection(book_id, owner_id, book_condition, availability_status, club_id)
+                                                 VALUES({$contribution_reqest_row['book_id']}, {$contribution_reqest_row['user_id']}, '$book_condition', 'yes', {$query_club_id['club_id']})";
+                if ($connection->query($query_for_adding_to_platform)) {
+                    header("Location: http://localhost/Book_Bridge/admin/page-manage-contribution-request.php");
+                    exit();
+                }
+            } else {
+                // Update failed
+                echo "Error updating notes: " . $connection->error;
+            }
         } else {
-            // Update failed
-            echo "Error updating notes: " . $connection->error;
+            header("Location: http://localhost/Book_Bridge/admin/page-manage-contribution-request-detail.php?error=SelectBookCondition&request_id=" . $request_id);
+            exit();
         }
     }
 }
@@ -87,8 +95,6 @@ if ($notes != $contribution_reqest_row['notes']) {
     $query_result = $connection->query($query_update_notes);
     if ($query_result) {
         // Update successful
-        header("Location: http://localhost/Book_Bridge/admin/page-manage-contribution-request-detail.php?request_id=" . $request_id);
-        exit();
     } else {
         // Update failed
         echo "Error updating notes: " . $connection->error;
@@ -101,8 +107,7 @@ if ($book_title != $contribution_reqest_row['title']) {
     $query_result = $connection->query($query_update_title);
     if ($query_result) {
         // Update successful
-        header("Location: http://localhost/Book_Bridge/admin/page-manage-contribution-request-detail.php?request_id=" . $request_id);
-        exit();
+
     } else {
         // Update failed
         echo "Error updating notes: " . $connection->error;
@@ -115,8 +120,6 @@ if ($book_description != $contribution_reqest_row['description']) {
     $query_result = $connection->query($query_update_description);
     if ($query_result) {
         // Update successful
-        header("Location: http://localhost/Book_Bridge/admin/page-manage-contribution-request-detail.php?request_id=" . $request_id);
-        exit();
     } else {
         // Update failed
         echo "Error updating notes: " . $connection->error;
@@ -129,8 +132,7 @@ if ($book_edition != $contribution_reqest_row['edition']) {
     $query_result = $connection->query($query_update_edition);
     if ($query_result) {
         // Update successful
-        header("Location: http://localhost/Book_Bridge/admin/page-manage-contribution-request-detail.php?request_id=" . $request_id);
-        exit();
+
     } else {
         // Update failed
         echo "Error updating notes: " . $connection->error;
@@ -143,8 +145,6 @@ if ($book_category != $contribution_reqest_row['categoryID']) {
     $query_result = $connection->query($query_update_category);
     if ($query_result) {
         // Update successful
-        header("Location: http://localhost/Book_Bridge/admin/page-manage-contribution-request-detail.php?request_id=" . $request_id);
-        exit();
     } else {
         // Update failed
         echo "Error updating notes: " . $connection->error;
@@ -157,8 +157,7 @@ if ($book_num_pages != $contribution_reqest_row['num_of_pages']) {
     $query_result = $connection->query($query_update_pages);
     if ($query_result) {
         // Update successful
-        header("Location: http://localhost/Book_Bridge/admin/page-manage-contribution-request-detail.php?request_id=" . $request_id);
-        exit();
+
     } else {
         // Update failed
         echo "Error updating notes: " . $connection->error;
@@ -171,8 +170,7 @@ if ($book_language != $contribution_reqest_row['language']) {
     $query_result = $connection->query($query_update_language);
     if ($query_result) {
         // Update successful
-        header("Location: http://localhost/Book_Bridge/admin/page-manage-contribution-request-detail.php?request_id=" . $request_id);
-        exit();
+
     } else {
         // Update failed
         echo "Error updating notes: " . $connection->error;
@@ -185,17 +183,12 @@ if ($book_publisher != $contribution_reqest_row['publisher']) {
     $query_result = $connection->query($query_update_publisher);
     if ($query_result) {
         // Update successful
-        header("Location: http://localhost/Book_Bridge/admin/page-manage-contribution-request-detail.php?request_id=" . $request_id);
-        exit();
+
     } else {
         // Update failed
         echo "Error updating notes: " . $connection->error;
     }
 }
-if (isset($book_condition) && $book_condition != "Select Condition") {
-    echo $book_condition;
-}
-
 // Handle file upload
 if (!($_FILES['Book-image-upload']['error'] === UPLOAD_ERR_NO_FILE)) { // Check if file is uploaded
     $file = $_FILES['Book-image-upload'];
@@ -213,3 +206,5 @@ if (!($_FILES['Book-image-upload']['error'] === UPLOAD_ERR_NO_FILE)) { // Check 
         echo '<script>alert("The file type is not allowed!");</script>';
     }
 }
+header("Location: http://localhost/Book_Bridge/admin/page-manage-contribution-request-detail.php?request_id=" . $request_id);
+exit();

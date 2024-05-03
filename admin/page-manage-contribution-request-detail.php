@@ -18,6 +18,11 @@ $book_info = $query_book_result->fetch_assoc();
     <div class="content-header">
         <div>
             <h2 class="content-title card-title">Contribution Request Detail</h2>
+            <?php if (isset($_GET['error'])) : ?>
+                <div class="d-grid gap-3 mb-4" style="  font-size: 14px;font-weight: 500;padding: 10px 40px;color: #ffffff;border: none;background-color: #FF0000;border-radius: 4px;">
+                    <p style="text-align: center">Select book condition</p>
+                </div>
+            <?php endif ?>
         </div>
     </div>
     <form action="./handler/manage-contribution-request-handler.php" method="post" enctype="multipart/form-data">
@@ -31,7 +36,8 @@ $book_info = $query_book_result->fetch_assoc();
                         <small class="text-muted">Request ID: <?= $query_result['request_id'] ?></small>
                     </div>
                     <div class="col-lg-6 col-md-6 ms-auto text-md-end">
-                        <select class="form-select d-inline-block mb-lg-0 mb-15 mw-200" name="status">
+
+                        <select id="status" class="form-select d-inline-block mb-lg-0 mb-15 mw-200" name="status">
                             <option <?= $query_result['status'] == 'Pending' ? 'selected' : '' ?>>Pending</option>
                             <option <?= $query_result['status'] == 'Processing' ? 'selected' : '' ?>>Processing</option>
                             <option <?= $query_result['status'] == 'Requested to courier' ? 'selected' : '' ?>>Requested to courier</option>
@@ -39,6 +45,7 @@ $book_info = $query_book_result->fetch_assoc();
                             <option <?= $query_result['status'] == 'QC in progress' ? 'selected' : '' ?>>QC in progress</option>
                             <option <?= $query_result['status'] == 'Published' ? 'selected' : '' ?>>Published</option>
                         </select>
+
                         <input type="hidden" name="request_id" value="<?= $request_id ?>">
                         <button class="btn btn-primary" name="add-moderator">Save</button>
                     </div>
@@ -136,7 +143,7 @@ $book_info = $query_book_result->fetch_assoc();
                                         <div class="col-lg-4">
                                             <div class="mb-4">
                                                 <label class="form-label">Edition</label>
-                                                <input type="text" name="edition" class="form-control" value="<?= $book_info['edition']?>">
+                                                <input type="text" name="edition" class="form-control" value="<?= $book_info['edition'] ?>">
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
@@ -184,7 +191,8 @@ $book_info = $query_book_result->fetch_assoc();
 
                                     <div class="mb-4">
                                         <label class="form-label">Book Condition</label>
-                                        <select class="form-select" name="book-condition" <?= $query_result['status'] == 'QC in progress' ? 'required' : '' ?>>
+
+                                        <select class="form-select" name="book-condition">
                                             <option>Select Condition</option>
                                             <option> Like New </option>
                                             <option> Good </option>
@@ -236,6 +244,9 @@ $book_info = $query_book_result->fetch_assoc();
 </main>
 <script>
     window.onload = function() {
+
+
+        // Event listener for image upload
         document.getElementById('Book-image-upload').addEventListener('change', previewImage);
     };
 
@@ -255,6 +266,7 @@ $book_info = $query_book_result->fetch_assoc();
         }
     }
 </script>
+
 <script src="assets/js/vendors/jquery-3.6.0.min.js"></script>
 <script src="assets/js/vendors/bootstrap.bundle.min.js"></script>
 <script src="assets/js/vendors/select2.min.js"></script>
