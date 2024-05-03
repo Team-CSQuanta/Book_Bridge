@@ -202,7 +202,7 @@ CREATE TABLE `contribution_request` (
   `request_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `book_id` int(11) DEFAULT NULL,
-  `status` varchar(50) DEFAULT NULL CHECK (`status` in ('pending','user is requested to send','received by the club member','quality checking of the book','published')),
+  `status` varchar(50) DEFAULT NULL CHECK (`status` in ('Pending','Processing','Requested to courier','Received the book','QC in progress', 'Published')),
   `date_of_request` date DEFAULT curdate(),
   `book_received_date` date DEFAULT NULL,
   `published_date` date DEFAULT NULL,
@@ -216,18 +216,18 @@ CREATE TABLE `contribution_request` (
 --
 
 INSERT INTO `contribution_request` (`request_id`, `user_id`, `book_id`, `status`, `date_of_request`, `book_received_date`, `published_date`, `processed_by`, `processed_user_role`, `notes`) VALUES
-(1, 1, 5, 'pending', '2024-04-09', '2024-04-16', '2024-04-23', NULL, NULL, ''),
-(2, 2, 4, 'pending', '2024-04-09', '2024-04-16', '2024-04-23', NULL, NULL, ''),
-(6, 13, 5, 'published', '2024-05-28', NULL, NULL, NULL, NULL, ''),
-(7, 13, 6, 'published', '2024-05-28', NULL, NULL, NULL, NULL, ''),
-(9, 13, 10, 'published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
-(56, 13, 3, 'published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
-(67, 13, 8, 'published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
-(69, 13, 9, 'published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
-(100, 13, 4, 'published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
-(101, 13, 102, 'published', '2024-05-01', NULL, NULL, NULL, NULL, ''),
-(102, 13, 103, 'published', '2024-05-01', NULL, NULL, NULL, NULL, ''),
-(103, 13, 104, 'pending', '2024-05-01', NULL, NULL, 2, 'moderator', 'dfasfsadfs');
+(1, 1, 5, 'Pending', '2024-04-09', '2024-04-16', '2024-04-23', NULL, NULL, ''),
+(2, 2, 4, 'Pending', '2024-04-09', '2024-04-16', '2024-04-23', NULL, NULL, ''),
+(6, 13, 5, 'Published', '2024-05-28', NULL, NULL, NULL, NULL, ''),
+(7, 13, 6, 'Published', '2024-05-28', NULL, NULL, NULL, NULL, ''),
+(9, 13, 10, 'Published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(56, 13, 3, 'Published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(67, 13, 8, 'Published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(69, 13, 9, 'Published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(100, 13, 4, 'Published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(101, 13, 102, 'Published', '2024-05-01', NULL, NULL, NULL, NULL, ''),
+(102, 13, 103, 'Published', '2024-05-01', NULL, NULL, NULL, NULL, ''),
+(103, 13, 104, 'Pending', '2024-05-01', NULL, NULL, 2, 'moderator', 'dfasfsadfs');
 
 -- --------------------------------------------------------
 
@@ -408,11 +408,7 @@ INSERT INTO `user_activity` (`id`, `user_id`, `activity_description`, `timestamp
 (9, 13, 'User logged in', '2024-05-02 15:00:01'),
 (10, 13, 'User logged out', '2024-05-02 15:00:08'),
 (11, 13, 'User logged in', '2024-05-02 15:00:15'),
-(12, 13, 'User logged out', '2024-05-02 16:07:55'),
-(13, 26, 'User registered', '2024-05-02 16:14:33'),
-(14, 26, 'User logged out', '2024-05-02 16:21:06'),
-(15, 27, 'User registered', '2024-05-02 16:23:29'),
-(16, 27, 'User logged out', '2024-05-02 16:24:39');
+(12, 13, 'User logged out', '2024-05-02 16:07:55');
 
 -- --------------------------------------------------------
 
