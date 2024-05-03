@@ -56,15 +56,18 @@ $total_records = $total_records_row['total'];
 
 $total_pages = ceil($total_records / $limit);
 
-if(isset($_GET['request_id'])){
+if (isset($_GET['request_id'])) {
     $request_id = filter_input(INPUT_GET, 'request_id', FILTER_SANITIZE_NUMBER_INT);
     $query_for_update = "UPDATE contribution_request
-                        set processed_by = {$_SESSION['user-logged-id']} , processed_user_role = 'moderator'
+                        set processed_by = {$_SESSION['user-logged-id']} , processed_user_role = 'moderator', status = 'Processing'
                         WHERE request_id = {$request_id}";
-    
-    if($connection->query($query_for_update)){
+    // Execute the query
+    if ($connection->query($query_for_update) === TRUE) {
         echo "<script>window.location.href = 'http://localhost/Book_Bridge/admin/page-contribution-request.php';</script>";
         exit();
+        echo "Record updated successfully";
+    } else {
+        echo "Error updating record: " . $connection->error;
     }
 }
 ?>
@@ -124,7 +127,7 @@ if(isset($_GET['request_id'])){
                                     }
                                     ?>
                                 </td>
-                                <td><?=$contribution['date_of_request'] ?></td>
+                                <td><?= $contribution['date_of_request'] ?></td>
 
                                 <td><span class="badge rounded-pill alert-danger"><?= $contribution['cr_status'] ?></span></td>
                                 <td class="text-end">
