@@ -73,6 +73,9 @@
                                         <li class="nav-item">
                                             <a class="nav-link" id="request-tab" data-bs-toggle="tab" href="#request" role="tab" aria-controls="request" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Request a Book</a>
                                         </li>
+                                         <li class="nav-item">
+                                            <a class="nav-link" id="request-tab" data-bs-toggle="tab" href="#request" role="tab" aria-controls="request" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Request a Book</a>
+                                        </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="history-tab" data-bs-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>History</a>
                                         </li>
