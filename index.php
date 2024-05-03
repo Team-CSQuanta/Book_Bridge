@@ -15,10 +15,19 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
- 
-$sql= "SELECT * FROM global_book_collection INNER JOIN book ON global_book_collection.book_id = book.book_id INNER JOIN category ON book.categoryID = category.categoryID ";
-$all_books=  $conn->query($sql);
 
+// Pagination variables
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$limit = 12; // Maximum number of cards per page
+$offset = ($page - 1) * $limit;
+
+ 
+$sql= "SELECT gbc.*, b.*, c.categoryName
+        FROM global_book_collection gbc
+        JOIN book b ON gbc.book_id = b.book_id
+        LEFT JOIN category c ON b.categoryID = c.categoryID
+        LIMIT $limit OFFSET $offset ";
+       $result = $conn->query($sql);
 ?>
 
 
@@ -47,6 +56,36 @@ $all_books=  $conn->query($sql);
     <link rel="stylesheet" href="assets/css/main.css?v=3.4">
 <!-- Bootstrap JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0-alpha1/js/bootstrap.bundle.min.js"></script>
+
+
+
+<style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+        }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+    </style>
 
 
 </head>
@@ -243,7 +282,10 @@ $all_books=  $conn->query($sql);
 <script src="path/to/bootstrap.min.js"></script>
 
 <div class="row product-grid-4">
-    <?php while($row = $all_books->fetch_assoc()) { 
+
+    <?php 
+        if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) { 
         if($row["availability_status"] == "yes") { ?>
             <div class="col-lg-4 col-md-4 col-12 col-sm-6">
                 <div class="product-cart-wrap mb-30">
@@ -295,7 +337,7 @@ $all_books=  $conn->query($sql);
                                 <?php if(!empty($row["cover_img"]) && file_exists($row["cover_img"])) { ?>
                                     <img class="default-img" src="<?php echo $row["cover_img"]; ?>" alt="">
                                 <?php } else { ?>
-                                    <img class="default-img" src="assets/imgs/books/default_cover.png" alt="Default Book Cover">
+                                    <img class="default-img" src="uploadedBooks/default_cover.png" alt="Default Book Cover">
                                 <?php } ?>
                                 
                             </a>
@@ -312,8 +354,40 @@ $all_books=  $conn->query($sql);
             </div>
             <!-- End Quick View Modal -->
             
-        <?php } } ?>
+        <?php } }} ?>
 </div>
+
+
+
+
+
+<?php
+// Calculate total number of pages
+$total_pages_sql = "SELECT COUNT(*) as count FROM global_book_collection";
+$total_pages_result = $conn->query($total_pages_sql);
+$total_pages_row = $total_pages_result->fetch_assoc();
+$total_pages = ceil($total_pages_row['count'] / $limit);
+
+// Previous and next page numbers
+$prev_page = $page - 1;
+$next_page = $page + 1;
+
+// Display pagination links
+echo "<ul class='pagination'>";
+if ($prev_page > 0) {
+    echo "<li><a href='?page=$prev_page'>Previous</a></li>";
+}
+
+for ($i = 1; $i <= $total_pages; $i++) {
+    echo "<li " . ($page == $i ? "class='active'" : "") . "><a href='?page=$i'>$i</a></li>";
+}
+
+if ($page < $total_pages) {
+    echo "<li><a href='?page=$next_page'>Next</a></li>";
+}
+echo "</ul>";
+?>
+
 
 
 
