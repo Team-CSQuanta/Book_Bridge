@@ -194,65 +194,8 @@ if ($conn->connect_error) {
                 </div>
             </div>
         </section> -->
-        <section class="featured section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
-                        <div class="banner-features wow fadeIn animated hover-up animated">
-                            <img src="assets/imgs/theme/icons/feature-1.png" alt="">
-                            <h4 class="bg-1">Ontime Shipping</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
-                        <div class="banner-features wow fadeIn animated hover-up animated">
-                            <img src="assets/imgs/theme/icons/feature-2.png" alt="">
-                            <h4 class="bg-3">Online Order</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
-                        <div class="banner-features wow fadeIn animated hover-up animated">
-                            <img src="assets/imgs/theme/icons/feature-3.png" alt="">
-                            <h4 class="bg-2">Save Money</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
-                        <div class="banner-features wow fadeIn animated hover-up animated">
-                            <img src="assets/imgs/theme/icons/feature-4.png" alt="">
-                            <h4 class="bg-4">Boost in Career</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
-                        <div class="banner-features wow fadeIn animated hover-up animated">
-                            <img src="assets/imgs/theme/icons/feature-5.png" alt="">
-                            <h4 class="bg-5">Happy Exchange</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
-                        <div class="banner-features wow fadeIn animated hover-up animated">
-                            <img src="assets/imgs/theme/icons/feature-6.png" alt="">
-                            <h4 class="bg-6">24/7 Support</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="product-tabs section-padding wow fadeIn animated">
-            <div class="container">
-                <div class="tab-header">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-one" type="button" role="tab" aria-controls="tab-one" aria-selected="true">Featured</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="nav-tab-two" data-bs-toggle="tab" data-bs-target="#tab-two" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Popular</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three" type="button" role="tab" aria-controls="tab-three" aria-selected="false">New added</button>
-                        </li>
-                    </ul>
-                    <a href="shop-grid-right.php" class="view-more d-none d-md-flex">View More<i class="fi-rs-angle-double-small-right"></i></a>
-                </div>
-                <!--End nav-tabs-->
+ 
+      
 
                 
                 <div class="tab-content wow fadeIn animated" id="myTabContent">
