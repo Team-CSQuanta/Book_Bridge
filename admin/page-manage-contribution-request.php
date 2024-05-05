@@ -20,7 +20,7 @@ $contribution_fetch = "SELECT cr.*, u.*, cr.status AS cr_status
 
 if (!empty($search)) {
     $searchCondition = "%" . $search . "%";
-    $contribution_fetch .= " AND (u.f_name LIKE '$searchCondition' OR u.l_name LIKE '$searchCondition' OR u.email LIKE '$searchCondition')";
+    $contribution_fetch .= " AND (u.f_name LIKE '$searchCondition' OR u.l_name LIKE '$searchCondition' OR u.email LIKE '$searchCondition')  ";
 }
 
 $contribution_fetch .= " ORDER BY FIELD(cr.status, 'Processing', 'Requested to courier', 'Received the book', 'QC in progress') LIMIT $start, $limit";
