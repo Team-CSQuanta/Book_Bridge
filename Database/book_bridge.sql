@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 05, 2024 at 12:23 PM
+-- Generation Time: May 05, 2024 at 01:41 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -107,7 +107,7 @@ INSERT INTO `bibliophile_club_admin` (`club_admin_id`, `email`, `phone_number`, 
 --
 
 CREATE TABLE `bibliophile_club_membership` (
-  `membership_id` int(20) NOT NULL,
+  `membership_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `club_id` int(11) NOT NULL,
   `membership_date` date DEFAULT curdate()
@@ -232,6 +232,23 @@ INSERT INTO `contribution_request` (`request_id`, `user_id`, `book_id`, `status`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `exchange_request`
+--
+
+CREATE TABLE `exchange_request` (
+  `exchange_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `book_id` int(11) DEFAULT NULL,
+  `date_of_request` timestamp NOT NULL DEFAULT current_timestamp(),
+  `date_of_delivery` timestamp NULL DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL CHECK (`status` in ('Pending','Processing','Delivered')),
+  `notes` text DEFAULT NULL,
+  `processed_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `global_book_collection`
 --
 
@@ -251,7 +268,7 @@ CREATE TABLE `global_book_collection` (
 --
 
 INSERT INTO `global_book_collection` (`collection_id`, `book_id`, `owner_id`, `book_condition`, `availability_status`, `club_id`, `club_member_id`, `date_added`) VALUES
-(2, 2, 2, 'good', 'no', 2, 2, '2024-04-27'),
+(2, 2, 2, 'good', 'yes', 2, 2, '2024-04-27'),
 (3, 3, 6, 'acceptable', 'yes', 4, 3, '2024-04-27'),
 (5, 5, 8, 'good', 'no', 1, 2, '2024-04-27'),
 (6, 6, 9, 'acceptable', 'yes', 2, 3, '2024-04-27'),
@@ -492,6 +509,15 @@ ALTER TABLE `contribution_request`
   ADD KEY `book_id` (`book_id`);
 
 --
+-- Indexes for table `exchange_request`
+--
+ALTER TABLE `exchange_request`
+  ADD PRIMARY KEY (`exchange_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `book_id` (`book_id`),
+  ADD KEY `processed_by` (`processed_by`);
+
+--
 -- Indexes for table `global_book_collection`
 --
 ALTER TABLE `global_book_collection`
@@ -573,7 +599,7 @@ ALTER TABLE `bibliophile_club_admin`
 -- AUTO_INCREMENT for table `bibliophile_club_membership`
 --
 ALTER TABLE `bibliophile_club_membership`
-  MODIFY `membership_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `membership_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `book`
@@ -586,6 +612,12 @@ ALTER TABLE `book`
 --
 ALTER TABLE `contribution_request`
   MODIFY `request_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+
+--
+-- AUTO_INCREMENT for table `exchange_request`
+--
+ALTER TABLE `exchange_request`
+  MODIFY `exchange_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `global_book_collection`
@@ -659,6 +691,15 @@ ALTER TABLE `book`
 ALTER TABLE `contribution_request`
   ADD CONSTRAINT `contribution_request_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `contribution_request_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`);
+
+--
+-- Constraints for table `exchange_request`
+--
+ALTER TABLE `exchange_request`
+  ADD CONSTRAINT `exchange_request_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `exchange_request_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
+  ADD CONSTRAINT `exchange_request_ibfk_3` FOREIGN KEY (`processed_by`) REFERENCES `bibliophile_club_admin` (`club_admin_id`),
+  ADD CONSTRAINT `exchange_request_ibfk_4` FOREIGN KEY (`processed_by`) REFERENCES `bibliophile_club_membership` (`membership_id`);
 
 --
 -- Constraints for table `global_book_collection`
