@@ -130,8 +130,8 @@ if(isset($_GET['search'])) {
                         </div>
                         <div class="product-action-1">
                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal<?php echo $row['book_id']; ?>"><i class="fi-rs-search"></i></a>
-                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                            <!-- <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a> -->
                         </div>
                         <div class="product-badges product-badges-position product-badges-mrg">
                             <span class="new"><?php echo $row["book_condition"]; ?></span>
@@ -142,9 +142,9 @@ if(isset($_GET['search'])) {
                             <a href="shop-grid-right.php"><?php echo $row["categoryName"]; ?></a>
                         </div>
                         <h2><a href="shop-product-full.php"><?php echo $row["title"]; ?></a></h2>
-                        <div class="product-action-1 show">
+                        <!-- <div class="product-action-1 show">
                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -165,7 +165,7 @@ if(isset($_GET['search'])) {
                                 <?php if(!empty($row["cover_img"]) && file_exists($row["cover_img"])) { ?>
                                     <img class="default-img" src="<?php echo $row["cover_img"]; ?>" alt="">
                                 <?php } else { ?>
-                                    <img class="default-img" src="assets/imgs/books/default_cover.png" alt="Default Book Cover">
+                                    <img class="default-img" src="uploadedBooks/default_cover.png" alt="Default Book Cover">
                                 <?php } ?>
                                 
                             </a>
@@ -177,6 +177,7 @@ if(isset($_GET['search'])) {
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Make a request</button>
                         </div>
+                       
                     </div>
                 </div>
             </div>
