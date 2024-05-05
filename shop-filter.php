@@ -258,51 +258,70 @@ $total_books = $total_books_row['total'];
         </div>
         </div>
     </div>
-    <?php
-    include 'partials/header.php';
-    include  'partials/mobile-header.php'
-    ?>
-    <main class="main">
+                        <?php
+                        include 'partials/header.php';
+                        include  'partials/mobile-header.php'
+                        ?>
+                        <main class="main">
 
-    <?php
-// Construct the SQL query to count the number of books based on selected categories
-$sql_count = "SELECT COUNT(*) as count
-              FROM global_book_collection gbc
-              JOIN book b ON gbc.book_id = b.book_id
-              LEFT JOIN category c ON b.categoryID = c.categoryID";
+                        <?php
+                    // Construct the SQL query to count the number of books based on selected categories
+                    $sql_count = "SELECT COUNT(*) as count
+                                FROM global_book_collection gbc
+                                JOIN book b ON gbc.book_id = b.book_id
+                                LEFT JOIN category c ON b.categoryID = c.categoryID";
 
-// Add WHERE clause for selected categories
-if (!empty($selectedCategories)) {
-    $categoryFilter = "'" . implode("', '", $selectedCategories) . "'";
-    $sql_count .= " WHERE c.categoryName IN ($categoryFilter)";
-}
+                    // Add WHERE clause for selected categories
+                    if (!empty($selectedCategories)) {
+                        $categoryFilter = "'" . implode("', '", $selectedCategories) . "'";
+                        $sql_count .= " WHERE c.categoryName IN ($categoryFilter)";
+                    }
 
-// Execute the query to get the count
-$result_count = $conn->query($sql_count);
-$total_books_filtered = 0;
-if ($result_count->num_rows > 0) {
-    $row_count = $result_count->fetch_assoc();
-    $total_books_filtered = $row_count['count'];
-}
+                    // Execute the query to get the count
+                    $result_count = $conn->query($sql_count);
+                    $total_books_filtered = 0;
+                    if ($result_count->num_rows > 0) {
+                        $row_count = $result_count->fetch_assoc();
+                        $total_books_filtered = $row_count['count'];
+                    }
 ?>
 
 <main class="main">
-    <div class="shop-product-fillter">
-        <div class="totall-product">
-            <p>We found <strong class="text-brand"><?php echo $total_books_filtered; ?></strong> items for you!</p>
-        </div>
-    </div>
-    <!-- Rest of your HTML and PHP code -->
-</main>
 
-                    
+
 
     <section class="mt-50 mb-50">
             <div class="container">
                 <div class="row">
                  <div class="col-lg-9">
-                    <!-- cards-->
-                    <section>
+                 <div class="shop-product-fillter">
+                            <div class="totall-product">
+                            <p>We found <strong class="text-brand"><?php echo $total_books_filtered; ?></strong> items for you!</p>                            </div>
+                            <div class="sort-by-product-area">
+                                
+                                <div class="sort-by-cover">
+                                    <div class="sort-by-product-wrap">
+                                        <div class="sort-by">
+                                            <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
+                                        </div>
+                                        <div class="sort-by-dropdown-wrap">
+                                            <span> Featured <i class="fi-rs-angle-small-down"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="sort-by-dropdown">
+                                        <ul>
+                                            <li><a class="active" href="#">Featured</a></li>
+                                            <li><a href="#">Like New</a></li>
+                                            <li><a href="#">Good</a></li>
+                                            <li><a href="#">acceptable</a></li>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- cards-->
+                    
                         <div class="container">
                 <div class="row product-grid-4">
                     <?php
@@ -416,11 +435,11 @@ if ($result_count->num_rows > 0) {
                 <!-- End Pagination -->
 
             </div>
-        </section>
+        
                  </div>
         <!-- Filter By Category -->
         
-                    <div class="col-lg-3">
+        <div class="col-lg-3 col-md-4 col-sm-6">
                         
                 
                         <!-- Filter By Category -->
@@ -432,7 +451,7 @@ if ($result_count->num_rows > 0) {
                             <form method="post" action="">
                                 <div class="list-group">
                                     <?php foreach ($categories as $category) { ?>
-                                        <div class="list-group-item mb-10 mt-10">
+                                        <div class="list-group-item mb-0">
                                             <div class="custome-checkbox">
                                                 <input class="form-check-input" type="checkbox" name="categories[]" id="<?php echo $category['categoryName']; ?>" value="<?php echo $category['categoryName']; ?>" <?php echo in_array($category['categoryName'], $selectedCategories) ? 'checked' : ''; ?>>
                                                 <label class="form-check-label" for="<?php echo $category['categoryName']; ?>"><span><?php echo $category['categoryName']; ?></span></label>

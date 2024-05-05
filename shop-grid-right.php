@@ -237,25 +237,7 @@ $sql= "SELECT gbc.*, b.*, c.categoryName
                                 <p> We found <strong class="text-brand">688</strong> items for you!</p>
                             </div>
                             <div class="sort-by-product-area">
-                                <div class="sort-by-cover mr-10">
-                                    <div class="sort-by-product-wrap">
-                                        <div class="sort-by">
-                                            <span><i class="fi-rs-apps"></i>Show:</span>
-                                        </div>
-                                        <div class="sort-by-dropdown-wrap">
-                                            <span> 50 <i class="fi-rs-angle-small-down"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="sort-by-dropdown">
-                                        <ul>
-                                            <li><a class="active" href="#">50</a></li>
-                                            <li><a href="#">100</a></li>
-                                            <li><a href="#">150</a></li>
-                                            <li><a href="#">200</a></li>
-                                            <li><a href="#">All</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                
                                 <div class="sort-by-cover">
                                     <div class="sort-by-product-wrap">
                                         <div class="sort-by">
@@ -268,10 +250,10 @@ $sql= "SELECT gbc.*, b.*, c.categoryName
                                     <div class="sort-by-dropdown">
                                         <ul>
                                             <li><a class="active" href="#">Featured</a></li>
-                                            <li><a href="#">Price: Low to High</a></li>
-                                            <li><a href="#">Price: High to Low</a></li>
-                                            <li><a href="#">Release Date</a></li>
-                                            <li><a href="#">Avg. Rating</a></li>
+                                            <li><a href="#">Like New</a></li>
+                                            <li><a href="#">Good</a></li>
+                                            <li><a href="#">acceptable</a></li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
