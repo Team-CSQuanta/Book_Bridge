@@ -302,8 +302,8 @@ $sql= "SELECT gbc.*, b.*, c.categoryName
                         </div>
                         <div class="product-action-1">
                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal<?php echo $row['book_id']; ?>"><i class="fi-rs-search"></i></a>
-                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                            <!-- <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a> -->
                         </div>
                         <div class="product-badges product-badges-position product-badges-mrg">
                             <span class="new"><?php echo $row["book_condition"]; ?></span>
@@ -314,9 +314,7 @@ $sql= "SELECT gbc.*, b.*, c.categoryName
                             <a href="shop-grid-right.php"><?php echo $row["categoryName"]; ?></a>
                         </div>
                         <h2><a href="shop-product-full.php"><?php echo $row["title"]; ?></a></h2>
-                        <div class="product-action-1 show">
-                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

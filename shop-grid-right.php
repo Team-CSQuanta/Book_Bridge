@@ -1,4 +1,92 @@
-﻿<!DOCTYPE html>
+﻿
+<?php 
+                    session_start();
+
+                    // Check if search results are stored in the session
+                    if(isset($_SESSION['search_results'])) {
+                        $searchResults = $_SESSION['search_results'];
+                        // Display number of search results
+                        $numResults = count($searchResults);
+                        echo "<p>Number of books found: $numResults</p>";
+                    
+                        // Display each search result as a card
+                        foreach($searchResults as $book) { ?>
+                            <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                <div class="product-cart-wrap mb-30">
+                    <div class="product-img-action-wrap">
+                        <div class="product-img product-img-zoom">
+                            <a href="shop-product-full.php">
+                                <?php if(!empty($row["cover_img"]) && file_exists($row["cover_img"])) { ?>
+                                    <img class="default-img" src="<?php echo $row["cover_img"]; ?>" alt="">
+                                <?php } else { ?>
+                                    <img class="default-img" src="uploadedBooks/default_cover.png" alt="Default Book Cover">
+                                <?php } ?>
+                                <img class="hover-img" src="uploadedBooks/default_cover.png" alt="">
+                            </a>
+                        </div>
+                        <div class="product-action-1">
+                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal<?php echo $row['book_id']; ?>"><i class="fi-rs-search"></i></a>
+                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
+                        </div>
+                        <div class="product-badges product-badges-position product-badges-mrg">
+                            <span class="new"><?php echo $row["book_condition"]; ?></span>
+                        </div>
+                    </div>
+                    <div class="product-content-wrap">
+                        <div class="product-category">
+                            <a href="shop-grid-right.php"><?php echo $row["categoryName"]; ?></a>
+                        </div>
+                        <h2><a href="shop-product-full.php"><?php echo $row["title"]; ?></a></h2>
+                        <div class="product-action-1 show">
+                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick View Modal -->
+            <div class="modal fade" id="quickViewModal<?php echo $row['book_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="quickViewModalLabel<?php echo $row['book_id']; ?>" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="quickViewModalLabel<?php echo $row['book_id']; ?>"><?php echo $row["title"]; ?></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Additional details about the book can be displayed here -->
+                        <div class="product-img product-img-zoom">
+                                <?php if(!empty($row["cover_img"]) && file_exists($row["cover_img"])) { ?>
+                                    <img class="default-img" src="<?php echo $row["cover_img"]; ?>" alt="">
+                                <?php } else { ?>
+                                    <img class="default-img" src="assets/imgs/books/default_cover.png" alt="Default Book Cover">
+                                <?php } ?>
+                                
+                            </a>
+                        </div>
+
+                            <p><?php echo $row["description"]; ?></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Make a request</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- End Quick View Modal -->
+ <?php
+                        }
+                    } else {
+                        // If no search results found, you can display a message or default content
+                        echo "<p>No search results found.</p>";
+                    }
+                    ?>
+
+<!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head>
@@ -217,50 +305,7 @@
                         </div>
 
 
-                        <div class="row product-grid-3"  id="itemContainer">
-                        
-                            <!-- Item start -->
-                            <div class="col-lg-4 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/dummyImg/book-4.png" alt="">
-                                                <img class="hover-img" src="assets/imgs/dummyImg/book-4.png" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                           <i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="new">New</span>                                        
-                                        </div>
-                                    
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Fantasy</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Pouring Dreams</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>Coins:500 </span>
-                                            <span class="old-price">600</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                            </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                   
   <!-- Item end -->
     <!-- <script>
     $(document).ready(function() {

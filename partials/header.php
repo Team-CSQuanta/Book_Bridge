@@ -25,7 +25,7 @@
                                     <option>Religion</option>
                                 </select>
                                   
-                                <form action="searchBooks.php" method="GET">
+                                <form action="shop-grid-right.php" method="GET">
                                         <input type="text" class="form-control" placeholder="Search for books" name="search">
                                         <button class="btn btn-primary" type="submit">Search</button>
                                     </div>
