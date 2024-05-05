@@ -11,18 +11,19 @@
 
                             <form action="searchBooks.php">
                                 <select class="select-active">
-                                    <option>All Categories</option>
-                                    <option>Mystery</option>
-                                    <option>Thriller</option>
-                                    <option>Science Fiction</option>
-                                    <option>Fantasy</option>
-                                    <option>Romance</option>
-                                    <option>Historical Fiction</option>
-                                    <option>Horror</option>
-                                    <option>Adventure</option>
-                                    <option>Biography</option>
-                                    <option>Academic</option>
-                                    <option>Religion</option>
+                                <option value="">All Categories</option>
+                                <option value="Academic">Academic</option>
+                                <option value="Biography">Biography</option>
+                                <option value="Cookbook">Cookbook</option>
+                                <option value="Fantasy">Fantasy</option>
+                                <option value="Graphic novel">Graphic novel</option>
+                                <option value="History">History</option>
+                                <option value="Horror">Horror</option>
+                                <option value="Memoir">Memoir</option>
+                                <option value="Mystery">Mystery</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Religion">Religion</option>
+                                <option value="Thriller">Thriller</option>
                                 </select>
                                   
                                 <form action="shop-grid-right.php" method="GET">
