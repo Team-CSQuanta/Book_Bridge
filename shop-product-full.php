@@ -83,7 +83,7 @@
                             </div>
                         </div>
                         
-                        <?php while($row = $all_books->fetch_assoc()) { ?>
+                       
 
 
                         <div class="col-md-6 col-sm-12 col-xs-12">
@@ -154,7 +154,7 @@
                             </div>
                             <!-- Detail Info -->
                         </div>
-                        <?php }  ?>
+                     
 
                     </div>
                 </div>        
@@ -170,8 +170,8 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href="index.php" rel="nofollow">Home</a>
-                    <span></span> Fashion
-                    <span></span> Abstract Print Patchwork Dress
+                    <span></span> Description
+                   
                 </div>
             </div>
         </div>
