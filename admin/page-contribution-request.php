@@ -3,6 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require './aside-menu.php';
 
+
 // Pagination parameters
 $limit = 8;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -56,6 +57,20 @@ $total_records = $total_records_row['total'];
 
 $total_pages = ceil($total_records / $limit);
 
+
+// $requester_email = "";
+// // Retrieve requester's email
+// $query_requester_email = "SELECT user.email
+//                           FROM user
+//                           JOIN contribution_request ON user.user_id = contribution_request.user_id
+//                           WHERE contribution_request.request_id = '$request_id'";
+// $query_requester_result = $connection->query($query_requester_email);
+// if ($query_requester_result) {
+//     $requester_row = $query_requester_result->fetch_assoc();
+//     $requester_email = $requester_row['email'];
+    
+// }
+
 if (isset($_GET['request_id'])) {
     $request_id = filter_input(INPUT_GET, 'request_id', FILTER_SANITIZE_NUMBER_INT);
     $query_for_update = "UPDATE contribution_request
@@ -63,6 +78,7 @@ if (isset($_GET['request_id'])) {
                         WHERE request_id = {$request_id}";
     // Execute the query
     if ($connection->query($query_for_update) === TRUE) {
+        //  handleStatusChange( $requester_email , 'Processing');
         echo "<script>window.location.href = 'http://localhost/Book_Bridge/admin/page-contribution-request.php';</script>";
         exit();
         echo "Record updated successfully";
@@ -70,6 +86,8 @@ if (isset($_GET['request_id'])) {
         echo "Error updating record: " . $connection->error;
     }
 }
+
+
 ?>
 
 <section class="content-main">
