@@ -388,45 +388,6 @@ echo "</ul>";
 ?>
 
 
-    <!-- <script>
-    $(document).ready(function() {
-        // Function to fetch new items from the server
-        function fetchNewItems() {
-            $.ajax({
-                url: 'fetch_new_items.php',
-                method: 'GET',
-                success: function(response) {
-                    // Append only new items to the page
-                    $(response).each(function() {
-                        var newItem = $(this);
-                        var exists = false;
-                        
-                        // Check if the item already exists on the page
-                        $('#itemContainer').find('.product-cart-wrap').each(function() {
-                            if ($(this).html() === newItem.html()) {
-                                exists = true;
-                                return false; // Exit the loop if the item is found
-                            }
-                        });
-
-                        // If the item doesn't exist, append it to the page
-                        if (!exists) {
-                            $('#itemContainer').append(newItem);
-                        }
-                    });
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
-            });
-        }
-
-        // Call fetchNewItems initially and then every 10 seconds
-        fetchNewItems(); -->
-        <!-- setInterval(fetchNewItems, 100); // Adjust the interval as needed
-    });
-</script> -->
-
 
                             
                        
@@ -436,24 +397,8 @@ echo "</ul>";
                             <div class="col-lg-12 col-mg-6"></div>
                             <div class="col-lg-12 col-mg-6"></div>
                         </div>
-                        <div class="widget-category mb-30">
-                            <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
-                            <ul class="categories">
-                                <li><a href="shop-grid-right.php">Academic</a></li>
-                                <li><a href="shop-grid-right.php">Biography</a></li>
-                                <li><a href="shop-grid-right.php">Cookbook</a></li>
-                                <li><a href="shop-grid-right.php">Fanstasy</a></li>
-                                <li><a href="shop-grid-right.php">Graphic novel</a></li>
-                                <li><a href="shop-grid-right.php">History</a></li>
-                                <li><a href="shop-grid-right.php">Horror</a></li>
-                                <li><a href="shop-grid-right.php">Memoir</a></li>
-                                <li><a href="shop-grid-right.php">Mystery</a></li>
-                                <li><a href="shop-grid-right.php">Romance</a></li>
-                                <li><a href="shop-grid-right.php">Science Fiction</a></li>
-                                <li><a href="shop-grid-right.php">Thriller</a></li>
-                            </ul>
-                        </div>
-                        <!-- Fillter By Price -->
+  
+                        <!-- Fillter By  -->
                         <div class="sidebar-widget price_range range mb-30">
                             <div class="widget-header position-relative mb-20 pb-10">
                                 <h5 class="widget-title mb-10">Filter by Category</h5>
@@ -462,39 +407,47 @@ echo "</ul>";
                            
                             <div class="list-group">
                                 <div class="list-group-item mb-10 mt-10">
+                                    <form method="post" action="shop-filter.php">
                                     <label class="fw-900">Genre</label>
                                     <div class="custome-checkbox">
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="">
-                                        <label class="form-check-label" for="exampleCheckbox1"><span>Mystery(56)</span></label>
+                                        <input class="form-check-input" type="checkbox" name="Academic" id="exampleCheckbox1" value="">
+                                        <label class="form-check-label" for="exampleCheckbox1"><span>Academic(56)</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox2" value="">
-                                        <label class="form-check-label" for="exampleCheckbox2"><span>Thriller(78)</span></label>
+                                        <input class="form-check-input" type="checkbox" name="Biography" id="exampleCheckbox2" value="">
+                                        <label class="form-check-label" for="exampleCheckbox2"><span>Biography(78)</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox3" value="">
-                                        <label class="form-check-label" for="exampleCheckbox3"><span>Science Fictions(54)</span></label>
+                                        <input class="form-check-input" type="checkbox" name="Cookbook" id="exampleCheckbox3" value="">
+                                        <label class="form-check-label" for="exampleCheckbox3"><span>Cookbook(54)</span></label>
                                         <br>   
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox4" value="">
+                                        <input class="form-check-input" type="checkbox" name="Fantasy" id="exampleCheckbox4" value="">
                                         <label class="form-check-label" for="exampleCheckbox4"><span>Fantasy(17)</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox5" value="">
-                                        <label class="form-check-label" for="exampleCheckbox5"><span>Romannce(59)</span></label>
+                                        <input class="form-check-input" type="checkbox" name="Graphic novel" id="exampleCheckbox5" value="">
+                                        <label class="form-check-label" for="exampleCheckbox5"><span>Graphic novel(59)</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox6" value="">
-                                        <label class="form-check-label" for="exampleCheckbox6"><span>Historucal Fictions(76))</span></label>
+                                        <input class="form-check-input" type="checkbox" name="History" id="exampleCheckbox6" value="">
+                                        <label class="form-check-label" for="exampleCheckbox6"><span>History(76))</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox7" value="">
+                                        <input class="form-check-input" type="checkbox" name="Horror" id="exampleCheckbox7" value="">
                                         <label class="form-check-label" for="exampleCheckbox7"><span>Horror(16)</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox8" value="">
-                                        <label class="form-check-label" for="exampleCheckbox8"><span>Adventure(19)</span></label>
+                                        <input class="form-check-input" type="checkbox" name="Memoir" id="exampleCheckbox8" value="">
+                                        <label class="form-check-label" for="exampleCheckbox8"><span>Memoir(19)</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox9" value="">
-                                        <label class="form-check-label" for="exampleCheckbox9"><span>Biography(08)</span></label>
+                                        <input class="form-check-input" type="checkbox" name="Mystery" id="exampleCheckbox9" value="">
+                                        <label class="form-check-label" for="exampleCheckbox9"><span>Mystery(08)</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox10" value="">
-                                        <label class="form-check-label" for="exampleCheckbox10"><span>Academic(65)</span></label>
+                                        <input class="form-check-input" type="checkbox" name="Romance" id="exampleCheckbox10" value="">
+                                        <label class="form-check-label" for="exampleCheckbox10"><span>Romance(65)</span></label>
+                                        <br>
+                                        <input class="form-check-input" type="checkbox" name="Science Fiction" id="exampleCheckbox10" value="">
+                                        <label class="form-check-label" for="exampleCheckbox10"><span>Science Fiction(65)</span></label>
+                                        <br>
+                                        <input class="form-check-input" type="checkbox" name="Thriller(65)" id="exampleCheckbox10" value="">
+                                        <label class="form-check-label" for="exampleCheckbox10"><span>Thriller(65)</span></label>
                                     </div>
-                                    <label class="fw-900 mt-15">Item Condition</label>
+                                   
+                                    <!-- <label class="fw-900 mt-15">Item Condition</label>
                                     <div class="custome-checkbox">
                                         <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox11" value="">
                                         <label class="form-check-label" for="exampleCheckbox11"><span>New (1506)</span></label>
@@ -504,17 +457,21 @@ echo "</ul>";
                                         <br>
                                         <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox31" value="">
                                         <label class="form-check-label" for="exampleCheckbox31"><span>Used (45)</span></label>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
-                            <a href="shop-grid-right.php" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a>
+                            <a href="shop-filter.php" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a>
                         </div>
+                        </form>
+
+                           
+                        
+                        
                       
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    <div style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #f8f9fa; padding: 20px; text-align: center;">
         <?php include 'partials/footer.php'; ?>
-    </div>
+    

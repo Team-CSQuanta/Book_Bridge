@@ -10,7 +10,7 @@
                         <div class="input-group mb-1">
 
                             <form action="searchBooks.php">
-                                <select class="select-active">
+                                <select class="select-active" name="category">
                                 <option value="">All Categories</option>
                                 <option value="Academic">Academic</option>
                                 <option value="Biography">Biography</option>
