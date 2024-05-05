@@ -3,7 +3,6 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require './aside-menu.php';
 
-
 // Pagination parameters
 $limit = 8;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;

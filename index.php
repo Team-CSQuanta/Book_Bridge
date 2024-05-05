@@ -345,7 +345,7 @@ $sql= "SELECT gbc.*, b.*, c.categoryName
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Make a request</button>
+                           <button type="button" class="btn btn-primary make-request-btn" data-book-id="<?php echo $row['book_id']; ?>">Make a request</button>
                         </div>
                     </div>
                 </div>
@@ -357,7 +357,32 @@ $sql= "SELECT gbc.*, b.*, c.categoryName
 
 
 
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Get all buttons with the class make-request-btn
+    var requestButtons = document.querySelectorAll(".make-request-btn");
+    
+    // Loop through each button and attach a click event listener
+    requestButtons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            // Get the book_id from the data-book-id attribute
+            var bookId = this.getAttribute("data-book-id");
+            
+            // Send an AJAX request to the PHP script
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "handle_exchange_request.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Handle the response if needed
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send("book_id=" + bookId);
+        });
+    });
+});
+</script>
 
 <?php
 // Calculate total number of pages

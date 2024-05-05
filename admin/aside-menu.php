@@ -55,10 +55,14 @@ if (!isset($_SESSION['user-logged-email'])) {
                 <?php if ($_SESSION['user-logged-role'] == "club-manager") : ?>
 
 
-                    <li class="menu-item">
-                        <a class="menu-link" href="page-wishes-list.php"> <i class="icon material-icons md-swap_vert"></i>
+                    <li class="menu-item has-submenu">
+                        <a class="menu-link" href="#"> <i class="icon material-icons md-swap_vert"></i>
                             <span class="text">Exchange Request</span>
                         </a>
+                        <div class="submenu">
+                            <a href="page-exchange-request.php">Exchange request list</a>
+                            <a href="page-manage-exchange-request.php">Manage exchange request</a>
+                        </div>
                     </li>
                     <li class="menu-item has-submenu">
                         <a class="menu-link" href="#"> <i class="icon material-icons md-inbox"></i>

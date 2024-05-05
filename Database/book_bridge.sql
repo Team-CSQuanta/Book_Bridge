@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 03, 2024 at 05:15 PM
+-- Host: localhost
+-- Generation Time: May 05, 2024 at 01:41 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -68,7 +68,7 @@ CREATE TABLE `bibliophile_club` (
 
 INSERT INTO `bibliophile_club` (`club_id`, `club_name`, `address_line`, `district`, `club_manager_id`, `club_description`, `club_img`) VALUES
 (1, 'Gazipur Book Club', 'Mouchak Bazar, Kalikair', 'Gazipur', NULL, '\r\nA book club is a gathering of individuals who come together to discuss and engage with literature. Typically, members of a book club read the same book over a set period of time and then meet to discuss their thoughts, opinions, and insights about the book. Book clubs can be organized by friends, family, colleagues, or hosted by libraries, community centers, or online platforms.', 'CLUB-IMG-Defualt.jpg'),
-(2, 'Dhaka Bibliophile Club', 'United City, Madani Avenue, Vatara', 'Dhaka', NULL, 'The Dhaka Book Club offers a vibrant community for book lovers in Dhaka, Bangladesh. With a focus on fostering a love for reading and intellectual engagement, our club organizes regular meetings, discussions, and events centered around diverse literary works. Join us to explore new books, exchange ideas, and connect with fellow book enthusiasts in Dhaka.', 'CLUB-IMG-Defualt.jpg'),
+(2, 'Dhaka Bibliophile Club', 'United City, Madani Avenue, Vatara', 'Dhaka', 2, 'The Dhaka Book Club offers a vibrant community for book lovers in Dhaka, Bangladesh. With a focus on fostering a love for reading and intellectual engagement, our club organizes regular meetings, discussions, and events centered around diverse literary works. Join us to explore new books, exchange ideas, and connect with fellow book enthusiasts in Dhaka.', 'CLUB-IMG-Defualt.jpg'),
 (4, 'Tangail Book Club', '123 ABC Road, Tangail West Akur Takur, Tangail Sadar', 'Tangail', NULL, 'The Tangail Book Club is a dynamic hub for bibliophiles and literary enthusiasts located in the heart of Tangail. Our club is dedicated to cultivating a vibrant reading culture and fostering intellectual engagement among members of all ages and backgrounds.', 'CLUB-IMG-662b44546f6443.90704513.jpeg'),
 (5, 'Munshiganj Book Club', 'Street: 17/A, Gobindapur Road', 'Munshiganj', NULL, '&#13;&#10;The Munshiganj Book Club is a vibrant community of book enthusiasts dedicated to promoting a love for literature and intellectual exchange. Located in the heart of Munshiganj, Bangladesh, this club provides a platform for avid readers to come together, discuss literary works, share insights, and engage in meaningful conversations.', 'CLUB-IMG-662b451f49f516.61951131.jpg');
 
@@ -107,7 +107,7 @@ INSERT INTO `bibliophile_club_admin` (`club_admin_id`, `email`, `phone_number`, 
 --
 
 CREATE TABLE `bibliophile_club_membership` (
-  `membership_id` int(20) NOT NULL,
+  `membership_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `club_id` int(11) NOT NULL,
   `membership_date` date DEFAULT curdate()
@@ -158,11 +158,6 @@ INSERT INTO `book` (`book_id`, `isbn`, `title`, `authors`, `categoryID`, `editio
 (8, '978-0-345-47650-3', 'The Firm', 'John Grisham', 'CAT-MYS-009', 'Reprint Edition', 501, 'English', 'A legal thriller novel about a young attorney who becomes embroiled in a dangerous conspiracy at a prestigious law firm.', 'Doubleday', '1991-03-01', 'default_cover.png', NULL),
 (9, '978-1-4197-3903-1', 'The Hate U Give', 'Angie Thomas', 'CAT-THR-004', 'Reprint Edition', 464, 'English', 'A young adult novel inspired by the Black Lives Matter movement, following the aftermath of a police shooting.', 'Balzer + Bray', '2017-02-28', 'default_cover.png', NULL),
 (10, '978-0-553-57340-2', 'The Secret History', 'Donna Tartt', 'CAT-MYS-009', 'Reprint Edition', 559, 'English', 'A mystery novel centered around a group of elite college students who become involved in a murder.', 'Alfred A. Knopf', '1992-09-05', 'default_cover.png', NULL),
-(11, '9780143034902', 'Freakonomics: A Rogue Economist Explores the Hidden Side of Everything', 'Steven D. Levitt, Stephen J. Dubner', 'CAT-BIO-005', 'Revised and Expanded Edition', 336, 'English', 'A non-fiction book that combines economics with pop culture, offering insights into various societal phenomena.', 'William Morrow', '2005-05-01', 'default_cover.png', NULL),
-(12, '9780140449235', 'The Picture of Dorian Gray', 'Oscar Wilde', 'CAT-HIS-001', 'Revised Edition', 253, 'English', 'A philosophical novel about a man who remains youthful while his portrait ages, exploring themes of beauty, morality, and the pursuit of pleasure.', 'Penguin Classics', '1890-07-01', 'default_cover.png', NULL),
-(13, '978-1-846-14276-7', 'To Kill a Mockingbird', 'Harper Lee', 'CAT-MEM-007', 'Reprint Edition', 336, 'English', 'A classic novel set in the American South during the 1930s, addressing racial injustice and moral growth through the eyes of a young girl.', 'HarperCollins Publishers', '1960-07-11', 'default_cover.png', NULL),
-(14, '9780143118756', 'Eat, Pray, Love', 'Elizabeth Gilbert', 'CAT-MEM-007', '10th Anniversary Edition', 400, 'English', 'A memoir chronicling the author\'s journey of self-discovery through travel, spirituality, and relationships.', 'Penguin Books', '2006-01-30', 'default_cover.png', NULL),
-(15, '9780679410430', 'The Catcher in the Rye', 'J.D. Salinger', 'CAT-GRA-012', 'Reprint Edition', 277, 'English', 'A classic novel narrated by a troubled teenager, exploring themes of identity, alienation, and the transition to adulthood.', 'Little, Brown and Company', '1951-07-16', 'default_cover.png', NULL),
 (102, '9781119015260', 'Fundamental of Calculus', 'Carla C. Morris, Robert M. Stark', 'CAT-ACA-010', 'N/A', 368, 'English', 'Features the techniques, methods, and applications of calculus using real-world examples from business and economics as well as the life and social sciences An introduction to differential and integral calculus, Fundamentals of Calculus presents key topics suited for a variety of readers in fields ranging from entrepreneurship and economics to environmental and social sciences. Practical examples from a variety of subject areas are featured throughout each chapter and step-by-step explanations for the solutions are presented. Specific techniques are also applied to highlight important information in each section, including symbols interspersed throughout to further reader comprehension. In addition, the book illustrates the elements of finite calculus with the varied formulas for power, quotient, and product rules that correlate markedly with traditional calculus. Featuring calculus as the “mathematics of change,” each chapter concludes with a historical notes section. Fundamentals of Calculus chapter coverage includes: Linear Equations and Functions The Derivative Using the Derivative Exponents and Logarithms Differentiation Techniques Integral Calculus Integrations Techniques Functions of Several Variables Series and Summations Applications to Probability Supplemented with online instructional support materials, Fundamentals of Calculus is an ideal textbook for undergraduate students majoring in business, economics, biology, chemistry, and environmental science.', 'John Wiley & Sons', '2015-08-10', '', ''),
 (103, '9781317583660', 'Colloquial Bengali (eBook And MP3 Pack)', 'Mithun B. Nasrin, W.A.M van der Wurff', 'CAT-ACA-010', 'N/A', 289, 'English', 'First published in 2004. Routledge is an imprint of Taylor & Francis, an informa company.', 'Routledge', '2014-10-14', 'uploadedBooks/663241398d47d6.30774829_book-9.png', 'uploadedBooks/663241398d8ee9.31754898_book-10 (1).png,uploadedBooks/663241398dbc91.89594408_book-1 (1).png'),
 (104, '8173711461', 'Wings of Fire', 'Avul Pakir Jainulabdeen Abdul Kalam, Arun Tiwari', 'CAT-ACA-010', 'N/A', 228, 'English', 'Avul Pakir Jainulabdeen Abdul Kalam, The Son Of A Little-Educated Boat-Owner In Rameswaram, Tamil Nadu, Had An Unparalled Career As A Defence Scientist, Culminating In The Highest Civilian Award Of India, The Bharat Ratna. As Chief Of The Country`S Defence Research And Development Programme, Kalam Demonstrated The Great Potential For Dynamism And Innovation That Existed In Seemingly Moribund Research Establishments. This Is The Story Of Kalam`S Rise From Obscurity And His Personal And Professional Struggles, As Well As The Story Of Agni, Prithvi, Akash, Trishul And Nag--Missiles That Have Become Household Names In India And That Have Raised The Nation To The Level Of A Missile Power Of International Reckoning.', 'Universities Press', '0000-00-00', 'uploadedBooks/663244ebdcf894.75795716_book-8.png', 'uploadedBooks/663244ebdd41c2.11878679_book-5 (1).png,uploadedBooks/663244ebdd7913.97885658_book-10 (1).png,uploadedBooks/663244ebde1ed8.80129238_book-1 (1).png');
@@ -207,30 +202,49 @@ CREATE TABLE `contribution_request` (
   `request_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `book_id` int(11) DEFAULT NULL,
-  `status` varchar(50) DEFAULT NULL CHECK (`status` in ('pending','user is requested to send','received by the club member','quality checking of the book','published')),
+  `status` varchar(50) DEFAULT NULL CHECK (`status` in ('Pending','Processing','Requested to courier','Received the book','QC in progress','Published')),
   `date_of_request` date DEFAULT curdate(),
-  `date_of_received` date DEFAULT NULL,
   `book_received_date` date DEFAULT NULL,
-  `published_date` date DEFAULT NULL
+  `published_date` date DEFAULT NULL,
+  `processed_by` int(11) DEFAULT NULL,
+  `processed_user_role` varchar(50) DEFAULT NULL,
+  `notes` varchar(500) DEFAULT 'No notes'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `contribution_request`
 --
 
-INSERT INTO `contribution_request` (`request_id`, `user_id`, `book_id`, `status`, `date_of_request`, `date_of_received`, `book_received_date`, `published_date`) VALUES
-(1, 1, 5, 'pending', '2024-04-09', '2024-04-10', '2024-04-16', '2024-04-23'),
-(2, 2, 4, 'pending', '2024-04-09', '2024-04-10', '2024-04-16', '2024-04-23'),
-(6, 13, 5, 'published', '2024-05-28', NULL, NULL, NULL),
-(7, 13, 6, 'published', '2024-05-28', NULL, NULL, NULL),
-(9, 13, 10, 'published', '0000-00-00', NULL, NULL, NULL),
-(56, 13, 3, 'published', '0000-00-00', NULL, NULL, NULL),
-(67, 13, 8, 'published', '0000-00-00', NULL, NULL, NULL),
-(69, 13, 9, 'published', '0000-00-00', NULL, NULL, NULL),
-(100, 13, 4, 'published', '0000-00-00', NULL, NULL, NULL),
-(101, 13, 102, 'published', '2024-05-01', NULL, NULL, NULL),
-(102, 13, 103, 'published', '2024-05-01', NULL, NULL, NULL),
-(103, 13, 104, 'pending', '2024-05-01', NULL, NULL, NULL);
+INSERT INTO `contribution_request` (`request_id`, `user_id`, `book_id`, `status`, `date_of_request`, `book_received_date`, `published_date`, `processed_by`, `processed_user_role`, `notes`) VALUES
+(1, 1, 5, 'Processing', '2024-04-09', '2024-04-16', '2024-04-23', 2, 'moderator', 'Request id 1'),
+(2, 2, 4, 'Processing', '2024-04-09', '2024-04-16', '2024-04-23', 2, 'moderator', ''),
+(6, 13, 5, 'Published', '2024-05-28', NULL, NULL, NULL, NULL, ''),
+(7, 13, 6, 'Published', '2024-05-28', NULL, NULL, NULL, NULL, ''),
+(9, 13, 10, 'Published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(56, 13, 3, 'Published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(67, 13, 8, 'Published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(69, 13, 9, 'Published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(100, 13, 4, 'Published', '0000-00-00', NULL, NULL, NULL, NULL, ''),
+(101, 13, 102, 'Published', '2024-05-01', NULL, NULL, NULL, NULL, ''),
+(102, 13, 103, 'Published', '2024-05-01', NULL, NULL, NULL, NULL, ''),
+(103, 13, 104, 'Published', '2024-05-01', NULL, NULL, 2, NULL, 'dfasfsadfs');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exchange_request`
+--
+
+CREATE TABLE `exchange_request` (
+  `exchange_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `book_id` int(11) DEFAULT NULL,
+  `date_of_request` timestamp NOT NULL DEFAULT current_timestamp(),
+  `date_of_delivery` timestamp NULL DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL CHECK (`status` in ('Pending','Processing','Delivered')),
+  `notes` text DEFAULT NULL,
+  `processed_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -254,25 +268,11 @@ CREATE TABLE `global_book_collection` (
 --
 
 INSERT INTO `global_book_collection` (`collection_id`, `book_id`, `owner_id`, `book_condition`, `availability_status`, `club_id`, `club_member_id`, `date_added`) VALUES
-(2, 2, 2, 'good', 'no', 2, 2, '2024-04-27'),
+(2, 2, 2, 'good', 'yes', 2, 2, '2024-04-27'),
 (3, 3, 6, 'acceptable', 'yes', 4, 3, '2024-04-27'),
 (5, 5, 8, 'good', 'no', 1, 2, '2024-04-27'),
 (6, 6, 9, 'acceptable', 'yes', 2, 3, '2024-04-27'),
-(7, 11, 10, 'good', 'yes', 3, 1, '2024-05-03'),
-(8, 12, 10, 'acceptable', 'yes', 3, 4, '2024-05-03'),
-(9, 13, 10, 'like new', 'yes', 3, 2, '2024-05-03'),
-(10, 14, 12, 'good', 'yes', 1, 5, '2024-05-03'),
-(11, 15, 12, 'acceptable', 'yes', 1, 1, '2024-05-03'),
-(12, 16, 12, 'like new', 'yes', 1, 3, '2024-05-03'),
-(13, 17, 15, 'good', 'yes', 2, 7, '2024-05-03'),
-(14, 18, 15, 'acceptable', 'no', 2, 6, '2024-05-03'),
-(15, 8, 8, 'acceptable', 'yes', 4, 9, '2024-05-03'),
-(16, 9, 8, 'good', 'no', 4, 8, '2024-05-03'),
-(17, 10, 8, 'like new', 'yes', 4, 5, '2024-05-03'),
-(21, 7, 9, 'like new', 'yes', 3, 7, '2024-05-03'),
-(22, 102, 3, 'good', 'yes', 2, 9, '2024-05-03'),
-(23, 103, 3, 'acceptable', 'no', 2, 5, '2024-05-03'),
-(24, 104, 3, 'like new', 'yes', 2, 2, '2024-05-03');
+(7, 104, 13, 'acceptable', 'yes', 2, NULL, '2024-05-03');
 
 -- --------------------------------------------------------
 
@@ -349,6 +349,7 @@ CREATE TABLE `user` (
   `l_name` varchar(255) DEFAULT NULL,
   `reg_date` date DEFAULT current_timestamp(),
   `bio` varchar(500) DEFAULT '',
+  `Password` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `profile_img` varchar(500) DEFAULT 'defualt_profile.jpg',
   `book_wallet` int(11) DEFAULT 0,
   `street_address` varchar(300) DEFAULT NULL,
@@ -359,6 +360,24 @@ CREATE TABLE `user` (
   `verifiedEmail` int(11) NOT NULL DEFAULT 0,
   `token` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `phone_number`, `email`, `f_name`, `l_name`, `reg_date`, `bio`, `Password`, `profile_img`, `book_wallet`, `street_address`, `apartment_num`, `postal_code`, `location_id`, `status`, `verifiedEmail`, `token`) VALUES
+(1, '01715031376', 'sadia@gmail.com', 'Sadia Islam', 'Ema', '2024-04-15', '', '123', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active', 0, ''),
+(2, '01715031420', 'rakib@gmail.com', 'Rakibul Islam', 'Rakib', '2024-04-15', '', '456', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active', 0, ''),
+(6, '01795031420', 'motasim@gmail.com', 'Motasim Billah', '', '2024-04-15', '', '23', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active', 0, ''),
+(7, '017153431420', 'sakib@gmail.com', 'Sakibul Islam', 'Rakib', '2024-04-15', '', '67', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Inactive', 0, ''),
+(8, '01715031820', 'somik@gmail.com', 'Somik hasan', 'oikko', '2024-04-15', '', '34', 'defualt_profile.jpg', 0, 'Street Address', 'apartment number', '1751', 1, 'Active', 0, ''),
+(9, '01836923942', 'Tanvir@gmail.com', 'Tanvir', 'Ahmend', '2024-04-15', 'This is a bio for tanvir ahmed', '566', 'defualt_profile.jpg', 0, 'Kawran Bazar', 'Apt-33', '2143', 2, 'Active', 0, ''),
+(13, '01906901852', 'jubairahmed13260@gmail.com', 'Jubair ', 'Ahmed', '2024-04-30', 'Hello', '$2y$10$KwTlk5qHCO26ZIDbftCPKudnwUyjCoyMZYplEmneP5ifWSbabrhJC', '66333db634d940.49234976_profileimg.jpg', 10, 'Jagannathpur', '26', '1229', 1, 'Active', 0, ''),
+(17, '01797030757', 'jubair010ahmed@gmail.com', 'Shibly', 'Purification', '2024-05-01', 'hi', '$2y$10$JupUOJI6qjI7Fjq9dZu3Yeu6onrv9VS3yA4ANIx9wmsh.K.4A0jVq', 'defualt_profile.jpg', 0, 'Jagannathpur', '67', '1229', NULL, 'Active', 0, ''),
+(19, '0190690185267', 'jubairahmed13260', 'AB', 'C', '2024-05-01', 'gg', '$2y$10$0OdSmbGIRRlIa.R9JphYieRnxP6gGM/PUdl.wYUdXGn/7baCMODXO', 'defualt_profile.jpg', 0, 'Jagannathpur,Shahid Abdul Aziz Sarak,vatara', '5564', '1229', NULL, 'Active', 0, ''),
+(20, '4567890', 'abcs@gmail.com', 'DFG', 'FGH', '2024-05-01', 'we', '$2y$10$66a.NHL6OrhPAQ2A5ZQJY.G42Yf/DevofoyKKkwOw/4ODhhvTlcQG', 'defualt_profile.jpg', 0, '2', '3', '234', NULL, 'Active', 0, ''),
+(24, '456789034567890', 'fwefwe', 'Arman ', 'Ali', '2024-05-02', '567', '$2y$10$p4EO/zPgBNN3j6jMgcZB3OIuA/SBpea2f2F6Q6iPbZZfybn6QmHdy', '66333db634d940.49234976_profileimg.jpg', 0, 'Jagannathpur', '78', '1229', NULL, 'Active', 0, ''),
+(25, '546789098976543256', '1tqudihdk', 'Rehman', 'Subhan', '2024-05-02', 'wseddf', '$2y$10$.NzSIHSlyLdjMLGZkS0.j.QwKjjlKGxYLQpbzoNXI1pdS9288zwc6', '66333db634d940.49234976_profileimg.jpg', 0, 'Jagannathpur', '44', '1229', NULL, 'Active', 0, '');
 
 -- --------------------------------------------------------
 
@@ -381,6 +400,37 @@ INSERT INTO `users_wishes` (`user_id`, `book_wishes_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user_activity`
+--
+
+CREATE TABLE `user_activity` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `activity_description` text DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_activity`
+--
+
+INSERT INTO `user_activity` (`id`, `user_id`, `activity_description`, `timestamp`) VALUES
+(1, 13, 'User logged in', '2024-05-02 14:28:06'),
+(2, 13, 'User logged in', '2024-05-02 14:31:04'),
+(3, 13, 'User logged in', '2024-05-02 14:55:35'),
+(4, 13, 'User logged out', '2024-05-02 14:58:51'),
+(5, 13, 'User logged in', '2024-05-02 14:59:14'),
+(6, 13, 'User logged out', '2024-05-02 14:59:36'),
+(7, 13, 'User logged in', '2024-05-02 14:59:46'),
+(8, 13, 'User logged out', '2024-05-02 14:59:53'),
+(9, 13, 'User logged in', '2024-05-02 15:00:01'),
+(10, 13, 'User logged out', '2024-05-02 15:00:08'),
+(11, 13, 'User logged in', '2024-05-02 15:00:15'),
+(12, 13, 'User logged out', '2024-05-02 16:07:55');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `wishes_list`
 --
 
@@ -396,7 +446,6 @@ CREATE TABLE `wishes_list` (
 
 INSERT INTO `wishes_list` (`book_wishes_id`, `book_id`, `date_added`) VALUES
 (1, 2, '2024-04-29 02:52:45'),
-(3, 4, '2024-04-29 02:52:45'),
 (4, 5, '2024-04-29 02:52:45'),
 (6, 7, '2024-04-29 03:36:14');
 
@@ -460,6 +509,15 @@ ALTER TABLE `contribution_request`
   ADD KEY `book_id` (`book_id`);
 
 --
+-- Indexes for table `exchange_request`
+--
+ALTER TABLE `exchange_request`
+  ADD PRIMARY KEY (`exchange_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `book_id` (`book_id`),
+  ADD KEY `processed_by` (`processed_by`);
+
+--
 -- Indexes for table `global_book_collection`
 --
 ALTER TABLE `global_book_collection`
@@ -502,6 +560,13 @@ ALTER TABLE `users_wishes`
   ADD KEY `book_wishes_id` (`book_wishes_id`);
 
 --
+-- Indexes for table `user_activity`
+--
+ALTER TABLE `user_activity`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `wishes_list`
 --
 ALTER TABLE `wishes_list`
@@ -534,13 +599,136 @@ ALTER TABLE `bibliophile_club_admin`
 -- AUTO_INCREMENT for table `bibliophile_club_membership`
 --
 ALTER TABLE `bibliophile_club_membership`
-  MODIFY `membership_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `membership_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
   MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+
+--
+-- AUTO_INCREMENT for table `contribution_request`
+--
+ALTER TABLE `contribution_request`
+  MODIFY `request_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+
+--
+-- AUTO_INCREMENT for table `exchange_request`
+--
+ALTER TABLE `exchange_request`
+  MODIFY `exchange_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `global_book_collection`
+--
+ALTER TABLE `global_book_collection`
+  MODIFY `collection_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `location_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `review`
+--
+ALTER TABLE `review`
+  MODIFY `ReviewID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `wishes_list`
+--
+ALTER TABLE `wishes_list`
+  MODIFY `book_wishes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `fk_location_id` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`);
+
+--
+-- Constraints for table `bibliophile_club`
+--
+ALTER TABLE `bibliophile_club`
+  ADD CONSTRAINT `fk_bibliopile_club_district` FOREIGN KEY (`district`) REFERENCES `location` (`district`),
+  ADD CONSTRAINT `fk_club_admin_id` FOREIGN KEY (`club_manager_id`) REFERENCES `bibliophile_club_admin` (`club_admin_id`);
+
+--
+-- Constraints for table `bibliophile_club_admin`
+--
+ALTER TABLE `bibliophile_club_admin`
+  ADD CONSTRAINT `bibliophile_club_admin_ibfk_1` FOREIGN KEY (`club_id`) REFERENCES `bibliophile_club` (`club_id`),
+  ADD CONSTRAINT `bibliophile_club_admin_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`);
+
+--
+-- Constraints for table `bibliophile_club_membership`
+--
+ALTER TABLE `bibliophile_club_membership`
+  ADD CONSTRAINT `bibliophile_club_membership_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `book`
+--
+ALTER TABLE `book`
+  ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`categoryID`) REFERENCES `category` (`categoryID`);
+
+--
+-- Constraints for table `contribution_request`
+--
+ALTER TABLE `contribution_request`
+  ADD CONSTRAINT `contribution_request_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `contribution_request_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`);
+
+--
+-- Constraints for table `exchange_request`
+--
+ALTER TABLE `exchange_request`
+  ADD CONSTRAINT `exchange_request_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `exchange_request_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
+  ADD CONSTRAINT `exchange_request_ibfk_3` FOREIGN KEY (`processed_by`) REFERENCES `bibliophile_club_admin` (`club_admin_id`),
+  ADD CONSTRAINT `exchange_request_ibfk_4` FOREIGN KEY (`processed_by`) REFERENCES `bibliophile_club_membership` (`membership_id`);
+
+--
+-- Constraints for table `global_book_collection`
+--
+ALTER TABLE `global_book_collection`
+  ADD CONSTRAINT `fk_membership_id` FOREIGN KEY (`club_member_id`) REFERENCES `bibliophile_club_membership` (`membership_id`),
+  ADD CONSTRAINT `global_book_collection_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
+  ADD CONSTRAINT `global_book_collection_ibfk_2` FOREIGN KEY (`owner_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `global_book_collection_ibfk_3` FOREIGN KEY (`club_id`) REFERENCES `bibliophile_club` (`club_id`),
+  ADD CONSTRAINT `global_book_collection_ibfk_4` FOREIGN KEY (`club_member_id`) REFERENCES `bibliophile_club_membership` (`membership_id`);
+
+--
+-- Constraints for table `users_wishes`
+--
+ALTER TABLE `users_wishes`
+  ADD CONSTRAINT `users_wishes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+  ADD CONSTRAINT `users_wishes_ibfk_2` FOREIGN KEY (`book_wishes_id`) REFERENCES `wishes_list` (`book_wishes_id`);
+
+--
+-- Constraints for table `user_activity`
+--
+ALTER TABLE `user_activity`
+  ADD CONSTRAINT `user_activity_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- Constraints for table `wishes_list`
+--
+ALTER TABLE `wishes_list`
+  ADD CONSTRAINT `wishes_list_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

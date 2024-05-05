@@ -3,27 +3,28 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require './aside-menu.php';
 
+
 // Pagination parameters
 $limit = 8;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $start = ($page - 1) * $limit;
 
 
-$search = isset($_GET['search-accepted-contribution-request']) ? $connection->real_escape_string($_GET['search-accepted-contribution-request']) : '';
+$search = isset($_GET['search-contribution-request']) ? $connection->real_escape_string($_GET['search-contribution-request']) : '';
 
 
 $contribution_fetch = "SELECT cr.*, u.*, cr.status AS cr_status
                FROM contribution_request AS cr 
                JOIN user AS u ON cr.user_id = u.user_id
-               WHERE cr.status != 'Pending' AND cr.status != 'Published' AND cr.processed_by = {$_SESSION['user-logged-id']} ";
+               WHERE cr.status = 'pending' AND cr.processed_by IS NULL AND  u.location_id = {$_SESSION['user-location-id']} ";
 
 
 if (!empty($search)) {
     $searchCondition = "%" . $search . "%";
-    $contribution_fetch .= " AND (u.f_name LIKE '$searchCondition' OR u.l_name LIKE '$searchCondition' OR u.email LIKE '$searchCondition')  ";
+    $contribution_fetch .= " AND (u.f_name LIKE '$searchCondition' OR u.l_name LIKE '$searchCondition' OR u.email LIKE '$searchCondition')";
 }
 
-$contribution_fetch .= " ORDER BY FIELD(cr.status, 'Processing', 'Requested to courier', 'Received the book', 'QC in progress') LIMIT $start, $limit";
+$contribution_fetch .= " ORDER BY cr.date_of_request DESC LIMIT $start, $limit";
 
 
 $contribution_fetch_result = $connection->query($contribution_fetch);
@@ -35,7 +36,7 @@ if (!$contribution_fetch_result) {
 $total_records_query = "SELECT COUNT(*) AS total 
                         FROM contribution_request AS cr 
                         JOIN user AS u ON cr.user_id = u.user_id
-                        WHERE cr.status != 'Pending' AND cr.status != 'Published' AND cr.processed_by = {$_SESSION['user-logged-id']} ";
+                        WHERE cr.status = 'pending' AND cr.processed_by IS NULL AND  u.location_id = {$_SESSION['user-location-id']} ";
 
 
 
@@ -55,18 +56,50 @@ $total_records = $total_records_row['total'];
 
 
 $total_pages = ceil($total_records / $limit);
+
+
+// $requester_email = "";
+// // Retrieve requester's email
+// $query_requester_email = "SELECT user.email
+//                           FROM user
+//                           JOIN contribution_request ON user.user_id = contribution_request.user_id
+//                           WHERE contribution_request.request_id = '$request_id'";
+// $query_requester_result = $connection->query($query_requester_email);
+// if ($query_requester_result) {
+//     $requester_row = $query_requester_result->fetch_assoc();
+//     $requester_email = $requester_row['email'];
+    
+// }
+
+if (isset($_GET['request_id'])) {
+    $request_id = filter_input(INPUT_GET, 'request_id', FILTER_SANITIZE_NUMBER_INT);
+    $query_for_update = "UPDATE contribution_request
+                        set processed_by = {$_SESSION['user-logged-id']} , processed_user_role = 'moderator', status = 'Processing'
+                        WHERE request_id = {$request_id}";
+    // Execute the query
+    if ($connection->query($query_for_update) === TRUE) {
+        //  handleStatusChange( $requester_email , 'Processing');
+        echo "<script>window.location.href = 'http://localhost/Book_Bridge/admin/page-contribution-request.php';</script>";
+        exit();
+        echo "Record updated successfully";
+    } else {
+        echo "Error updating record: " . $connection->error;
+    }
+}
+
+
 ?>
 
 <section class="content-main">
     <div class="content-header">
-        <h2 class="content-title">Manage Contribution Request</h2>
+        <h2 class="content-title">Contribution Request list</h2>
     </div>
     <div class="card mb-4">
         <header class="card-header">
             <div class="row gx-3">
                 <div class="col-lg-4 col-md-6 me-auto">
                     <form action="">
-                        <input type="text" placeholder="Search..." class="form-control" name="search-accepted-contribution-request" value="<?= isset($search) ? $search : '' ?>">
+                        <input type="text" placeholder="Search..." class="form-control" name="search-contribution-request" value="<?= isset($search) ? $search : '' ?>">
                     </form>
                 </div>
             </div>
@@ -112,11 +145,11 @@ $total_pages = ceil($total_records / $limit);
                                     }
                                     ?>
                                 </td>
-                                <td><?=$contribution['date_of_request'] ?></td>
+                                <td><?= $contribution['date_of_request'] ?></td>
 
                                 <td><span class="badge rounded-pill alert-danger"><?= $contribution['cr_status'] ?></span></td>
                                 <td class="text-end">
-                                    <a href="page-manage-contribution-request-detail.php?request_id=<?= $contribution['request_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">View Details</a>
+                                    <a href="?request_id=<?= $contribution['request_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">Accept</a>
                                 </td>
                             </tr>
                         <?php endwhile ?>
