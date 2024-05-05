@@ -2,7 +2,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php'; // Include PHPMailer autoloader
+require __DIR__ . '/../../vendor/autoload.php';
 
 session_start();
 
@@ -71,4 +71,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
 }
-?>
