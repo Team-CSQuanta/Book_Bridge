@@ -9,33 +9,33 @@ $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $start = ($page - 1) * $limit;
 
 
-$search = isset($_GET['search-accepted-contribution-request']) ? $connection->real_escape_string($_GET['search-accepted-contribution-request']) : '';
+$search = isset($_GET['search-accepted-exchange-request']) ? $connection->real_escape_string($_GET['search-accepted-exchange-request']) : '';
 
 
-$contribution_fetch = "SELECT cr.*, u.*, cr.status AS cr_status
-               FROM contribution_request AS cr 
-               JOIN user AS u ON cr.user_id = u.user_id
-               WHERE cr.status != 'Pending' AND cr.status != 'Published' AND cr.processed_by = {$_SESSION['user-logged-id']} ";
+$exchange_fetch = "SELECT er.*, u.*, er.status AS er_status
+               FROM exchange_request AS er 
+               JOIN user AS u ON er.user_id = u.user_id
+               WHERE er.status != 'Pending' AND er.status != 'Published' AND er.processed_by = {$_SESSION['user-logged-id']} ";
 
 
 if (!empty($search)) {
     $searchCondition = "%" . $search . "%";
-    $contribution_fetch .= " AND (u.f_name LIKE '$searchCondition' OR u.l_name LIKE '$searchCondition' OR u.email LIKE '$searchCondition')  ";
+    $exchange_fetch .= " AND (u.f_name LIKE '$searchCondition' OR u.l_name LIKE '$searchCondition' OR u.email LIKE '$searchCondition')  ";
 }
 
-$contribution_fetch .= " ORDER BY FIELD(cr.status, 'Processing', 'Requested to courier', 'Received the book', 'QC in progress') LIMIT $start, $limit";
+$exchange_fetch .= " ORDER BY FIELD(er.status, 'Processing', 'Requested to courier', 'Received the book', 'QC in progress') LIMIT $start, $limit";
 
 
-$contribution_fetch_result = $connection->query($contribution_fetch);
-if (!$contribution_fetch_result) {
+$exchange_fetch_result = $connection->query($exchange_fetch);
+if (!$exchange_fetch_result) {
     die("Error executing query: " . $connection->error);
 }
 
 
 $total_records_query = "SELECT COUNT(*) AS total 
-                        FROM contribution_request AS cr 
-                        JOIN user AS u ON cr.user_id = u.user_id
-                        WHERE cr.status != 'Pending' AND cr.status != 'Published' AND cr.processed_by = {$_SESSION['user-logged-id']} ";
+               FROM exchange_request AS er 
+               JOIN user AS u ON er.user_id = u.user_id
+               WHERE er.status != 'Pending' AND er.status != 'Published' AND er.processed_by = {$_SESSION['user-logged-id']} ";
 
 
 
@@ -59,7 +59,7 @@ $total_pages = ceil($total_records / $limit);
 
 <section class="content-main">
     <div class="content-header">
-        <h2 class="content-title">Manage Contribution Request</h2>
+        <h2 class="content-title">Manage exchange Request</h2>
     </div>
     <div class="card mb-4">
         <header class="card-header">
@@ -76,7 +76,7 @@ $total_pages = ceil($total_records / $limit);
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Request ID</th>
+                            <th>Exchange ID</th>
                             <th>Requested User</th>
                             <th>Email</th>
                             <th>Address</th>
@@ -86,9 +86,9 @@ $total_pages = ceil($total_records / $limit);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php while ($contribution = $contribution_fetch_result->fetch_assoc()) : ?>
+                        <?php while ($contribution = $exchange_fetch_result->fetch_assoc()) : ?>
                             <tr>
-                                <td><?= $contribution['request_id'] ?></td>
+                                <td><?= $contribution['exchange_id'] ?></td>
                                 <td><?= $contribution['f_name'] . $contribution['l_name'] ?></td>
                                 <td><?= $contribution['email'] ?></td>
                                 <td>
@@ -114,9 +114,9 @@ $total_pages = ceil($total_records / $limit);
                                 </td>
                                 <td><?=$contribution['date_of_request'] ?></td>
 
-                                <td><span class="badge rounded-pill alert-danger"><?= $contribution['cr_status'] ?></span></td>
+                                <td><span class="badge rounded-pill alert-danger"><?= $contribution['er_status'] ?></span></td>
                                 <td class="text-end">
-                                    <a href="page-manage-contribution-request-detail.php?request_id=<?= $contribution['request_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">View Details</a>
+                                    <a href="page-manage-exchange-request-detail.php?exchange_id=<?= $contribution['exchange_id'] ?>" class="btn btn-sm btn-brand rounded font-sm mt-15">View Details</a>
                                 </td>
                             </tr>
                         <?php endwhile ?>

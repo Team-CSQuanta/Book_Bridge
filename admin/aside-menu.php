@@ -73,7 +73,7 @@ if (!isset($_SESSION['user-logged-email'])) {
                             <a href="page-manage-contribution-request.php">Manage contribution request</a>
                         </div>
                     </li>
-                    <li class="menu-item has-submenu">
+                    <!-- <li class="menu-item has-submenu">
                         <a class="menu-link" href="page-orders-1.php"> <i class="icon material-icons md-swap_calls"></i>
                             <span class="text">On going exchange</span>
                         </a>
@@ -84,7 +84,7 @@ if (!isset($_SESSION['user-logged-email'])) {
                             <a href="page-orders-tracking.php">Order tracking</a>
                             <a href="page-invoice.php">Invoice</a>
                         </div>
-                    </li>
+                    </li> -->
                     <li class="menu-item">
                         <a class="menu-link" href="page-wishes-list.php"> <i class="icon material-icons md-person_add"></i>
                             <span class="text">Member Application</span>

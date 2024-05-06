@@ -1,9 +1,9 @@
 <?php
 require './aside-menu.php';
-$request_id = filter_input(INPUT_GET, 'request_id', FILTER_SANITIZE_SPECIAL_CHARS);
+$exchange_id = filter_input(INPUT_GET, 'exchange_id', FILTER_SANITIZE_SPECIAL_CHARS);
 $query = "SELECT *
-          FROM contribution_request
-          WHERE request_id = '$request_id'";
+          FROM exchange_request
+          WHERE exchange_id = '$exchange_id'";
 $query_execute = $connection->query($query);
 $query_result = $query_execute->fetch_assoc();
 
@@ -17,7 +17,7 @@ $book_info = $query_book_result->fetch_assoc();
 <section class="content-main">
     <div class="content-header">
         <div>
-            <h2 class="content-title card-title">Contribution Request Detail</h2>
+            <h2 class="content-title card-title">Exchange Request Detail</h2>
             <?php if (isset($_GET['error'])) : ?>
                 <div class="d-grid gap-3 mb-4" style="  font-size: 14px;font-weight: 500;padding: 10px 40px;color: #ffffff;border: none;background-color: #FF0000;border-radius: 4px;">
                     <p style="text-align: center">Select book condition</p>
@@ -33,7 +33,7 @@ $book_info = $query_book_result->fetch_assoc();
                         <span>
                             <i class="material-icons md-calendar_today"></i> <b>Requested Date: <?= $query_result['date_of_request'] ?></b>
                         </span> <br>
-                        <small class="text-muted">Request ID: <?= $query_result['request_id'] ?></small>
+                        <small class="text-muted">Request ID: <?= $query_result['exchange_id'] ?></small>
                     </div>
                     <div class="col-lg-6 col-md-6 ms-auto text-md-end">
 
@@ -46,7 +46,7 @@ $book_info = $query_book_result->fetch_assoc();
                             <option <?= $query_result['status'] == 'Published' ? 'selected' : '' ?>>Published</option>
                         </select>
 
-                        <input type="hidden" name="request_id" value="<?= $request_id ?>">
+                        <input type="hidden" name="exchange_id" value="<?= $exchange_id ?>">
                         <button class="btn btn-primary" name="add-moderator">Save</button>
                     </div>
                 </div>
