@@ -112,7 +112,7 @@
                                     <li><a class="active" href="index.php">Home</a>
                                     </li>
 
-                                    <li><a href="shop-grid-right.php">Offers</i></a>
+                                    <li><a href="shop-filter.php">Offers</i></a>
                                     </li>
                                     <li><a href="shop-grid-right.php">Wishes</i></a>
                                     </li>

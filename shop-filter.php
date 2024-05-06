@@ -288,6 +288,15 @@ $total_books = $total_books_row['total'];
 
 <main class="main">
 
+<div class="page-header breadcrumb-wrap">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.php" rel="nofollow">Home</a>
+                    <span></span> Shop
+                </div>
+            </div>
+        </div>
+
 
 
     <section class="mt-50 mb-50">
@@ -354,7 +363,7 @@ $total_books = $total_books_row['total'];
                                             <div class="product-category">
                                                 <a href="shop-grid-right.php"><?php echo $row["categoryName"]; ?></a>
                                             </div>
-                                            <h2><a href="shop-product-full.php"><?php echo $row["title"]; ?></a></h2>
+                                            <h2><a href="shop-product-full.php?book_id=<?php echo $row['book_id']; ?>"><?php echo $row["title"]; ?></a></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -396,7 +405,7 @@ $total_books = $total_books_row['total'];
                             }
                         }
                     } else {
-                        echo "0 results";
+                        echo "";
                     }
                     ?>
                 </div>
