@@ -136,7 +136,7 @@ $total_pages = ceil($total_records / $limit);
                 <?php while ($exchange_offer = $exchange_offers_fetch_result->fetch_assoc()) : ?>
                     <div class="col">
                         <div class="card card-product-grid">
-                            <a href="#" class="img-wrap"> <img src="../uploadedBooks/<?=$exchange_offer['cover_img']?>" alt="Offers"> </a>
+                            <a href="#" class="img-wrap"> <img src="../<?=$exchange_offer['cover_img']?>" alt="Offers"> </a>
                             <div class="info-wrap">
                                 <a href="#" class="title text-truncate"><?=$exchange_offer['title']?></a>
                                 <div class="price mb-2"><?= $exchange_offer['book_condition']?></div> <!-- price.// -->

@@ -19,8 +19,6 @@ if(isset($_SESSION['user-logged-email'])){
     <meta property="og:url" content="">
     <meta property="og:image" content="">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="./admin/assets/imgs/theme/favicon.svg">
-    <!-- Template CSS -->
     <link href="./admin/assets/css/main.css" rel="stylesheet" type="text/css" />
 </head>
 

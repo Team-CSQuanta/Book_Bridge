@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 05, 2024 at 01:41 PM
+-- Host: 127.0.0.1
+-- Generation Time: May 06, 2024 at 01:15 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -405,28 +405,10 @@ INSERT INTO `users_wishes` (`user_id`, `book_wishes_id`) VALUES
 
 CREATE TABLE `user_activity` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
   `activity_description` text DEFAULT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `user_activity`
---
-
-INSERT INTO `user_activity` (`id`, `user_id`, `activity_description`, `timestamp`) VALUES
-(1, 13, 'User logged in', '2024-05-02 14:28:06'),
-(2, 13, 'User logged in', '2024-05-02 14:31:04'),
-(3, 13, 'User logged in', '2024-05-02 14:55:35'),
-(4, 13, 'User logged out', '2024-05-02 14:58:51'),
-(5, 13, 'User logged in', '2024-05-02 14:59:14'),
-(6, 13, 'User logged out', '2024-05-02 14:59:36'),
-(7, 13, 'User logged in', '2024-05-02 14:59:46'),
-(8, 13, 'User logged out', '2024-05-02 14:59:53'),
-(9, 13, 'User logged in', '2024-05-02 15:00:01'),
-(10, 13, 'User logged out', '2024-05-02 15:00:08'),
-(11, 13, 'User logged in', '2024-05-02 15:00:15'),
-(12, 13, 'User logged out', '2024-05-02 16:07:55');
 
 -- --------------------------------------------------------
 
@@ -564,7 +546,7 @@ ALTER TABLE `users_wishes`
 --
 ALTER TABLE `user_activity`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `fk_user_activity_user_id` (`user_id`);
 
 --
 -- Indexes for table `wishes_list`
@@ -642,6 +624,12 @@ ALTER TABLE `review`
 --
 ALTER TABLE `user`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `user_activity`
+--
+ALTER TABLE `user_activity`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `wishes_list`
@@ -722,7 +710,7 @@ ALTER TABLE `users_wishes`
 -- Constraints for table `user_activity`
 --
 ALTER TABLE `user_activity`
-  ADD CONSTRAINT `user_activity_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+  ADD CONSTRAINT `fk_user_activity_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `wishes_list`
