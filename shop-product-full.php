@@ -19,7 +19,7 @@
     <meta property="og:type" content="">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
-    <!-- Favicon -->
+    Favicon
     <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/main.css?v=3.4">
@@ -27,7 +27,7 @@
 
 <body>
     <!-- Quick view -->
-    <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">              
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>       
@@ -37,8 +37,8 @@
                             <div class="detail-gallery">
                                 <span class="zoom-icon"><i class="fi-rs-search"></i></span>
                                 <!-- MAIN SLIDES -->
-                                <div class="product-image-slider">
-                                    <figure class="border-radius-10">
+                                <!-- <div class="product-image-slider"> -->
+                                    <!-- <figure class="border-radius-10">
                                         <img src="assets/imgs/shop/product-16-2.jpg" alt="product image">
                                     </figure>
                                     <figure class="border-radius-10">
@@ -59,9 +59,9 @@
                                     <figure class="border-radius-10">
                                         <img src="assets/imgs/shop/product-16-7.jpg" alt="product image">
                                     </figure>
-                                </div>
+                                </div> -->
                                 <!-- THUMBNAILS -->
-                                <div class="slider-nav-thumbnails pl-15 pr-15">
+                                <!-- <div class="slider-nav-thumbnails pl-15 pr-15">
                                     <div><img src="assets/imgs/shop/thumbnail-3.jpg" alt="product image"></div>
                                     <div><img src="assets/imgs/shop/thumbnail-4.jpg" alt="product image"></div>
                                     <div><img src="assets/imgs/shop/thumbnail-5.jpg" alt="product image"></div>
@@ -69,9 +69,9 @@
                                     <div><img src="assets/imgs/shop/thumbnail-7.jpg" alt="product image"></div>
                                     <div><img src="assets/imgs/shop/thumbnail-8.jpg" alt="product image"></div>
                                     <div><img src="assets/imgs/shop/thumbnail-9.jpg" alt="product image"></div>
-                                </div>
-                            </div>
-                            <!-- End Gallery -->
+                                </div> -->
+                            <!-- </div> -->
+                            <!-- End Gallery
                             <div class="social-icons single-share">
                                 <ul class="text-grey-5 d-inline-block">
                                     <li><strong class="mr-10">Share this:</strong></li>
@@ -81,11 +81,11 @@
                                     <li class="social-linkedin"><a href="#"><img src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> -->
                         
-                        <?php while($row = $all_books->fetch_assoc()) { ?>
+                       
 
-
+<!-- 
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="detail-info">
                                 <h3 class="title-detail mt-30"><?php echo $row['title']; ?></h3>
@@ -153,25 +153,25 @@
                                 </ul>
                             </div>
                             <!-- Detail Info -->
-                        </div>
-                        <?php }  ?>
+                        <!-- </div>
+                     
 
                     </div>
                 </div>        
         </div>
         </div>
-    </div>
+    </div> -->
     <?php
     include 'partials/header.php';
     include  'partials/mobile-header.php'
     ?>
-    <main class="main">
+    <!-- <main class="main">
         <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
                     <a href="index.php" rel="nofollow">Home</a>
-                    <span></span> Fashion
-                    <span></span> Abstract Print Patchwork Dress
+                    <span></span> Description
+                   
                 </div>
             </div>
         </div>
@@ -188,7 +188,7 @@
                                         <div class="product-image-slider">
                                             <figure class="border-radius-10">
                                                 <img src="assets/imgs/shop/product-16-2.jpg" alt="product image">
-                                            </figure>
+                                            </figure> -->
                                             <figure class="border-radius-10">
                                                 <img src="assets/imgs/shop/product-16-1.jpg" alt="product image">
                                             </figure>
@@ -213,7 +213,7 @@
                                             <div><img src="assets/imgs/shop/thumbnail-3.jpg" alt="product image"></div>
                                             <div><img src="assets/imgs/shop/thumbnail-4.jpg" alt="product image"></div>
                                             <div><img src="assets/imgs/shop/thumbnail-5.jpg" alt="product image"></div>
-                                            <div><img src="assets/imgs/shop/thumbnail-6.jpg" alt="product image"></div>
+                                            <div><img src="assets/imgs/shop/thumbnail-6.jpg" alt="product image"></div> -->
                                             <div><img src="assets/imgs/shop/thumbnail-7.jpg" alt="product image"></div>
                                             <div><img src="assets/imgs/shop/thumbnail-8.jpg" alt="product image"></div>
                                             <div><img src="assets/imgs/shop/thumbnail-9.jpg" alt="product image"></div>
@@ -221,7 +221,7 @@
                                     </div>
                                     <!-- End Gallery -->
                                 </div>
-                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                <!-- <div class="col-md-6 col-sm-12 col-xs-12">
                                     <div class="detail-info">
                                         <h2 class="title-detail">Colorful Pattern Shirts HD450</h2>
                                         <div class="product-detail-rating">
@@ -535,9 +535,9 @@
                                                 <a href="#" class="font-xs text-muted">How are ratings calculated?</a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!--comment form-->
-                                    <div class="comment-form">
+                                    <!-- <div class="comment-form">
                                         <h4 class="mb-15">Add a review</h4>
                                         <div class="product-rate d-inline-block mb-30">
                                         </div>
@@ -644,8 +644,8 @@
                                                         <span class="old-price">$145.8</span>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            </div> -->
+                                        <!-- </div>
                                         <div class="col-lg-3 col-md-4 col-12 col-sm-6">
                                             <div class="product-cart-wrap small hover-up">
                                                 <div class="product-img-action-wrap">
@@ -671,8 +671,8 @@
                                                         <span>
                                                         </span>
                                                     </div>
-                                                    <div class="product-price">
-                                                        <span>$738.85 </span>
+                                                    <div class="product-price"> -->
+                                                        <!-- <span>$738.85 </span>
                                                         <span class="old-price">$1245.8</span>
                                                     </div>
                                                 </div>
@@ -694,11 +694,11 @@
                                                         <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.php" tabindex="0"><i class="fi-rs-shuffle"></i></a>
                                                     </div>
                                                     <div class="product-badges product-badges-position product-badges-mrg">
-                                                        <span class="hot">Hot</span>
-                                                    </div>
-                                                </div>
-                                                <div class="product-content-wrap">
-                                                    <h2><a href="shop-product-full.php" tabindex="0">Dadua Camera 4K 2022EF</a></h2>
+                                                        <!-- <span class="hot">Hot</span>
+                                                    </div> -->
+                                                <!-- </div>
+                                                <div class="product-content-wrap"> -->
+                                                    <!-- <h2><a href="shop-product-full.php" tabindex="0">Dadua Camera 4K 2022EF</a></h2>
                                                     <div class="rating-result" title="90%">
                                                         <span>
                                                         </span>
@@ -724,8 +724,8 @@
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </section> -->
+    </main> --> -->
     <?php
     include 'partials/footer.php'
     ?>
