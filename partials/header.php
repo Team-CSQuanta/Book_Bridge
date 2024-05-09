@@ -10,22 +10,23 @@
                         <div class="input-group mb-1">
 
                             <form action="searchBooks.php">
-                                <select class="select-active">
-                                    <option>All Categories</option>
-                                    <option>Mystery</option>
-                                    <option>Thriller</option>
-                                    <option>Science Fiction</option>
-                                    <option>Fantasy</option>
-                                    <option>Romance</option>
-                                    <option>Historical Fiction</option>
-                                    <option>Horror</option>
-                                    <option>Adventure</option>
-                                    <option>Biography</option>
-                                    <option>Academic</option>
-                                    <option>Religion</option>
+                                <select class="select-active" name="category">
+                                <option value="">All Categories</option>
+                                <option value="Academic">Academic</option>
+                                <option value="Biography">Biography</option>
+                                <option value="Cookbook">Cookbook</option>
+                                <option value="Fantasy">Fantasy</option>
+                                <option value="Graphic novel">Graphic novel</option>
+                                <option value="History">History</option>
+                                <option value="Horror">Horror</option>
+                                <option value="Memoir">Memoir</option>
+                                <option value="Mystery">Mystery</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Religion">Religion</option>
+                                <option value="Thriller">Thriller</option>
                                 </select>
                                   
-                                <form action="searchBooks.php" method="GET">
+                                <form action="shop-grid-right.php" method="GET">
                                         <input type="text" class="form-control" placeholder="Search for books" name="search">
                                         <button class="btn btn-primary" type="submit">Search</button>
                                     </div>
@@ -111,7 +112,7 @@
                                     <li><a class="active" href="index.php">Home</a>
                                     </li>
 
-                                    <li><a href="shop-grid-right.php">Offers</i></a>
+                                    <li><a href="shop-filter.php">Offers</i></a>
                                     </li>
                                     <li><a href="shop-grid-right.php">Wishes</i></a>
                                     </li>

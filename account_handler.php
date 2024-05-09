@@ -74,9 +74,6 @@ $sql_not_published_books = "SELECT
 
 $result_not_published_books = $conn->query($sql_not_published_books);
 
-
-
-
 // Handle form submission
 if(isset($_POST['submit'])) {
     
@@ -203,7 +200,15 @@ $Activityresult = mysqli_query($conn, $Activitysql);
 // Concatenate address fields into a single string
     $address = $user['street_address'] . ', ' . $user['apartment_num'] . ', ' . $user['postal_code'] . ', ' . $district . ', ' . $division;
 
+    $wallet_value = $user['book_wallet'];
 
+    // SQL query to fetch book details from exchange request table
+$sql_exchange_request = "SELECT er.*, b.title , b.authors , c.categoryName 
+        FROM exchange_request er
+        INNER JOIN book b ON er.book_id = b.book_id
+        INNER JOIN category c ON b.categoryID = c.categoryID";
+
+$result_exchange_request = $conn->query($sql_exchange_request );
 
 // Close the database connection
 mysqli_close($conn);

@@ -1,4 +1,80 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "book_bridge";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Pagination variables
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$limit = 12; // Maximum number of cards per page
+
+// Fetch total number of records without pagination
+$total_records_sql = "SELECT COUNT(*) as count FROM global_book_collection";
+$total_records_result = $conn->query($total_records_sql);
+$total_records_row = $total_records_result->fetch_assoc();
+$total_records = $total_records_row['count'];
+
+// Calculate total number of pages based on total records and limit
+$total_pages = ceil($total_records / $limit);
+
+// Adjust offset calculation to ensure correct pagination
+$offset = ($page - 1) * $limit;
+
+
+// Fetch categories from the database
+$sql_categories = "SELECT * FROM category";
+$result_categories = $conn->query($sql_categories);
+$categories = array();
+if ($result_categories->num_rows > 0) {
+    while($row = $result_categories->fetch_assoc()) {
+        $categories[] = $row;
+    }
+}
+
+// Initialize selected categories array
+$selectedCategories = array();
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['categories'])) {
+    // Get selected categories from the form submission
+    $selectedCategories = $_POST['categories'];
+}
+
+// Construct the SQL query
+$sql = "SELECT gbc.*, b.*, c.categoryName
+        FROM global_book_collection gbc
+        JOIN book b ON gbc.book_id = b.book_id
+        LEFT JOIN category c ON b.categoryID = c.categoryID";
+
+// Add WHERE clause for selected categories
+if (!empty($selectedCategories)) {
+    $categoryFilter = "'" . implode("', '", $selectedCategories) . "'";
+    $sql .= " WHERE c.categoryName IN ($categoryFilter)";
+}
+
+$sql .= " LIMIT $limit OFFSET $offset";
+
+// Execute the query
+$result = $conn->query($sql);
+
+// Get the total number of books without pagination
+$total_books_query = "SELECT COUNT(*) as total FROM global_book_collection";
+$total_books_result = $conn->query($total_books_query);
+$total_books_row = $total_books_result->fetch_assoc();
+$total_books = $total_books_row['total'];
+?>
+
+<!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head>
@@ -11,10 +87,43 @@
     <meta property="og:type" content="">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/theme/favicon.svg">
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/main.css?v=3.4">
+        <!-- Material icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+
+        <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+        }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+    </style>
 </head>
 
 <body>
@@ -149,165 +258,56 @@
         </div>
         </div>
     </div>
-    <?php
-    include 'partials/header.php';
-    include  'partials/mobile-header.php'
-    ?>
-    <main class="main">
-        <div class="page-header breadcrumb-wrap">
+                        <?php
+                        include 'partials/header.php';
+                        include  'partials/mobile-header.php'
+                        ?>
+                        <main class="main">
+
+                        <?php
+                    // Construct the SQL query to count the number of books based on selected categories
+                    $sql_count = "SELECT COUNT(*) as count
+                                FROM global_book_collection gbc
+                                JOIN book b ON gbc.book_id = b.book_id
+                                LEFT JOIN category c ON b.categoryID = c.categoryID";
+
+                    // Add WHERE clause for selected categories
+                    if (!empty($selectedCategories)) {
+                        $categoryFilter = "'" . implode("', '", $selectedCategories) . "'";
+                        $sql_count .= " WHERE c.categoryName IN ($categoryFilter)";
+                    }
+
+                    // Execute the query to get the count
+                    $result_count = $conn->query($sql_count);
+                    $total_books_filtered = 0;
+                    if ($result_count->num_rows > 0) {
+                        $row_count = $result_count->fetch_assoc();
+                        $total_books_filtered = $row_count['count'];
+                    }
+?>
+
+<main class="main">
+
+<div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
                     <a href="index.php" rel="nofollow">Home</a>
                     <span></span> Shop
-                    <span></span> Filters
                 </div>
             </div>
         </div>
-        <section class="mt-50 mb-50">
+
+
+
+    <section class="mt-50 mb-50">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <a class="shop-filter-toogle" href="#">
-                            <span class="fi-rs-filter mr-5"></span>
-                            Filters
-                            <i class="fi-rs-angle-small-down angle-down"></i>
-                            <i class="fi-rs-angle-small-up angle-up"></i>
-                        </a>
-                        <div class="shop-product-fillter-header">
-                            <div class="row">
-                                <div class="col-lg-2 col-md-4 mb-lg-0 mb-md-5 mb-sm-5">
-                                    <h5 class="mb-20">Categories</h5>
-                                    <ul class="categor-list">
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Jacket</a>(125)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Jeans</a>(68)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Sweatshirts</a>(284)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Trousers</a>(274)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Kitwears</a>(152)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Sportswear</a>(302)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Accessories</a>(168)</li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-2 col-md-4 mb-lg-0 mb-md-5 mb-sm-5">
-                                    <h5 class="mb-20">Manufacturers</h5>
-                                    <ul class="categor-list">
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Adidas</a>(125)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Armani</a>(68)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Burberry</a>(274)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Chanel</a>(152)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Prada</a>(302)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Bootstrap</a>(32)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Helixx</a>(312)</li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-2 col-md-4 mb-lg-0 mb-md-5 mb-sm-5">
-                                    <h5 class="mb-20">Price range</h5>
-                                    <ul class="categor-list">
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">All</a></li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">$0.00 - $20.00 </a></li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">$20.00 - $40.00 </a></li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">$40.00 - $60.00 </a></li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">$60.00 - $80.00 </a></li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">$80.00 - $100.00 </a></li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">$100.00 - $200.00 </a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-2 col-md-4 mb-lg-0 mb-md-5 mb-sm-5">
-                                    <h5 class="mb-20">By Tags</h5>
-                                    <ul class="categor-list">
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Cloth</a>(124)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Apple</a>(234)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Headphone</a>(657)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Music</a>(1221)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Dress</a>(455)</li>
-                                        <li class="cat-item text-muted"><a href="shop-grid-right.php">Trending</a>(1553)</li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-2 col-md-4 mb-lg-0 mb-md-5 mb-sm-5">
-                                    <h5 class="mb-20">By Color</h5>
-                                    <ul class="list-filter color-filter">
-                                        <li><a href="#" data-color="Red"><span class="product-color-red"></span></a></li>
-                                        <li><a href="#" data-color="Yellow"><span class="product-color-yellow"></span></a></li>
-                                        <li class="active"><a href="#" data-color="White"><span class="product-color-white"></span></a></li>
-                                        <li><a href="#" data-color="Orange"><span class="product-color-orange"></span></a></li>
-                                        <li><a href="#" data-color="Cyan"><span class="product-color-cyan"></span></a></li>
-                                        <li><a href="#" data-color="Green"><span class="product-color-green"></span></a></li>
-                                        <li><a href="#" data-color="Purple"><span class="product-color-purple"></span></a></li>
-                                    </ul>
-                                    <h5 class="mb-15 mt-20">By Size</h5>
-                                    <ul class="list-filter size-filter font-small">
-                                        <li><a href="#">S</a></li>
-                                        <li class="active"><a href="#">M</a></li>
-                                        <li><a href="#">L</a></li>
-                                        <li><a href="#">XL</a></li>
-                                        <li><a href="#">XXL</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-lg-2 col-md-4 mb-lg-0 mb-md-5 mb-sm-5">
-                                    <h5 class="mb-20">By Review</h5>
-                                    <div class="product-rate-cover">
-                                        <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width:100%">
-                                            </div>
-                                        </div>
-                                        <span class="font-small ml-5 text-muted"> (25)</span>
-                                    </div>
-                                    <div class="product-rate-cover">
-                                        <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width:80%">
-                                            </div>
-                                        </div>
-                                        <span class="font-small ml-5 text-muted"> (25)</span>
-                                    </div>
-                                    <div class="product-rate-cover">
-                                        <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width:60%">
-                                            </div>
-                                        </div>
-                                        <span class="font-small ml-5 text-muted"> (25)</span>
-                                    </div>
-                                    <div class="product-rate-cover">
-                                        <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width:40%">
-                                            </div>
-                                        </div>
-                                        <span class="font-small ml-5 text-muted"> (25)</span>
-                                    </div>
-                                    <div class="product-rate-cover">
-                                        <div class="product-rate d-inline-block">
-                                            <div class="product-rating" style="width:20%">
-                                            </div>
-                                        </div>
-                                        <span class="font-small ml-5 text-muted"> (25)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="shop-product-fillter">
+                 <div class="col-lg-9">
+                 <div class="shop-product-fillter">
                             <div class="totall-product">
-                                <p> We found <strong class="text-brand">688</strong> items for you!</p>
-                            </div>
+                            <p>We found <strong class="text-brand"><?php echo $total_books_filtered; ?></strong> items for you!</p>                            </div>
                             <div class="sort-by-product-area">
-                                <div class="sort-by-cover mr-10">
-                                    <div class="sort-by-product-wrap">
-                                        <div class="sort-by">
-                                            <span><i class="fi-rs-apps"></i>Show:</span>
-                                        </div>
-                                        <div class="sort-by-dropdown-wrap">
-                                            <span> 50 <i class="fi-rs-angle-small-down"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="sort-by-dropdown">
-                                        <ul>
-                                            <li><a class="active" href="#">50</a></li>
-                                            <li><a href="#">100</a></li>
-                                            <li><a href="#">150</a></li>
-                                            <li><a href="#">200</a></li>
-                                            <li><a href="#">All</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                
                                 <div class="sort-by-cover">
                                     <div class="sort-by-product-wrap">
                                         <div class="sort-by">
@@ -320,496 +320,174 @@
                                     <div class="sort-by-dropdown">
                                         <ul>
                                             <li><a class="active" href="#">Featured</a></li>
-                                            <li><a href="#">Price: Low to High</a></li>
-                                            <li><a href="#">Price: High to Low</a></li>
-                                            <li><a href="#">Release Date</a></li>
-                                            <li><a href="#">Avg. Rating</a></li>
+                                            <li><a href="#">Like New</a></li>
+                                            <li><a href="#">Good</a></li>
+                                            <li><a href="#">acceptable</a></li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row product-grid-3">
-                            <div class="col-lg-3 col-md-4">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="">
-                                            </a>
+                        <!-- cards-->
+                    
+                        <div class="container">
+                <div class="row product-grid-4">
+                    <?php
+                    if ($result->num_rows > 0) {
+                        // Output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            if ($row["availability_status"] == "yes") {
+                    ?>
+                                <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                                    <div class="product-cart-wrap mb-30">
+                                        <div class="product-img-action-wrap">
+                                            <div class="product-img product-img-zoom">
+                                                <a href="shop-product-full.php">
+                                                    <?php if (!empty($row["cover_img"]) && file_exists($row["cover_img"])) { ?>
+                                                        <img class="default-img" src="<?php echo $row["cover_img"]; ?>" alt="">
+                                                    <?php } else { ?>
+                                                        <img class="default-img" src="uploadedBooks/default_cover.png" alt="Default Book Cover">
+                                                    <?php } ?>
+                                                    <img class="hover-img" src="uploadedBooks/default_cover.png" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="product-action-1">
+                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal<?php echo $row['book_id']; ?>"><i class="fi-rs-search"></i></a>
+                                            </div>
+                                            <div class="product-badges product-badges-position product-badges-mrg">
+                                                <span class="new"><?php echo $row["book_condition"]; ?></span>
+                                            </div>
                                         </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Music</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Colorful Pattern Shirts</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>90%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-3-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-3-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="new">New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Music</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Cartoon Astronaut T-Shirts</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>50%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$138.85 </span>
-                                            <span class="old-price">$255.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
+                                        <div class="product-content-wrap">
+                                            <div class="product-category">
+                                                <a href="shop-grid-right.php"><?php echo $row["categoryName"]; ?></a>
+                                            </div>
+                                            <h2><a href="shop-product-full.php?book_id=<?php echo $row['book_id']; ?>"><?php echo $row["title"]; ?></a></h2>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-7-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-7-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="best">Best Sell</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Watch</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Plain Striola Shirts</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>95%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$338.85 </span>
-                                            <span class="old-price">$445.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="sale">Sale</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Music</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Landscape Painting Shirt</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$123.85 </span>
-                                            <span class="old-price">$235.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-4-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-3-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">-30%</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Speaker</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Letter Print T-Shirt</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$28.85 </span>
-                                            <span class="old-price">$45.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-5-2.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-5-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">-22%</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Camera</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Element Pattern Print Shirts</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-8-2.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-8-1.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="new">New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Phone</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Vintage Henley Shirt</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>98%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$1275.85 </span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-11-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-11-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Accessories </a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Cotton Leaf Printed</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-13-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-13-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Accessories </a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Cotton Leaf Printed</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-3-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-3-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Music</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Colorful Pattern Shirts</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>90%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$238.85 </span>
-                                            <span class="old-price">$245.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="new">New</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Music</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Cartoon Astronaut T-Shirts</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>50%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$138.85 </span>
-                                            <span class="old-price">$255.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/shop/product-7-2.jpg" alt="">
-                                                <img class="hover-img" src="assets/imgs/shop/product-7-1.jpg" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-<i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="best">Best Sell</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Watch</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Plain Striola Shirts</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>95%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>$338.85 </span>
-                                            <span class="old-price">$445.8</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                                  <!-- Quick View Modal -->
+            <div class="modal fade" id="quickViewModal<?php echo $row['book_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="quickViewModalLabel<?php echo $row['book_id']; ?>" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="quickViewModalLabel<?php echo $row['book_id']; ?>"><?php echo $row["title"]; ?></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                        <!--pagination-->
-                        <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-start">
-                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                    <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">16</a></li>
-                                    <li class="page-item"><a class="page-link" href="#"><i class="fi-rs-angle-double-small-right"></i></a></li>
-                                </ul>
-                            </nav>
+                        <div class="modal-body">
+                            <!-- Additional details about the book can be displayed here -->
+                        <div class="product-img product-img-zoom">
+                                <?php if(!empty($row["cover_img"]) && file_exists($row["cover_img"])) { ?>
+                                    <img class="default-img" src="<?php echo $row["cover_img"]; ?>" alt="">
+                                <?php } else { ?>
+                                    <img class="default-img" src="uploadedBooks/default_cover.png" alt="Default Book Cover">
+                                <?php } ?>
+                                
+                            </a>
+                        </div>
+
+                            <p><?php echo $row["description"]; ?></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Make a request</button>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- End Quick View Modal -->
+            
+                    <?php
+                            }
+                        }
+                    } else {
+                        echo "";
+                    }
+                    ?>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <?php
+                // Calculate total number of pages
+                        $total_pages_sql = "SELECT COUNT(*) as count FROM global_book_collection";
+                        $total_pages_result = $conn->query($total_pages_sql);
+                        $total_pages_row = $total_pages_result->fetch_assoc();
+                        $total_pages = ceil($total_pages_row['count'] / $limit);
+
+                        // Previous and next page numbers
+                        $prev_page = $page - 1;
+                        $next_page = $page + 1;
+
+                        // Display pagination links
+                        echo "<ul class='pagination'>";
+                        if ($prev_page > 0) {
+                            echo "<li><a href='?page=$prev_page'>Previous</a></li>";
+                        }
+
+                        for ($i = 1; $i <= $total_pages; $i++) {
+                            echo "<li " . ($page == $i ? "class='active'" : "") . "><a href='?page=$i'>$i</a></li>";
+                        }
+
+                        if ($page < $total_pages) {
+                            echo "<li><a href='?page=$next_page'>Next</a></li>";
+                        } elseif ($page == $total_pages && $result->num_rows == 0) {
+                            echo "<li><span>No books left</span></li>";
+                        }
+                        echo "</ul>";
+                    ?>
+                </div>
+                <!-- End Pagination -->
+
+            </div>
+        
+                 </div>
+        <!-- Filter By Category -->
+        
+        <div class="col-lg-3 col-md-4 col-sm-6">
+                        
+                
+                        <!-- Filter By Category -->
+                        <div class="sidebar-widget price_range range mb-30">
+                            <div class="widget-header position-relative mb-20 pb-10">
+                                <h5 class="widget-title mb-10">Filter by Category</h5>
+                                <div class="bt-1 border-color-1"></div>
+                            </div>
+                            <form method="post" action="">
+                                <div class="list-group">
+                                    <?php foreach ($categories as $category) { ?>
+                                        <div class="list-group-item mb-0">
+                                            <div class="custome-checkbox">
+                                                <input class="form-check-input" type="checkbox" name="categories[]" id="<?php echo $category['categoryName']; ?>" value="<?php echo $category['categoryName']; ?>" <?php echo in_array($category['categoryName'], $selectedCategories) ? 'checked' : ''; ?>>
+                                                <label class="form-check-label" for="<?php echo $category['categoryName']; ?>"><span><?php echo $category['categoryName']; ?></span></label>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                                <button type="submit" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Filter</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                                    </div>
         </section>
+        <!-- Books -->
+
+   
     </main>
-    <?php
-    include 'partials/footer.php'
-    ?>
+
+
+
+        <?php include 'partials/footer.php'; ?>
+    
+         <!-- Script link -->
+    <script src="assets/js/main.js?v=3.4"></script>
+    <script src="assets/js/modal.js"></script>
+
+    <?php   // Close connection
+                        $conn->close();
+                        ?>

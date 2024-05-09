@@ -1,9 +1,9 @@
 <?php
 require './aside-menu.php';
-$request_id = filter_input(INPUT_GET, 'request_id', FILTER_SANITIZE_SPECIAL_CHARS);
+$exchange_id = filter_input(INPUT_GET, 'exchange_id', FILTER_SANITIZE_SPECIAL_CHARS);
 $query = "SELECT *
-          FROM contribution_request
-          WHERE request_id = '$request_id'";
+          FROM exchange_request
+          WHERE exchange_id = '$exchange_id'";
 $query_execute = $connection->query($query);
 $query_result = $query_execute->fetch_assoc();
 
@@ -17,7 +17,7 @@ $book_info = $query_book_result->fetch_assoc();
 <section class="content-main">
     <div class="content-header">
         <div>
-            <h2 class="content-title card-title">Contribution Request Detail</h2>
+            <h2 class="content-title card-title">Exchange Request Detail</h2>
             <?php if (isset($_GET['error'])) : ?>
                 <div class="d-grid gap-3 mb-4" style="  font-size: 14px;font-weight: 500;padding: 10px 40px;color: #ffffff;border: none;background-color: #FF0000;border-radius: 4px;">
                     <p style="text-align: center">Select book condition</p>
@@ -25,7 +25,7 @@ $book_info = $query_book_result->fetch_assoc();
             <?php endif ?>
         </div>
     </div>
-    <form action="./handler/manage-contribution-request-handler.php" method="post" enctype="multipart/form-data">
+    <form action="./handler/manage-exchange-request-handler.php" method="post" enctype="multipart/form-data">
         <div class="card">
             <header class="card-header">
                 <div class="row align-items-center">
@@ -33,20 +33,17 @@ $book_info = $query_book_result->fetch_assoc();
                         <span>
                             <i class="material-icons md-calendar_today"></i> <b>Requested Date: <?= $query_result['date_of_request'] ?></b>
                         </span> <br>
-                        <small class="text-muted">Request ID: <?= $query_result['request_id'] ?></small>
+                        <small class="text-muted">Request ID: <?= $query_result['exchange_id'] ?></small>
                     </div>
                     <div class="col-lg-6 col-md-6 ms-auto text-md-end">
 
                         <select id="status" class="form-select d-inline-block mb-lg-0 mb-15 mw-200" name="status">
                             <option <?= $query_result['status'] == 'Pending' ? 'selected' : '' ?>>Pending</option>
                             <option <?= $query_result['status'] == 'Processing' ? 'selected' : '' ?>>Processing</option>
-                            <option <?= $query_result['status'] == 'Requested to courier' ? 'selected' : '' ?>>Requested to courier</option>
-                            <option <?= $query_result['status'] == 'Received the book' ? 'selected' : '' ?>>Received the book</option>
-                            <option <?= $query_result['status'] == 'QC in progress' ? 'selected' : '' ?>>QC in progress</option>
-                            <option <?= $query_result['status'] == 'Published' ? 'selected' : '' ?>>Published</option>
+                            <option <?= $query_result['status'] == 'Delivered' ? 'selected' : '' ?>>Delivered</option>
                         </select>
 
-                        <input type="hidden" name="request_id" value="<?= $request_id ?>">
+                        <input type="hidden" name="exchange_id" value="<?= $exchange_id ?>">
                         <button class="btn btn-primary" name="add-moderator">Save</button>
                     </div>
                 </div>
@@ -213,12 +210,12 @@ $book_info = $query_book_result->fetch_assoc();
                                     <?php
                                     $book_info
                                     ?>
-                                    <img src="../<?= isset($book_info['cover_img']) ? $book_info['cover_img'] : '' ?>" alt="">
+                                    <img src="../uploadedBooks/<?= isset($book_info['cover_img']) ? $book_info['cover_img'] : '' ?>" alt="">
                                     <?php
                                     if (isset($book_info['additional_imgs'])) {
                                         $imgs = explode(',', $book_info['additional_imgs']);
                                         foreach ($imgs as $img) {
-                                            echo "<img src=\"../" . $img . "\" alt=\"\">";
+                                            echo "<img src=\"../uploadedBooks/" . $img . "\" alt=\"\">";
                                         }
                                     }
                                     ?>

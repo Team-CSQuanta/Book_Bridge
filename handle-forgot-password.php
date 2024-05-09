@@ -2,7 +2,7 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require __DIR__ . '/../../vendor/autoload.php';
+require 'vendor/autoload.php';
 
 session_start();
 
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->Password = 'lgvt zllm olea urqw'; // Your Gmail password
             $mail->SMTPSecure = 'ssl'; // Enable SSL encryption
             $mail->Port = 465; // Gmail SMTP port
-            $reset_link ="http://localhost/dbms_project/Book_Bridge/reset-password.php?token=$token";
+            $reset_link ="http://localhost/Book_Bridge/reset-password.php?token=$token";
             // Sender and recipient settings
             $mail->setFrom('teamcsquanta@gmail.com', 'Team CSQuanta');
             $mail->addAddress($email);

@@ -12,9 +12,6 @@ if(isset($_GET['collection_id']) and isset($_GET['book_id'])){
     $deleteQuery = "DELETE FROM global_book_collection
                     WHERE collection_id = '$collection_id';";
     $connection->query($deleteQuery);
-    $deleteBookQuery = "DELETE FROM book
-                        WHERE book_id = '$book_id';";
-    $connection->query($deleteBookQuery);
 }
 // Pagination
 $limit = 10;

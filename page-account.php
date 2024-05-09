@@ -21,6 +21,8 @@
 
 <body>
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
     include 'partials/header.php';
     include  'partials/mobile-header.php';
 
@@ -73,18 +75,16 @@
                                         <li class="nav-item">
                                             <a class="nav-link" id="request-tab" data-bs-toggle="tab" href="#request" role="tab" aria-controls="request" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Request a Book</a>
                                         </li>
-                                         <li class="nav-item">
-                                            <a class="nav-link" id="request-tab" data-bs-toggle="tab" href="#request" role="tab" aria-controls="request" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Request a Book</a>
-                                        </li>
+                                       
                                         <li class="nav-item">
                                             <a class="nav-link" id="history-tab" data-bs-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>History</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="track-orders-tab" data-bs-toggle="tab" href="#track-orders" role="tab" aria-controls="track-orders" aria-selected="false"><i class="fi-rs-shopping-cart-check mr-10"></i>Track Your Order</a>
                                         </li>
-                                        <li class="nav-item">
+                                        <!-- <li class="nav-item">
                                             <a class="nav-link" id="address-tab" data-bs-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="true"><i class="fi-rs-marker mr-10"></i>My Address</a>
-                                        </li>
+                                        </li> -->
                                         <li class="nav-item">
                                             <a class="nav-link" id="account-detail-tab" data-bs-toggle="tab" href="#account-detail" role="tab" aria-controls="account-detail" aria-selected="true"><i class="fi-rs-user mr-10"></i>Account details</a>
                                         </li>
@@ -238,6 +238,50 @@
 
 
 
+<div class="tab-pane fade" id="request" role="tabpanel" aria-labelledby="request-tab">
+<div class="row justify-content-center">
+        <div class="col-lg-6 mx-auto">
+         <div class="card mb-3 mb-lg-0" style="width: 700px; height: 530px; overflow-y: auto;">
+                <div class="card-header">
+                    <h5 class="mb-0">Your Book Request History!</h5>
+                </div>
+                 <div class="card-body">
+                 <div class="text-center">
+               <button id="BookRequestButton"  type="submit" class="btn btn-primary">Request a Book</button>
+             </div>
+             <hr>
+       <?php if($result_exchange_request ->num_rows > 0) : ?>
+                        <table class="table" style="border-collapse: collapse; width: 100%;">
+                            <thead>
+                                <tr style="background-color: #6AB187;">
+                                    <th style="border: 1px solid #dddddd; padding: 8px;">Book Title</th>
+                                    <th style="border: 1px solid #dddddd; padding: 8px;">Author</th>
+                                     <th style="border: 1px solid #dddddd; padding: 8px;">Category</th>
+                                      <th style="border: 1px solid #dddddd; padding: 8px;">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($row_result_exchange_request =$result_exchange_request ->fetch_assoc()) : ?>
+                                    <tr>
+                                        <td style="border: 1px solid #dddddd; padding: 8px;"><?php echo $row_result_exchange_request['title']; ?></td>
+                                        <td style="border: 1px solid #dddddd; padding: 8px;"><?php echo $row_result_exchange_request['authors']; ?></td>
+                                         <td style="border: 1px solid #dddddd; padding: 8px;"><?php echo $row_result_exchange_request['categoryName']; ?></td>
+                                          <td style="border: 1px solid #dddddd; padding: 8px;"><span class="badge badge-primary"><?php echo $row_result_exchange_request['status']; ?></span></td>
+                                        
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    <?php else : ?>
+                        <p>No exchange activity recorded yet.</p>
+                    <?php endif; ?>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
 
 
 
@@ -300,11 +344,11 @@
                                                     <div class="card-header">
                                                         <h5 class="mb-0">Shipping Address</h5>
                                                     </div>
-                                                    <div class="card-body">
+                                                    <!-- <div class="card-body">
                                                         <address>3522 Interstate<br> 75 Business Spur,<br> Sault Ste. <br>Marie, MI 49783</address>
                                                         <p>New York</p>
                                                         <a href="#" class="btn-small">Edit</a>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                             <!-- <div class="col-lg-6">
@@ -384,8 +428,31 @@
             </div>
         </section>
     </main>
+
+    
+
     <!-- Bootstrap JS (optional) -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script> 
+
+    function checkWallet() { 
+  
+     var walletValue = <?php echo $wallet_value; ?>;
+
+    
+        if(walletValue<2){
+        
+      alert('You do not have enough points in your wallet to request a book!'); 
+    }
+    else {
+        window.location.href = 'index.php'; 
+    }
+    
+     }
+ 
+    var button = document.getElementById('BookRequestButton'); 
+    button.addEventListener('click', checkWallet); 
+  </script>
+
 </body>
 </html>
 

@@ -1,4 +1,37 @@
-﻿<!DOCTYPE html>
+﻿
+
+<?php 
+
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "book_bridge";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+
+// Pagination variables
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$limit = 12; // Maximum number of cards per page
+$offset = ($page - 1) * $limit;
+
+ 
+$sql= "SELECT gbc.*, b.*, c.categoryName
+        FROM global_book_collection gbc
+        JOIN book b ON gbc.book_id = b.book_id
+        LEFT JOIN category c ON b.categoryID = c.categoryID
+        LIMIT $limit OFFSET $offset ";
+       $result = $conn->query($sql);
+?>
+
+<!DOCTYPE html>
 <html class="no-js" lang="en">
 
 <head>
@@ -19,6 +52,35 @@
     <link rel="stylesheet" href="assets/css/main.css?v=3.4">
         <!-- Material icons -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+
+        <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+        }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid #4CAF50;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+        }
+    </style>
 </head>
 
 <body>
@@ -175,25 +237,7 @@
                                 <p> We found <strong class="text-brand">688</strong> items for you!</p>
                             </div>
                             <div class="sort-by-product-area">
-                                <div class="sort-by-cover mr-10">
-                                    <div class="sort-by-product-wrap">
-                                        <div class="sort-by">
-                                            <span><i class="fi-rs-apps"></i>Show:</span>
-                                        </div>
-                                        <div class="sort-by-dropdown-wrap">
-                                            <span> 50 <i class="fi-rs-angle-small-down"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="sort-by-dropdown">
-                                        <ul>
-                                            <li><a class="active" href="#">50</a></li>
-                                            <li><a href="#">100</a></li>
-                                            <li><a href="#">150</a></li>
-                                            <li><a href="#">200</a></li>
-                                            <li><a href="#">All</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                
                                 <div class="sort-by-cover">
                                     <div class="sort-by-product-wrap">
                                         <div class="sort-by">
@@ -206,189 +250,186 @@
                                     <div class="sort-by-dropdown">
                                         <ul>
                                             <li><a class="active" href="#">Featured</a></li>
-                                            <li><a href="#">Price: Low to High</a></li>
-                                            <li><a href="#">Price: High to Low</a></li>
-                                            <li><a href="#">Release Date</a></li>
-                                            <li><a href="#">Avg. Rating</a></li>
+                                            <li><a href="#">Like New</a></li>
+                                            <li><a href="#">Good</a></li>
+                                            <li><a href="#">acceptable</a></li>
+                                            
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+    <!-- Add this line before the closing </body> tag -->
+<!-- Bootstrap JS -->
+<script src="path/to/bootstrap.min.js"></script>
 
-                        <div class="row product-grid-3"  id="itemContainer">
-                        
-                            <!-- Item start -->
-                            <div class="col-lg-4 col-md-4 col-12 col-sm-6">
-                                <div class="product-cart-wrap mb-30">
-                                    <div class="product-img-action-wrap">
-                                        <div class="product-img product-img-zoom">
-                                            <a href="shop-product-full.php">
-                                                <img class="default-img" src="assets/imgs/dummyImg/book-4.png" alt="">
-                                                <img class="hover-img" src="assets/imgs/dummyImg/book-4.png" alt="">
-                                            </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                           <i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
-                                        </div>
-                                        <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="new">New</span>                                        
-                                        </div>
-                                    
-                                    </div>
-                                    <div class="product-content-wrap">
-                                        <div class="product-category">
-                                            <a href="shop-grid-right.php">Fantasy</a>
-                                        </div>
-                                        <h2><a href="shop-product-full.php">Pouring Dreams</a></h2>
-                                        <div class="rating-result" title="90%">
-                                            <span>
-                                                <span>70%</span>
-                                            </span>
-                                        </div>
-                                        <div class="product-price">
-                                            <span>Coins:500 </span>
-                                            <span class="old-price">600</span>
-                                        </div>
-                                        <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                            </div>
-                                    </div>
-                                </div>
-                            </div>
+<div class="row product-grid-4">
+
+    <?php 
+        if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) { 
+        if($row["availability_status"] == "yes") { ?>
+            <div class="col-lg-4 col-md-4 col-12 col-sm-6">
+                <div class="product-cart-wrap mb-30">
+                    <div class="product-img-action-wrap">
+                        <div class="product-img product-img-zoom">
+                            <a href="shop-product-full.php">
+                                <?php if(!empty($row["cover_img"]) && file_exists($row["cover_img"])) { ?>
+                                    <img class="default-img" src="<?php echo $row["cover_img"]; ?>" alt="">
+                                <?php } else { ?>
+                                    <img class="default-img" src="uploadedBooks/default_cover.png" alt="Default Book Cover">
+                                <?php } ?>
+                                <img class="hover-img" src="uploadedBooks/default_cover.png" alt="">
+                            </a>
                         </div>
-  <!-- Item end -->
-    <!-- <script>
-    $(document).ready(function() {
-        // Function to fetch new items from the server
-        function fetchNewItems() {
-            $.ajax({
-                url: 'fetch_new_items.php',
-                method: 'GET',
-                success: function(response) {
-                    // Append only new items to the page
-                    $(response).each(function() {
-                        var newItem = $(this);
-                        var exists = false;
+                        <div class="product-action-1">
+                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal<?php echo $row['book_id']; ?>"><i class="fi-rs-search"></i></a>
+                            <!-- <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a> -->
+                        </div>
+                        <div class="product-badges product-badges-position product-badges-mrg">
+                            <span class="new"><?php echo $row["book_condition"]; ?></span>
+                        </div>
+                    </div>
+                    <div class="product-content-wrap">
+                        <div class="product-category">
+                            <a href="shop-grid-right.php"><?php echo $row["categoryName"]; ?></a>
+                        </div>
+                        <h2><a href="shop-product-full.php"><?php echo $row["title"]; ?></a></h2>
                         
-                        // Check if the item already exists on the page
-                        $('#itemContainer').find('.product-cart-wrap').each(function() {
-                            if ($(this).html() === newItem.html()) {
-                                exists = true;
-                                return false; // Exit the loop if the item is found
-                            }
-                        });
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick View Modal -->
+            <div class="modal fade" id="quickViewModal<?php echo $row['book_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="quickViewModalLabel<?php echo $row['book_id']; ?>" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="quickViewModalLabel<?php echo $row['book_id']; ?>"><?php echo $row["title"]; ?></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Additional details about the book can be displayed here -->
+                        <div class="product-img product-img-zoom">
+                                <?php if(!empty($row["cover_img"]) && file_exists($row["cover_img"])) { ?>
+                                    <img class="default-img" src="<?php echo $row["cover_img"]; ?>" alt="">
+                                <?php } else { ?>
+                                    <img class="default-img" src="uploadedBooks/default_cover.png" alt="Default Book Cover">
+                                <?php } ?>
+                                
+                            </a>
+                        </div>
 
-                        // If the item doesn't exist, append it to the page
-                        if (!exists) {
-                            $('#itemContainer').append(newItem);
-                        }
-                    });
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
-            });
-        }
+                            <p><?php echo $row["description"]; ?></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Make a request</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Quick View Modal -->
+            
+        <?php } }} ?>
+</div>
 
-        // Call fetchNewItems initially and then every 10 seconds
-        fetchNewItems(); -->
-        <!-- setInterval(fetchNewItems, 100); // Adjust the interval as needed
-    });
-</script> -->
+
+
+
+
+<?php
+// Calculate total number of pages
+$total_pages_sql = "SELECT COUNT(*) as count FROM global_book_collection";
+$total_pages_result = $conn->query($total_pages_sql);
+$total_pages_row = $total_pages_result->fetch_assoc();
+$total_pages = ceil($total_pages_row['count'] / $limit);
+
+// Previous and next page numbers
+$prev_page = $page - 1;
+$next_page = $page + 1;
+
+// Display pagination links
+echo "<ul class='pagination'>";
+if ($prev_page > 0) {
+    echo "<li><a href='?page=$prev_page'>Previous</a></li>";
+}
+
+for ($i = 1; $i <= $total_pages; $i++) {
+    echo "<li " . ($page == $i ? "class='active'" : "") . "><a href='?page=$i'>$i</a></li>";
+}
+
+if ($page < $total_pages) {
+    echo "<li><a href='?page=$next_page'>Next</a></li>";
+}
+echo "</ul>";
+?>
+
 
 
                             
-                            <!-- ,,,,,,, -->
-                        <!--pagination-->
-                        <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-start">
-                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                    <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">16</a></li>
-                                    <li class="page-item"><a class="page-link" href="#"><i class="fi-rs-angle-double-small-right"></i></a></li>
-                                </ul>
-                            </nav>
-                        </div>
+                       
                     </div>
                     <div class="col-lg-3 primary-sidebar sticky-sidebar">
                         <div class="row">
                             <div class="col-lg-12 col-mg-6"></div>
                             <div class="col-lg-12 col-mg-6"></div>
                         </div>
-                        <div class="widget-category mb-30">
-                            <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
-                            <ul class="categories">
-                                <li><a href="shop-grid-right.php">Mystery</a></li>
-                                <li><a href="shop-grid-right.php">Thriller</a></li>
-                                <li><a href="shop-grid-right.php">Science Fiction</a></li>
-                                <li><a href="shop-grid-right.php">Fanstasy</a></li>
-                                <li><a href="shop-grid-right.php">Romance</a></li>
-                                <li><a href="shop-grid-right.php">Historical Fiction</a></li>
-                                <li><a href="shop-grid-right.php">Horror</a></li>
-                                <li><a href="shop-grid-right.php">Adventure</a></li>
-                                <li><a href="shop-grid-right.php">Biography</a></li>
-                                <li><a href="shop-grid-right.php">Academic</a></li>
-                            </ul>
-                        </div>
-                        <!-- Fillter By Price -->
+  
+                        <!-- Fillter By  -->
                         <div class="sidebar-widget price_range range mb-30">
                             <div class="widget-header position-relative mb-20 pb-10">
-                                <h5 class="widget-title mb-10">Filter by Your Coin</h5>
+                                <h5 class="widget-title mb-10">Filter by Category</h5>
                                 <div class="bt-1 border-color-1"></div>
                             </div>
-                            <div class="price-filter">
-                                <div class="price-filter-inner">
-                                    <div id="slider-range"></div>
-                                    <div class="price_slider_amount">
-                                        <div class="label-input">
-                                            <span>Range:</span><input type="text" id="amount" name="price" placeholder="Add Your Coins..." />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           
                             <div class="list-group">
                                 <div class="list-group-item mb-10 mt-10">
+                                    <form method="post" action="shop-filter.php">
                                     <label class="fw-900">Genre</label>
                                     <div class="custome-checkbox">
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="">
-                                        <label class="form-check-label" for="exampleCheckbox1"><span>Mystery(56)</span></label>
+                                        <input class="form-check-input" type="checkbox" name="Academic" id="exampleCheckbox1" value="">
+                                        <label class="form-check-label" for="exampleCheckbox1"><span>Academic(56)</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox2" value="">
-                                        <label class="form-check-label" for="exampleCheckbox2"><span>Thriller(78)</span></label>
+                                        <input class="form-check-input" type="checkbox" name="Biography" id="exampleCheckbox2" value="">
+                                        <label class="form-check-label" for="exampleCheckbox2"><span>Biography(78)</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox3" value="">
-                                        <label class="form-check-label" for="exampleCheckbox3"><span>Science Fictions(54)</span></label>
+                                        <input class="form-check-input" type="checkbox" name="Cookbook" id="exampleCheckbox3" value="">
+                                        <label class="form-check-label" for="exampleCheckbox3"><span>Cookbook(54)</span></label>
                                         <br>   
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox4" value="">
+                                        <input class="form-check-input" type="checkbox" name="Fantasy" id="exampleCheckbox4" value="">
                                         <label class="form-check-label" for="exampleCheckbox4"><span>Fantasy(17)</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox5" value="">
-                                        <label class="form-check-label" for="exampleCheckbox5"><span>Romannce(59)</span></label>
+                                        <input class="form-check-input" type="checkbox" name="Graphic novel" id="exampleCheckbox5" value="">
+                                        <label class="form-check-label" for="exampleCheckbox5"><span>Graphic novel(59)</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox6" value="">
-                                        <label class="form-check-label" for="exampleCheckbox6"><span>Historucal Fictions(76))</span></label>
+                                        <input class="form-check-input" type="checkbox" name="History" id="exampleCheckbox6" value="">
+                                        <label class="form-check-label" for="exampleCheckbox6"><span>History(76))</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox7" value="">
+                                        <input class="form-check-input" type="checkbox" name="Horror" id="exampleCheckbox7" value="">
                                         <label class="form-check-label" for="exampleCheckbox7"><span>Horror(16)</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox8" value="">
-                                        <label class="form-check-label" for="exampleCheckbox8"><span>Adventure(19)</span></label>
+                                        <input class="form-check-input" type="checkbox" name="Memoir" id="exampleCheckbox8" value="">
+                                        <label class="form-check-label" for="exampleCheckbox8"><span>Memoir(19)</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox9" value="">
-                                        <label class="form-check-label" for="exampleCheckbox9"><span>Biography(08)</span></label>
+                                        <input class="form-check-input" type="checkbox" name="Mystery" id="exampleCheckbox9" value="">
+                                        <label class="form-check-label" for="exampleCheckbox9"><span>Mystery(08)</span></label>
                                         <br>
-                                        <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox10" value="">
-                                        <label class="form-check-label" for="exampleCheckbox10"><span>Academic(65)</span></label>
+                                        <input class="form-check-input" type="checkbox" name="Romance" id="exampleCheckbox10" value="">
+                                        <label class="form-check-label" for="exampleCheckbox10"><span>Romance(65)</span></label>
+                                        <br>
+                                        <input class="form-check-input" type="checkbox" name="Science Fiction" id="exampleCheckbox10" value="">
+                                        <label class="form-check-label" for="exampleCheckbox10"><span>Science Fiction(65)</span></label>
+                                        <br>
+                                        <input class="form-check-input" type="checkbox" name="Thriller(65)" id="exampleCheckbox10" value="">
+                                        <label class="form-check-label" for="exampleCheckbox10"><span>Thriller(65)</span></label>
                                     </div>
-                                    <label class="fw-900 mt-15">Item Condition</label>
+                                   
+                                    <!-- <label class="fw-900 mt-15">Item Condition</label>
                                     <div class="custome-checkbox">
                                         <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox11" value="">
                                         <label class="form-check-label" for="exampleCheckbox11"><span>New (1506)</span></label>
@@ -398,59 +439,21 @@
                                         <br>
                                         <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox31" value="">
                                         <label class="form-check-label" for="exampleCheckbox31"><span>Used (45)</span></label>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
-                            <a href="shop-grid-right.php" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a>
+                            <a href="shop-filter.php" class="btn btn-sm btn-default"><i class="fi-rs-filter mr-5"></i> Fillter</a>
                         </div>
-                        <!-- Product sidebar Widget -->
-                        <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
-                            <div class="widget-header position-relative mb-20 pb-10">
-                                <h5 class="widget-title mb-10">New ARRIVALS</h5>
-                                <div class="bt-1 border-color-1"></div>
-                            </div>
-                            <div class="single-post clearfix">
-                                <div class="image">
-                                    <img src="assets/imgs/dummyImg/home-book-3.png" alt="#">
-                                </div>
-                                <div class="content pt-10">
-                                    <h5><a href="shop-product-detail.php">Tere and Tony</a></h5>
-                                    <p class="price mb-0 mt-5">Coin- 750</p>
-                                    <div class="product-rate">
-                                        <div class="product-rating" style="width:90%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-post clearfix">
-                                <div class="image">
-                                    <img src="assets/imgs/dummyImg/discount-book-1.png" alt="#">
-                                </div>
-                                <div class="content pt-10">
-                                    <h6><a href="shop-product-detail.php">Ideal For Interior</a></h6>
-                                    <p class="price mb-0 mt-5">Coin- 400</p>
-                                    <div class="product-rate">
-                                        <div class="product-rating" style="width:80%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-post clearfix">
-                                <div class="image">
-                                    <img src="assets/imgs/dummyImg/discount-book-2.png" alt="#">
-                                </div>
-                                <div class="content pt-10">
-                                    <h6><a href="shop-product-detail.php">Classic Blue</a></h6>
-                                    <p class="price mb-0 mt-5">Coin- 200</p>
-                                    <div class="product-rate">
-                                        <div class="product-rating" style="width:60%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
+
+                           
+                        
+                        
+                      
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    <?php
-    include 'partials/footer.php'
-    ?>
+        <?php include 'partials/footer.php'; ?>
+    
