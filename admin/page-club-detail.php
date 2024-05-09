@@ -149,7 +149,7 @@ $total_pages = ceil($total_records / $limit);
                 <?php while ($books = $fetch_collected_books_result->fetch_assoc()) : ?>
                     <div class="col-xl-2 col-lg-3 col-md-6">
                         <div class="card card-product-grid">
-                            <a href="#" class="img-wrap"> <img src="../uploadedBooks<?= $books['cover_img'] ?>" alt="Book"> </a>
+                            <a href="#" class="img-wrap"> <img src="../uploadedBooks/<?= $books['cover_img'] ?>" alt="Book"> </a>
                             <div class="info-wrap">
                                 <a href="#" class="title"><?= $books['title'] ?></a>
                                 <div class="price mt-1"><?= "Collected date: " . $books['date_added'] ?></div> <!-- price-wrap.// -->

@@ -1,4 +1,4 @@
-﻿
+﻿﻿
 <?php 
 
 // Database connection
@@ -291,7 +291,7 @@ $sql= "SELECT gbc.*, b.*, c.categoryName
                 <div class="product-cart-wrap mb-30">
                     <div class="product-img-action-wrap">
                         <div class="product-img product-img-zoom">
-                            <a href="shop-product.php">
+                            <a href="shop-product-full.php">
                                 <?php if(!empty($row["cover_img"]) && file_exists($row["cover_img"])) { ?>
                                     <img class="default-img" src="<?php echo $row["cover_img"]; ?>" alt="">
                                 <?php } else { ?>
@@ -302,8 +302,8 @@ $sql= "SELECT gbc.*, b.*, c.categoryName
                         </div>
                         <div class="product-action-1">
                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal<?php echo $row['book_id']; ?>"><i class="fi-rs-search"></i></a>
-                            <!-- <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
-                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a> -->
+                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.php"><i class="fi-rs-heart"></i></a>
+                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.php"><i class="fi-rs-shuffle"></i></a>
                         </div>
                         <div class="product-badges product-badges-position product-badges-mrg">
                             <span class="new"><?php echo $row["book_condition"]; ?></span>
@@ -313,10 +313,10 @@ $sql= "SELECT gbc.*, b.*, c.categoryName
                         <div class="product-category">
                             <a href="shop-grid-right.php"><?php echo $row["categoryName"]; ?></a>
                         </div>
-                        <h2><a href="shop-product.php?book_id=<?php echo $row['book_id']; ?>"><?php echo $row["title"]; ?></a></h2>
-                        <!-- <div class="product-action-1 show">
+                        <h2><a href="shop-product-full.php"><?php echo $row["title"]; ?></a></h2>
+                        <div class="product-action-1 show">
                             <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -347,7 +347,7 @@ $sql= "SELECT gbc.*, b.*, c.categoryName
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Make a request</button>
+                           <button type="button" class="btn btn-primary make-request-btn" data-book-id="<?php echo $row['book_id']; ?>">Make a request</button>
                         </div>
                     </div>
                 </div>
@@ -359,7 +359,32 @@ $sql= "SELECT gbc.*, b.*, c.categoryName
 
 
 
-
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Get all buttons with the class make-request-btn
+    var requestButtons = document.querySelectorAll(".make-request-btn");
+    
+    // Loop through each button and attach a click event listener
+    requestButtons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            // Get the book_id from the data-book-id attribute
+            var bookId = this.getAttribute("data-book-id");
+            
+            // Send an AJAX request to the PHP script
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "handle_exchange_request.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Handle the response if needed
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send("book_id=" + bookId);
+        });
+    });
+});
+</script>
 
 <?php
 // Calculate total number of pages
