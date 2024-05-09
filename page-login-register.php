@@ -144,14 +144,14 @@
                                             </div>
                                         </form>
 
-                                        <div class="divider-text-center mt-15 mb-15">
+                                        <!-- <div class="divider-text-center mt-15 mb-15">
                                             <span> or</span>
-                                        </div>
-                                        <ul class="btn-login list_none text-center mb-15">
+                                        </div> -->
+                                        <!-- <ul class="btn-login list_none text-center mb-15">
                                            
                                             <li><a href="#" class="btn btn-google hover-up">Login With Google</a></li>
-                                        </ul>
-                                        <div class="text-muted text-center">Already have an account? <a href="#">Sign in now</a></div>
+                                        </ul> -->
+                                        <!-- <div class="text-muted text-center">Already have an account? <a href="#">Sign in now</a></div> -->
                                     </div>
                                 </div>
                             </div>

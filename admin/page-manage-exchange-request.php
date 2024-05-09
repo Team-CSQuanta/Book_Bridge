@@ -15,7 +15,7 @@ $search = isset($_GET['search-accepted-exchange-request']) ? $connection->real_e
 $exchange_fetch = "SELECT er.*, u.*, er.status AS er_status
                FROM exchange_request AS er 
                JOIN user AS u ON er.user_id = u.user_id
-               WHERE er.status != 'Pending' AND er.status != 'Published' AND er.processed_by = {$_SESSION['user-logged-id']} ";
+               WHERE er.status != 'Pending' AND er.status != 'Delivered' AND er.processed_by = {$_SESSION['user-logged-id']} ";
 
 
 if (!empty($search)) {

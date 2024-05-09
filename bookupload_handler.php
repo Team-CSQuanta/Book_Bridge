@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Insert book information into the book table
         $insert_book_sql = "INSERT INTO book (isbn, title, authors, categoryID, edition, num_of_pages, language, description, publisher, publication_date, cover_img, additional_imgs) 
-                            VALUES ('$isbn', '$title', '$authors', '$categoryID', '$edition', '$num_of_pages', '$language', '$description', '$publisher', '$publication_date', '$mainImagePath', '$additionalImagesPaths')";
+                            VALUES ('$isbn', '$title', '$authors', '$categoryID', '$edition', '$num_of_pages', '$language', '$description', '$publisher', '$publication_date', '$mainImageName', '$additionalImagesPaths')";
         if ($conn->query($insert_book_sql) === TRUE) {
             // Retrieve the book_id of the newly inserted book
             $book_id = $conn->insert_id;
