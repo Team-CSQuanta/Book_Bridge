@@ -213,12 +213,13 @@ $book_info = $query_book_result->fetch_assoc();
                                     <?php
                                     $book_info
                                     ?>
-                                    <img src="../<?= isset($book_info['cover_img']) ? $book_info['cover_img'] : '' ?>" alt="">
+                                    <img src="../uploadedBooks/<?= isset($book_info['cover_img']) ? $book_info['cover_img'] : '' ?>" alt="">
                                     <?php
                                     if (isset($book_info['additional_imgs'])) {
                                         $imgs = explode(',', $book_info['additional_imgs']);
                                         foreach ($imgs as $img) {
-                                            echo "<img src=\"../" . $img . "\" alt=\"\">";
+                                            echo '<img src="../uploadedBooks/' . $img . '" alt="">';
+
                                         }
                                     }
                                     ?>
